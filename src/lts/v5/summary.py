@@ -63,9 +63,9 @@ def s1_s2_tables():
                          qyk_gt50=int((w.v_qyk > 0.5).sum()), med_v_e=w.v_e.median(), med_v_1k=w.v_1k.median(),
                          k_rising=int((g.dk > 0).sum()), k_rising_rM_fell=int(((g.dk > 0) & (g.dlnrM < 0)).sum()),
                          r_fell=int((g.dlnr < 0).sum()),
-                         cum_share_dominant=int((g[["c_share", "c_qyk", "c_pyk"]].abs().idxmax(axis=1) == "c_share").sum()),
-                         cum_qyk_dominant=int((g[["c_share", "c_qyk", "c_pyk"]].abs().idxmax(axis=1) == "c_qyk").sum()),
-                         cum_pyk_dominant=int((g[["c_share", "c_qyk", "c_pyk"]].abs().idxmax(axis=1) == "c_pyk").sum())))
+                         **{f"cum_{k}_dominant": int((cd[["c_share", "c_qyk", "c_pyk"]].abs().idxmax(axis=1) == f"c_{k}").sum())
+                            for cd in [g.dropna(subset=["c_share", "c_qyk", "c_pyk"])] for k in ("share", "qyk", "pyk")},
+                         cum_countries=int(g.dropna(subset=["c_share", "c_qyk", "c_pyk"]).shape[0])))
     x = pd.DataFrame(rows).set_index("variant")
     L.append("\n## Этап 1. Разложения по странам (сводка)\n")
     L.append(md(x, "{:.3f}"))

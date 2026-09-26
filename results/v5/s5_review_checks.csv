@@ -1,0 +1,18 @@
+check,spec,value,n,p
+R1_pp_closer_to_labour_than_energy,share 0.8,200.0,200,
+R1_pp_closer_to_labour_than_flat,share 0.8,199.0,200,
+R1_pp_closer_to_labour_than_energy,share 0.6,200.0,200,
+R1_pp_closer_to_labour_than_flat,share 0.6,196.0,200,
+R1_pp_closer_to_labour_than_energy,share 0.4,200.0,200,
+R1_pp_closer_to_labour_than_flat,share 0.4,199.0,200,
+R1_pp_closer_to_labour_than_energy,share 0.2,171.0,200,
+R1_pp_closer_to_labour_than_flat,share 0.2,199.0,200,
+R1_pp_closer_to_labour_than_energy,share 0.05,175.0,200,
+R1_pp_closer_to_labour_than_flat,share 0.05,200.0,200,
+R3_T2_annual,main FE=geo,-0.22160860228777998,623,0.5478547854785478
+R3_T2_annual,main FE=geo+year,1.1352653152464005,623,0.0348034803480348
+R3_T2_annual,no_mi FE=geo,-0.5887762897644334,638,0.006800680068006801
+R3_T2_annual,no_mi FE=geo+year,-0.23714447938305097,638,0.18411841184118413
+R9_US_trend_r,NW lag 2,-0.0003000318132095727,75,0.028808320807228387
+R9_US_trend_r,NW lag 4,-0.0003000318132095727,75,0.05945349176206118
+R9_US_trend_r,NW lag 8,-0.0003000318132095727,75,0.08207768386864733

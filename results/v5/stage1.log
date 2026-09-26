@@ -1,0 +1,126 @@
+decomp done
+/usr/local/lib/python3.11/dist-packages/pandas/core/arraylike.py:402: RuntimeWarning: divide by zero encountered in log
+  result = getattr(ufunc, method)(*inputs, **kwargs)
+                test      variant      spec        y         x   beta         t_cr1  p_cr1  p_wild    n  clusters
+0                 T2         main      base   d_lnrM    d_ln1k  0.794  1.487000e+00  0.150   0.125   98        26
+1            T2_mech         main      base   d_lnrM    d_ln1k -1.000 -1.275723e+15  0.000   0.000   98        26
+2          T2_levels         main      base     d_rM    d_ln1k  0.019  5.880000e-01  0.562   0.635  101        27
+3                 T2         main  controls   d_lnrM    d_ln1k  0.142  2.520000e-01  0.803   0.807   91        24
+4            T2_mech         main  controls   d_lnrM    d_ln1k -1.000 -9.304367e+14  0.000   0.000   91        24
+5          T2_levels         main  controls     d_rM    d_ln1k -0.003 -1.690000e-01  0.867   0.874   94        25
+6                 T3         main     e+gap   d_lnrM  d_lntech -0.226 -1.412000e+00  0.171   0.184   91        24
+7           T3_check         main       gap  d_lnpkw  d_lntech -0.689 -3.342000e+00  0.003   0.027   94        25
+8      T2_no_pcm_fin         main    gap+pk   d_lnrM    d_ln1k  2.478  2.838000e+00  0.009   0.007   91        24
+9                 T2        no_mi      base   d_lnrM    d_ln1k -0.300 -1.437000e+00  0.163   0.166  101        27
+10           T2_mech        no_mi      base   d_lnrM    d_ln1k -1.000 -2.765381e+15  0.000   0.000  101        27
+11         T2_levels        no_mi      base     d_rM    d_ln1k -0.034 -9.950000e-01  0.329   0.332  101        27
+12                T2        no_mi  controls   d_lnrM    d_ln1k -0.201 -1.080000e+00  0.291   0.313   94        25
+13           T2_mech        no_mi  controls   d_lnrM    d_ln1k -1.000 -5.642463e+13  0.000   0.000   94        25
+14         T2_levels        no_mi  controls     d_rM    d_ln1k -0.013 -7.050000e-01  0.488   0.495   94        25
+15                T3        no_mi     e+gap   d_lnrM  d_lntech -0.345 -2.242000e+00  0.034   0.028   94        25
+16          T3_check        no_mi       gap  d_lnpkw  d_lntech -0.617 -3.136000e+00  0.004   0.032   94        25
+17     T2_no_pcm_fin        no_mi    gap+pk   d_lnrM    d_ln1k  0.451  1.744000e+00  0.094   0.108   94        25
+18                T2     tangible      base   d_lnrM    d_ln1k  0.623  1.267000e+00  0.217   0.198   98        26
+19           T2_mech     tangible      base   d_lnrM    d_ln1k -1.000 -1.602089e+15  0.000   0.000   98        26
+20         T2_levels     tangible      base     d_rM    d_ln1k  0.017  5.380000e-01  0.595   0.667  101        27
+21                T2     tangible  controls   d_lnrM    d_ln1k -0.103 -2.070000e-01  0.838   0.836   91        24
+22           T2_mech     tangible  controls   d_lnrM    d_ln1k -1.000 -1.143517e+15  0.000   0.000   91        24
+23         T2_levels     tangible  controls     d_rM    d_ln1k -0.004 -2.430000e-01  0.810   0.822   94        25
+24                T3     tangible     e+gap   d_lnrM  d_lntech -0.255 -1.619000e+00  0.119   0.111   91        24
+25          T3_check     tangible       gap  d_lnpkw  d_lntech -0.657 -3.206000e+00  0.004   0.031   94        25
+26     T2_no_pcm_fin     tangible    gap+pk   d_lnrM    d_ln1k  2.090  2.957000e+00  0.007   0.007   91        24
+27                T2  intangibles      base   d_lnrM    d_ln1k  0.419  9.830000e-01  0.335   0.318   68        25
+28           T2_mech  intangibles      base   d_lnrM    d_ln1k -1.000 -1.407736e+15  0.000   0.000   68        25
+29         T2_levels  intangibles      base     d_rM    d_ln1k  0.010  3.770000e-01  0.710   0.706   70        26
+30                T2  intangibles  controls   d_lnrM    d_ln1k  0.446  6.700000e-01  0.510   0.583   64        23
+31           T2_mech  intangibles  controls   d_lnrM    d_ln1k -1.000 -9.064648e+14  0.000   0.000   64        23
+32         T2_levels  intangibles  controls     d_rM    d_ln1k  0.020  1.107000e+00  0.280   0.335   66        24
+33                T3  intangibles     e+gap   d_lnrM  d_lntech -0.121 -5.200000e-01  0.608   0.653   64        23
+34          T3_check  intangibles       gap  d_lnpkw  d_lntech -0.879 -2.899000e+00  0.008   0.051   66        24
+35     T2_no_pcm_fin  intangibles    gap+pk   d_lnrM    d_ln1k  2.141  3.153000e+00  0.005   0.000   64        23
+36                T2          all      base   d_lnrM    d_ln1k -0.241 -6.670000e-01  0.511   0.514  101        27
+37           T2_mech          all      base   d_lnrM    d_ln1k -1.000 -1.480175e+15  0.000   0.000  101        27
+38         T2_levels          all      base     d_rM    d_ln1k -0.016 -1.036000e+00  0.310   0.324  101        27
+39                T2          all  controls   d_lnrM    d_ln1k  0.029  8.600000e-02  0.932   0.956   94        25
+40           T2_mech          all  controls   d_lnrM    d_ln1k -1.000 -1.282157e+15  0.000   0.000   94        25
+41         T2_levels          all  controls     d_rM    d_ln1k -0.002 -1.540000e-01  0.879   0.884   94        25
+42                T3          all     e+gap   d_lnrM  d_lntech  0.145  7.680000e-01  0.450   0.463   94        25
+43          T3_check          all       gap  d_lnpkw  d_lntech -1.203 -5.295000e+00  0.000   0.000   94        25
+44     T2_no_pcm_fin          all    gap+pk   d_lnrM    d_ln1k  1.995  4.755000e+00  0.000   0.000   94        25
+45                T2       no_fin      base   d_lnrM    d_ln1k  0.753  1.847000e+00  0.077   0.108   95        26
+46           T2_mech       no_fin      base   d_lnrM    d_ln1k -1.000 -1.627013e+15  0.000   0.000   95        26
+47         T2_levels       no_fin      base     d_rM    d_ln1k  0.059  1.861000e+00  0.074   0.099  101        27
+48                T2       no_fin  controls   d_lnrM    d_ln1k -0.617 -1.589000e+00  0.126   0.194   88        24
+49           T2_mech       no_fin  controls   d_lnrM    d_ln1k -1.000 -1.029300e+15  0.000   0.000   88        24
+50         T2_levels       no_fin  controls     d_rM    d_ln1k -0.000 -5.000000e-03  0.996   0.996   94        25
+51                T3       no_fin     e+gap   d_lnrM  d_lntech -0.202 -1.367000e+00  0.185   0.198   88        24
+52          T3_check       no_fin       gap  d_lnpkw  d_lntech -0.716 -3.723000e+00  0.001   0.019   94        25
+53     T2_no_pcm_fin       no_fin    gap+pk   d_lnrM    d_ln1k  2.488  3.072000e+00  0.005   0.023   88        24
+54                T2    no_mining      base   d_lnrM    d_ln1k  0.816  1.437000e+00  0.163   0.143   98        26
+55           T2_mech    no_mining      base   d_lnrM    d_ln1k -1.000 -2.145734e+15  0.000   0.000   98        26
+56         T2_levels    no_mining      base     d_rM    d_ln1k  0.021  6.390000e-01  0.529   0.587  101        27
+57                T2    no_mining  controls   d_lnrM    d_ln1k  0.289  5.600000e-01  0.581   0.598   91        24
+58           T2_mech    no_mining  controls   d_lnrM    d_ln1k -1.000 -1.368838e+15  0.000   0.000   91        24
+59         T2_levels    no_mining  controls     d_rM    d_ln1k -0.003 -1.740000e-01  0.863   0.873   94        25
+60                T3    no_mining     e+gap   d_lnrM  d_lntech -0.224 -1.409000e+00  0.172   0.183   91        24
+61          T3_check    no_mining       gap  d_lnpkw  d_lntech -0.687 -3.378000e+00  0.002   0.025   94        25
+62     T2_no_pcm_fin    no_mining    gap+pk   d_lnrM    d_ln1k  2.604  2.794000e+00  0.010   0.006   91        24
+63         T2_annual         main       gap   d_lnrM    d_ln1k  1.135  2.144000e+00  0.042   0.035  623        26
+64         T2_annual         main        cu   d_lnrM    d_ln1k  0.839  2.017000e+00  0.055   0.045  597        25
+65  T2_annual_levels         main       gap     d_rM    d_ln1k  0.090  2.045000e+00  0.052   0.174  638        26
+66         T2_annual        no_mi       gap   d_lnrM    d_ln1k -0.237 -1.499000e+00  0.146   0.184  638        26
+67         T2_annual        no_mi        cu   d_lnrM    d_ln1k -0.246 -1.769000e+00  0.090   0.108  613        25
+68  T2_annual_levels        no_mi       gap     d_rM    d_ln1k -0.039 -1.741000e+00  0.094   0.125  638        26
+69         T2_annual     tangible       gap   d_lnrM    d_ln1k  1.118  2.148000e+00  0.042   0.035  623        26
+70         T2_annual     tangible        cu   d_lnrM    d_ln1k  0.844  2.045000e+00  0.052   0.042  597        25
+71  T2_annual_levels     tangible       gap     d_rM    d_ln1k  0.094  2.098000e+00  0.046   0.156  638        26
+72         T2_annual  intangibles       gap   d_lnrM    d_ln1k  2.163  1.947000e+00  0.063   0.072  574        25
+73         T2_annual  intangibles        cu   d_lnrM    d_ln1k  1.983  2.061000e+00  0.050   0.033  573        25
+74  T2_annual_levels  intangibles       gap     d_rM    d_ln1k  0.080  1.686000e+00  0.105   0.356  587        25
+75         T2_annual          all       gap   d_lnrM    d_ln1k  1.597  1.862000e+00  0.074   0.158  638        26
+76         T2_annual          all        cu   d_lnrM    d_ln1k  1.940  1.712000e+00  0.100   0.154  613        25
+77  T2_annual_levels          all       gap     d_rM    d_ln1k  0.030  2.043000e+00  0.052   0.267  638        26
+78         T2_annual       no_fin       gap   d_lnrM    d_ln1k  5.308  1.744000e+00  0.093   0.014  601        26
+79         T2_annual       no_fin        cu   d_lnrM    d_ln1k  4.349  1.610000e+00  0.120   0.025  584        25
+80  T2_annual_levels       no_fin       gap     d_rM    d_ln1k  0.103  2.416000e+00  0.023   0.088  638        26
+81         T2_annual    no_mining       gap   d_lnrM    d_ln1k  1.062  1.979000e+00  0.059   0.049  623        26
+82         T2_annual    no_mining        cu   d_lnrM    d_ln1k  0.794  1.888000e+00  0.071   0.059  597        25
+83  T2_annual_levels    no_mining       gap     d_rM    d_ln1k  0.092  2.026000e+00  0.054   0.182  638        26
+     y0    y1     r0     r1   dlnr  c_share  c_qyk  c_pyk  dlnrM    c_e   c_1k     k0     k1     e0     e1
+0  1951  1966  0.146  0.159  0.080   -0.031  0.180 -0.069  0.045 -0.034  0.079  2.353  2.099  0.345  0.333
+1  1966  1982  0.159  0.081 -0.674   -0.369 -0.226 -0.079 -0.593 -0.397 -0.195  2.099  2.767  0.333  0.224
+2  1982  1997  0.081  0.113  0.338    0.148  0.077  0.113  0.292  0.175  0.117  2.767  2.351  0.224  0.267
+3  1997  2007  0.113  0.105 -0.075    0.057 -0.256  0.125 -0.025  0.102 -0.127  2.351  2.805  0.267  0.295
+4  2007  2019  0.105  0.102 -0.029   -0.016 -0.166  0.153 -0.023 -0.006 -0.017  2.805  2.871  0.295  0.293
+5  1951  2025  0.146  0.117 -0.221   -0.091 -0.444  0.314 -0.161 -0.004 -0.157  2.353  2.923  0.345  0.343
+   series    y0    y1   slope   se_nw    t_nw  p_trend     supF  break_year  p_break     rho   n
+0       r  1951  2025 -0.0003  0.0001 -2.2302   0.0288  35.8211        1970    0.140  0.8067  75
+1      rM  1951  2025 -0.0001  0.0001 -1.2902   0.2010  36.1655        1970    0.148  0.8099  75
+2  r_tang  1951  2025 -0.0001  0.0002 -0.5763   0.5662  38.2224        1970    0.157  0.8237  75
+# Этап 1: предрегистрированные критерии (автоматически)
+
+## T2 (Δ ln r_M на Δ ln(1+k), пятилетки, без e)
+
+| variant | spec | beta | t_cr1 | p_cr1 | p_wild | n | clusters |
+|---|---|---|---|---|---|---|---|
+| main | base | 0.794 | 1.487 | 0.150 | 0.125 | 98 | 26 |
+| main | controls | 0.142 | 0.252 | 0.803 | 0.807 | 91 | 24 |
+| no_mi | base | -0.300 | -1.437 | 0.163 | 0.166 | 101 | 27 |
+| no_mi | controls | -0.201 | -1.080 | 0.291 | 0.313 | 94 | 25 |
+| tangible | base | 0.623 | 1.267 | 0.217 | 0.198 | 98 | 26 |
+| tangible | controls | -0.103 | -0.207 | 0.838 | 0.836 | 91 | 24 |
+| intangibles | base | 0.419 | 0.983 | 0.335 | 0.318 | 68 | 25 |
+| intangibles | controls | 0.446 | 0.670 | 0.510 | 0.583 | 64 | 23 |
+| all | base | -0.241 | -0.667 | 0.511 | 0.514 | 101 | 27 |
+| all | controls | 0.029 | 0.086 | 0.932 | 0.956 | 94 | 25 |
+| no_fin | base | 0.753 | 1.847 | 0.077 | 0.108 | 95 | 26 |
+| no_fin | controls | -0.617 | -1.589 | 0.126 | 0.194 | 88 | 24 |
+| no_mining | base | 0.816 | 1.437 | 0.163 | 0.143 | 98 | 26 |
+| no_mining | controls | 0.289 | 0.560 | 0.581 | 0.598 | 91 | 24 |
+
+* T2 β<0, p_wild<0,05 во всех вариантах ловушек и в годовой версии: **False**
+* Маркс (main): стран с растущим k: 12 из 27; из них r_M упала: 7
+* Вайскопф (main): стран, где доля прибыли + отн. цена капитала > 50% дисперсии Δ ln r: 26 из 26; где Q_Y/Q_K > 50%: 0
+* T1 r: отрицательный тренд p_Holm<0,05: 7, положительный: 5, из 27; разрыв p_Holm<0,05: 0
+* T1 rM: отрицательный тренд p_Holm<0,05: 6, положительный: 5, из 27; разрыв p_Holm<0,05: 1
+

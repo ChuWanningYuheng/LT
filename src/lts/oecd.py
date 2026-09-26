@@ -116,7 +116,7 @@ def to_figaro(row: pd.Series, splitter: pd.Series | None, mode: str = "flow",
                 sp = fallback                  # iteration 4 (A1b/c): override incomplete -> output split
             w = sp.reindex(todo).fillna(0.0) if sp is not None else pd.Series(1.0, index=todo)
             for j in todo:
-                kids_log[j] = (code, len(todo) > 1, sp is not splitter)
+                kids_log[j] = (code, len(todo) > 1, sp is not splitter, bool(resid > 0))
             if w.sum() <= 0:
                 w = pd.Series(1.0, index=todo)
             out[todo] = resid * w / w.sum()
@@ -165,7 +165,8 @@ def labour_block(country: str, year: int, x_fig: pd.Series, persons_splitter: pd
     bad, _, src, persons = cands[0]
     log["persons_source"], log["persons_zero_with_output"] = src, bad
     # iteration 4 (A1): industries whose persons come from splitting an aggregate residual
-    log["split_kids"] = {k: v[0] for k, v in persons.log.get("kids", {}).items()}
+    # only children that actually received a positive residual (review of A1: USA children got 0)
+    log["split_kids"] = {k: v[0] for k, v in persons.log.get("kids", {}).items() if v[3]}
     log["split_fallback"] = [k for k, v in persons.log.get("kids", {}).items() if v[2]]
     persons_v = persons.values.fillna(0.0)
     # hours per person ----------------------------------------------------------------------------

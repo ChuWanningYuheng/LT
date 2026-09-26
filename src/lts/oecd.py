@@ -43,6 +43,13 @@ def _read(name: str) -> pd.DataFrame:
     return d
 
 
+# A-JPN-SECT (iteration 3): Japan's OECD Tables 6 and 7 publish D incl. E, M incl. N and R incl. S and T
+# under the codes 'D', 'M', 'R' (the 16 published sections sum exactly to _T).  Read literally, E, N and S
+# got zero persons and D, M, R too many; the codes are relabelled to the aggregates they cover.
+ACT_REMAP = {("JPN", "table6"): {"D": "D_E", "M": "M_N", "R": "R_S_T"},
+             ("JPN", "table7"): {"D": "D_E", "M": "M_N", "R": "R_S_T"}}
+
+
 def series(country: str, table: str, transaction: str, unit: str, price_base: str | None = None,
            measure_col: str = "TRANSACTION") -> pd.DataFrame:
     """Wide frame: index = year, columns = OECD activity code."""
@@ -55,6 +62,9 @@ def series(country: str, table: str, transaction: str, unit: str, price_base: st
     if "SECTOR" in d:
         m &= d["SECTOR"].isin(["S1", "_Z"])
     x = d[m].pivot_table(index="TIME_PERIOD", columns="ACTIVITY", values="value", aggfunc="first")
+    remap = ACT_REMAP.get((country, table))
+    if remap:
+        x = x.rename(columns=remap)
     return x
 
 

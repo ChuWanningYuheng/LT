@@ -12,3 +12,5 @@ results/v2/*.npz
 results/v2/*.log
 data/primitives/
 data/raw/euklems/
+results/v3/*.log
+results/v3/placebo_disp_contrib_prefix_jpn.csv

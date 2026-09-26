@@ -110,3 +110,15 @@ python -m lts.v3.premium               # этап 2: надбавки и при�
 python -m lts.v3.crosscountry harmonised && python -m lts.v3.crosscountry   # этап 3
 python -m lts.v3.summarize             # results/v3/tables_v3.md, results/figures/v3_*.png
 ```
+
+## Итерация 4 (часть А: устойчивость v3)
+
+Отчёт — [`report/REPORT_v4.md`](report/REPORT_v4.md), предрегистрация — [`pre_registration_v4.md`](pre_registration_v4.md), рецензии — `results/v3/review_independent.md` (v3), `results/v4/review_a1.md` (А1). Часть Б (источник прибыли, EU KLEMS 2023) предрегистрирована, но не начата.
+
+```bash
+export PYTHONPATH=src OMP_NUM_THREADS=2
+python -m lts.v4.splits     # А1: списки отраслей с разбитой занятостью (results/v4/a1_split_lists.csv)
+python -m lts.v4.a1         # А1: этап П без разбитых отраслей и с донорской разбивкой (JPN, KOR, USA)
+python -m lts.v4.a2         # А2: мировая система FIGARO, импорт по трудоёмкости поставщиков (~40 мин)
+```
+Для А2 нужен `data/raw/v4/oecd_avg_hours.csv` (`https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_HW@DF_AVG_ANN_HRS_WKD,/all?startPeriod=2008&format=csvfilewithlabels`).

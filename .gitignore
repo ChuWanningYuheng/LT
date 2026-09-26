@@ -1,0 +1,9 @@
+data/raw/
+data/processed/
+results/tables/*.parquet
+results/tables/metrics_long_*.csv
+results/tables/*test*
+results/*.log
+__pycache__/
+*.pyc
+.pytest_cache/

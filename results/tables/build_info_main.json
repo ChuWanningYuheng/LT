@@ -1,0 +1,1263 @@
+[
+ {
+  "country":"USA",
+  "year":2010,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":11,
+   "hours_rescale":1.0084343611,
+   "hpp_national_fallback":1,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":52,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"USA",
+  "year":2011,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":11,
+   "hours_rescale":1.0071851067,
+   "hpp_national_fallback":1,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":3.330669074e-16,
+  "n":52,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"USA",
+  "year":2012,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":11,
+   "hours_rescale":1.0077289936,
+   "hpp_national_fallback":1,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":6.661338148e-16,
+  "n":52,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"USA",
+  "year":2013,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":11,
+   "hours_rescale":1.0041203138,
+   "hpp_national_fallback":1,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":52,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"USA",
+  "year":2014,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":11,
+   "hours_rescale":1.0044361277,
+   "hpp_national_fallback":1,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":52,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"USA",
+  "year":2015,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":11,
+   "hours_rescale":1.0111834043,
+   "hpp_national_fallback":1,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":52,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"USA",
+  "year":2016,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":11,
+   "hours_rescale":1.0102658213,
+   "hpp_national_fallback":1,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":3.330669074e-16,
+  "n":52,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"USA",
+  "year":2017,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":11,
+   "hours_rescale":1.0100405577,
+   "hpp_national_fallback":1,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":52,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"USA",
+  "year":2018,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":11,
+   "hours_rescale":1.010687263,
+   "hpp_national_fallback":1,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":52,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"USA",
+  "year":2019,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":11,
+   "hours_rescale":1.0152072817,
+   "hpp_national_fallback":1,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":52,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"USA",
+  "year":2020,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":11,
+   "hours_rescale":1.0091463079,
+   "hpp_national_fallback":1,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":6.661338148e-16,
+  "n":52,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"USA",
+  "year":2021,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":11,
+   "hours_rescale":1.0114080236,
+   "hpp_national_fallback":1,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":52,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"USA",
+  "year":2022,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":11,
+   "hours_rescale":1.0357550537,
+   "hpp_national_fallback":1,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":52,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"USA",
+  "year":2023,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":11,
+   "hours_rescale":1.0308616432,
+   "hpp_national_fallback":1,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":6.661338148e-16,
+  "n":52,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"DEU",
+  "year":2010,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.9928340791,
+   "hpp_national_fallback":0,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":63,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"DEU",
+  "year":2011,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.9929506296,
+   "hpp_national_fallback":0,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":63,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"DEU",
+  "year":2012,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.9931939094,
+   "hpp_national_fallback":0,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":63,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"DEU",
+  "year":2013,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.9930506885,
+   "hpp_national_fallback":0,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":63,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"DEU",
+  "year":2014,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.9931774989,
+   "hpp_national_fallback":0,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":63,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"DEU",
+  "year":2015,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.993095703,
+   "hpp_national_fallback":0,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":63,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"DEU",
+  "year":2016,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.9930642871,
+   "hpp_national_fallback":0,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":63,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"DEU",
+  "year":2017,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.9930914459,
+   "hpp_national_fallback":0,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":63,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"DEU",
+  "year":2018,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.9931537318,
+   "hpp_national_fallback":0,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":63,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"DEU",
+  "year":2019,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.9929034264,
+   "hpp_national_fallback":0,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":63,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"DEU",
+  "year":2020,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.9931971257,
+   "hpp_national_fallback":0,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":63,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"DEU",
+  "year":2021,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.9899250478,
+   "hpp_national_fallback":0,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":63,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"DEU",
+  "year":2022,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.9915598623,
+   "hpp_national_fallback":0,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":63,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"DEU",
+  "year":2023,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.9916181263,
+   "hpp_national_fallback":0,
+   "employee_share_source":"table7 PS",
+   "cfc_source":"P51C",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":63,
+  "r_capped":[
+
+  ],
+  "cfc_note":null
+ },
+ {
+  "country":"MEX",
+  "year":2010,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.9233757824,
+   "hpp_national_fallback":0,
+   "employee_share_source":"stan2025 PS",
+   "cfc_source":"B2A3G - B2A3N",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":63,
+  "r_capped":[
+
+  ],
+  "cfc_note":"CFC\/GOS ratios borrowed from USA"
+ },
+ {
+  "country":"MEX",
+  "year":2011,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.9225592583,
+   "hpp_national_fallback":0,
+   "employee_share_source":"stan2025 PS",
+   "cfc_source":"B2A3G - B2A3N",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":6.661338148e-16,
+  "n":63,
+  "r_capped":[
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.816065519,
+    "R":0.8202232277
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.816065519,
+    "R":0.8202232277
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.816065519,
+    "R":0.8202232277
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.816065519,
+    "R":0.8202232277
+   }
+  ],
+  "cfc_note":"CFC\/GOS ratios borrowed from USA"
+ },
+ {
+  "country":"MEX",
+  "year":2012,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.9216879519,
+   "hpp_national_fallback":0,
+   "employee_share_source":"stan2025 PS",
+   "cfc_source":"B2A3G - B2A3N",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":6.661338148e-16,
+  "n":63,
+  "r_capped":[
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.823574244,
+    "R":0.81999144
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.823574244,
+    "R":0.81999144
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.823574244,
+    "R":0.81999144
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.823574244,
+    "R":0.81999144
+   }
+  ],
+  "cfc_note":"CFC\/GOS ratios borrowed from USA"
+ },
+ {
+  "country":"MEX",
+  "year":2013,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.9221034087,
+   "hpp_national_fallback":0,
+   "employee_share_source":"stan2025 PS",
+   "cfc_source":"B2A3G - B2A3N",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":63,
+  "r_capped":[
+
+  ],
+  "cfc_note":"CFC\/GOS ratios borrowed from USA"
+ },
+ {
+  "country":"MEX",
+  "year":2014,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.9220170995,
+   "hpp_national_fallback":0,
+   "employee_share_source":"stan2025 PS",
+   "cfc_source":"B2A3G - B2A3N",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":63,
+  "r_capped":[
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8309076412,
+    "R":0.8083623057
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8309076412,
+    "R":0.8083623057
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8309076412,
+    "R":0.8083623057
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8309076412,
+    "R":0.8083623057
+   }
+  ],
+  "cfc_note":"CFC\/GOS ratios borrowed from USA"
+ },
+ {
+  "country":"MEX",
+  "year":2015,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.9226674453,
+   "hpp_national_fallback":0,
+   "employee_share_source":"stan2025 PS",
+   "cfc_source":"B2A3G - B2A3N",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":63,
+  "r_capped":[
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8355904846,
+    "R":0.772670589
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8355904846,
+    "R":0.772670589
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8355904846,
+    "R":0.772670589
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8355904846,
+    "R":0.772670589
+   }
+  ],
+  "cfc_note":"CFC\/GOS ratios borrowed from USA"
+ },
+ {
+  "country":"MEX",
+  "year":2016,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.9238123882,
+   "hpp_national_fallback":0,
+   "employee_share_source":"stan2025 PS",
+   "cfc_source":"B2A3G - B2A3N",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":3.330669074e-16,
+  "n":63,
+  "r_capped":[
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8417926871,
+    "R":0.7709108199
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8417926871,
+    "R":0.7709108199
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8417926871,
+    "R":0.7709108199
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8417926871,
+    "R":0.7709108199
+   }
+  ],
+  "cfc_note":"CFC\/GOS ratios borrowed from USA"
+ },
+ {
+  "country":"MEX",
+  "year":2017,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.9193841828,
+   "hpp_national_fallback":0,
+   "employee_share_source":"stan2025 PS",
+   "cfc_source":"B2A3G - B2A3N",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":63,
+  "r_capped":[
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.837205978,
+    "R":0.7841509777
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.837205978,
+    "R":0.7841509777
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.837205978,
+    "R":0.7841509777
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.837205978,
+    "R":0.7841509777
+   }
+  ],
+  "cfc_note":"CFC\/GOS ratios borrowed from USA"
+ },
+ {
+  "country":"MEX",
+  "year":2018,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.9215039879,
+   "hpp_national_fallback":0,
+   "employee_share_source":"stan2025 PS",
+   "cfc_source":"B2A3G - B2A3N",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":63,
+  "r_capped":[
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8343120783,
+    "R":0.760913797
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8343120783,
+    "R":0.760913797
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8343120783,
+    "R":0.760913797
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8343120783,
+    "R":0.760913797
+   }
+  ],
+  "cfc_note":"CFC\/GOS ratios borrowed from USA"
+ },
+ {
+  "country":"MEX",
+  "year":2019,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.9186105874,
+   "hpp_national_fallback":0,
+   "employee_share_source":"stan2025 PS",
+   "cfc_source":"B2A3G - B2A3N",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":63,
+  "r_capped":[
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8475174941,
+    "R":0.7902073348
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8475174941,
+    "R":0.7902073348
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8475174941,
+    "R":0.7902073348
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8475174941,
+    "R":0.7902073348
+   }
+  ],
+  "cfc_note":"CFC\/GOS ratios borrowed from USA"
+ },
+ {
+  "country":"MEX",
+  "year":2020,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.9150258038,
+   "hpp_national_fallback":0,
+   "employee_share_source":"stan2025 PS",
+   "cfc_source":"B2A3G - B2A3N",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":63,
+  "r_capped":[
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8605746399,
+    "R":0.7953391847
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8605746399,
+    "R":0.7953391847
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8605746399,
+    "R":0.7953391847
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8605746399,
+    "R":0.7953391847
+   }
+  ],
+  "cfc_note":"CFC\/GOS ratios borrowed from USA"
+ },
+ {
+  "country":"MEX",
+  "year":2021,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.9429973225,
+   "hpp_national_fallback":0,
+   "employee_share_source":"stan2025 PS",
+   "cfc_source":"B2A3G - B2A3N",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":63,
+  "r_capped":[
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8058250573,
+    "R":0.7387082944
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8058250573,
+    "R":0.7387082944
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8058250573,
+    "R":0.7387082944
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.8058250573,
+    "R":0.7387082944
+   }
+  ],
+  "cfc_note":"CFC\/GOS ratios borrowed from USA"
+ },
+ {
+  "country":"MEX",
+  "year":2022,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.9833632392,
+   "hpp_national_fallback":0,
+   "employee_share_source":"stan2025 PS",
+   "cfc_source":"B2A3G - B2A3N",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":5.551115123e-16,
+  "n":63,
+  "r_capped":[
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.775629335,
+    "R":0.7280986296
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.775629335,
+    "R":0.7280986296
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.775629335,
+    "R":0.7280986296
+   },
+   {
+    "capital":false,
+    "imports":"competitive",
+    "r_act":0.775629335,
+    "R":0.7280986296
+   }
+  ],
+  "cfc_note":"CFC\/GOS ratios borrowed from USA"
+ },
+ {
+  "country":"MEX",
+  "year":2023,
+  "labour_log":{
+   "persons_source":"table7 EMP PS",
+   "persons_zero_with_output":0,
+   "hours_rescale":0.9835705898,
+   "hpp_national_fallback":0,
+   "employee_share_source":"stan2025 PS",
+   "cfc_source":"B2A3G - B2A3N",
+   "cfc_missing":0,
+   "price":{
+    "exact":63,
+    "imputed":1,
+    "missing":0
+   }
+  },
+  "max_colsum_gap":4.440892099e-16,
+  "n":63,
+  "r_capped":[
+
+  ],
+  "cfc_note":"CFC\/GOS ratios borrowed from USA"
+ }
+]

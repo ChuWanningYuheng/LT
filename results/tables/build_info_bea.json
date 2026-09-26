@@ -1,0 +1,288 @@
+[
+ {
+  "country":"USA_BEA",
+  "year":1998,
+  "n":69,
+  "max_colsum_gap":0.0001243317,
+  "use_vs_make_output_gap":0.0001243317,
+  "fte_missing":0,
+  "r_capped":[
+
+  ]
+ },
+ {
+  "country":"USA_BEA",
+  "year":1999,
+  "n":69,
+  "max_colsum_gap":0.0002280112,
+  "use_vs_make_output_gap":0.0002280112,
+  "fte_missing":0,
+  "r_capped":[
+
+  ]
+ },
+ {
+  "country":"USA_BEA",
+  "year":2000,
+  "n":69,
+  "max_colsum_gap":0.0001478415,
+  "use_vs_make_output_gap":0.0001478415,
+  "fte_missing":0,
+  "r_capped":[
+
+  ]
+ },
+ {
+  "country":"USA_BEA",
+  "year":2001,
+  "n":69,
+  "max_colsum_gap":0.0001089087,
+  "use_vs_make_output_gap":0.0001089087,
+  "fte_missing":0,
+  "r_capped":[
+
+  ]
+ },
+ {
+  "country":"USA_BEA",
+  "year":2002,
+  "n":69,
+  "max_colsum_gap":0.0000503854,
+  "use_vs_make_output_gap":0.0000503854,
+  "fte_missing":0,
+  "r_capped":[
+
+  ]
+ },
+ {
+  "country":"USA_BEA",
+  "year":2003,
+  "n":69,
+  "max_colsum_gap":0.0000894654,
+  "use_vs_make_output_gap":0.0000894654,
+  "fte_missing":0,
+  "r_capped":[
+
+  ]
+ },
+ {
+  "country":"USA_BEA",
+  "year":2004,
+  "n":69,
+  "max_colsum_gap":0.0000661142,
+  "use_vs_make_output_gap":0.0000661142,
+  "fte_missing":0,
+  "r_capped":[
+
+  ]
+ },
+ {
+  "country":"USA_BEA",
+  "year":2005,
+  "n":69,
+  "max_colsum_gap":0.0000643266,
+  "use_vs_make_output_gap":0.0000643266,
+  "fte_missing":0,
+  "r_capped":[
+
+  ]
+ },
+ {
+  "country":"USA_BEA",
+  "year":2006,
+  "n":69,
+  "max_colsum_gap":0.0002474839,
+  "use_vs_make_output_gap":0.0002474839,
+  "fte_missing":0,
+  "r_capped":[
+
+  ]
+ },
+ {
+  "country":"USA_BEA",
+  "year":2007,
+  "n":69,
+  "max_colsum_gap":0.0001553881,
+  "use_vs_make_output_gap":0.0001553881,
+  "fte_missing":0,
+  "r_capped":[
+
+  ]
+ },
+ {
+  "country":"USA_BEA",
+  "year":2008,
+  "n":69,
+  "max_colsum_gap":0.0000749204,
+  "use_vs_make_output_gap":0.0000749204,
+  "fte_missing":0,
+  "r_capped":[
+
+  ]
+ },
+ {
+  "country":"USA_BEA",
+  "year":2009,
+  "n":69,
+  "max_colsum_gap":0.0001640218,
+  "use_vs_make_output_gap":0.0001640218,
+  "fte_missing":0,
+  "r_capped":[
+
+  ]
+ },
+ {
+  "country":"USA_BEA",
+  "year":2010,
+  "n":69,
+  "max_colsum_gap":0.0002148505,
+  "use_vs_make_output_gap":0.0002148505,
+  "fte_missing":0,
+  "r_capped":[
+
+  ]
+ },
+ {
+  "country":"USA_BEA",
+  "year":2011,
+  "n":69,
+  "max_colsum_gap":0.0000803084,
+  "use_vs_make_output_gap":0.0000803084,
+  "fte_missing":0,
+  "r_capped":[
+
+  ]
+ },
+ {
+  "country":"USA_BEA",
+  "year":2012,
+  "n":69,
+  "max_colsum_gap":0.0000799632,
+  "use_vs_make_output_gap":0.0000799632,
+  "fte_missing":0,
+  "r_capped":[
+
+  ]
+ },
+ {
+  "country":"USA_BEA",
+  "year":2013,
+  "n":69,
+  "max_colsum_gap":0.0000770852,
+  "use_vs_make_output_gap":0.0000770852,
+  "fte_missing":0,
+  "r_capped":[
+
+  ]
+ },
+ {
+  "country":"USA_BEA",
+  "year":2014,
+  "n":69,
+  "max_colsum_gap":0.0000949713,
+  "use_vs_make_output_gap":0.0000949713,
+  "fte_missing":0,
+  "r_capped":[
+
+  ]
+ },
+ {
+  "country":"USA_BEA",
+  "year":2015,
+  "n":69,
+  "max_colsum_gap":0.0000905121,
+  "use_vs_make_output_gap":0.0000905121,
+  "fte_missing":0,
+  "r_capped":[
+
+  ]
+ },
+ {
+  "country":"USA_BEA",
+  "year":2016,
+  "n":69,
+  "max_colsum_gap":0.0002160644,
+  "use_vs_make_output_gap":0.0002160644,
+  "fte_missing":0,
+  "r_capped":[
+
+  ]
+ },
+ {
+  "country":"USA_BEA",
+  "year":2017,
+  "n":69,
+  "max_colsum_gap":0.0001272912,
+  "use_vs_make_output_gap":0.0001272912,
+  "fte_missing":0,
+  "r_capped":[
+
+  ]
+ },
+ {
+  "country":"USA_BEA",
+  "year":2018,
+  "n":69,
+  "max_colsum_gap":0.0000590493,
+  "use_vs_make_output_gap":0.0000590493,
+  "fte_missing":0,
+  "r_capped":[
+
+  ]
+ },
+ {
+  "country":"USA_BEA",
+  "year":2019,
+  "n":69,
+  "max_colsum_gap":0.0000576967,
+  "use_vs_make_output_gap":0.0000576967,
+  "fte_missing":0,
+  "r_capped":[
+
+  ]
+ },
+ {
+  "country":"USA_BEA",
+  "year":2020,
+  "n":69,
+  "max_colsum_gap":0.0004125413,
+  "use_vs_make_output_gap":0.0004125413,
+  "fte_missing":0,
+  "r_capped":[
+
+  ]
+ },
+ {
+  "country":"USA_BEA",
+  "year":2021,
+  "n":69,
+  "max_colsum_gap":0.000100015,
+  "use_vs_make_output_gap":0.000100015,
+  "fte_missing":0,
+  "r_capped":[
+
+  ]
+ },
+ {
+  "country":"USA_BEA",
+  "year":2022,
+  "n":69,
+  "max_colsum_gap":0.000100553,
+  "use_vs_make_output_gap":0.000100553,
+  "fte_missing":0,
+  "r_capped":[
+
+  ]
+ },
+ {
+  "country":"USA_BEA",
+  "year":2023,
+  "n":69,
+  "max_colsum_gap":0.0001677571,
+  "use_vs_make_output_gap":0.0001677571,
+  "fte_missing":0,
+  "r_capped":[
+
+  ]
+ }
+]

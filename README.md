@@ -122,3 +122,15 @@ python -m lts.v4.a1         # А1: этап П без разбитых отра�
 python -m lts.v4.a2         # А2: мировая система FIGARO, импорт по трудоёмкости поставщиков (~40 мин)
 ```
 Для А2 нужен `data/raw/v4/oecd_avg_hours.csv` (`https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_HW@DF_AVG_ANN_HRS_WKD,/all?startPeriod=2008&format=csvfilewithlabels`).
+
+## Итерация 4 (часть Б: откуда прибыль)
+
+Данные: EU KLEMS 2023 (`national accounts.csv`, `capital accounts.csv`, `intangibles analytical.csv`, `Variable-List-2023.xlsx` со страницы euklems-intanprod-llee.luiss.it/download) в `data/raw/euklems/`; Eurostat `nama_10_a64` (P51C, D29X39, B1G, D1; `.../data/nama_10_a64/A.CP_MNAC..<ITEM>.?format=TSV&compressed=true`) в `data/raw/v4/nama64_<ITEM>.tsv.gz`.
+
+```bash
+python -m lts.v4.b0              # Б0: T1 с плоскими эталонами и перестановками
+python -m lts.v4.b_data          # панель KLEMS (results/v4/b_panel.csv.gz)
+python -m lts.v4.b0b             # Б0б: равный разброс (нужна панель)
+python -m lts.v4.b_tests b31 && python -m lts.v4.b_tests b33 && python -m lts.v4.b_tests b32   # Б3.1, Б3.3, Б3.2 (~1,5 ч)
+python -m lts.v4.b_summary       # results/v4/tables_b.md
+```

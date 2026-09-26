@@ -7,3 +7,8 @@ results/*.log
 __pycache__/
 *.pyc
 .pytest_cache/
+results/v2/*.parquet
+results/v2/*.npz
+results/v2/*.log
+data/primitives/
+data/raw/euklems/

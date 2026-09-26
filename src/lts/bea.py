@@ -143,6 +143,10 @@ def build(year: int) -> tuple[Economy, dict]:
     gf_cols = ["F02S", "F02E", "F02N", "F02R", "F06S", "F06E", "F06N", "F07S", "F07E", "F07N", "F10S", "F10E", "F10N"]
     pce_tot, pce_imp = fd(["F010"], U), fd(["F010"], IM)
     gf_tot, gf_imp = fd(gf_cols, U), fd(gf_cols, IM)
+    gc_cols = ["F06C", "F07C", "F10C"]
+    gc_tot, gc_imp = fd(gc_cols, U), fd(gc_cols, IM)
+    gov_dom = D.values @ (gc_tot - gc_imp).clip(lower=0).values
+    gov_imp = D.values @ gc_imp.values
     hh_dom = D.values @ (pce_tot - pce_imp).clip(lower=0).values
     hh_imp = D.values @ pce_imp.values
     gfcf_dom = D.values @ (gf_tot - gf_imp).clip(lower=0).values
@@ -199,7 +203,8 @@ def build(year: int) -> tuple[Economy, dict]:
     price = np.array([pr.loc[PRICE_LINE[n], year] if year in pr.columns else np.nan for n in names])
     e = Economy(labels=names, A=A, Am=Am, x=xg, hours=hours, wages=comp_g, cfc=cfc,
                 gfcf_dom=G @ gfcf_dom, gfcf_imp=G @ gfcf_imp, hh_dom=G @ hh_dom, hh_imp=G @ hh_imp,
-                va=G @ va + neg, labour_income=li, meta=dict(price_index=price, persons=persons_fte))
+                va=G @ va + neg, labour_income=li, meta=dict(price_index=price, persons=persons_fte,
+                                                              gov_dom=G @ gov_dom, gov_imp=G @ gov_imp))
     colsum = e.A.sum(0) + e.Am.sum(0) + e.va / e.x
     info = dict(country="USA_BEA", year=year, n=e.n, max_colsum_gap=float(np.abs(colsum - 1).max()),
                 use_vs_make_output_gap=float(np.abs((U.reindex(columns=inds).loc[["V001", "V002", "V003"]].sum(0)

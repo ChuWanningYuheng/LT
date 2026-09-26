@@ -121,7 +121,10 @@ def build(country3: str, year: int, cfc_fallback_country: str = "USA") -> tuple[
                 gfcf_dom=agg(b["Fdom"][:, P51])[idx], gfcf_imp=agg(b["Fimp"][:, P51])[idx],
                 hh_dom=agg(b["Fdom"][:, P3])[idx], hh_imp=agg(b["Fimp"][:, P3])[idx],
                 va=agg(va)[idx], labour_income=agg(li)[idx],
-                meta=dict(price_index=pg[idx], persons=agg(lab["persons"].reindex(INDUSTRIES).fillna(0).to_numpy())[idx]))
+                meta=dict(price_index=pg[idx], persons=agg(lab["persons"].reindex(INDUSTRIES).fillna(0).to_numpy())[idx],
+                          # v2: government + NPISH final consumption (for the 'social wage' basket, A-BASKET-G)
+                          gov_dom=agg(b["Fdom"][:, b["fd"].index("P3_S13")] + b["Fdom"][:, b["fd"].index("P3_S15")])[idx],
+                          gov_imp=agg(b["Fimp"][:, b["fd"].index("P3_S13")] + b["Fimp"][:, b["fd"].index("P3_S15")])[idx]))
     # identity check: column sums of coefficients + value added share = 1
     colsum = e.A.sum(0) + e.Am.sum(0) + e.va / e.x
     info["max_colsum_gap"] = float(np.abs(colsum - 1).max())

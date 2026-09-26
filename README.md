@@ -144,3 +144,28 @@ export PYTHONPATH=src
 python -m lts.final.verify_benchmarks   # плоский вектор и степени часов (results/final/benchmarks_flat_power.csv)
 python -m lts.final.check_numbers       # реестр чисел → report/FINAL_numbers_check.md (файлы и текст)
 ```
+
+## Итерация 5 (автоматизация, совокупная норма прибыли, механизм цены)
+
+Отчёт: [`report/REPORT_v5.md`](report/REPORT_v5.md); предрегистрация и журнал: [`pre_registration_v5.md`](pre_registration_v5.md).
+
+Данные (в `data/raw/v5/`, кроме KLEMS и Eurostat из итерации 4):
+* BEA NIPA `NipaDataA.txt`, `SeriesRegister.txt` (apps.bea.gov/national/Release/TXT);
+* FRED: `BOGZ1FL105013865A`, `BOGZ1FL105013765A` (Z.1, капитал нефинансовых корпораций), `TCU` — `fred.stlouisfed.org/graph/fredgraph.csv?id=<ID>`;
+* OECD Economic Outlook, разрыв выпуска: `oecd_eo_gap.csv` (DSD_EO@DF_EO, `.GAP.A`);
+* Eurostat `ei_bsin_q_r2` (загрузка мощностей);
+* EPWT 7.0: `epwt70.xlsx` (Harvard Dataverse);
+* Wright (2008): `wright2008.pdf`.
+
+Нужен `numba` (агентные модели).
+
+```bash
+export PYTHONPATH=src
+python -m lts.v5.agg        # агрегаты страна-год (results/v5/agg_*.csv)
+python -m lts.v5.stage1     # этап 1: разложения, T1–T3, США 1951–2025, EPWT (~3 мин)
+python -m lts.v5.stage2     # этап 2: меры автоматизации и тесты (~5 мин)
+python -m lts.v5.wright 10  # этап 3.1: Wright (2008), 80 прогонов (~40 мин на 3 ядрах)
+python -m lts.v5.wright 3 diag   # диагностические варианты
+python -m lts.v5.abm 10     # этап 3.2: 400 прогонов расширенной модели (~2 мин)
+python -m lts.v5.summary    # results/v5/tables_v5.md
+```

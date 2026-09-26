@@ -169,4 +169,6 @@ def education_weights(country3: str, year: int, labels: list[str], scheme: str,
             vals = [w[j] for j in INDUSTRIES if divisions(j) and divisions(j) & d]
         out.append(np.nanmean(vals) if len(vals) and np.isfinite(vals).any() else np.nan)
     out = np.array(out)
+    if not np.isfinite(out).any():
+        return np.ones(len(labels))      # no education data (JPN): unweighted hours
     return np.where(np.isfinite(out), out, np.nanmean(out))

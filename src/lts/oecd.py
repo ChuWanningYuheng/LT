@@ -219,6 +219,8 @@ def education_shares(country3: str, year: int) -> pd.DataFrame:
     yrs = sorted(d.TIME_PERIOD.unique())
     y = min(yrs, key=lambda t: abs(t - year))
     w = d[d.TIME_PERIOD == y].pivot_table(index="ACTIVITY", columns="CHARACTERISTIC", values="OBS_VALUE")
+    if not set(EDU) <= set(w.columns):   # e.g. JPN: no ISCED breakdown in TiMBC -> no education weights
+        return pd.DataFrame(np.nan, index=INDUSTRIES, columns=EDU)
     sh = w[EDU].div(w[EDU].sum(1), axis=0)
     aggs = {a: divisions(a) for a in sh.index}
     out = pd.DataFrame(np.nan, index=INDUSTRIES, columns=EDU)

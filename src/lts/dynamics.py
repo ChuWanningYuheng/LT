@@ -236,7 +236,7 @@ def summarise_distribution(tab: pd.DataFrame, value: str, keys: list[str]) -> pd
 NAMED = {f"k:{v}": k for k, v in BASES.items()}
 
 
-def run(tag: str = "main", role_map=None, splits=None):
+def run(tag: str = "main", role_map=None, splits=None, only_t3: bool = False):
     specs = {
         "open_cap": dict(capital=True, closed=False, imports="price", labour="hours"),
         "open_nocap": dict(capital=False, closed=False, imports="price", labour="hours"),
@@ -267,12 +267,22 @@ def run(tag: str = "main", role_map=None, splits=None):
                 elec, oil = "k:22", "k:324"
             sets = {"labour_vs_named": ["labour"] + named,
                     "labour_vs_pp": key,
+                    "labour_vs_ppU": [b for b in ["labour", "pp_uniform_wage"] if b in set(d.basis)],
+                    "labour_vs_ppA": [b for b in ["labour", "pp_actual_wage"] if b in set(d.basis)],
                     "labour_vs_electricity": ["labour", elec] if elec in set(d.basis) else [],
                     "labour_vs_oil": ["labour", oil] if oil in set(d.basis) else []}
-            t3 = t3_horse_race(d, {k: v for k, v in sets.items() if v}).assign(**meta)
+            t3 = t3_horse_race(d, {k: v for k, v in sets.items() if len(v) >= 2}).assign(**meta)
+            if only_t3:
+                allt3.append(t3)
+                print(tag, sname, subset, "t3 done", flush=True)
+                continue
             t4 = t4_out_of_sample(d, splits).assign(**meta)
             allt1.append(t1), allt2.append(t2), allt3.append(t3), allt4.append(t4)
             print(tag, sname, subset, "done", flush=True)
+    if only_t3:
+        T3 = pd.concat(allt3, ignore_index=True)
+        T3.to_csv(TAB / f"dyn_T3_{tag}.csv", index=False)
+        return None, None, T3, None
     T1, T2, T3, T4 = (pd.concat(x, ignore_index=True) for x in (allt1, allt2, allt3, allt4))
     T1.to_csv(TAB / f"dyn_T1_{tag}.csv", index=False)
     T2.to_csv(TAB / f"dyn_T2_{tag}.csv", index=False)
@@ -284,8 +294,10 @@ def run(tag: str = "main", role_map=None, splits=None):
 if __name__ == "__main__":
     import sys
     tag = sys.argv[1] if len(sys.argv) > 1 else "main"
+    only_t3 = len(sys.argv) > 2 and sys.argv[2] == "t3"
     if tag == "bea":
         from .bea import BEA_ROLE
-        run("bea", role_map=BEA_ROLE, splits=[(2008, 2009, 2014), (2008, 2009, 2023), (2014, 2015, 2023)])
+        run("bea", role_map=BEA_ROLE, splits=[(2008, 2009, 2014), (2008, 2009, 2023), (2014, 2015, 2023)],
+            only_t3=only_t3)
     else:
-        run(tag)
+        run(tag, only_t3=only_t3)

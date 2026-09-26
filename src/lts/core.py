@@ -116,8 +116,8 @@ class Economy:
                   of labour j; one hour of labour j requires the household consumption bundle worth
                   its actual hourly labour income w_j (composition of household final consumption,
                   domestic part in M, imported part in Mm).  A-CLOSE: labour is reproduced at the
-                  actual (industry-specific) wage; with a single average wage the system is not
-                  productive in the data (low-wage industries cannot pay the average bundle).
+                  actual (industry-specific) wage; closed="uniform" (A-CLOSE-U) uses one bundle per
+                  hour worth the average hourly labour income (scaled down only if unproductive).
                   In the closed system labour and every commodity are treated identically: the
                   basis' rows are made primary and everything else, labour included, is produced.
         imports : 'price'       imported inputs are a separate, non-produced input valued at price 1

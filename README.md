@@ -58,3 +58,34 @@ python -m lts.report_tables                  # results/report_tables.md и resul
 | `dynamics.py` | T1 (R² при β=1, некруговой), T2 (панельная FE-регрессия, лаги 0–2), T3 (охватывающие веса / горс-рейс), T4 (вне выборки), T5 (стоимости против цен производства) |
 | `mrio.py` | мировая матрица Леонтьева, импорт по содержанию труда или ресурса в стране-экспортёре |
 | `validation.py` | воспроизведение опубликованного результата; суммы, собственные числа, неотрицательность |
+
+
+## Итерация 2 (проверка устойчивости)
+
+Отчёт — [`report/REPORT_v2.md`](report/REPORT_v2.md), предрегистрация — [`pre_registration_v2.md`](pre_registration_v2.md), вывод разложения — [`report/methods_decomposition.md`](report/methods_decomposition.md), независимая реализация симметричного теста — [`independent/`](independent/).
+
+Дополнительные данные: EU KLEMS 2023 labour accounts (`https://www.dropbox.com/s/vgtzptui1m1tj9l/labour%20accounts.csv?dl=1`, ссылка со страницы euklems-intanprod-llee.luiss.it/download), BLS «Labor productivity, detailed industries» (`https://www.bls.gov/productivity/tables/labor-productivity-detailed-industries.xlsx`; BLS требует описательный User-Agent), матрица потоков капитала BEA 1997 (`https://apps.bea.gov/industry/xls/flow1997.xls`). WIOD и INEGI недоступны (см. `ASSUMPTIONS.md`, A-DATA-V2-*).
+
+```bash
+export PYTHONPATH=src OMP_NUM_THREADS=2
+python - <<'PY'                                   # примитивы для независимой реализации
+import numpy as np
+from lts.economy import build
+for c in ['USA','DEU','MEX']:
+    for y in range(2010,2024):
+        e,_=build(c,y)
+        np.savez_compressed(f'data/primitives/{c}_{y}.npz', labels=np.array(e.labels), Zdom=e.A*e.x, Zimp=e.Am*e.x,
+            x=e.x, hours=e.hours, D1=e.wages, labour_income=e.labour_income, cfc=e.cfc, gfcf_dom=e.gfcf_dom,
+            gfcf_imp=e.gfcf_imp, hh_dom=e.hh_dom, hh_imp=e.hh_imp, va=e.va)
+PY
+python independent/symtest.py                     # этап 1.1 (независимая реализация)
+python -m lts.v2.baskets figaro && python -m lts.v2.baskets bea          # этап 1.3
+python -m lts.v2.decomposition && python -m lts.v2.mixture               # этап 1б (+ тест охвата 1в)
+python -m lts.v2.placebo_cost && python -m lts.v2.gradient               # этап 1в
+python -m lts.v2.reduction_pp figaro && python -m lts.v2.reduction_pp bea && python -m lts.v2.analyze_pp   # этапы 2-3
+python -m lts.v2.long_run                                                 # этап 4
+python -m lts.v2.data_improve                                             # этап 5 (BEA: BLS, потоки капитала)
+python -m lts.v2.figures
+```
+
+Для этапов 1в–4 нужны `results/tables/ratios_long_{main,bea,robust}.parquet` из итерации 1 (`python -m lts.levels main|bea|robust`).

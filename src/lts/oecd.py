@@ -74,7 +74,8 @@ class Mapped:
     log: dict = field(default_factory=dict)
 
 
-def to_figaro(row: pd.Series, splitter: pd.Series | None, mode: str = "flow") -> Mapped:
+def to_figaro(row: pd.Series, splitter: pd.Series | None, mode: str = "flow",
+              fallback: pd.Series | None = None) -> Mapped:
     """Map one year's OECD activity values to the 64 FIGARO industries.
 
     mode 'flow'  : additive quantities (hours, persons, money). Unobserved children share the parent
@@ -97,6 +98,7 @@ def to_figaro(row: pd.Series, splitter: pd.Series | None, mode: str = "flow") ->
             exact += 1
     parents = sorted(by_set.items(), key=lambda kv: len(kv[0]))
     imputed = 0
+    kids_log = {}
     for s_par, code in parents:
         kids = [j for j, s in FIG_DIV.items() if s <= s_par]
         if not kids or set().union(*[FIG_DIV[j] for j in kids]) != s_par:
@@ -109,12 +111,17 @@ def to_figaro(row: pd.Series, splitter: pd.Series | None, mode: str = "flow") ->
         else:
             resid = row[code] - out[[j for j in kids if j not in todo]].sum()
             resid = max(resid, 0.0)
-            w = splitter.reindex(todo).fillna(0.0) if splitter is not None else pd.Series(1.0, index=todo)
+            sp = splitter
+            if fallback is not None and (splitter is None or splitter.reindex(todo).isna().any()):
+                sp = fallback                  # iteration 4 (A1b/c): override incomplete -> output split
+            w = sp.reindex(todo).fillna(0.0) if sp is not None else pd.Series(1.0, index=todo)
+            for j in todo:
+                kids_log[j] = (code, len(todo) > 1, sp is not splitter)
             if w.sum() <= 0:
                 w = pd.Series(1.0, index=todo)
             out[todo] = resid * w / w.sum()
         imputed += len(todo)
-    return Mapped(out, dict(exact=exact, imputed=imputed, missing=int(out.isna().sum())))
+    return Mapped(out, dict(exact=exact, imputed=imputed, missing=int(out.isna().sum()), kids=kids_log))
 
 
 def _row(df: pd.DataFrame, year: int) -> pd.Series:
@@ -131,7 +138,7 @@ def _map_with_fallback(row: pd.Series, splitter, mode="flow") -> pd.Series:
     return to_figaro(row, splitter, mode).values
 
 
-def labour_block(country: str, year: int, x_fig: pd.Series) -> dict:
+def labour_block(country: str, year: int, x_fig: pd.Series, persons_splitter: pd.Series | None = None) -> dict:
     """Hours (all persons), persons, employee share, CFC/output ratio and output deflator by FIGARO industry.
 
     persons : first available of Table 7 persons, Table 7 jobs, STAN persons.
@@ -147,7 +154,8 @@ def labour_block(country: str, year: int, x_fig: pd.Series) -> dict:
         r = _row(series(country, tab, tr, un, measure_col=mc), year)
         if len(r.dropna()) < 5:
             continue
-        m = to_figaro(r.replace(0, np.nan), x_fig)
+        m = to_figaro(r.replace(0, np.nan), x_fig if persons_splitter is None else persons_splitter,
+                      fallback=None if persons_splitter is None else x_fig)
         bad = int(((m.values.fillna(0) <= 0) & xpos).sum())
         cands.append((bad, len(cands), f"{tab} {tr} {un}", m))
     if not cands:
@@ -156,6 +164,9 @@ def labour_block(country: str, year: int, x_fig: pd.Series) -> dict:
     # implausible (e.g. USA K65 insurance 0.13m persons). Zero industries are merged (economy.MERGES).
     bad, _, src, persons = cands[0]
     log["persons_source"], log["persons_zero_with_output"] = src, bad
+    # iteration 4 (A1): industries whose persons come from splitting an aggregate residual
+    log["split_kids"] = {k: v[0] for k, v in persons.log.get("kids", {}).items()}
+    log["split_fallback"] = [k for k, v in persons.log.get("kids", {}).items() if v[2]]
     persons_v = persons.values.fillna(0.0)
     # hours per person ----------------------------------------------------------------------------
     hpp_codes = {}
@@ -179,6 +190,7 @@ def labour_block(country: str, year: int, x_fig: pd.Series) -> dict:
     hpp = to_figaro(pd.Series(hpp_codes, dtype=float), None, mode="index").values if hpp_codes else \
         pd.Series(np.nan, index=INDUSTRIES)
     n_fallback = int(hpp.isna().sum())
+    log["hpp_fallback_list"] = list(hpp.index[hpp.isna()])
     hpp = hpp.fillna(nat)
     hours = persons_v * hpp
     if np.isfinite(tot_h) and hours.sum() > 0:

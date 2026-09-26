@@ -76,12 +76,13 @@ def national_blocks(country2: str, year: int) -> dict:
                 fd=list(d["fd"]))
 
 
-def build(country3: str, year: int, cfc_fallback_country: str = "USA") -> tuple[Economy, dict]:
+def build(country3: str, year: int, cfc_fallback_country: str = "USA",
+          persons_splitter: pd.Series | None = None) -> tuple[Economy, dict]:
     c2 = oecd.ISO3_TO_2[country3]
     b = national_blocks(c2, year)
     x = b["x"]
     xs = pd.Series(x, index=INDUSTRIES)
-    lab = oecd.labour_block(country3, year, xs)
+    lab = oecd.labour_block(country3, year, xs, persons_splitter)
     info = dict(country=country3, year=year, labour_log=lab["log"])
     # capital consumption -------------------------------------------------------------------------
     D1 = b["V"][b["varows"].index("D1")]

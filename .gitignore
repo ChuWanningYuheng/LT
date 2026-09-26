@@ -14,3 +14,4 @@ data/primitives/
 data/raw/euklems/
 results/v3/*.log
 results/v3/placebo_disp_contrib_prefix_jpn.csv
+results/v4/*.log

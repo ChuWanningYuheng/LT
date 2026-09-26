@@ -2,7 +2,7 @@
 
 Воспроизводимый расчёт: объясняет ли вертикально интегрированный труд отраслевые цены **лучше альтернатив** (цен производства, других «базисов стоимости», случайных базисов) по метрикам, устойчивым к известной критике (эффект масштаба, круговость редукции через зарплаты, асимметрия трудового и товарных базисов, неразличимость теорий издержек).
 
-* Отчёт: [`report/REPORT.md`](report/REPORT.md)
+* Отчёты: [`report/REPORT.md`](report/REPORT.md), [`report/REPORT_v2.md`](report/REPORT_v2.md), [`report/REPORT_v3.md`](report/REPORT_v3.md)
 * Обзор литературы: [`report/literature.md`](report/literature.md)
 * Журнал допущений: [`ASSUMPTIONS.md`](ASSUMPTIONS.md)
 * Все сгенерированные таблицы: [`results/report_tables.md`](results/report_tables.md), графики: `results/figures/`
@@ -89,3 +89,24 @@ python -m lts.v2.figures
 ```
 
 Для этапов 1в–4 нужны `results/tables/ratios_long_{main,bea,robust}.parquet` из итерации 1 (`python -m lts.levels main|bea|robust`).
+
+
+## Итерация 3 (плацебо той же формы, редукция без отраслевых зарплат, межстрановые различия)
+
+Отчёт — [`report/REPORT_v3.md`](report/REPORT_v3.md), предрегистрация — [`pre_registration_v3.md`](pre_registration_v3.md), таблицы — [`results/v3/tables_v3.md`](results/v3/tables_v3.md), таблица соответствия O*NET/SOC/ISCO — `results/v3/crosswalk_soc2018_soc2010_isco08_jobzone.csv`, источники и sha256 — `results/v3/MANIFEST_v3.csv`.
+
+Новые данные (все публичные): ILOSTAT SDMX (занятость ISIC4 × ISCO-08, заработки по ISCO-08), OECD Education at a Glance (относительные заработки по образованию; число учащихся UOE), OECD охват коллективными договорами, Eurostat SES 2018 и LFS, O*NET 29.0, BLS OEWS 2022 и таблицы соответствия SOC, население World Bank. Недоступны: EWCS (Eurofound — 429, микроданные по регистрации), ICTWSS (oecd.org за Cloudflare), WIOD.
+
+**Исправление данных:** для Японии коды D, M, R в OECD Tables 6/7 означают D+E, M+N, R+S+T (`oecd.ACT_REMAP`). Прежние результаты по Японии в итерациях 1–2 устарели (см. REPORT_v3, §5.1).
+
+```bash
+export PYTHONPATH=src OMP_NUM_THREADS=2
+python -m lts.v3.download              # data/raw/v3/ + MANIFEST_v3.csv
+python -m lts.v3.placebo_disp          # этап П: плацебо (а) перестановки, (б) лог-нормальные, (в) смеси v2
+python -m lts.v3.bea_check             # этап П для США на данных BEA
+python -m lts.v3.reduction             # этап 1: варианты редукции (≈ 40 мин)
+python -m lts.v3.section_bound         # диагностика: потолок весов на уровне секций
+python -m lts.v3.premium               # этап 2: надбавки и прибыльность
+python -m lts.v3.crosscountry harmonised && python -m lts.v3.crosscountry   # этап 3
+python -m lts.v3.summarize             # results/v3/tables_v3.md, results/figures/v3_*.png
+```

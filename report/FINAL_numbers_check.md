@@ -2,7 +2,10 @@
 
 Генерируется `PYTHONPATH=src python -m lts.final.check_numbers`. Для каждого идентификатора [N…] из REPORT_FINAL.md и SUMMARY.md: значение в тексте, пересчитанное значение, файл и правило.
 
-Итого: 112 чисел, расхождений: 0. Идентификаторы в тексте без записи в реестре: нет. Записи реестра, не использованные в тексте: ['N49', 'N93'].
+Итого: 134 чисел, расхождений с файлами: 0. Идентификаторы в тексте без записи в реестре: нет. Записи реестра, не использованные в тексте: ['N49'].
+
+Сверка «текст → реестр» (число, напечатанное перед меткой, совпадает со значением реестра как есть или в процентах): несовпадений 0.
+
 
 | id | в тексте | пересчёт | файл | правило | статус |
 |---|---|---|---|---|---|
@@ -17,7 +20,7 @@
 | N9 | 0.094 | 0.094 | `results/report_tables.md` | MAWD wage-weighted labour DEU | OK |
 | N10 | 0.2 | 0.2 | `results/report_tables.md` | MAWD wage-weighted labour USA | OK |
 | N11 | 0.082 | 0.082 | `results/report_tables.md` | MAWD PP actual wage DEU | OK |
-| N12 | 13 | 13 | `results/report_tables.md` | countries where PP actual < hours (open) | OK |
+| N12 | 13 | 13 | `results/report_tables.md` | countries where PP actual < hours (open; JPN from iteration 1 table, before the data fix: JPN PP 0.156 < hours 0.204 after the fix too) | OK |
 | N13 | 0.271 | 0.271 | `results/report_tables.md` | random placebo 5th percentile DEU | OK |
 | N14 | 0.34 | 0.336 | `results/report_tables.md` | T1 labour DEU core h=1 | OK |
 | N15 | 0.54 | 0.542 | `results/report_tables.md` | T1 labour DEU core h=5 | OK |
@@ -98,7 +101,7 @@
 | N90 | 0.074 | 0.0741 | `results/v4/b33.csv` | B3.3 beta h=1 | OK |
 | N91 | 12595 | 12595 | `results/v4/b32.csv` | observations B3.2 primary | OK |
 | N92 | 28 | 28 | `results/v4/b_panel.csv.gz` | countries in the KLEMS panel | OK |
-| N93 | -0.33 | -0.3294 | `results/v4/b31.csv` | beta with rent industries (x100 check: -0.033) | OK |
+| N93 | -0.033 | -0.0329 | `results/v4/b31.csv` | beta ln(K/W) with rent industries, no controls | OK |
 | N94 | 0.61 | 0.6093 | `results/v4/b32.csv` | R2 labour with rent industries | OK |
 | N95 | 0.67 | 0.6686 | `results/v4/b32.csv` | R2 GO with rent industries | OK |
 | N96 | 0.007 | 0.007 | `results/report_tables.md` | share better, MEX open | OK |
@@ -118,3 +121,25 @@
 | N110 | 0.75 | 0.7535 | `results/v2/decomp_mixture.csv` | asym pairs where labour dominates (X adds <5%, labour adds >20%) | OK |
 | N112 | 0.02 | 0.0177 | `results/v3/reduction_levels.csv` | median G 1.3a Hilferding | OK |
 | N111 | 0.0 | 0.0 | `results/v4/a1_placebo.csv` | JPN A1(b) share of permutations better (MAWD) | OK |
+| N113 | 13 | 13 | `results/final/benchmarks_flat_power.csv + results/report_tables.md` | countries where hours^0.5 beats PP uniform wage (MAWD) | OK |
+| N114 | 7 | 7 | `results/final/benchmarks_flat_power.csv + results/report_tables.md` | countries where flat beats PP uniform wage | OK |
+| N115 | 3 | 3 | `results/final/benchmarks_flat_power.csv + results/report_tables.md` | countries where flat beats PP actual wage | OK |
+| N116 | 11 | 11 | `results/final/benchmarks_flat_power.csv` | flat beats hours by more than 0.005 MAWD | OK |
+| N117 | 0.93 | 0.9275 | `results/v2/decomp_basis.csv` | share of winners whose own part O_X is worse than labour | OK |
+| N118 | 0.56 | 0.5629 | `results/v2/decomp_basis.csv` | median labour share among bases worse than labour | OK |
+| N119 | 368 | 368 | `results/v2/decomp_basis.csv` | winners excluding JPN (JPN not recomputed after fix) | OK |
+| N120 | 734 | 734 | `results/v2/decomp_basis.csv` | pairs excluding JPN | OK |
+| N121 | 0.6 | 0.6017 | `results/v2/decomp_basis.csv` | median labour share among winners excluding JPN | OK |
+| N122 | 795 | 795 | `results/v2/decomp_mixture.csv` | country x basis pairs in the encompassing test | OK |
+| N123 | 0.026 | 0.0261 | `results/v4/b31.csv` | p, IV lag 2 | OK |
+| N124 | -0.046 | -0.0459 | `results/v4/b31.csv` | beta with rent industries and controls | OK |
+| N125 | 0.005 | 0.0053 | `results/v4/b31.csv` | p with rent industries and controls | OK |
+| N126 | 10848 | 10848 | `results/v4/b31.csv` | observations with controls | OK |
+| N127 | 3 | 3.0 | `results/v4/b0b_counts.csv` | profit corrected for mixed income not worse than hours, (a) all | OK |
+| N128 | 0.55 | 0.5483 | `results/v4/b0b_boot.csv` | capital: own permutations better, MAWD, without rent | OK |
+| N129 | 0.4 | 0.3999 | `results/v4/b0b_boot.csv` | CFC: own permutations better, MAWD, without rent | OK |
+| N130 | 3 | 3 | `results/v4/b0_summary.csv` | B0 all industries: informative vs physical flat, h=5 | OK |
+| N131 | 1 | 1 | `results/v4/b0_summary.csv` | same, h=1 | OK |
+| N132 | 0.48 | 0.4797 | `results/v4/b0_summary.csv` | B0 labour R2 DEU core h=5 (v3 spec) | OK |
+| N133 | 6 | 6 | `results/v4/b0_summary.csv` | B0 core: labour beats 95% of permutations, h=1 | OK |
+| N134 | 0.92 | 0.9228 | `results/v4/b0b_boot.csv` | capital: own permutations better, d, without rent | OK |

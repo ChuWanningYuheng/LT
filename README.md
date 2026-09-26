@@ -2,7 +2,7 @@
 
 Воспроизводимый расчёт: объясняет ли вертикально интегрированный труд отраслевые цены **лучше альтернатив** (цен производства, других «базисов стоимости», случайных базисов) по метрикам, устойчивым к известной критике (эффект масштаба, круговость редукции через зарплаты, асимметрия трудового и товарных базисов, неразличимость теорий издержек).
 
-* Отчёты: [`report/REPORT.md`](report/REPORT.md), [`report/REPORT_v2.md`](report/REPORT_v2.md), [`report/REPORT_v3.md`](report/REPORT_v3.md)
+* Итоговый отчёт: [`report/REPORT_FINAL.md`](report/REPORT_FINAL.md) (кратко — [`report/SUMMARY.md`](report/SUMMARY.md)). Отчёты итераций: [`report/REPORT.md`](report/REPORT.md), [`report/REPORT_v2.md`](report/REPORT_v2.md), [`report/REPORT_v3.md`](report/REPORT_v3.md)
 * Обзор литературы: [`report/literature.md`](report/literature.md)
 * Журнал допущений: [`ASSUMPTIONS.md`](ASSUMPTIONS.md)
 * Все сгенерированные таблицы: [`results/report_tables.md`](results/report_tables.md), графики: `results/figures/`
@@ -133,4 +133,14 @@ python -m lts.v4.b_data          # панель KLEMS (results/v4/b_panel.csv.gz
 python -m lts.v4.b0b             # Б0б: равный разброс (нужна панель)
 python -m lts.v4.b_tests b31 && python -m lts.v4.b_tests b33 && python -m lts.v4.b_tests b32   # Б3.1, Б3.3, Б3.2 (~1,5 ч)
 python -m lts.v4.b_summary       # results/v4/tables_b.md
+```
+
+## Итоговый отчёт
+
+[`report/REPORT_FINAL.md`](report/REPORT_FINAL.md) — сводка итераций 1–4 по темам, с метками статуса, хронологией изменений выводов, методологическими находками и рецензией. Краткая версия — [`report/SUMMARY.md`](report/SUMMARY.md). Каждое число с меткой [N…] сверено с `results/`:
+
+```bash
+export PYTHONPATH=src
+python -m lts.final.verify_benchmarks   # плоский вектор и степени часов (results/final/benchmarks_flat_power.csv)
+python -m lts.final.check_numbers       # реестр чисел → report/FINAL_numbers_check.md (файлы и текст)
 ```

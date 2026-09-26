@@ -189,7 +189,7 @@ R = {
     "N9": (0.094, 5e-4, RT, "MAWD wage-weighted labour DEU", lambda: rt_levels("DEU", "открытая", "труд (з/п)")),
     "N10": (0.200, 5e-4, RT, "MAWD wage-weighted labour USA", lambda: rt_levels("USA", "открытая", "труд (з/п)")),
     "N11": (0.082, 5e-4, RT, "MAWD PP actual wage DEU", lambda: rt_levels("DEU", "открытая", "PP факт. з/п")),
-    "N12": (13, 0, RT, "countries where PP actual < hours (open)", lambda: int(sum(num(r["PP факт. з/п"]) < num(r["труд (часы)"]) for _, r in md_section(RT, "Уровни: MAWD, подвыборка `all`, капитал=True").query("система=='открытая' and страна!='USA_BEA'").iterrows()))),
+    "N12": (13, 0, RT, "countries where PP actual < hours (open; JPN from iteration 1 table, before the data fix: JPN PP 0.156 < hours 0.204 after the fix too)", lambda: int(sum(num(r["PP факт. з/п"]) < num(r["труд (часы)"]) for _, r in md_section(RT, "Уровни: MAWD, подвыборка `all`, капитал=True").query("система=='открытая' and страна!='USA_BEA'").iterrows()))),
     "N13": (0.271, 5e-4, RT, "random placebo 5th percentile DEU", lambda: rt_levels("DEU", "открытая", "плацебо случ.: 5-й перц.")),
     # ---- dynamics (iteration 1)
     "N14": (0.34, 0.005, RT, "T1 labour DEU core h=1", lambda: rt_t1("DEU", "core", 1, "labour")),
@@ -275,7 +275,7 @@ R = {
     "N90": (0.074, 5e-4, "results/v4/b33.csv", "B3.3 beta h=1", lambda: float(csv("results/v4/b33.csv").query("h==1").beta.iloc[0])),
     "N91": (12595, 0, "results/v4/b32.csv", "observations B3.2 primary", lambda: int(csv("results/v4/b32.csv").query("variant=='primary' and not with_rent").n_obs.iloc[0])),
     "N92": (28, 0, "results/v4/b_panel.csv.gz", "countries in the KLEMS panel", lambda: int(csv("results/v4/b_panel.csv.gz").geo.nunique())),
-    "N93": (-0.33, 0.005, "results/v4/b31.csv", "beta with rent industries (x100 check: -0.033)", lambda: 10 * b31("primary", rent=True)),
+    "N93": (-0.033, 5e-4, "results/v4/b31.csv", "beta ln(K/W) with rent industries, no controls", lambda: b31("primary", rent=True)),
     "N94": (0.61, 0.005, "results/v4/b32.csv", "R2 labour with rent industries", lambda: b32("labour_W", "r2", rent=True)),
     "N95": (0.67, 0.005, "results/v4/b32.csv", "R2 GO with rent industries", lambda: b32("GO", "r2", rent=True)),
 }
@@ -325,6 +325,49 @@ R2 = {
 R.update(R2)
 
 
+def bench_vs_pp(vec, ppcol, margin=0.0):
+    """Countries (13 FIGARO) where a benchmark vector (2010-2022, v3 spec) has lower MAWD than the
+    iteration-1 PP column (2010-2023, report_tables) -- spans differ by one year (noted in the report)."""
+    d = csv("results/final/benchmarks_flat_power.csv")
+    a = d[d["mask"] == "all"].groupby(["country", "vector"]).mawd.mean().unstack()
+    lev = md_section(RT, "Уровни: MAWD, подвыборка `all`, капитал=True")
+    op = lev[(lev["система"] == "открытая") & (lev["страна"] != "USA_BEA")].set_index("страна")
+    pp = op[ppcol].map(num)
+    return int((a[vec] < pp - margin).sum())
+
+
+def b0_all(col, h):
+    r = csv("results/v4/b0_summary.csv")
+    return int(r[(r.subset == "all") & (r.h == h)][col].sum())
+
+
+R3 = {
+    "N113": (13, 0, "results/final/benchmarks_flat_power.csv + results/report_tables.md", "countries where hours^0.5 beats PP uniform wage (MAWD)", lambda: bench_vs_pp("hours^0.5", "PP един. з/п")),
+    "N114": (7, 0, "results/final/benchmarks_flat_power.csv + results/report_tables.md", "countries where flat beats PP uniform wage", lambda: bench_vs_pp("flat", "PP един. з/п")),
+    "N115": (3, 0, "results/final/benchmarks_flat_power.csv + results/report_tables.md", "countries where flat beats PP actual wage", lambda: bench_vs_pp("flat", "PP факт. з/п")),
+    "N116": (11, 0, "results/final/benchmarks_flat_power.csv", "flat beats hours by more than 0.005 MAWD", lambda: int((lambda a: ((a.hours - a.flat) > 0.005).sum())(csv("results/final/benchmarks_flat_power.csv").query("mask=='all'").groupby(["country", "vector"]).mawd.mean().unstack()))),
+    "N117": (0.93, 0.005, "results/v2/decomp_basis.csv", "share of winners whose own part O_X is worse than labour", lambda: float((lambda w: (w.mawd_O > w.mawd_labour).mean())(decomp_pairs().query("better")))),
+    "N118": (0.56, 0.005, "results/v2/decomp_basis.csv", "median labour share among bases worse than labour", lambda: float(decomp_pairs().query("not better").share_L_w.median())),
+    "N119": (368, 0, "results/v2/decomp_basis.csv", "winners excluding JPN (JPN not recomputed after fix)", lambda: int(decomp_pairs().drop("JPN", level=0).better.sum())),
+    "N120": (734, 0, "results/v2/decomp_basis.csv", "pairs excluding JPN", lambda: len(decomp_pairs().drop("JPN", level=0))),
+    "N121": (0.60, 0.005, "results/v2/decomp_basis.csv", "median labour share among winners excluding JPN", lambda: float(decomp_pairs().drop("JPN", level=0).query("better").share_L_w.median())),
+    "N122": (795, 0, "results/v2/decomp_mixture.csv", "country x basis pairs in the encompassing test", lambda: int((mixture().setting == "asym").sum())),
+    "N123": (0.026, 5e-4, "results/v4/b31.csv", "p, IV lag 2", lambda: b31("primary", iv="lag2", col="p")),
+    "N124": (-0.046, 5e-4, "results/v4/b31.csv", "beta with rent industries and controls", lambda: b31("primary", controls=True, rent=True)),
+    "N125": (0.005, 5e-4, "results/v4/b31.csv", "p with rent industries and controls", lambda: b31("primary", controls=True, rent=True, col="p")),
+    "N126": (10848, 0, "results/v4/b31.csv", "observations with controls", lambda: int(b31("primary", controls=True, col="n"))),
+    "N127": (3, 0, "results/v4/b0b_counts.csv", "profit corrected for mixed income not worse than hours, (a) all", lambda: b0b("gos_mi", "not_worse")),
+    "N128": (0.55, 0.005, "results/v4/b0b_boot.csv", "capital: own permutations better, MAWD, without rent", lambda: b0b_perm("capital", "mawd", "no_rent")),
+    "N129": (0.40, 0.005, "results/v4/b0b_boot.csv", "CFC: own permutations better, MAWD, without rent", lambda: b0b_perm("cfc", "mawd", "no_rent")),
+    "N130": (3, 0, "results/v4/b0_summary.csv", "B0 all industries: informative vs physical flat, h=5", lambda: b0_all("informative_vs_phys", 5)),
+    "N131": (1, 0, "results/v4/b0_summary.csv", "same, h=1", lambda: b0_all("informative_vs_phys", 1)),
+    "N132": (0.48, 0.005, "results/v4/b0_summary.csv", "B0 labour R2 DEU core h=5 (v3 spec)", lambda: float(csv("results/v4/b0_summary.csv").query("country=='DEU' and subset=='core' and h==5").labour.iloc[0])),
+    "N133": (6, 0, "results/v4/b0_summary.csv", "B0 core: labour beats 95% of permutations, h=1", lambda: b0_count("beats_perm95", 1)),
+    "N134": (0.92, 0.005, "results/v4/b0b_boot.csv", "capital: own permutations better, d, without rent", lambda: b0b_perm("capital", "d", "no_rent")),
+}
+R.update(R3)
+
+
 def main():
     rows, bad = [], 0
     for k, (val, tol, f, rule, fn) in R.items():
@@ -335,19 +378,41 @@ def main():
             got, ok = f"ERROR {ex!r}", False
         bad += not ok
         rows.append(f"| {k} | {val} | {got if isinstance(got, str) else round(got, 4)} | `{f}` | {rule} | {'OK' if ok else 'РАСХОЖДЕНИЕ'} |")
-    used = set()
+    used, unmatched = set(), []
+    numre = re.compile(r"[−-]?\d+(?:[.,]\d+)?")
     for rep in ("report/REPORT_FINAL.md", "report/SUMMARY.md"):
         p = ROOT / rep
-        if p.exists():
-            used |= set(re.findall(r"\[(N\d+)\]", p.read_text()))
+        if not p.exists():
+            continue
+        txt = p.read_text()
+        used |= set(re.findall(r"\[(N\d+)\]", txt))
+        # text check: a number printed within 160 characters before the tag (same line, after the
+        # previous tag) must equal the registry value (as is, or as a percentage)
+        for line in txt.splitlines():
+            line = re.sub(r"(?<=\d) (?=\d{3}\b)", "", line)          # 12 595 -> 12595
+            prev = 0
+            for grp in re.finditer(r"(?:\[N\d+\])+", line):             # consecutive tags share a window
+                win = line[max(prev, grp.start() - 200):grp.start()]
+                prev = grp.end()
+                nums = [float(s.replace(",", ".").replace("−", "-")) for s in numre.findall(win)]
+                for k in re.findall(r"N\d+", grp.group(0)):
+                    if k not in R:
+                        continue
+                    v, tol = R[k][0], R[k][1]
+                    ok = any(abs(x - v) <= max(tol, 0.0051) or abs(x / 100 - v) <= max(tol, 0.0051) for x in nums)
+                    if not ok:
+                        unmatched.append(f"{rep}: {k} (реестр {v}) — «…{win[-80:]}»")
     missing = sorted(used - set(R), key=lambda s: int(s[1:]))
     unused = sorted(set(R) - used, key=lambda s: int(s[1:]))
     out = ["# Сверка чисел итогового отчёта", "",
            "Генерируется `PYTHONPATH=src python -m lts.final.check_numbers`. Для каждого идентификатора [N…] из REPORT_FINAL.md и SUMMARY.md: значение в тексте, пересчитанное значение, файл и правило.", "",
-           f"Итого: {len(R)} чисел, расхождений: {bad}. Идентификаторы в тексте без записи в реестре: {missing or 'нет'}. Записи реестра, не использованные в тексте: {unused or 'нет'}.", "",
+           f"Итого: {len(R)} чисел, расхождений с файлами: {bad}. Идентификаторы в тексте без записи в реестре: {missing or 'нет'}. Записи реестра, не использованные в тексте: {unused or 'нет'}.", "",
+           f"Сверка «текст → реестр» (число, напечатанное перед меткой, совпадает со значением реестра как есть или в процентах): несовпадений {len(unmatched)}.", ""] + [f"* {u}" for u in unmatched] + ["",
            "| id | в тексте | пересчёт | файл | правило | статус |", "|---|---|---|---|---|---|"] + rows
     (ROOT / "report" / "FINAL_numbers_check.md").write_text("\n".join(out) + "\n")
-    print(f"{len(R)} numbers, {bad} mismatches, missing ids {missing}, unused {len(unused)}")
+    print(f"{len(R)} numbers, {bad} mismatches, missing ids {missing}, unused {len(unused)}, text mismatches {len(unmatched)}")
+    for u in unmatched:
+        print("  ", u)
     for r in rows:
         if "РАСХОЖДЕНИЕ" in r:
             print(r)

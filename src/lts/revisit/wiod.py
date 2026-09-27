@@ -100,7 +100,7 @@ def economy(c, y, dscale=1.0):
     conv = np.divide(x, s.GO.to_numpy(), out=np.zeros(N), where=s.GO.to_numpy() > 0)
     wages = np.nan_to_num(s.COMP.to_numpy() * conv)
     lab = np.nan_to_num(s.LAB.to_numpy() * conv)
-    K = np.nan_to_num(s.K.to_numpy() * conv)
+    K = np.nan_to_num(s.K.to_numpy() * conv).clip(min=0)    # 3 negative stocks in SEA (PRT; journal 8)
     cfc = delta(c, y, dscale) * K
     e = Economy(labels=list(W["codes"]), A=A, Am=Am, x=x, hours=hours, wages=wages, cfc=cfc,
                 gfcf_dom=dom[60].clip(min=0), gfcf_imp=impf[60].clip(min=0), hh_dom=dom[57], hh_imp=impf[57],

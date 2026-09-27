@@ -76,7 +76,7 @@ def wiod_omega(years=range(2000, 2015)):
         f = glob.glob(str(RAW / "v6" / "wiod" / "wiot" / f"WIOT{y}_*.RData"))[0]
         r = pyreadr.read_r(f)
         d = r[list(r)[0]]
-        body = d[d.RNr <= 2464]
+        body = d.iloc[:2464]                               # 44 countries x 56 industries
         cols = [c for c in d.columns if c[:3].isalpha() and c[3:].isdigit() and 1 <= int(c[3:]) <= 56]
         Z = body[cols].to_numpy(float)
         x = d[d.IndustryCode == "GO"][cols].to_numpy(float).ravel()

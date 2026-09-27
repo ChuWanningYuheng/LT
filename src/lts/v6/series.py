@@ -146,9 +146,10 @@ def fa(section, sheet, line):
 
 
 def us_nfc():
-    n = nipa(["A455RC", "B455RX", "B456RC", "A460RC", "W325RC", "W326RC", "A457RC", "W322RC", "B933RC", "B934RC"])
+    n = nipa(["A455RC", "B455RX", "B456RC", "A460RC", "W325RC", "W326RC", "A457RC", "W322RC", "B933RC", "B934RC", "B645RC", "A655RC"])
     d = pd.DataFrame({"VA": n.A455RC, "Q_Yg": n.B455RX, "CFC_nipa": n.B456RC, "W": n.A460RC, "PI": n.W326RC,
-                      "Y": n.A457RC, "PI_allcorp": n.W322RC, "row_rec": n.B933RC, "row_pay": n.B934RC})
+                      "Y": n.A457RC, "PI_allcorp": n.W322RC, "row_rec": n.B933RC, "row_pay": n.B934RC,
+                      "row_net_national": n.B645RC - n.A655RC})
     L = {"K": 37, "K_eq": 38, "K_st": 39, "K_ip": 40, "K_allcorp": 17}
     for k, ln in L.items():
         d[k] = fa(4, "FAAt401-A", ln)
@@ -167,7 +168,8 @@ def us_nfc():
     rows = []
     specs = {"main": dict(), "no_ip": dict(K=d.K_eq + d.K_st), "hc": dict(K=d.Khc),
              "hc_no_ip": dict(K=d.Khc_eq + d.Khc_st), "hc_hcdep": dict(K=d.Khc, PI=d.PI + d.CFC_cc - d.CFC_hc),
-             "gni": dict(PI=d.PI + d.row_rec - d.row_pay)}
+             "gni": dict(PI=d.PI + d.row_net_national),                  # like AMECO UBRA (journal 6)
+             "gni_corp": dict(PI=d.PI + d.row_rec - d.row_pay)}           # corporate RoW profits, 1998+
     for v, over in specs.items():
         x = d.copy()
         for c, s in over.items():

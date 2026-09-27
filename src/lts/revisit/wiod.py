@@ -170,7 +170,7 @@ def classify(df):
     return s
 
 
-if __name__ == "__main__":
+def _main():
     what = sys.argv[1] if len(sys.argv) > 1 else "r1"
     if what == "r1":
         v = sys.argv[2] if len(sys.argv) > 2 else "main"
@@ -182,3 +182,51 @@ if __name__ == "__main__":
         k13 = int(cl.loc[cl.index.isin(V3_13), "top5_ab"].sum())
         print(cl.round(3).to_string())
         print(f"top5 (a)&(b): {k} of {n} ({k / n:.2f}); v3 13 countries: {k13} of {cl.index.isin(V3_13).sum()}")
+    elif what == "r2":
+        print(r2().round(3).to_string())
+
+
+# ---------------------------------------------------------------- R2: B3.1 of iteration 4 on WIOD
+RENT_W = {"B", "D35", "E36", "E37-E39", "K64", "K65", "K66", "L68"}
+GOV_W = {"O84", "P85", "Q", "T", "U"}
+NON_EUROPE = {"AUS", "BRA", "CAN", "IDN", "IND", "JPN", "KOR", "MEX", "RUS", "TUR", "TWN", "USA"}
+
+
+def r2_panel():
+    s = sea()
+    s = s[s.year.isin(list(YEARS)) & s.variable.isin(["GO", "LAB", "COMP", "CAP", "K", "H_EMPE"])]
+    p = s.pivot_table(index=["country", "code", "year"], columns="variable", values="v").reset_index()
+    p["delta"] = [delta(c, int(y)) for c, y in zip(p.country, p.year)]
+    p = p[~p.code.isin(GOV_W) & (p.K > 0) & (p.LAB > 0) & (p.GO > 0)].copy()
+    p["rent"] = p.code.isin(RENT_W)
+    p["PI"] = p.CAP - p.delta * p.K
+    p["PI_nomi"] = p.CAP + (p.LAB - p.COMP) - p.delta * p.K
+    p["r"], p["r_nomi"] = p.PI / p.K, p.PI_nomi / p.K
+    p["kw"], p["kw_nomi"] = np.log(p.K / p.LAB), np.log(p.K / p.COMP.where(p.COMP > 0))
+    p["pcm"], p["pcm_nomi"] = p.PI / p.GO, p.PI_nomi / p.GO
+    p["cy"] = p.country + p.year.astype(str)
+    return p
+
+
+def r2():
+    from ..v5.stage1 import ols_fwl
+    p = r2_panel()
+    rows = []
+    samples = {"all": p, "klems_overlap": p[~p.country.isin(NON_EUROPE - {"USA", "JPN"})],
+               "non_europe": p[p.country.isin(NON_EUROPE)]}
+    for sname, d0 in samples.items():
+        for rent in (False, True):
+            for var, (y, x, pcm) in {"primary": ("r", "kw", "pcm"), "no_mi": ("r_nomi", "kw_nomi", "pcm_nomi")}.items():
+                d = d0 if rent else d0[~d0.rent]
+                d = d[d[y].abs() <= 2].replace([np.inf, -np.inf], np.nan).dropna(subset=[y, x, pcm])
+                for ctrl in ([], [pcm]):
+                    res = ols_fwl(d.rename(columns={"code": "ind"}), y, x, ctrl, ["cy"], cluster="ind", B=9999)
+                    rows.append(dict(sample=sname, with_rent=rent, variant=var, controls="pcm" if ctrl else "none",
+                                     countries=d.country.nunique(), **res))
+    out = pd.DataFrame(rows)
+    out.to_csv(OUT / "r2_b31_wiod.csv", index=False)
+    return out
+
+
+if __name__ == "__main__":
+    _main()

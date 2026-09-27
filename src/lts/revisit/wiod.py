@@ -40,7 +40,7 @@ def wiot(year):
     countries = list(dict.fromkeys(body.Country))
     codes = list(body.IndustryCode.iloc[:N])
     Zc = [c for c in cols if c[:3] in countries and c[3:].isdigit() and 1 <= int(c[3:]) <= N]
-    Z = body[Zc].to_numpy(float)
+    Z = body[Zc].to_numpy(float).clip(min=0)       # a few tiny negative flows in WIOT (journal 7)
     F = {k: body[[f"{c}{k}" for c in countries]].to_numpy(float) for k in (57, 60)}
     go = d[d.IndustryCode == "GO"][Zc].to_numpy(float).ravel()
     va = d[d.IndustryCode == "VA"][Zc].to_numpy(float).ravel()

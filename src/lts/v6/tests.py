@@ -225,7 +225,7 @@ def period_panel(s, geos, variant="main", periods=DECADES):
 def panels(s):
     rows = []
     sets = {"main8": (MAIN8, "main"), "main8+JPN_nomi": (MAIN8 + ["JPN"], "no_mi"), "main8_nomi": (MAIN8, "no_mi"),
-            "main8_hc": (MAIN8, "hc")}
+            "main8_hc": (MAIN8, "hc"), "kdrift7": ([g for g in MAIN8 if g != "AUS"], "kdrift")}
     for name, (geos, var) in sets.items():
         for pname, per in (("decades", DECADES), ("halfdecades", HALF)):
             f = period_panel(s, geos, var, per)
@@ -288,6 +288,13 @@ def criteria(full, rob, pan, tr):
     u = rob[(rob.geo == "USA_NFC") & (rob.series == "rM")]
     L.append("\nСША НФК, r_M, устойчиво отрицательный по вариантам: " +
              ", ".join(f"{r.variant}: {r.robust_neg} (доля спецификаций {r.share_neg_sig:.2f})" for r in u.itertuples()))
+    L.append("\n## Разведочно (журнал п. 4): поправка на дрейф капитала AMECO\n")
+    kd = rob[(rob.variant.isin(["kdrift", "bea_K"])) & (rob.series == "rM")]
+    L.append("r_M, устойчиво отрицательный / положительный: " +
+             ", ".join(f"{r.geo} {r.variant}: {'−' if r.robust_neg else '+' if r.robust_pos else '0'}" for r in kd.itertuples()))
+    q = pan[(pan["sample"] == "kdrift7") & (pan.periods == "decades") & (pan.cycle == "none")]
+    for r in q.itertuples():
+        L.append(f"* kdrift7, {r.fe}: β = {r.beta:.3f}, p_wild = {r.p_wild:.3f}")
     return "\n".join(L) + "\n"
 
 
@@ -307,7 +314,7 @@ if __name__ == "__main__":
     cv = compare_v5(s)
     cv.to_csv(OUT / "compare_v5.csv", index=False)
     print(cv.round(4).to_string(), flush=True)
-    br = breaks(s, ("main", "no_mi", "hc"))
+    br = breaks(s, ("main", "no_mi", "hc", "kdrift", "bea_K"))
     br.to_csv(OUT / "breaks.csv", index=False)
     print(br.to_string(), flush=True)
     c = criteria(full, rob, pan, tr)

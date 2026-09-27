@@ -1,0 +1,227 @@
+         geo variant series  robust_neg  robust_pos  n_specs  share_neg_sig
+0        AUS      hc      r       False        True       12       0.000000
+1        AUS      hc     rM       False        True       12       0.000000
+12       AUS    main      r       False        True       12       0.000000
+13       AUS    main     rM       False        True       12       0.000000
+14       AUS   no_mi      r       False        True       12       0.000000
+15       AUS   no_mi     rM       False        True       12       0.000000
+16       CAN    main      r       False       False       12       0.750000
+17       CAN    main     rM       False       False       12       0.500000
+18       CAN   no_mi      r        True       False       12       1.000000
+19       CAN   no_mi     rM       False       False       12       0.916667
+24       DEU      hc      r        True       False       12       1.000000
+25       DEU      hc     rM       False       False       12       0.750000
+38       DEU    main      r       False       False       12       0.000000
+39       DEU    main     rM       False       False       12       0.000000
+40       DEU   no_mi      r       False       False       12       0.083333
+41       DEU   no_mi     rM       False       False       12       0.166667
+42       FRA      hc      r       False       False       12       0.000000
+43       FRA      hc     rM       False       False       12       0.000000
+56       FRA    main      r       False       False       12       0.000000
+57       FRA    main     rM       False       False       12       0.000000
+58       FRA   no_mi      r       False       False       12       0.916667
+59       FRA   no_mi     rM       False       False       12       0.916667
+60       GBR      hc      r        True       False       12       1.000000
+61       GBR      hc     rM       False       False       12       0.916667
+74       GBR    main      r       False        True       12       0.000000
+75       GBR    main     rM       False        True       12       0.000000
+76       GBR   no_mi      r       False        True       12       0.000000
+77       GBR   no_mi     rM       False        True       12       0.000000
+78       ITA      hc      r        True       False       12       1.000000
+79       ITA      hc     rM        True       False       12       1.000000
+92       ITA    main      r       False       False       12       0.000000
+93       ITA    main     rM       False       False       12       0.000000
+94       ITA   no_mi      r        True       False       12       1.000000
+95       ITA   no_mi     rM        True       False       12       1.000000
+96       JPN    main      r       False       False       12       0.000000
+97       JPN    main     rM       False       False       12       0.000000
+98       JPN   no_mi      r        True       False       12       1.000000
+99       JPN   no_mi     rM        True       False       12       1.000000
+100      NLD      hc      r       False       False       12       0.000000
+101      NLD      hc     rM       False       False       12       0.000000
+114      NLD    main      r       False        True       12       0.000000
+115      NLD    main     rM       False       False       12       0.000000
+116      NLD   no_mi      r       False       False       12       0.000000
+117      NLD   no_mi     rM       False       False       12       0.000000
+118      SWE      hc      r        True       False       12       1.000000
+119      SWE      hc     rM       False       False       12       0.916667
+132      SWE    main      r       False       False       12       0.000000
+133      SWE    main     rM       False       False       12       0.000000
+134      SWE   no_mi      r        True       False       12       1.000000
+135      SWE   no_mi     rM       False       False       12       0.916667
+138      USA      hc      r       False       False       12       0.000000
+139      USA      hc     rM       False        True       12       0.000000
+152      USA    main      r       False        True       12       0.000000
+153      USA    main     rM       False        True       12       0.000000
+154      USA   no_mi      r       False        True       12       0.000000
+155      USA   no_mi     rM       False        True       12       0.000000
+158  USA_NFC      hc      r        True       False       18       1.000000
+159  USA_NFC      hc     rM       False       False       18       0.666667
+164  USA_NFC    main      r       False       False       18       0.666667
+165  USA_NFC    main     rM       False       False       18       0.277778
+166  USA_NFC   no_ip      r       False       False       18       0.111111
+167  USA_NFC   no_ip     rM       False       False       18       0.000000
+            sample      periods              fe  cycle   beta  t_cr1  p_cr1  p_wild   n  clusters
+0            main8      decades  country+period   none  0.982  5.225  0.001   0.019  40         8
+1            main8      decades  country+period   d_hp  0.988  5.705  0.001   0.018  40         8
+2            main8      decades  country+period  d_gap  0.966  4.357  0.005   0.040  27         7
+3            main8      decades         country   none  0.825  3.969  0.005   0.083  40         8
+4            main8      decades         country   d_hp  0.819  3.374  0.012   0.059  40         8
+5            main8      decades         country  d_gap  1.039  1.752  0.130   0.176  27         7
+6            main8  halfdecades  country+period   none  0.531  1.750  0.124   0.110  88         8
+7            main8  halfdecades  country+period   d_hp  0.604  1.998  0.086   0.082  88         8
+8            main8  halfdecades  country+period  d_gap  1.157  2.398  0.053   0.083  67         7
+9            main8  halfdecades         country   none  0.138  0.322  0.757   0.751  88         8
+10           main8  halfdecades         country   d_hp  0.382  0.938  0.379   0.374  88         8
+11           main8  halfdecades         country  d_gap  1.005  1.539  0.175   0.175  67         7
+12  main8+JPN_nomi      decades  country+period   none  0.067  0.230  0.824   0.779  45         9
+13  main8+JPN_nomi      decades  country+period   d_hp  0.057  0.188  0.856   0.812  45         9
+14  main8+JPN_nomi      decades  country+period  d_gap  0.508  3.208  0.018   0.051  27         7
+15  main8+JPN_nomi      decades         country   none  0.371  2.578  0.033   0.016  45         9
+16  main8+JPN_nomi      decades         country   d_hp  0.343  2.054  0.074   0.026  45         9
+17  main8+JPN_nomi      decades         country  d_gap  0.323  0.743  0.486   0.494  27         7
+18  main8+JPN_nomi  halfdecades  country+period   none -0.300 -0.963  0.364   0.548  99         9
+19  main8+JPN_nomi  halfdecades  country+period   d_hp -0.272 -0.838  0.426   0.631  99         9
+20  main8+JPN_nomi  halfdecades  country+period  d_gap  0.553  3.734  0.010   0.023  67         7
+21  main8+JPN_nomi  halfdecades         country   none -0.227 -0.860  0.415   0.587  99         9
+22  main8+JPN_nomi  halfdecades         country   d_hp -0.124 -0.446  0.667   0.769  99         9
+23  main8+JPN_nomi  halfdecades         country  d_gap  0.650  1.573  0.167   0.195  67         7
+24      main8_nomi      decades  country+period   none  0.349  1.400  0.204   0.348  40         8
+25      main8_nomi      decades  country+period   d_hp  0.344  1.324  0.227   0.407  40         8
+26      main8_nomi      decades  country+period  d_gap  0.508  3.208  0.018   0.051  27         7
+27      main8_nomi      decades         country   none  0.459  2.644  0.033   0.035  40         8
+28      main8_nomi      decades         country   d_hp  0.435  2.026  0.082   0.046  40         8
+29      main8_nomi      decades         country  d_gap  0.323  0.743  0.486   0.494  27         7
+30      main8_nomi  halfdecades  country+period   none  0.082  0.362  0.728   0.721  88         8
+31      main8_nomi  halfdecades  country+period   d_hp  0.134  0.571  0.586   0.598  88         8
+32      main8_nomi  halfdecades  country+period  d_gap  0.553  3.734  0.010   0.023  67         7
+33      main8_nomi  halfdecades         country   none  0.056  0.235  0.821   0.812  88         8
+34      main8_nomi  halfdecades         country   d_hp  0.188  0.779  0.462   0.458  88         8
+35      main8_nomi  halfdecades         country  d_gap  0.650  1.573  0.167   0.195  67         7
+36        main8_hc      decades  country+period   none  0.607  0.867  0.415   0.408  24         8
+37        main8_hc      decades  country+period   d_hp  1.075  1.765  0.121   0.174  24         8
+38        main8_hc      decades  country+period  d_gap  0.712  1.022  0.346   0.318  21         7
+39        main8_hc      decades         country   none  1.215  1.635  0.146   0.185  24         8
+40        main8_hc      decades         country   d_hp  1.749  2.753  0.028   0.062  24         8
+41        main8_hc      decades         country  d_gap  1.430  1.955  0.098   0.086  21         7
+42        main8_hc  halfdecades  country+period   none -0.055 -0.094  0.928   0.929  64         8
+43        main8_hc  halfdecades  country+period   d_hp  0.064  0.133  0.898   0.895  64         8
+44        main8_hc  halfdecades  country+period  d_gap  0.204  0.341  0.745   0.738  56         7
+45        main8_hc  halfdecades         country   none -0.093 -0.210  0.840   0.828  64         8
+46        main8_hc  halfdecades         country   d_hp -0.013 -0.030  0.977   0.974  64         8
+47        main8_hc  halfdecades         country  d_gap  0.059  0.128  0.902   0.901  56         7
+48         kdrift7      decades  country+period   none  1.233  3.281  0.017   0.170  35         7
+49         kdrift7      decades  country+period   d_hp  1.283  3.640  0.011   0.116  35         7
+50         kdrift7      decades  country+period  d_gap  1.037  3.587  0.012   0.053  27         7
+51         kdrift7      decades         country   none  0.849  2.436  0.051   0.185  35         7
+52         kdrift7      decades         country   d_hp  0.808  1.929  0.102   0.145  35         7
+53         kdrift7      decades         country  d_gap  1.095  1.603  0.160   0.182  27         7
+54         kdrift7  halfdecades  country+period   none  0.769  1.496  0.185   0.215  77         7
+55         kdrift7  halfdecades  country+period   d_hp  0.873  1.718  0.137   0.176  77         7
+56         kdrift7  halfdecades  country+period  d_gap  1.187  2.284  0.062   0.109  67         7
+57         kdrift7  halfdecades         country   none  0.064  0.108  0.918   0.905  77         7
+58         kdrift7  halfdecades         country   d_hp  0.357  0.596  0.573   0.554  77         7
+59         kdrift7  halfdecades         country  d_gap  1.103  1.612  0.158   0.158  67         7
+   geo  n_overlap  corr_r_level  corr_r_diff  mean_r_ameco  mean_r_v5  slope_rM_1995_2021  p_1995_2021  slope_rM_1960_2024  p_1960_2024
+0  FRA         27        0.9786       0.9666        0.0462     0.0469             -0.0008       0.0001              0.0001       0.2085
+1  DEU         27        0.7767       0.9805        0.0523     0.0752             -0.0001       0.7299             -0.0000       0.9874
+2  ITA         27        0.9701       0.9335        0.0547     0.0866             -0.0009       0.0000             -0.0000       0.7948
+3  NLD         27        0.8054       0.9133        0.0586     0.1326              0.0003       0.0299              0.0003       0.0066
+4  SWE         27        0.9087       0.9662        0.0412     0.0644             -0.0006       0.0000             -0.0000       0.4512
+5  GBR         27        0.7363       0.8013        0.0657     0.1205             -0.0006       0.0009              0.0003       0.0001
+6  USA         27        0.0696       0.1060        0.0837     0.1163              0.0006       0.0000              0.0007       0.0000
+        geo variant series   n  bp_m        bp_dates       bp3_dates      win_F  win_year  win_p
+0       AUS      hc      r  50     0                  1982,1990,2014   3.319368    1978.0  0.375
+1       AUS      hc     rM  50     0                  1990,2008,2016   2.496621    1978.0  0.512
+2       AUS    main      r  65     2       1974,2014  1974,2001,2013  30.946272    1974.0  0.090
+3       AUS    main     rM  65     2       1974,2006  1974,2001,2013  37.457379    1974.0  0.054
+4       AUS   no_mi      r  65     2       1974,2013  1974,1990,2013   4.467709    1974.0  0.763
+5       AUS   no_mi     rM  65     2       1974,2013  1974,1990,2013   6.019621    1974.0  0.645
+6       CAN    main      r  34     1            2007  2004,2009,2015       -inf       NaN  1.000
+7       CAN    main     rM  34     1            2009  2004,2009,2015       -inf       NaN  1.000
+8       CAN   no_mi      r  34     2       2004,2009  2004,2009,2015       -inf       NaN  1.000
+9       CAN   no_mi     rM  34     1            2007  2004,2009,2015       -inf       NaN  1.000
+10      DEU      hc      r  50     1            1993  1989,2002,2009  10.957822    1982.0  0.095
+11      DEU      hc     rM  50     1            1993  1989,2000,2009  11.535110    1982.0  0.086
+12      DEU  kdrift      r  65     2       1983,2005  1982,1992,2005  31.640314    1982.0  0.052
+13      DEU  kdrift     rM  65     2       1983,2005  1982,1992,2005  28.588441    1982.0  0.075
+14      DEU    main      r  65     2       1984,2005  1983,1992,2006  20.226389    1982.0  0.154
+15      DEU    main     rM  65     2       1983,2005  1983,1992,2006  20.135202    1982.0  0.159
+16      DEU   no_mi      r  65     2       1983,2005  1981,1992,2006  49.589167    1982.0  0.036
+17      DEU   no_mi     rM  65     2       1983,2005  1982,1992,2006  52.053284    1982.0  0.032
+18      FRA      hc      r  50     3  1982,1990,2009  1982,1990,2009  17.413958    1982.0  0.108
+19      FRA      hc     rM  50     3  1983,1990,2009  1983,1990,2009  14.985498    1982.0  0.138
+20      FRA  kdrift      r  65     3  1975,1986,2000  1975,1986,2000   4.135467    1982.0  0.892
+21      FRA  kdrift     rM  65     3  1975,1986,2009  1975,1986,2009   4.634539    1982.0  0.872
+22      FRA    main      r  65     3  1975,1986,2009  1975,1986,2009   4.311741    1982.0  0.892
+23      FRA    main     rM  65     3  1975,1986,2009  1975,1986,2009   4.670738    1982.0  0.873
+24      FRA   no_mi      r  65     3  1975,1986,2009  1975,1986,2009  19.201281    1975.0  0.413
+25      FRA   no_mi     rM  65     3  1975,1986,2009  1975,1986,2009  21.883317    1975.0  0.351
+26      GBR      hc      r  50     2       1984,2009  1985,1994,2009  47.741279    1982.0  0.001
+27      GBR      hc     rM  50     3  1986,1994,2009  1986,1994,2009  45.880322    1982.0  0.002
+28      GBR  kdrift      r  65     2       1974,1999  1974,1990,1999  20.425068    1982.0  0.190
+29      GBR  kdrift     rM  65     2       1974,1999  1974,1990,1999  25.616506    1982.0  0.173
+30      GBR    main      r  65     3  1974,1999,2009  1974,1999,2009  20.091452    1982.0  0.250
+31      GBR    main     rM  65     3  1974,1999,2009  1974,1999,2009  22.918554    1982.0  0.231
+32      GBR   no_mi      r  65     2       1974,1999  1974,1990,1999  29.077856    1982.0  0.120
+33      GBR   no_mi     rM  65     2       1974,1999  1974,1990,1999  33.617893    1982.0  0.115
+34      ITA      hc      r  50     2       1987,2009  1987,1995,2012  27.274451    1982.0  0.009
+35      ITA      hc     rM  50     3  1986,1995,2012  1986,1995,2012  21.013894    1982.0  0.026
+36      ITA  kdrift      r  65     2       1971,2009  1971,1986,2009   7.201676    1971.0  0.645
+37      ITA  kdrift     rM  65     2       1971,2009  1975,2001,2012   3.942001    1971.0  0.830
+38      ITA    main      r  65     2       1971,2009  1975,2001,2012   4.584199    1971.0  0.803
+39      ITA    main     rM  65     3  1975,2001,2012  1975,2001,2012   3.520350    1982.0  0.856
+40      ITA   no_mi      r  65     2       1974,2009  1969,1978,2009  20.778824    1971.0  0.323
+41      ITA   no_mi     rM  65     2       1974,2009  1974,2003,2012  18.467806    1971.0  0.368
+42      JPN    main      r  45     1            1992  1992,2008,2018       -inf       NaN  1.000
+43      JPN    main     rM  45     1            1992  1992,2008,2018       -inf       NaN  1.000
+44      JPN   no_mi      r  65     3  1969,1978,1992  1969,1978,1992  82.278434    1974.0  0.012
+45      JPN   no_mi     rM  65     3  1969,1978,1992  1969,1978,1992  76.760432    1974.0  0.017
+46      NLD      hc      r  50     2       1987,2009  1984,1994,2009   2.077622    1981.0  0.593
+47      NLD      hc     rM  50     1            2009  1984,1994,2009   3.012951    1981.0  0.437
+48      NLD  kdrift      r  65     2       1981,2009  1978,1987,2009  68.377042    1981.0  0.006
+49      NLD  kdrift     rM  65     2       1981,2009  1978,1987,2009  74.552731    1981.0  0.005
+50      NLD    main      r  65     2       1981,2009  1983,1995,2009  66.254935    1981.0  0.007
+51      NLD    main     rM  65     2       1981,2009  1978,1987,2009  71.731158    1981.0  0.005
+52      NLD   no_mi      r  65     2       1979,2009  1984,1994,2009  77.463365    1982.0  0.006
+53      NLD   no_mi     rM  65     2       1981,2009  1983,1994,2009  89.077613    1982.0  0.004
+54      SWE      hc      r  50     1            1983  1983,1994,2003  34.073188    1982.0  0.005
+55      SWE      hc     rM  50     1            1983  1983,1994,2003  31.458395    1982.0  0.005
+56      SWE  kdrift      r  65     0                  1969,1983,1994  10.611471    1982.0  0.178
+57      SWE  kdrift     rM  65     1            1982  1969,1983,1994  13.879881    1982.0  0.142
+58      SWE    main      r  65     1            1994  1976,1985,1994  13.989146    1982.0  0.166
+59      SWE    main     rM  65     1            1994  1976,1985,1994  15.911280    1982.0  0.139
+60      SWE   no_mi      r  65     2       1982,1994  1969,1983,1994  15.432799    1982.0  0.124
+61      SWE   no_mi     rM  65     2       1982,1994  1969,1982,1994  16.727048    1982.0  0.108
+62      USA   bea_K      r  65     3  1969,1984,1995  1969,1984,1995  35.598544    1970.0  0.126
+63      USA   bea_K     rM  65     2       1969,1984  1969,1984,1995  38.047253    1970.0  0.097
+64      USA      hc      r  50     0                  1990,2008,2016   2.176450    1979.0  0.546
+65      USA      hc     rM  50     0                  1990,2008,2015   2.118454    1980.0  0.562
+66      USA  kdrift      r  65     2       1969,1995  1969,1984,1996  21.701510    1970.0  0.206
+67      USA  kdrift     rM  65     2       1969,1995  1969,1984,1995  24.997033    1970.0  0.144
+68      USA    main      r  65     1            1995  1969,1984,1996  25.465590    1980.0  0.165
+69      USA    main     rM  65     1            1994  1969,1984,1995  28.441736    1980.0  0.132
+70      USA   no_mi      r  65     2       1984,1996  1969,1984,1996  23.453224    1970.0  0.204
+71      USA   no_mi     rM  65     2       1970,1995  1969,1984,1996  27.522642    1970.0  0.145
+72  USA_NFC      hc      r  74     1            2004  1963,1976,2004  13.734317    1982.0  0.184
+73  USA_NFC      hc     rM  74     1            2004  1963,1975,2004  21.965947    1982.0  0.104
+74  USA_NFC    main      r  74     2       1963,1974  1963,1974,2000  34.402130    1970.0  0.061
+75  USA_NFC    main     rM  74     1            1970  1963,1975,2004  34.634907    1970.0  0.057
+# Итерация 6, этап 3: предрегистрированные критерии (автоматически)
+
+* Устойчиво отрицательный тренд r_M (все лаги и концы): 0 из 8 — []
+* Устойчиво положительный: 3 — ['AUS', 'GBR', 'USA']
+* Из них падение в основном за счёт k: []
+* Стран с падением r_M за весь период: 3; из них вклад e по модулю больше вклада k: ['DEU', 'SWE']
+* Панель (десятилетия, без цикла): с эффектами периода β = 0.982, p_wild = 0.019; без эффектов периода β = 0.825, p_wild = 0.083
+
+**Исход:** против М
+
+США НФК, r_M, устойчиво отрицательный по вариантам: gni: False (доля спецификаций 0.00), hc: False (доля спецификаций 0.67), hc_hcdep: False (доля спецификаций 0.83), hc_no_ip: False (доля спецификаций 0.11), main: False (доля спецификаций 0.28), no_ip: False (доля спецификаций 0.00)
+
+## Разведочно (журнал п. 4): поправка на дрейф капитала AMECO
+
+r_M, устойчиво отрицательный / положительный: DEU kdrift: 0, FRA kdrift: 0, GBR kdrift: 0, ITA kdrift: −, NLD kdrift: 0, SWE kdrift: −, USA bea_K: 0, USA kdrift: 0
+* kdrift7, country+period: β = 1.233, p_wild = 0.170
+* kdrift7, country: β = 0.849, p_wild = 0.185
+

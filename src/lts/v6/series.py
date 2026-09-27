@@ -176,9 +176,46 @@ def us_nfc():
     return pd.concat(rows).reset_index().rename(columns={"index": "year"})
 
 
+KLEMS_GEO = {"FRA": "FR", "DEU": "DE", "ITA": "IT", "NLD": "NL", "SWE": "SE", "GBR": "UK", "USA": "US"}
+
+
+def drift_variants(p):
+    """Journal 4 (exploratory): AMECO capital drift vs official stocks; 'kdrift' and USA 'bea_K'."""
+    ca = pd.read_csv(RAW / "euklems" / "capital_accounts.csv", usecols=["nace_r2_code", "geo_code", "year", "K_GFCF"],
+                     low_memory=False)
+    tot = ca[ca.nace_r2_code == "TOT"]
+    bea = fa(1, "FAAt101-A", 2) / 1000
+    rows, info = [], []
+    for geo in MAIN8:
+        m = p[(p.geo == geo) & (p.variant == "main")].set_index("year").copy()
+        if geo == "USA":
+            ref = bea.reindex(m.index)
+            yrs = m.index
+        elif geo in KLEMS_GEO:
+            ref = tot[tot.geo_code == KLEMS_GEO[geo]].set_index("year").K_GFCF.reindex(m.index) / 1000
+            yrs = m.index[(m.index >= 1995) & (m.index <= 2021)]
+        else:
+            info.append(dict(geo=geo, g=np.nan, note="no official reference stock"))
+            continue
+        lr = np.log(m.loc[yrs, "K"] / ref.loc[yrs]).dropna()
+        g = np.polyfit(lr.index.to_numpy(float), lr.to_numpy(), 1)[0]
+        info.append(dict(geo=geo, g=g, y0=int(lr.index.min()), y1=int(lr.index.max()),
+                         ratio_first=float(np.exp(lr.iloc[0])), ratio_last=float(np.exp(lr.iloc[-1]))))
+        k = m.copy()
+        k["K"] = m.K * np.exp(-g * (m.index - 2021))
+        rows.append(finish(k).assign(geo=geo, variant="kdrift"))
+        if geo == "USA":
+            b = m.copy()
+            b["K"] = ref
+            rows.append(finish(b).assign(geo=geo, variant="bea_K"))
+    pd.DataFrame(info).to_csv(OUT / "kdrift_info.csv", index=False)
+    return pd.concat(rows).reset_index().rename(columns={"index": "year"})
+
+
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
     a = ameco_panel()
+    a = pd.concat([a, drift_variants(a)], ignore_index=True)
     u = us_nfc()
     s = pd.concat([a, u], ignore_index=True)
     keep = ["geo", "variant", "year", "PI", "W", "K", "Y", "r", "rM", "e", "k", "share", "Q_Y", "P_Y", "Q_K", "P_K",

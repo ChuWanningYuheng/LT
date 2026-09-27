@@ -191,3 +191,17 @@ python -m lts.v6.stage5    # этап 5: авансированный капит
 python -m lts.v6.charts    # рисунки report/fig_v6/
 python -m lts.v6.summary   # results/v6/tables_v6.md
 ```
+
+## Пересмотр итераций 1–5 на новых данных
+
+Отчёт: [`report/REPORT_revisit.md`](report/REPORT_revisit.md); предрегистрация и журнал: [`pre_registration_revisit.md`](pre_registration_revisit.md). Данные — WIOD 2016 (как в итерации 6).
+
+```bash
+export PYTHONPATH=src
+python -m lts.revisit.wiod r1 main          # R1: стадия П итерации 3 на WIOD (42 страны, 2000–2014; ~20 мин)
+python -m lts.revisit.wiod r1 no_capital    # чувствительность: без капитала
+python -m lts.revisit.wiod r1 delta_lo      # δ × 0,5
+python -m lts.revisit.wiod r1 delta_hi      # δ × 1,5
+python -m lts.revisit.wiod r2               # R2: Б3.1 итерации 4 на WIOD
+python -m lts.revisit.wiod r2iv             # R2: инструментальные оценки
+```

@@ -184,6 +184,8 @@ def _main():
         print(f"top5 (a)&(b): {k} of {n} ({k / n:.2f}); v3 13 countries: {k13} of {cl.index.isin(V3_13).sum()}")
     elif what == "r2":
         print(r2().round(3).to_string())
+    elif what == "r2iv":
+        print(r2_iv().round(3).to_string())
 
 
 # ---------------------------------------------------------------- R2: B3.1 of iteration 4 on WIOD
@@ -225,6 +227,55 @@ def r2():
                                      countries=d.country.nunique(), **res))
     out = pd.DataFrame(rows)
     out.to_csv(OUT / "r2_b31_wiod.csv", index=False)
+    return out
+
+
+
+def iv_fwl(d, y, x, z, controls, fe, cluster):
+    """2SLS with one endogenous regressor and one instrument after FWL on FE + controls; CR1 SE."""
+    from ..v5.stage1 import fe_resid
+    from scipy import stats
+    s = d.replace([np.inf, -np.inf], np.nan).dropna(subset=[y, x, z] + controls)
+    R = fe_resid(s, [y, x, z] + controls, fe)
+    Y, X, Z, C = R[:, 0], R[:, 1], R[:, 2], R[:, 3:]
+    if C.shape[1]:
+        P = C @ np.linalg.lstsq(C, np.column_stack([Y, X, Z]), rcond=None)[0]
+        Y, X, Z = Y - P[:, 0], X - P[:, 1], Z - P[:, 2]
+    b = (Z @ Y) / (Z @ X)
+    u = Y - b * X
+    g = s[cluster].to_numpy()
+    cl, idx = np.unique(g, return_inverse=True)
+    G = len(cl)
+    sc = np.bincount(idx, weights=Z * u, minlength=G)
+    se = np.sqrt((sc ** 2).sum() * G / (G - 1)) / abs(Z @ X)
+    first = (Z @ X) / (Z @ Z)
+    fs_sc = np.bincount(idx, weights=Z * (X - first * Z), minlength=G)
+    fs_t = first / (np.sqrt((fs_sc ** 2).sum() * G / (G - 1)) / (Z @ Z))
+    return dict(beta=b, se=se, t=b / se, p=2 * stats.t.sf(abs(b / se), G - 1), first_stage_t=fs_t, n=len(s), clusters=G)
+
+
+def r2_iv():
+    p = r2_panel()
+    loo = {}                       # leave-one-out median of the same industry-year in other countries
+    for (c, yy), g in p.groupby(["code", "year"]):
+        for col in ("kw", "kw_nomi"):
+            v = g[col].to_numpy()
+            for i, ix in enumerate(g.index):
+                loo[(ix, col)] = np.nanmedian(np.delete(v, i)) if len(v) > 1 else np.nan
+    for col in ("kw", "kw_nomi"):
+        p[col + "_iv"] = [loo[(ix, col)] for ix in p.index]
+    rows = []
+    samples = {"all": p, "klems_overlap": p[~p.country.isin(NON_EUROPE - {"USA", "JPN"})],
+               "non_europe": p[p.country.isin(NON_EUROPE)]}
+    for sname, d0 in samples.items():
+        for var, (y, x, pcm) in {"primary": ("r", "kw", "pcm"), "no_mi": ("r_nomi", "kw_nomi", "pcm_nomi")}.items():
+            d = d0[~d0.rent]
+            d = d[d[y].abs() <= 2]
+            for ctrl in ([], [pcm]):
+                res = iv_fwl(d, y, x, x + "_iv", ctrl, ["cy"], "code")
+                rows.append(dict(sample=sname, variant=var, controls="pcm" if ctrl else "none", **res))
+    out = pd.DataFrame(rows)
+    out.to_csv(OUT / "r2_b31_wiod_iv.csv", index=False)
     return out
 
 

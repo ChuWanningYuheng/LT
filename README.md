@@ -169,3 +169,25 @@ python -m lts.v5.wright 3 diag   # диагностические вариант
 python -m lts.v5.abm 10     # этап 3.2: 400 прогонов расширенной модели (~2 мин)
 python -m lts.v5.summary    # results/v5/tables_v5.md
 ```
+
+## Итерация 6 (длинные ряды нормы прибыли; выравнивание нормы прибыли)
+
+Отчёт: [`report/REPORT_v6.md`](report/REPORT_v6.md); предрегистрация и журнал: [`pre_registration_v6.md`](pre_registration_v6.md).
+
+Данные (перечислены в `data/raw/MANIFEST.csv` с sha256):
+* AMECO — `data/raw/v6/ameco0.zip` (https://ec.europa.eu/economy_finance/db_indicators/ameco/documents/ameco0.zip), распаковать в `data/raw/v6/ameco/`;
+* BEA Fixed Assets, разделы 1–9 — `data/raw/v6/bea_fa/` (в репозитории; прямое скачивание отсюда даёт 403);
+* WIOD 2016 — `data/raw/v6/wiod/` (Dataverse doi:10.34894/PJ2M1C: WIOTS_in_R.zip → `wiot/`, Socio_Economic_Accounts.xlsx, Exchange_Rates.xlsx);
+* NIPA, FIGARO, EU KLEMS, OECD TiMBC — из итераций 4–5.
+
+Нужен `pyreadr` (чтение WIOD).
+
+```bash
+export PYTHONPATH=src
+python -m lts.v6.series    # длинные ряды (results/v6/series.csv)
+python -m lts.v6.tests     # этапы 2–3: разложения, тренды, разрывы, панель (~15 мин)
+python -m lts.v6.stage4    # этап 4 (разведочно): ВНД, иностранный труд в импорте
+python -m lts.v6.stage5    # этап 5: авансированный капитал, инкрементальные нормы, финансовые доходы
+python -m lts.v6.charts    # рисунки report/fig_v6/
+python -m lts.v6.summary   # results/v6/tables_v6.md
+```

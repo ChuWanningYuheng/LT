@@ -23,7 +23,7 @@ from ..v5.stage1 import ols_fwl
 from .series import MAIN8, OUT, RAW
 from .tests import trend
 
-GEO2 = {"USA": "US", "GBR": "GB", "FRA": "FR", "DEU": "DE", "ITA": "IT", "NLD": "NL", "SWE": "SE", "AUS": "AU",
+GEO2 = {"USA": "US", "GBR": "UK", "FRA": "FR", "DEU": "DE", "ITA": "IT", "NLD": "NL", "SWE": "SE", "AUS": "AU",
         "JPN": "JP", "CAN": "CA"}
 N = len(INDUSTRIES)
 
@@ -135,7 +135,7 @@ def gni_trends(s):
 def kstar_panel(s, om):
     rows = []
     for src, g in om.groupby("source"):
-        m = s[(s.variant == "main") & s.geo.isin(g.geo.unique())][["geo", "year", "PI", "K", "W", "rM", "k"]]
+        m = s[(s.variant == "main") & s.geo.isin(MAIN8)][["geo", "year", "PI", "K", "W", "rM", "k"]]
         d = m.merge(g[["geo", "year", "omega"]], on=["geo", "year"])
         d["kstar"] = d.K / (d.W * (1 + d.omega))
         d["lnrM"] = np.log(d.rM)

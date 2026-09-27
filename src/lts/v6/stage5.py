@@ -198,18 +198,19 @@ def s53():
     rows, dec = [], []
     for name, d in specs.items():
         d = finish(d.loc[1951:2024].copy())
+        a0 = int(d.PI.first_valid_index())              # dividends received by NFC start in 1958
         for series in ("r", "rM"):
             y = d[series].dropna()
             for lag in (2, 4, 8):
-                for a, b in ((1951, 2024), (1956, 2024), (1951, 2019), (1956, 2019)):
+                for a, b in ((a0, 2024), (a0 + 5, 2024), (a0, 2019), (a0 + 5, 2019)):
                     yy = y.loc[a:b]
                     sl, se, pv = trend(yy.to_numpy(), lag)
                     rows.append(dict(spec=name, series=series, lag=lag, y0=a, y1=b, slope=sl, p=pv, mean=yy.mean()))
         g = logs(d)
         g["lntech"] = np.nan
         g["lnpkw"] = np.nan
-        dec.append(dict(spec=name, **contrib(g, 1951, 2024)))
-        for a, b in ((1951, 1966), (1966, 1982), (1982, 2007), (2007, 2024)):
+        dec.append(dict(spec=name, **contrib(g, a0, 2024)))
+        for a, b in ((a0, 1966), (1966, 1982), (1982, 2007), (2007, 2024)):
             dec.append(dict(spec=name, **contrib(g, a, b)))
     return pd.DataFrame(rows), pd.DataFrame(dec)
 
@@ -218,7 +219,7 @@ if __name__ == "__main__":
     tr, dc = s53()
     tr.to_csv(OUT / "s5_3_trends.csv", index=False)
     dc.to_csv(OUT / "s5_3_decomp.csv", index=False)
-    print(tr[(tr.y0 == 1951) & (tr.y1 == 2024)].round(4).to_string())
+    print(tr[(tr.y0 == tr.groupby("spec").y0.transform("min")) & (tr.y1 == 2024)].round(4).to_string())
     print(dc[["spec", "y0", "y1", "r0", "r1", "dlnrM", "c_e", "c_1k"]].round(3).to_string(), flush=True)
     res, m, pers = s52()
     res.to_csv(OUT / "s5_2_summary.csv", index=False)

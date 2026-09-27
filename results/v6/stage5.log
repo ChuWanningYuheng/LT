@@ -1,0 +1,85 @@
+                                   spec series  lag    y0    y1   slope       p    mean
+0                            NFC (main)      r    2  1951  2024 -0.0003  0.0204  0.1091
+4                            NFC (main)      r    4  1951  2024 -0.0003  0.0437  0.1091
+8                            NFC (main)      r    8  1951  2024 -0.0003  0.0614  0.1091
+12                           NFC (main)     rM    2  1951  2024 -0.0001  0.1549  0.0780
+16                           NFC (main)     rM    4  1951  2024 -0.0001  0.2191  0.0780
+20                           NFC (main)     rM    8  1951  2024 -0.0001  0.2663  0.0780
+24  NFC + dividends + interest received      r    2  1951  2024 -0.0001  0.3180  0.1371
+28  NFC + dividends + interest received      r    4  1951  2024 -0.0001  0.3616  0.1371
+32  NFC + dividends + interest received      r    8  1951  2024 -0.0001  0.3292  0.1371
+36  NFC + dividends + interest received     rM    2  1951  2024  0.0000  0.8028  0.0981
+40  NFC + dividends + interest received     rM    4  1951  2024  0.0000  0.8168  0.0981
+44  NFC + dividends + interest received     rM    8  1951  2024  0.0000  0.8024  0.0981
+48                     all corporations      r    2  1951  2024 -0.0003  0.0911  0.1156
+52                     all corporations      r    4  1951  2024 -0.0003  0.1491  0.1156
+56                     all corporations      r    8  1951  2024 -0.0003  0.2005  0.1156
+60                     all corporations     rM    2  1951  2024 -0.0001  0.4282  0.0823
+64                     all corporations     rM    4  1951  2024 -0.0001  0.5008  0.0823
+68                     all corporations     rM    8  1951  2024 -0.0001  0.5578  0.0823
+                                   spec    y0    y1     r0     r1  dlnrM    c_e   c_1k
+0                            NFC (main)  1951  2024  0.146  0.120 -0.138  0.016 -0.153
+1                            NFC (main)  1951  1966  0.146  0.159  0.045 -0.034  0.079
+2                            NFC (main)  1966  1982  0.159  0.081 -0.593 -0.397 -0.195
+3                            NFC (main)  1982  2007  0.081  0.105  0.267  0.277 -0.010
+4                            NFC (main)  2007  2024  0.105  0.120  0.143  0.170 -0.027
+5   NFC + dividends + interest received  1951  2024    NaN  0.141    NaN    NaN -0.153
+6   NFC + dividends + interest received  1951  1966    NaN  0.176    NaN    NaN  0.079
+7   NFC + dividends + interest received  1966  1982  0.176  0.120 -0.300 -0.105 -0.195
+8   NFC + dividends + interest received  1982  2007  0.120  0.144  0.182  0.192 -0.010
+9   NFC + dividends + interest received  2007  2024  0.144  0.141 -0.008  0.019 -0.027
+10                     all corporations  1951  2024  0.151  0.136 -0.043  0.105 -0.148
+11                     all corporations  1951  1966  0.151  0.163  0.037 -0.046  0.083
+12                     all corporations  1966  1982  0.163  0.089 -0.524 -0.323 -0.201
+13                     all corporations  1982  2007  0.089  0.107  0.191  0.192 -0.001
+14                     all corporations  2007  2024  0.107  0.136  0.252  0.282 -0.030
+panel AT
+panel BE
+panel BG
+panel CY
+panel CZ
+panel DE
+panel DK
+panel EE
+panel EL
+panel ES
+panel FI
+panel FR
+panel HR
+panel HU
+panel IE
+panel IT
+panel LT
+panel LU
+panel LV
+panel MT
+panel NL
+panel PL
+panel PT
+panel RO
+panel SE
+panel SI
+panel SK
+panel UK
+panel US
+panel JP
+         measure  n_obs  sd_median  iqr_median  lam_fe  half_life_fe  lam_nofe  half_life_nofe      n  mueller_n  share_lr_sig  share_lr_sig_holm
+0              r  14263      0.149       0.137   0.716         2.078     0.888           5.850  13651        575         0.492              0.282
+1          r_inc  14169      0.393       0.332  -0.162           NaN    -0.120             NaN  13507        573         0.075              0.003
+2         r_inc2  13562      0.269       0.227   0.244         0.491     0.273           0.534  12928        573         0.045              0.002
+3  r_inc_placebo  14163      0.911       0.344  -0.304           NaN    -0.124             NaN  13496        573         0.182              0.003
+{'n': 575, 'corr_raw': np.float64(0.5553069955753739), 'corr_within_country': np.float64(0.5388518777369665), 'spearman_within': np.float64(0.6166111195273444)}
+/home/user/LT/src/lts/v4/b_tests.py:138: RuntimeWarning: invalid value encountered in scalar divide
+  lam = float((a * b).sum() / (b * b).sum())
+               source  r2_prop  lam_vs_K  r2_lam      n  country_years
+0                   K   -0.000       NaN   1.000  12573            592
+1         K_adv τ=0.1    0.047   -11.795   0.047  12573            592
+2  K_adv τ=0.127 (US)    0.064    -9.470   0.064  12573            592
+3        K_adv τ=0.25    0.121    -5.230   0.121  12573            592
+4         K_adv τ=0.5    0.194    -3.033   0.194  12573            592
+5                  GO    0.450     0.012   0.447  12573            592
+6                   W    0.252    -1.146   0.252  12573            592
+7               costs    0.344    -0.856   0.344  12573            592
+   placebo  median_r2  share_ge
+0   a_perm      0.194     0.939
+1  d_lnorm      0.242     0.990

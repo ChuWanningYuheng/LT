@@ -135,6 +135,12 @@ def r1(countries=None, variant="main"):
     dscale = {"main": 1.0, "delta_lo": 0.5, "delta_hi": 1.5, "no_capital": 1.0}[variant]
     for c in countries:
         D = None
+        try:
+            _ = [Setup(economy(c, y, dscale)) for y in YEARS] if variant != "no_capital" else None
+        except ValueError as exc:                       # journal 9: unproductive system -> country skipped
+            rows.append(dict(country=c, year=np.nan, variant=variant, kind="skipped", mask=str(exc)[:80]))
+            print("R1", variant, c, "skipped:", exc, flush=True)
+            continue
         for y in YEARS:
             e = economy(c, y, dscale)
             S = NoCapital(e) if variant == "no_capital" else Setup(e)
@@ -159,6 +165,7 @@ def r1(countries=None, variant="main"):
 
 
 def classify(df):
+    df = df[df.kind != "skipped"]
     m = df[(df["mask"] == "all") & df.kind.isin(["perm", "lnorm", "mix"])]
     s = m.groupby(["country", "kind", "metric"]).share_better.mean().unstack(["kind", "metric"])
     top = (s[("perm", "mawd")] <= 0.05) & (s[("perm", "d")] <= 0.05) & (s[("lnorm", "mawd")] <= 0.05) & \

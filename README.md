@@ -190,6 +190,7 @@ python -m lts.v6.stage4    # этап 4 (разведочно): ВНД, инос
 python -m lts.v6.stage5    # этап 5: авансированный капитал, инкрементальные нормы, финансовые доходы
 python -m lts.v6.charts    # рисунки report/fig_v6/
 python -m lts.v6.summary   # results/v6/tables_v6.md
+python -m lts.v6.review_checks  # проверки по рецензии (журнал п. 8): ист. стоимость на США НФК, fixed-b, симуляция 5.2
 ```
 
 ## Пересмотр итераций 1–5 на новых данных

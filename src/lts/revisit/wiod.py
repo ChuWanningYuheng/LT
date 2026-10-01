@@ -177,6 +177,29 @@ def classify(df):
     return s
 
 
+def r1_summary(variants=("main", "no_capital", "delta_lo", "delta_hi")):
+    """Top-5% counts by variant and industry mask; 13 countries of iteration 3 vs the rest; flat vector."""
+    rows = []
+    for v in variants:
+        d = pd.read_csv(OUT / f"r1_{v}.csv")
+        skipped = sorted(d[d.kind == "skipped"].country.unique())
+        d = d[d.kind != "skipped"]
+        fl = d[d.kind == "flat"].groupby(["country", "metric"]).share_better.mean().unstack()
+        for mask in ("all", "no_prereg"):
+            m = d[(d["mask"] == mask) & d.kind.isin(["perm", "lnorm"])]
+            s = m.groupby(["country", "kind", "metric"]).share_better.mean().unstack(["kind", "metric"])
+            top = (s[("perm", "mawd")] <= 0.05) & (s[("perm", "d")] <= 0.05) & (s[("lnorm", "mawd")] <= 0.05) & \
+                  (s[("lnorm", "d")] <= 0.05)
+            i13 = top.index.isin(V3_13)
+            rows.append(dict(variant=v, mask=mask, n=len(top), top5=int(top.sum()), share=top.mean(),
+                             n13=int(i13.sum()), top13=int(top[i13].sum()), n_rest=int((~i13).sum()),
+                             top_rest=int(top[~i13].sum()), not_top=",".join(sorted(top[~top].index)),
+                             skipped=",".join(skipped),
+                             flat_better_mawd_majority=int((fl.mawd > 0.5).sum()) if mask == "all" else np.nan,
+                             flat_better_d_majority=int((fl.d > 0.5).sum()) if mask == "all" else np.nan))
+    return pd.DataFrame(rows)
+
+
 def _main():
     what = sys.argv[1] if len(sys.argv) > 1 else "r1"
     if what == "r1":
@@ -189,6 +212,10 @@ def _main():
         k13 = int(cl.loc[cl.index.isin(V3_13), "top5_ab"].sum())
         print(cl.round(3).to_string())
         print(f"top5 (a)&(b): {k} of {n} ({k / n:.2f}); v3 13 countries: {k13} of {cl.index.isin(V3_13).sum()}")
+    elif what == "r1sum":
+        r = r1_summary()
+        r.to_csv(OUT / "r1_summary.csv", index=False)
+        print(r.drop(columns="not_top").round(3).to_string())
     elif what == "r2":
         print(r2().round(3).to_string())
     elif what == "r2iv":

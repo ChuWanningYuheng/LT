@@ -269,8 +269,8 @@
 | USA main rM | 0.0007 | 0.0000 | 0.0000 | 0.0000 |
 | USA no_mi r | 0.0009 | 0.0000 | 0.0000 | 0.0000 |
 | USA no_mi rM | 0.0006 | 0.0000 | 0.0000 | 0.0000 |
-| USA_NFC gni r | 0.0012 | 0.0002 | 0.0002 | 0.0000 |
-| USA_NFC gni rM | 0.0011 | 0.0001 | 0.0001 | 0.0001 |
+| USA_NFC gni r | -0.0003 | 0.0413 | 0.0819 | 0.1189 |
+| USA_NFC gni rM | -0.0001 | 0.2881 | 0.3697 | 0.4346 |
 | USA_NFC hc r | -0.0008 | 0.0003 | 0.0011 | 0.0014 |
 | USA_NFC hc rM | -0.0003 | 0.0422 | 0.0710 | 0.0914 |
 | USA_NFC hc_hcdep r | -0.0009 | 0.0001 | 0.0002 | 0.0002 |
@@ -374,8 +374,8 @@
 | USA main rM | False | True | 0.000 | 12 |
 | USA no_mi r | False | True | 0.000 | 12 |
 | USA no_mi rM | False | True | 0.000 | 12 |
-| USA_NFC gni r | False | True | 0.000 | 18 |
-| USA_NFC gni rM | False | True | 0.000 | 18 |
+| USA_NFC gni r | False | False | 0.444 | 18 |
+| USA_NFC gni rM | False | False | 0.000 | 18 |
 | USA_NFC hc r | True | False | 1.000 | 18 |
 | USA_NFC hc rM | False | False | 0.667 | 18 |
 | USA_NFC hc_hcdep r | True | False | 1.000 | 18 |

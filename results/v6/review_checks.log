@@ -1,0 +1,174 @@
+                 kind    year  pim_const_delta  pim_delta_t  pim_delta_t_i068  pim_const_delta_i068  bea_hc                series  lag   slope       p
+0        ratio_to_bea  1960.0           1.4679       1.4679            0.9982                0.9982     1.0                   NaN  NaN     NaN     NaN
+1        ratio_to_bea  1975.0           1.0555       1.1203            1.0720                1.0161     1.0                   NaN  NaN     NaN     NaN
+2        ratio_to_bea  1995.0           1.1262       1.1295            1.1278                1.1249     1.0                   NaN  NaN     NaN     NaN
+3        ratio_to_bea  2024.0           1.2091       1.1555            1.1555                1.2091     1.0                   NaN  NaN     NaN     NaN
+4   trend_r_1975_2024     NaN              NaN          NaN               NaN                   NaN     NaN       pim_const_delta  2.0 -0.0006  0.0258
+5   trend_r_1975_2024     NaN              NaN          NaN               NaN                   NaN     NaN       pim_const_delta  4.0 -0.0006  0.0425
+6   trend_r_1975_2024     NaN              NaN          NaN               NaN                   NaN     NaN       pim_const_delta  8.0 -0.0006  0.0530
+7   trend_r_1975_2024     NaN              NaN          NaN               NaN                   NaN     NaN           pim_delta_t  2.0 -0.0003  0.2147
+8   trend_r_1975_2024     NaN              NaN          NaN               NaN                   NaN     NaN           pim_delta_t  4.0 -0.0003  0.2556
+9   trend_r_1975_2024     NaN              NaN          NaN               NaN                   NaN     NaN           pim_delta_t  8.0 -0.0003  0.2688
+10  trend_r_1975_2024     NaN              NaN          NaN               NaN                   NaN     NaN      pim_delta_t_i068  2.0 -0.0004  0.1530
+11  trend_r_1975_2024     NaN              NaN          NaN               NaN                   NaN     NaN      pim_delta_t_i068  4.0 -0.0004  0.1940
+12  trend_r_1975_2024     NaN              NaN          NaN               NaN                   NaN     NaN      pim_delta_t_i068  8.0 -0.0004  0.2107
+13  trend_r_1975_2024     NaN              NaN          NaN               NaN                   NaN     NaN  pim_const_delta_i068  2.0 -0.0007  0.0203
+14  trend_r_1975_2024     NaN              NaN          NaN               NaN                   NaN     NaN  pim_const_delta_i068  4.0 -0.0007  0.0359
+15  trend_r_1975_2024     NaN              NaN          NaN               NaN                   NaN     NaN  pim_const_delta_i068  8.0 -0.0007  0.0464
+16  trend_r_1975_2024     NaN              NaN          NaN               NaN                   NaN     NaN                bea_hc  2.0 -0.0002  0.5062
+17  trend_r_1975_2024     NaN              NaN          NaN               NaN                   NaN     NaN                bea_hc  4.0 -0.0002  0.5406
+18  trend_r_1975_2024     NaN              NaN          NaN               NaN                   NaN     NaN                bea_hc  8.0 -0.0002  0.5468
+       variant  n_geo  robust_neg              neg  robust_pos          pos
+0         main      8           0                            3  AUS,GBR,USA
+1        no_mi      8           1              ITA           3  AUS,GBR,USA
+2      mi_half      8           1              ITA           3  AUS,GBR,USA
+3           hc      8           1              ITA           2      AUS,USA
+4       hc_d07      8           4  DEU,GBR,ITA,SWE           2      AUS,USA
+5       hc_d13      8           0                            3  AUS,NLD,USA
+6       hc_i07      8           4  DEU,GBR,ITA,SWE           2      AUS,USA
+7       hc_i13      8           1              ITA           3  AUS,NLD,USA
+8     hc_hcdep      8           3      GBR,ITA,SWE           0             
+9        hc_dt      8           1              ITA           3  AUS,NLD,USA
+10  hc_dt_i068      8           3      GBR,ITA,SWE           3  AUS,NLD,USA
+11      kdrift      7           2          ITA,SWE           0             
+         geo     variant  robust_neg_fixedb  robust_pos_fixedb  share_sig_fixedb  share_sig_std
+0        AUS          hc              False               True          1.000000       1.000000
+1        AUS      hc_d07              False               True          1.000000       1.000000
+2        AUS      hc_d13              False               True          1.000000       1.000000
+3        AUS       hc_dt              False               True          1.000000       1.000000
+4        AUS  hc_dt_i068              False               True          1.000000       1.000000
+5        AUS    hc_hcdep              False              False          0.083333       0.250000
+6        AUS      hc_i07              False               True          1.000000       1.000000
+7        AUS      hc_i13              False               True          1.000000       1.000000
+8        AUS        main              False               True          1.000000       1.000000
+9        AUS     mi_half              False               True          1.000000       1.000000
+10       AUS       no_mi              False               True          1.000000       1.000000
+14       DEU          hc              False              False          0.500000       0.833333
+15       DEU      hc_d07              False              False          0.833333       1.000000
+16       DEU      hc_d13              False              False          0.250000       0.416667
+17       DEU       hc_dt              False              False          0.000000       0.000000
+18       DEU  hc_dt_i068              False              False          0.000000       0.000000
+19       DEU    hc_hcdep              False              False          0.083333       0.250000
+20       DEU      hc_i07              False              False          0.833333       1.000000
+21       DEU      hc_i13              False              False          0.250000       0.500000
+22       DEU      kdrift              False              False          0.500000       0.666667
+23       DEU        main              False              False          0.000000       0.000000
+24       DEU     mi_half              False              False          0.000000       0.000000
+25       DEU       no_mi              False              False          0.083333       0.166667
+26       FRA          hc              False              False          0.000000       0.000000
+27       FRA      hc_d07              False              False          0.000000       0.000000
+28       FRA      hc_d13              False              False          0.000000       0.000000
+29       FRA       hc_dt              False              False          0.000000       0.000000
+30       FRA  hc_dt_i068              False              False          0.000000       0.000000
+31       FRA    hc_hcdep              False              False          0.500000       0.666667
+32       FRA      hc_i07              False              False          0.000000       0.000000
+33       FRA      hc_i13              False              False          0.000000       0.000000
+34       FRA      kdrift              False              False          0.000000       0.000000
+35       FRA        main              False              False          0.083333       0.166667
+36       FRA     mi_half              False              False          0.000000       0.000000
+37       FRA       no_mi              False              False          0.916667       1.000000
+38       GBR          hc              False              False          0.750000       1.000000
+39       GBR      hc_d07              False              False          0.916667       1.000000
+40       GBR      hc_d13              False              False          0.750000       0.916667
+41       GBR       hc_dt              False              False          0.750000       0.916667
+42       GBR  hc_dt_i068              False              False          0.833333       1.000000
+43       GBR    hc_hcdep               True              False          1.000000       1.000000
+44       GBR      hc_i07              False              False          0.916667       1.000000
+45       GBR      hc_i13              False              False          0.750000       0.916667
+46       GBR      kdrift              False              False          0.750000       0.916667
+47       GBR        main              False              False          0.916667       1.000000
+48       GBR     mi_half              False               True          1.000000       1.000000
+49       GBR       no_mi              False               True          1.000000       1.000000
+50       ITA          hc              False              False          0.916667       1.000000
+51       ITA      hc_d07              False              False          0.916667       1.000000
+52       ITA      hc_d13              False              False          0.750000       0.916667
+53       ITA       hc_dt              False              False          0.916667       1.000000
+54       ITA  hc_dt_i068              False              False          0.916667       1.000000
+55       ITA    hc_hcdep               True              False          1.000000       1.000000
+56       ITA      hc_i07              False              False          0.916667       1.000000
+57       ITA      hc_i13              False              False          0.916667       1.000000
+58       ITA      kdrift              False              False          0.833333       1.000000
+59       ITA        main              False              False          0.000000       0.000000
+60       ITA     mi_half              False              False          0.833333       1.000000
+61       ITA       no_mi               True              False          1.000000       1.000000
+65       NLD          hc              False              False          0.750000       1.000000
+66       NLD      hc_d07              False              False          0.333333       0.750000
+67       NLD      hc_d13              False               True          1.000000       1.000000
+68       NLD       hc_dt              False               True          1.000000       1.000000
+69       NLD  hc_dt_i068              False               True          1.000000       1.000000
+70       NLD    hc_hcdep              False              False          0.000000       0.000000
+71       NLD      hc_i07              False              False          0.750000       0.833333
+72       NLD      hc_i13              False              False          0.750000       1.000000
+73       NLD      kdrift              False              False          0.583333       0.666667
+74       NLD        main              False              False          0.833333       0.916667
+75       NLD     mi_half              False              False          0.750000       0.833333
+76       NLD       no_mi              False              False          0.666667       0.750000
+77       SWE          hc              False              False          0.833333       0.916667
+78       SWE      hc_d07              False              False          0.833333       1.000000
+79       SWE      hc_d13              False              False          0.750000       0.833333
+80       SWE       hc_dt              False              False          0.833333       1.000000
+81       SWE  hc_dt_i068              False              False          0.916667       1.000000
+82       SWE    hc_hcdep              False              False          0.916667       1.000000
+83       SWE      hc_i07              False              False          0.833333       1.000000
+84       SWE      hc_i13              False              False          0.750000       0.833333
+85       SWE      kdrift               True              False          1.000000       1.000000
+86       SWE        main              False              False          0.000000       0.000000
+87       SWE     mi_half              False              False          0.250000       0.333333
+88       SWE       no_mi              False              False          0.833333       0.916667
+89       USA          hc              False               True          1.000000       1.000000
+90       USA      hc_d07              False              False          0.833333       1.000000
+91       USA      hc_d13              False               True          1.000000       1.000000
+92       USA       hc_dt              False               True          1.000000       1.000000
+93       USA  hc_dt_i068              False               True          1.000000       1.000000
+94       USA    hc_hcdep              False              False          0.000000       0.000000
+95       USA      hc_i07              False               True          1.000000       1.000000
+96       USA      hc_i13              False               True          1.000000       1.000000
+97       USA      kdrift              False              False          0.500000       0.833333
+98       USA        main              False               True          1.000000       1.000000
+99       USA     mi_half              False               True          1.000000       1.000000
+100      USA       no_mi              False               True          1.000000       1.000000
+101  USA_NFC          hc              False              False          0.500000       0.722222
+102  USA_NFC    hc_hcdep              False              False          0.777778       0.833333
+103  USA_NFC        main              False              False          0.222222       0.277778
+      y0 series  lag    slope        p
+0   1951      r    2 -0.00032  0.02037
+1   1951      r    4 -0.00032  0.04373
+2   1951      r    8 -0.00032  0.06141
+3   1951     rM    2 -0.00014  0.15486
+4   1951     rM    4 -0.00014  0.21909
+5   1951     rM    8 -0.00014  0.26631
+6   1958      r    2 -0.00024  0.19805
+7   1958      r    4 -0.00024  0.27494
+8   1958      r    8 -0.00024  0.32466
+9   1958     rM    2 -0.00006  0.60961
+10  1958     rM    4 -0.00006  0.66602
+11  1958     rM    8 -0.00006  0.70157
+12  1963      r    2 -0.00025  0.30883
+13  1963      r    4 -0.00025  0.38724
+14  1963      r    8 -0.00025  0.43855
+15  1963     rM    2 -0.00005  0.75695
+16  1963     rM    4 -0.00005  0.79221
+17  1963     rM    8 -0.00005  0.81318
+     sample              fe       x controls   beta    t_cr1  p_cr1  p_wild   n  clusters
+0     main8  country+period  d_ln1k     none  0.982    5.225  0.001   0.019  40         8
+1     main8  country+period  d_lnky   d_lnpy -0.854 -101.704  0.000   0.000  40         8
+2     main8  country+period  d_lnky     none  0.096    0.216  0.835   0.828  40         8
+3     main8         country  d_ln1k     none  0.825    3.969  0.005   0.083  40         8
+4     main8         country  d_lnky   d_lnpy -0.845 -133.337  0.000   0.000  40         8
+5     main8         country  d_lnky     none -0.701   -1.394  0.206   0.188  40         8
+6   kdrift7  country+period  d_ln1k     none  1.233    3.281  0.017   0.170  35         7
+7   kdrift7  country+period  d_lnky   d_lnpy -0.802  -36.298  0.000   0.000  35         7
+8   kdrift7  country+period  d_lnky     none -0.121   -0.185  0.859   0.850  35         7
+9   kdrift7         country  d_ln1k     none  0.849    2.436  0.051   0.185  35         7
+10  kdrift7         country  d_lnky   d_lnpy -0.777  -32.129  0.000   0.000  35         7
+11  kdrift7         country  d_lnky     none -1.015   -1.941  0.100   0.073  35         7
+e-k corr {'corr': np.float64(0.4612461569640763), 'slope_e_on_k': np.float64(1.179950648641784), 'n': 40}
+          rep  lam_fe  lam_nofe
+count  51.000  51.000    51.000
+mean   25.000  -0.215    -0.193
+std    14.866   0.110     0.109
+min     0.000  -0.594    -0.565
+25%    12.500  -0.233    -0.211
+50%    25.000  -0.185    -0.169
+75%    37.500  -0.153    -0.128
+max    50.000  -0.095    -0.064 {'rep': 0, 'kind': 'actual', 'lam_fe': -0.161615885948587, 'lam_nofe': -0.11955391018178693}

@@ -49,7 +49,8 @@ def ameco_country(raw, geo):
 def derive(d, mixed_correction=True):
     d = d.copy()
     ratio = d.NETD / d.NWTD
-    d["W_se"] = d.UWCD * (ratio - 1) if mixed_correction else 0.0
+    mc = float(mixed_correction)                                    # 0.5 = mi_half (journal 8)
+    d["W_se"] = d.UWCD * (ratio - 1) * mc if mc else 0.0
     d["PI"] = d.UOND - d.W_se
     d["W"] = d.UWCD + d.W_se
     pk = (d.PIGT / 100).combine_first(d.UIGT / d.OIGT)   # D_W has no PIGT: implicit GFCF deflator (A-V6-PK)
@@ -64,14 +65,16 @@ def derive(d, mixed_correction=True):
     return d
 
 
-def hist_cost(d, delta_scale=1.0, init_scale=1.0, y0=1960):
-    """Perpetual inventory at historical cost from GFCF at current prices (UIGT)."""
-    dl = (d.UKCT / d.K.shift()).loc[y0 + 1:].median() * delta_scale
+def hist_cost(d, delta_scale=1.0, init_scale=1.0, y0=1960, inv="UIGT", time_varying=False):
+    """Perpetual inventory at historical cost from GFCF at current prices (UIGT).
+    time_varying: delta_t = UKCT_t / K_{t-1} instead of the constant median (journal 8)."""
+    dt = (d.UKCT / d.K.shift()) * delta_scale
+    dl = dt.loc[y0 + 1:].median()
     k = pd.Series(np.nan, index=d.index)
     k.loc[y0] = d.K.loc[y0] * init_scale
     for t in range(y0 + 1, d.index.max() + 1):
-        k.loc[t] = k.loc[t - 1] * (1 - dl) + d.UIGT.loc[t]
-    return k, dl
+        k.loc[t] = k.loc[t - 1] * (1 - (dt.loc[t] if time_varying else dl)) + d[inv].loc[t]
+    return k, (dt if time_varying else dl)
 
 
 def finish(d):
@@ -93,7 +96,7 @@ def ameco_panel():
             de = ameco_country(raw, "DEU")
             base = pd.concat([base.loc[:1990], de.loc[1991:]])
             dw91 = ameco_country(raw, "D_W").loc[1991]
-        for vname, mc in (("main", True), ("no_mi", False)):
+        for vname, mc in (("main", 1.0), ("no_mi", 0.0), ("mi_half", 0.5)):
             d = finish(derive(base, mc))
             d = d[d.PI.notna() & d.K.notna() & d.W.notna()]
             if d.empty:
@@ -113,9 +116,14 @@ def ameco_panel():
                         g = h.copy()
                         g["PI"] = g.PI + g.UKCT - dl * k.shift()
                         rows.append(finish(g).loc[1975:].assign(geo=geo, variant="hc_hcdep"))
+                for tag, isc in (("hc_dt", 1.0), ("hc_dt_i068", 0.68)):     # journal 8 (b), exploratory
+                    k, dt = hist_cost(d, 1.0, isc, time_varying=True)
+                    h = d.copy()
+                    h["K"], h["delta"] = k, dt
+                    rows.append(finish(h).loc[1975:].assign(geo=geo, variant=tag))
         if geo == "DEU":                               # splice (b): shift West-German segment to match 1991
-            d = finish(derive(base, True))
-            dw = finish(derive(pd.DataFrame([dw91]).set_index(pd.Index([1991])), True))
+            d = finish(derive(base, 1.0))
+            dw = finish(derive(pd.DataFrame([dw91]).set_index(pd.Index([1991])), 1.0))
             b = d.copy()
             for c in ("r", "rM", "e", "k", "share"):
                 shift = d.loc[1991, c] - dw.loc[1991, c]

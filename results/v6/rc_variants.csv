@@ -1,0 +1,13 @@
+variant,n_geo,robust_neg,neg,robust_pos,pos
+main,8,0,,3,"AUS,GBR,USA"
+no_mi,8,1,ITA,3,"AUS,GBR,USA"
+mi_half,8,1,ITA,3,"AUS,GBR,USA"
+hc,8,1,ITA,2,"AUS,USA"
+hc_d07,8,4,"DEU,GBR,ITA,SWE",2,"AUS,USA"
+hc_d13,8,0,,3,"AUS,NLD,USA"
+hc_i07,8,4,"DEU,GBR,ITA,SWE",2,"AUS,USA"
+hc_i13,8,1,ITA,3,"AUS,NLD,USA"
+hc_hcdep,8,3,"GBR,ITA,SWE",0,
+hc_dt,8,1,ITA,3,"AUS,NLD,USA"
+hc_dt_i068,8,3,"GBR,ITA,SWE",3,"AUS,NLD,USA"
+kdrift,7,2,"ITA,SWE",0,

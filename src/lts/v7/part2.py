@@ -65,7 +65,7 @@ def naics_to_bea(code: str):
 
 # ---------------------------------------------------------------- occupations
 def bls_categories():
-    t = pd.read_excel(R7 / "bls" / "education.xlsx", "Table 5.4", header=1)
+    t = pd.read_excel(R7 / "bls" / "education.xlsx", "Table 5.4", header=1, keep_default_na=False)   # "None" is a category
     t.columns = ["title", "soc", "edu", "exp", "ojt", "ooh"]
     t = t[t.soc.astype(str).str.match(r"\d\d-\d{4}$")]
     return t.set_index("soc")
@@ -261,3 +261,30 @@ if __name__ == "__main__":
     pt.to_csv(OUT / "p2_prices.csv", index=False)
     w.to_csv(OUT / "p2_industry_psi.csv")
     info.to_csv(OUT / "p2_info.csv")
+
+
+def joint(o, ind):
+    """Test 4 (exploratory): Marx sign on KLEMS US with K + non-NA intangibles and W* = H psi_j wbar."""
+    from .part1 import klems_panel, make_a, slope
+    p = klems_panel()
+    us = p[(p.geo == "US") & p.U_lag.notna()].copy()
+    rows = []
+    for k in ("Rowthorn", "Shaikh lambda_hat"):
+        pb, eb = industry_psi(o, ind, f"psi[{k}]")
+        psi = {}
+        for lab in us.ind.unique():
+            dv = divs(lab)
+            parts = [b for b in pb.index if b in BEA_TO_NACE and set(BEA_TO_NACE[b]) & dv]
+            psi[lab] = np.average(pb[parts], weights=eb[parts]) if parts else 1.0
+        us["psi"] = us.ind.map(psi)
+        wbar = us.groupby("year").apply(lambda s: s.W.sum() / (s.H * s.psi).sum(), include_groups=False)
+        us["Wstar"] = us.H * us.psi * us.year.map(wbar)
+        r1, x1 = make_a()(us, 1.0)
+        K1 = us.K + us.K_nonNA
+        for name, r, x in (("base", us.r, np.log(us.K / us.W)),
+                           ("W* only", us.r, np.log(us.K / us.Wstar)),
+                           ("K + intangibles only", r1, x1),
+                           ("both", r1, np.log(K1 / us.Wstar))):
+            b, pv, _ = slope(us.assign(_r=r, _x=x), "_r", "_x")
+            rows.append(dict(psi=k, spec=name, beta=b, p=pv, n=len(us)))
+    return pd.DataFrame(rows)

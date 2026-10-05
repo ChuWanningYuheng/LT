@@ -188,6 +188,7 @@ python -m lts.v6.series    # длинные ряды (results/v6/series.csv)
 python -m lts.v6.tests     # этапы 2–3: разложения, тренды, разрывы, панель (~15 мин)
 python -m lts.v6.stage4    # этап 4 (разведочно): ВНД, иностранный труд в импорте
 python -m lts.v6.stage4_icio   # этап 4 на OECD ICIO 1995–2022 + капитал StatCan (журнал п. 9; данные — Google Drive пользователя, data/raw/v6/gdrive; PWT 10.01 — data/raw/v6/pwt1001.dta)
+python -m lts.v6.national   # официальные ряды сектора НФК вне США (Eurostat, ONS, ABS, ESRI, StatCan) и Z.1 для 5.3 (журнал п. 10; data/raw/v6/national, data/raw/v6/z1)
 python -m lts.v6.stage5    # этап 5: авансированный капитал, инкрементальные нормы, финансовые доходы
 python -m lts.v6.charts    # рисунки report/fig_v6/
 python -m lts.v6.summary   # results/v6/tables_v6.md

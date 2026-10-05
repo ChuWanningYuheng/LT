@@ -208,3 +208,18 @@ python -m lts.revisit.wiod r1 delta_hi      # δ × 1,5
 python -m lts.revisit.wiod r2               # R2: Б3.1 итерации 4 на WIOD
 python -m lts.revisit.wiod r2iv             # R2: инструментальные оценки
 ```
+
+## Итерация 7: неучтённый капитал и редукция сложного труда
+
+Отчёт: [`report/REPORT_v7.md`](report/REPORT_v7.md); предрегистрация и журнал: [`pre_registration_v7.md`](pre_registration_v7.md); источники: [`report/sources_v7.md`](report/sources_v7.md); таблицы соответствия: [`report/crosswalk_v7.md`](report/crosswalk_v7.md).
+
+Данные (`data/raw/v7/`, записаны в MANIFEST): EUKLEMS intangibles analytical (тот же файл, что в итерации 4), Ewens–Peters–Wang (параметры и запасы), SEC Financial Statement Data Sets (качаются скриптом), ONS intangibles by industry, CBS marketing assets, BLS EP табл. 5.4, O*NET 31.0; из итерации 3 — OEWS 2022.
+
+```bash
+export PYTHONPATH=src
+python -m lts.v7.part1      # часть 1: порог m*, кривые, прочие проверки, Oster / Cinelli–Hazlett
+python -m lts.v7.sec        # SEC: SG&A и основные средства по SIC (16 квартальных архивов, ~20 мин)
+python -c "from lts.v7.sec import threshold_v; ..."   # порог на профиле SEC (см. results/v7/p1_sec_*.csv)
+python -m lts.v7.profiles   # национальные проверки профиля (ONS, CBS)
+python -m lts.v7.part2      # часть 2: ψ по профессиям, тест надбавок, ценовые тесты с эталонами сжатия
+```

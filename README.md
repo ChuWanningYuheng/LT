@@ -219,7 +219,7 @@ python -m lts.revisit.wiod r2iv             # R2: инструментальны
 export PYTHONPATH=src
 python -m lts.v7.part1      # часть 1: порог m*, кривые, прочие проверки, Oster / Cinelli–Hazlett
 python -m lts.v7.sec        # SEC: SG&A и основные средства по SIC (16 квартальных архивов, ~20 мин)
-python -c "from lts.v7.sec import threshold_v; ..."   # порог на профиле SEC (см. results/v7/p1_sec_*.csv)
+python -m lts.v7.sec threshold   # порог на профиле SEC (results/v7/p1_sec_*.csv)
 python -m lts.v7.profiles   # национальные проверки профиля (ONS, CBS)
 python -m lts.v7.part2      # часть 2: ψ по профессиям, тест надбавок, ценовые тесты с эталонами сжатия
 ```

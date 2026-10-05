@@ -86,10 +86,19 @@ def by_sic2(firms):
     return g
 
 
-if __name__ == "__main__":
+def _main():
+    import sys
+    out = ROOT / "results" / "v7"
+    if len(sys.argv) > 1 and sys.argv[1] == "threshold":
+        r, c, pv = threshold_v()
+        r.to_csv(out / "p1_sec_threshold.csv", index=False)
+        c.to_csv(out / "p1_sec_curves.csv", index=False)
+        pv.to_csv(out / "p1_sec_profile.csv", index=False)
+        print(r.round(3).to_string())
+        return
     firms = build()
     g = by_sic2(firms)
-    g.to_csv(ROOT / "results" / "v7" / "p1_sec_sic2.csv", index=False)
+    g.to_csv(out / "p1_sec_sic2.csv", index=False)
     print(g.groupby("sic2").sga_ppe.median().round(2).to_string())
 
 
@@ -155,3 +164,7 @@ def threshold_v():
                             corr_q_sec_lnKW=float(np.corrcoef(q.groupby(us.ind).first(),
                                                               us.groupby("ind").x0.mean())[0, 1])))
     return pd.DataFrame(res), pd.concat(curves), pv
+
+
+if __name__ == "__main__":
+    _main()

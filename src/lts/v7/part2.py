@@ -73,7 +73,8 @@ def bls_categories():
 
 def onet_years():
     z = zipfile.ZipFile(R7 / "onet" / "db_31_0_excel.zip")
-    ed = pd.read_excel(io.BytesIO(z.read("db_31_0_excel/Education, Training, and Experience.xlsx")))
+    ed = pd.concat([pd.read_excel(io.BytesIO(z.read(f"db_31_0_excel/{f}.xlsx")))
+                    for f in ("Education", "Training and Experience")])
     ed = ed[ed["Scale ID"].isin(["RL", "PT", "OJ", "RW"])]
     ed["soc"] = ed["O*NET-SOC Code"].str[:7]
     out = {}

@@ -91,3 +91,17 @@ v7,cbs_marketing_2013_2024.xlsx,https://www.cbs.nl/-/media/_excel/2026/33/invest
 v7,education.xlsx,https://www.bls.gov/emp/ind-occ-matrix/education.xlsx,public domain (BLS),BLS EP tables 5.1-5.4 (2025),118332,67b78dbccc8d6002e6c30f39a75d381380e2e9347bd2d87d71c3c98e7f36a531,2026-10-05T19:59:25
 v7,db_31_0_excel.zip,https://www.onetcenter.org/dl_files/database/db_31_0_excel.zip,CC BY 4.0 (O*NET),O*NET 31.0,47880800,c63ad00a8e45f3d3ef8e1529fcf8864d2279f2dfcb98737436818f5664781b04,2026-10-05T19:59:25
 v7,sec_firm_fy.csv,https://www.sec.gov/files/dera/data/financial-statement-data-sets/{2013..2022}q{1..4}.zip,public domain (SEC),extract built by lts.v7.sec (archives not kept),922887,7846dc28eb108f83fe867fc0ecdef3c4e4091ac171297d01cb8042522634eb92,2026-10-05T19:59:25
+v8,AllTablesSUP.zip,see data/raw/v8_availability.md,publisher's open licence,iteration 8,20439248,fe60d189c01b89df331209977b644c7c4a18d48fee307d7b9e9c3a80cc912de3,2026-10-06T07:56:30
+v8,NipaDataQ.txt,see data/raw/v8_availability.md,publisher's open licence,iteration 8,35414945,7a577c587cecc4b9e07b2edae2684ed565e7aef477a563c2a03d076f55d848b8,2026-10-06T07:56:30
+v8,census_2012_SR2.zip,see data/raw/v8_availability.md,publisher's open licence,iteration 8,33834,6c973e786299a773426583a462c2b5182652e2fc5c2f32ecf2d1c0496c42c881,2026-10-06T07:56:30
+v8,census_EC1700SIZECONCEN.zip,see data/raw/v8_availability.md,publisher's open licence,iteration 8,234503,1070a9b09bd23785b03eb96d1980ba5659320f7fa9a4fda52f2252f42109f78d,2026-10-06T07:56:30
+v8,census_EC2200SIZECONCEN.zip,see data/raw/v8_availability.md,publisher's open licence,iteration 8,233219,36d2e51cfb82adc9187c6f0a8fdfcd29ce0d3418e6b4d00e085d0c609e24ce30,2026-10-06T07:56:30
+v8,eurostat_ei_bsin_q_r2.json,see data/raw/v8_availability.md,publisher's open licence,iteration 8,65389,fe622e26344f249617a6aac521f7b3626b3b59b4bcd66ae6e6f0aa1e6f567e89,2026-10-06T07:56:30
+v8,eurostat_gov_10a_main.json,see data/raw/v8_availability.md,publisher's open licence,iteration 8,69732,31c9d572e722fc6378782715327ceff9d2a84b7e99269c0cfd58ae1d2117e326,2026-10-06T07:56:30
+v8,eurostat_gov_10a_taxag.json,see data/raw/v8_availability.md,publisher's open licence,iteration 8,18856,83c2d2849a227e5b15572a2609ecf462a865220ea9a7cd14235ce4e0d49d832f,2026-10-06T07:56:30
+v8,eurostat_nama_10_nfa_st.json,see data/raw/v8_availability.md,publisher's open licence,iteration 8,1744148,bab1a3fd4da7b1ce55dc55a1844766e70cad4d3d9960aa18b33015c75cc6a312,2026-10-06T07:56:30
+v8,fred_CUMFNS.csv,see data/raw/v8_availability.md,publisher's open licence,iteration 8,17960,ce2d65336b6815d3be6d375ec92be6defe994e0e8be4b54766889e51d4b38d02,2026-10-06T07:56:30
+v8,fred_JHDUSRGDPBR.csv,see data/raw/v8_availability.md,publisher's open licence,iteration 8,3071,c184cc8cabe15a6d8075a64634fb8048f51a3a615680bfecadb03e1378ed4cde,2026-10-06T07:56:30
+v8,fred_TCU.csv,see data/raw/v8_availability.md,publisher's open licence,iteration 8,13625,1a373fa8aabe0f20d549a3c8b796091772c4f6ed351ace22bd25b30f60f0fe97,2026-10-06T07:56:30
+v8,fred_USREC.csv,see data/raw/v8_availability.md,publisher's open licence,iteration 8,26829,a42a3581fe9c260dd3627febc84a7d563e5ed162cc7085a7518ebde99dc3c3b4,2026-10-06T07:56:30
+v8,qcew_2017_annual_by_industry.zip,see data/raw/v8_availability.md,publisher's open licence,iteration 8,142937089,c2029da4bc9c5e5af21f6e8d870648bf73386ac2f52b9d55da924a3cc25d50e1,2026-10-06T07:56:31

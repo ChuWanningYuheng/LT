@@ -1,27 +1,27 @@
         geo      series  robust_neg  robust_pos  share_neg  share_pos  slope_base      years
 0       DEU           r       False       False     0.0000     0.3333      0.0002  1980-2024
 1       DEU    r_n (80)       False       False     0.0000     0.3333      0.0001  1980-2024
-2       DEU    r_n (hp)       False       False     0.0000     0.0000      0.0001  1980-2024
+2       DEU    r_n (hp)       False       False     0.0000     0.3333      0.0002  1980-2024
 3       DEU  r_n (mean)       False       False     0.0000     0.3333      0.0001  1980-2024
 4       FRA           r        True       False     1.0000     0.0000     -0.0007  1991-2024
 5       FRA    r_n (80)        True       False     1.0000     0.0000     -0.0006  1991-2024
-6       FRA    r_n (hp)       False       False     0.0000     0.0000     -0.0006  1991-2024
+6       FRA    r_n (hp)        True       False     1.0000     0.0000     -0.0007  1991-2024
 7       FRA  r_n (mean)        True       False     1.0000     0.0000     -0.0007  1991-2024
 8       ITA           r       False       False     0.3333     0.0000     -0.0001  1980-2024
 9       ITA    r_n (80)       False       False     0.4167     0.0000     -0.0001  1980-2024
-10      ITA    r_n (hp)       False       False     0.0000     0.0000     -0.0000  1980-2024
+10      ITA    r_n (hp)       False       False     0.3333     0.0000     -0.0001  1980-2024
 11      ITA  r_n (mean)       False       False     0.4167     0.0000     -0.0001  1980-2024
 12      NLD           r       False        True     0.0000     1.0000      0.0008  1980-2024
 13      NLD    r_n (80)       False        True     0.0000     1.0000      0.0008  1980-2024
-14      NLD    r_n (hp)       False       False     0.0000     0.0000      0.0008  1980-2024
+14      NLD    r_n (hp)       False        True     0.0000     1.0000      0.0008  1980-2024
 15      NLD  r_n (mean)       False        True     0.0000     1.0000      0.0009  1980-2024
 16      SWE           r        True       False     1.0000     0.0000     -0.0006  1996-2024
 17      SWE    r_n (80)        True       False     1.0000     0.0000     -0.0005  1996-2024
-18      SWE    r_n (hp)       False       False     0.0000     0.0000     -0.0001  1996-2024
+18      SWE    r_n (hp)        True       False     1.0000     0.0000     -0.0005  1996-2024
 19      SWE  r_n (mean)        True       False     1.0000     0.0000     -0.0005  1996-2024
 20  USA_NFC           r       False       False     0.5000     0.0000     -0.0003  1951-2024
 21  USA_NFC    r_n (80)       False       False     0.0833     0.0000     -0.0001  1951-2024
-22  USA_NFC    r_n (hp)       False       False     0.0000     0.0000      0.0011  1951-2024
+22  USA_NFC    r_n (hp)       False       False     0.5833     0.0000     -0.0003  1951-2024
 23  USA_NFC  r_n (mean)       False       False     0.0833     0.0000     -0.0001  1951-2024
                                item   k   n  share  ci90_lo  ci90_hi         label
 0  share of phases with falling r_M  23  67  0.343    0.256    0.443  опровергнуто
@@ -46,12 +46,12 @@
 3            r              recession within h years  1  45         NaN    NaN    True        0.938           0.496          0.525
 4            r              recession within h years  2  45         NaN    NaN   False        1.007           0.694          0.686
 5            r              recession within h years  3  45         NaN    NaN   False        0.974           0.806          0.808
-6          r_n  accumulation (real net stock growth)  1  44       0.912  0.004    True          NaN             NaN            NaN
-7          r_n  accumulation (real net stock growth)  3  42       0.885  0.018    True          NaN             NaN            NaN
-8          r_n  accumulation (real net stock growth)  5  40       0.891  0.020    True          NaN             NaN            NaN
-9          r_n              recession within h years  1  45         NaN    NaN    True        0.852           0.444          0.510
-10         r_n              recession within h years  2  45         NaN    NaN    True        0.821           0.577          0.669
-11         r_n              recession within h years  3  45         NaN    NaN    True        0.827           0.682          0.792
+6          r_n  accumulation (real net stock growth)  1  44       0.873  0.005    True          NaN             NaN            NaN
+7          r_n  accumulation (real net stock growth)  3  42       0.801  0.001    True          NaN             NaN            NaN
+8          r_n  accumulation (real net stock growth)  5  40       0.838  0.002    True          NaN             NaN            NaN
+9          r_n              recession within h years  1  45         NaN    NaN    True        0.862           0.433          0.510
+10         r_n              recession within h years  2  45         NaN    NaN   False        0.967           0.655          0.669
+11         r_n              recession within h years  3  45         NaN    NaN   False        0.972           0.833          0.792
 12          rM  accumulation (real net stock growth)  1  44       0.896  0.007    True          NaN             NaN            NaN
 13          rM  accumulation (real net stock growth)  3  42       0.920  0.036    True          NaN             NaN            NaN
 14          rM  accumulation (real net stock growth)  5  40       0.958  0.146   False          NaN             NaN            NaN

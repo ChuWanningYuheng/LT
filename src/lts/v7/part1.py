@@ -77,7 +77,7 @@ def klems_panel():
     p.loc[g.year.diff() != 1, "U_lag"] = np.nan
     p["W5"] = g.W.shift(5)
     p["gW"] = (p.W / p.W5) ** (1 / 5) - 1
-    p["gW"] = p.gW.fillna(p.groupby(["geo", "year"]).gW.transform("median"))
+    p["gW"] = p.gW.fillna(p.groupby(["geo", "year"]).gW.transform("median")).fillna(p.gW.median())   # review R1
     p["cy"] = p.geo + p.year.astype(str)
     p["x0"] = np.log(p.K / p.W)
     p["low"] = p.x0 < p.groupby("cy").x0.transform("median")
@@ -92,6 +92,7 @@ def make_a(D="consistent", types=None, delta=None):
             U = sum(d[f"K_{t}"] for t in types)
             I = sum(d[f"I_{t}"] for t in types)
             Ul = U.groupby([d.geo, d.ind]).shift()
+            Ul = Ul.where(d.groupby(["geo", "ind"]).year.diff() == 1)                    # review R8
         dep = (I - (U - Ul)) if D == "consistent" else delta * Ul
         K2 = d.K + m * U
         return (d.PI + m * (I - dep)) / K2, np.log(K2 / d.W)
@@ -164,7 +165,8 @@ def part1_wiod(klems):
     w["W"], w["x0"] = w.LAB, np.log(w.K / w.LAB)
     w["low"] = w.x0 < w.groupby("cy").x0.transform("median")
     w = w.sort_values(["country", "ind", "year"])
-    w["gW"] = w.groupby(["country", "ind"]).W.pct_change().rolling(5, min_periods=1).mean()
+    w["gW"] = w.groupby(["country", "ind"]).W.pct_change()
+    w["gW"] = w.groupby(["country", "ind"]).gW.transform(lambda s: s.rolling(5, min_periods=1).mean())   # review R9
     w["gW"] = w.gW.fillna(w.groupby("cy").gW.transform("median")).fillna(0.04)
     res, curves = [], []
     b0, p0, _ = slope(w.assign(_r=w.r, _x=w.x0), "_r", "_x")

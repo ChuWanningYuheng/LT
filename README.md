@@ -276,3 +276,25 @@ python -m lts.v9.stage8               # градиент с часами BLS
 python -m lts.v9.outcomes             # сводная таблица исходов 1–38 -> report/outcomes_table.md
 ```
 
+
+## Итерация 9б: доработка итерации 9 и расширение марксовой нормы прибыли
+
+Отчёт: [`report/REPORT_v9b.md`](report/REPORT_v9b.md); сводная таблица исходов 1–46: [`report/outcomes_table.md`](report/outcomes_table.md); предрегистрация и журнал: [`pre_registration_v9b.md`](pre_registration_v9b.md); доступность данных: [`data/raw/v9b_availability.md`](data/raw/v9b_availability.md).
+
+Данные (`data/raw/v9b/`, записаны в MANIFEST): BEA GDP by Industry по SIC (1947–1997), NIPA (все годовые ряды), EUKLEMS & INTANProd 2025, OEWS 2012–2024, Z.1, Eurostat `nrg_ind_id` и B2A3N.
+
+```bash
+export PYTHONPATH=src OMP_NUM_THREADS=2
+python -m lts.v9b.download            # загрузка
+python -m lts.v9b.stage1 long         # концы ряда, длинный ряд США 1947–2024, разложение, Мозли (исходы 39, 40, 43)
+python -m lts.v9b.stage1 countries    # страны Eurostat и EU KLEMS (исходы 41, 42)
+python -m lts.v9b.stage1 oews         # внутриотраслевые непроизводительные функции
+python -m lts.v9b.stage1 external     # внешний критерий с r_m
+python -m lts.v9b.stage23 world       # мировые отрасли, эталон Р18 (исходы 44–46; ~1 ч)
+python -m lts.v9b.stage23 unequal     # аддитивное разложение неравноценного обмена
+python -m lts.v9b.stage45 labour      # slack, исход 27 с диким бутстрепом, LCI D11, условия торговли, исход 26 без прогнозов AMECO
+python -m lts.v9b.stage45 minor       # рыночное обесценение (Z.1), исход 35 с лагом 1
+python -m lts.v9b.stage45 o34         # парный бутстреп исхода 34
+python -m lts.v9b.stage45 b           # НМНК b на сетке [−1; 4], кластерная F первого шага ИП
+python -m lts.v9b.outcomes            # сводная таблица исходов 1–46
+```

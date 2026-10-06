@@ -1,0 +1,102 @@
+geo,start,end,cluster,rM_falls,k_rises,window
+USA_NFC,1951,1953,US1951,True,False,after peak
+USA_NFC,1954,1957,US1954,True,True,after peak
+USA_NFC,1958,1960,US1958,False,False,after peak
+USA_NFC,1961,1969,US1961,False,False,after peak
+USA_NFC,1970,1973,US1970,False,True,after peak
+USA_NFC,1974,1980,US1974,True,True,after peak
+USA_NFC,1982,1990,US1982,False,False,after peak
+USA_NFC,1991,2001,US1991,True,False,after peak
+USA_NFC,2002,2007,US2002,False,True,after peak
+USA_NFC,2008,2019,US2008,False,False,after peak
+USA_NFC,2020,2024,US2020,False,False,after peak
+GBR,1960,1973,EU1973,False,True,after peak
+GBR,1976,1979,EU1979,False,True,after peak
+GBR,1983,1990,EU1990,False,True,after peak
+GBR,1994,2000,EU2000,True,False,after peak
+GBR,2003,2007,EU2007,True,False,after peak
+GBR,2010,2019,EU2019,False,False,after peak
+GBR,2021,2024,EU2024,False,False,after peak
+FRA,1960,1973,EU1973,False,False,after peak
+FRA,1976,1979,EU1979,True,True,after peak
+FRA,1983,1990,EU1990,False,True,after peak
+FRA,1994,2000,EU2000,False,False,after peak
+FRA,2003,2007,EU2007,False,True,after peak
+FRA,2010,2019,EU2019,True,True,after peak
+FRA,2021,2024,EU2024,False,False,after peak
+DEU,1960,1973,EU1973,True,False,after peak
+DEU,1976,1979,EU1979,False,True,after peak
+DEU,1983,1990,EU1990,False,False,after peak
+DEU,1994,2000,EU2000,False,False,after peak
+DEU,2003,2007,EU2007,False,True,after peak
+DEU,2010,2019,EU2019,True,False,after peak
+DEU,2021,2024,EU2024,True,True,after peak
+ITA,1960,1973,EU1973,False,False,after peak
+ITA,1976,1979,EU1979,False,True,after peak
+ITA,1983,1990,EU1990,False,False,after peak
+ITA,1994,2000,EU2000,False,True,after peak
+ITA,2003,2007,EU2007,True,True,after peak
+ITA,2010,2019,EU2019,False,False,after peak
+ITA,2021,2024,EU2024,False,False,after peak
+NLD,1960,1973,EU1973,True,False,after peak
+NLD,1976,1979,EU1979,True,True,after peak
+NLD,1983,1990,EU1990,False,False,after peak
+NLD,1994,2000,EU2000,False,False,after peak
+NLD,2003,2007,EU2007,False,True,after peak
+NLD,2010,2019,EU2019,False,False,after peak
+NLD,2021,2024,EU2024,False,False,after peak
+SWE,1960,1973,EU1973,True,False,after peak
+SWE,1976,1979,EU1979,False,True,after peak
+SWE,1983,1990,EU1990,True,False,after peak
+SWE,1994,2000,EU2000,True,False,after peak
+SWE,2003,2007,EU2007,False,False,after peak
+SWE,2010,2019,EU2019,True,False,after peak
+SWE,2021,2024,EU2024,True,True,after peak
+AUS,1960,1973,EU1973,False,False,after peak
+AUS,1976,1979,EU1979,False,True,after peak
+AUS,1983,1990,EU1990,False,False,after peak
+AUS,1994,2000,EU2000,False,False,after peak
+AUS,2003,2007,EU2007,False,False,after peak
+AUS,2010,2019,EU2019,True,True,after peak
+AUS,2021,2024,EU2024,True,False,after peak
+USA_NFC,1965,1969,US1965,True,False,mid
+USA_NFC,1977,1980,US1977,True,True,mid
+USA_NFC,1986,1990,US1986,True,False,mid
+USA_NFC,1996,2001,US1996,True,False,mid
+USA_NFC,2005,2007,US2005,True,True,mid
+USA_NFC,2014,2019,US2014,True,False,mid
+GBR,1967,1973,EU1973,False,True,mid
+GBR,1987,1990,EU1990,True,True,mid
+GBR,1997,2000,EU2000,True,False,mid
+GBR,2005,2007,EU2007,True,False,mid
+GBR,2015,2019,EU2019,True,False,mid
+FRA,1967,1973,EU1973,False,False,mid
+FRA,1987,1990,EU1990,False,False,mid
+FRA,1997,2000,EU2000,False,False,mid
+FRA,2005,2007,EU2007,False,True,mid
+FRA,2015,2019,EU2019,True,True,mid
+DEU,1967,1973,EU1973,True,False,mid
+DEU,1987,1990,EU1990,False,False,mid
+DEU,1997,2000,EU2000,True,False,mid
+DEU,2005,2007,EU2007,False,True,mid
+DEU,2015,2019,EU2019,True,False,mid
+ITA,1967,1973,EU1973,True,True,mid
+ITA,1987,1990,EU1990,True,False,mid
+ITA,1997,2000,EU2000,False,True,mid
+ITA,2005,2007,EU2007,True,True,mid
+ITA,2015,2019,EU2019,False,False,mid
+NLD,1967,1973,EU1973,True,False,mid
+NLD,1987,1990,EU1990,False,False,mid
+NLD,1997,2000,EU2000,False,False,mid
+NLD,2005,2007,EU2007,False,True,mid
+NLD,2015,2019,EU2019,False,False,mid
+SWE,1967,1973,EU1973,False,True,mid
+SWE,1987,1990,EU1990,True,False,mid
+SWE,1997,2000,EU2000,True,False,mid
+SWE,2005,2007,EU2007,False,False,mid
+SWE,2015,2019,EU2019,True,True,mid
+AUS,1967,1973,EU1973,False,False,mid
+AUS,1987,1990,EU1990,True,False,mid
+AUS,1997,2000,EU2000,False,False,mid
+AUS,2005,2007,EU2007,False,False,mid
+AUS,2015,2019,EU2019,False,False,mid

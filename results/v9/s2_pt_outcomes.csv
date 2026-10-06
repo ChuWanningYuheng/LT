@@ -1,0 +1,16 @@
+item,est,ci90_lo,ci90_hi,n,label
+outcome 22 (h=4): mean wage pass-through,0.9644088487446558,0.7669636780527076,1.1485038228072681,33,(h=4) неинформативно
+outcome 22 (h=8): mean wage pass-through,1.4905337654141397,1.137182357770344,1.8388871172003591,33,неинформативно
+outcome 23 (h=4): mean RPT goods - mean wage pass-through,8.175789655229035,3.5436328573302807,13.917508178334637,17,подтверждено
+descr: median RPT goods h=0,1.4853356220325167,,,17,
+descr: median wage beta h=0,0.13755036828883205,,,33,
+descr: median RPT goods h=1,2.9057947743697494,,,17,
+descr: median wage beta h=1,0.2941067920043964,,,33,
+descr: median RPT goods h=2,3.9386591153671673,,,17,
+descr: median wage beta h=2,0.396840265212802,,,33,
+descr: median RPT goods h=4,4.448425022659116,,,17,
+descr: median wage beta h=4,0.7142955913823733,,,33,
+descr: median RPT goods h=8,2.9456229357155883,,,17,
+descr: median wage beta h=8,1.1882022032984831,,,33,
+descr: median RPT goods h=12,2.4399272170735045,,,17,
+descr: median wage beta h=12,1.2120273718226373,,,33,

@@ -199,6 +199,26 @@ def b_between():
     return R, out
 
 
+def transfers_corr():
+    """5.4 (exploratory): T_c / output of traded cells vs country profit rate and labour share (WIOD SEA)."""
+    from scipy.stats import spearmanr
+    from .stage34 import sea_wide
+    T = pd.read_csv(OUT / "s4_transfers.csv")
+    T = T[T.country != "ROW"].assign(t=lambda d: d["T"] / d.x)
+    s = sea_wide()
+    s = s[~s.code.isin(["O84", "P85", "Q", "T", "U", "L68"])]
+    a = s.groupby(["country", "year"]).agg(CAP=("CAP", "sum"), K=("K", "sum"), LAB=("LAB", "sum"), VA=("VA", "sum"))
+    a = a.assign(r=a.CAP / a.K, ls=a.LAB / a.VA).reset_index()
+    m = T.merge(a, on=["country", "year"])
+    rows = []
+    for nm, d in (("2005", m[m.year == 2005]), ("pooled 2000-2014", m)):
+        for v in ("r", "ls"):
+            rho, p = spearmanr(d.t, d[v])
+            rows.append(dict(sample=nm, var=v, spearman=rho, p=p, n=len(d)))
+    m.to_csv(OUT / "s5_transfers_panel.csv", index=False)
+    return pd.DataFrame(rows)
+
+
 if __name__ == "__main__":
     pd.set_option("display.width", 250)
     part = sys.argv[1] if len(sys.argv) > 1 else "all"
@@ -225,3 +245,7 @@ if __name__ == "__main__":
         R.to_csv(OUT / "s5_b_between.csv", index=False)
         pd.DataFrame([o]).to_csv(OUT / "s5_b_between_outcome.csv", index=False)
         print(R.round(3).to_string(), "\n", o)
+    if part in ("corr", "all"):
+        C = transfers_corr()
+        C.to_csv(OUT / "s5_transfers_corr.csv", index=False)
+        print(C.round(3).to_string())

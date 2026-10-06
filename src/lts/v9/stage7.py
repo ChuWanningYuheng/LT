@@ -69,7 +69,7 @@ def fa_table(sheet):
 
 
 def depreciation_total():
-    x = pd.read_excel(FA / "Section1All_xls.xlsx", sheet_name="FAAt104-A", header=None)
+    x = pd.read_excel(FA / "Section1All_xls.xlsx", sheet_name="FAAt103-A", header=None)
     hdr = x.iloc[7].tolist()
     years = {j: int(float(v)) for j, v in enumerate(hdr) if str(v).replace(".0", "").isdigit()}
     for i in range(8, len(x)):

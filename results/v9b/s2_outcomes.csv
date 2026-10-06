@@ -1,5 +1,5 @@
-outcome,est,ci90_lo,ci90_hi,share_hours,share_other,n,label,share_cells_weight1
-"44: share(hours) - share(lab), world beats national",0.16279069767441856,0.023255813953488302,0.3023255813953488,0.813953488372093,0.6511627906976745,43,подтверждено,
-"44: share(hours) - share(cap), world beats national",0.2325581395348837,0.06976744186046513,0.39534883720930236,0.813953488372093,0.5813953488372093,43,подтверждено,
-"45: R2(hours) - max(R2 cap, R2 energy), world industries, 5-year changes, mean of windows",-0.7738662105995759,-1.34420757031993,-0.4897105375154699,,,50,опровергнуто,
-"46: MAWD(hours) - min(cap, energy), world industries, PPP weights 2005, equal dispersion",0.13762847697452363,-0.5854543279229218,0.904813328564577,,,50,неинформативно,0.14083175803402648
+outcome,est,ci90_lo,ci90_hi,discordant_hours_only,discordant_other_only,mcnemar_p_one_sided,share_hours,share_other,n,label,share_cells_weight1
+"44: share(hours) - share(lab), world beats national",0.16279069767441856,0.023255813953488302,0.3023255813953488,11.0,4.0,0.05923461914062499,0.813953488372093,0.6511627906976745,43,подтверждено,
+"44: share(hours) - share(cap), world beats national",0.2325581395348837,0.06976744186046513,0.39534883720930236,16.0,6.0,0.026239395141601562,0.813953488372093,0.5813953488372093,43,подтверждено,
+"45: R2(hours) - max(R2 cap, R2 energy), world industries, 5-year changes, mean of windows",-0.7738662105995759,-1.34420757031993,-0.4897105375154699,,,,,,50,опровергнуто,
+"46: MAWD(hours) - min(cap, energy), world industries, PPP weights 2005, equal dispersion",0.1376284769745236,-0.5854543279229218,0.904813328564577,,,,,,50,неинформативно,0.1408317580340264

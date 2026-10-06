@@ -48,7 +48,9 @@ def build():
     upd("26", est=c26.est, lo=c26.ci90_lo, hi=c26.ci90_hi, label=c26.label,
         old=f"итерация 9 (с прогнозными годами AMECO): {fmt(old26.est, 4)}, «{old26.label}»",
         src="`results/v9b/s4_anchor_v9_corrected.csv`")
-    add_note("26", f"9б, журнал 2: годы AMECO ≤ 2024; p дикого бутстрепа {fmt(c26.p_wild, 3)}.")
+    v26 = a9.loc["ECM u1, variant (centred gap; journal 3)"]
+    upd("26", note=f"9б, журнал 2: годы AMECO ≤ 2024; p дикого бутстрепа {fmt(c26.p_wild, 3)}; вариант с центрированным "
+                   f"разрывом (журнал итерации 9, п. 3): {fmt(v26.est, 4)} ({fmt(v26.ci90_lo, 4)}; {fmt(v26.ci90_hi, 4)}) — «{v26.label}».")
     w27 = o4.loc["outcome 27 (wild bootstrap-t): ln(w/y) on coverage, per 10 pp"]
     old27 = D.loc[D.n == "27"].iloc[0]
     upd("27", lo=w27.ci90_lo, hi=w27.ci90_hi, label=w27.label, old=f"итерация 9 (t(G − 1)): «{old27.label}»",
@@ -82,7 +84,7 @@ def build():
         vv = "; ".join(f"{v} {fmt(sel(it, v).est, 5)} «{sel(it, v).label}»" for v in ("V2", "V3", "V4", "V5"))
         raw = sel(it, sp="raw splice")
         row(n, name, x.est, x.ci90_lo, x.ci90_hi, x.label, "`results/v9b/s1_long_outcomes.csv`", 0, 0.0002, "<",
-            note=f"варианты: {vv}; сырой стык {fmt(raw.est, 5)} «{raw.label}».")
+            note=f"варианты: {vv}; сырой стык {fmt(raw.est, 5)} «{raw.label}». Обобщение падения 1997–2024 гг. на длинный ряд опровергнуто.")
     eu = r("s1_eu_outcomes.csv")
     eux = r("s1_eu_outcomes_extended.csv")
     for n, key, name in (("41", "41:", "Доля стран (Eurostat, ≥ 20 лет), где r_m падает («подтверждено»)"),
@@ -100,7 +102,9 @@ def build():
     row("44", "«Мировое среднее лучше национального»: доля стран для часов − для фонда оплаты (эталон Р18)", a.est,
         a.ci90_lo, a.ci90_hi, a.label, "`results/v9b/s2_outcomes.csv`", 0, 0.1, ">",
         note=f"часы {fmt(a.share_hours, 2)}, фонд оплаты {fmt(a.share_other, 2)}, капитал {fmt(b.share_other, 2)}; "
-             f"часы − капитал {fmt(b.est, 2)} ({fmt(b.ci90_lo, 2)}; {fmt(b.ci90_hi, 2)}).")
+             f"часы − капитал {fmt(b.est, 2)} ({fmt(b.ci90_lo, 2)}; {fmt(b.ci90_hi, 2)}). Хрупко: расходятся "
+             f"{int(a.discordant_hours_only)} против {int(a.discordant_other_only)} стран, Мак-Немар p = "
+             f"{fmt(a.mcnemar_p_one_sided, 3)}; плацебо не посчитаны.")
     for n, key, name, th, de, dr in (("45", "45:", "R²(мировые часы) − max(R² капитала, энергии), изменения за 5 лет", 0, 0.05, ">"),
                                      ("46", "46:", "MAWD(мировые часы) − min(капитал, энергия), веса по ППС, 2005", 0, 0.01, "<")):
         x = s2[s2.outcome.str.startswith(key)].iloc[0]

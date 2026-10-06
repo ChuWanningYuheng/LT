@@ -254,3 +254,25 @@ python -m lts.v8.stage4            # закон тенденции: r_n, фаз�
 python -m lts.v8.stage5            # Маркс против Калецки (квартальные NIPA)
 python -m lts.v8.stage1            # сводная таблица исходов 1–19 по единому правилу -> report/outcomes_table.md
 ```
+
+## Итерация 9: итоги о прибыли, рабочая сила как товар, мировой рынок, непроизводительный труд
+
+Отчёт: [`report/REPORT_v9.md`](report/REPORT_v9.md); сводная таблица исходов 1–38: [`report/outcomes_table.md`](report/outcomes_table.md); предрегистрация и журнал (п. 1–12): [`pre_registration_v9.md`](pre_registration_v9.md); доступность данных: [`data/raw/v9_availability.md`](data/raw/v9_availability.md).
+
+Данные (`data/raw/v9/`, записаны в MANIFEST): OECD SDMX (почасовой заработок, ИПЦ, охват договорами, профсоюзы), Eurostat (HICP, LCI, ИЦП, безработица, slack), FRED, BLS (ECI, ip), GGDC PLD 2005 и 2023, PWT 11, EXIOBASE 3.8.2 (2011, 2017 ixi; 2017, 2021 pxp), приложения Hickel et al. 2024, BEA GDP by Industry, MPRA 81542 и 84035. Повторно — AMECO, WIOD 2016 + SEA, OECD STAN, BEA FA, EU KLEMS, BEA 2017 + QCEW.
+
+```bash
+export PYTHONPATH=src OMP_NUM_THREADS=2
+python -m lts.v9.download             # загрузка (пропускает уже скачанное; имя файла — скачать заново)
+python -m lts.v9.stage1               # панель Б3 без перекрытий, фазы, реальная переоценка, парный бутстреп градиента
+python -m lts.v9.b_est                # семь оценщиков b, выбор основного (исход 21)
+python -m lts.v9.stage2               # перенос цен, 2021–2023, якорь и возврат, срез (исходы 22–27); части: pt, infl, anchor
+python -m lts.v9.stage34              # мировые стоимости и ячейки «страна × торгуемая отрасль», 2000–2014 (~часы)
+python -m lts.v9.stage34 outcomes     # исходы 28–33 с бутстрепом
+python -m lts.v9.stage5               # Hickel et al., разложение перетока, b между странами, корреляции T_c; части: replicate, between, corr
+python -m lts.v9.stage6               # реальный курс (исходы 35–36)
+python -m lts.v9.stage7               # марксова норма прибыли с производительным трудом (исходы 37–38)
+python -m lts.v9.stage8               # градиент с часами BLS
+python -m lts.v9.outcomes             # сводная таблица исходов 1–38 -> report/outcomes_table.md
+```
+

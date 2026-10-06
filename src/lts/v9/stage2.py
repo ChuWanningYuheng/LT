@@ -505,4 +505,6 @@ if __name__ == "__main__":
         EG.to_csv(OUT / "s2_anchor_eg.csv", index=False)
         O.to_csv(OUT / "s2_anchor.csv", index=False)
         print(EG.round(3).to_string(), "\n", O.round(4).to_string(), flush=True)
-        print(cross_section(), flush=True)
+        cs = cross_section()
+        pd.DataFrame([cs]).to_csv(OUT / "s2_cross_section.csv", index=False)
+        print(cs, flush=True)

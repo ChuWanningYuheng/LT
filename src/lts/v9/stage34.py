@@ -365,6 +365,89 @@ def run(years=YEARS):
         changes(st4, 4).to_csv(OUT / "s4_changes.csv", index=False)
 
 
+# ---------------------------------------------------------------- outcomes 28, 29, 33 with intervals
+def outcomes(years=YEARS, B=2000):
+    from ..v8.rule import share_row
+    rows29, cells_store = [], {}
+    for y in years:
+        A, cells = year_system(y)
+        cont = contents(A, cells)
+        W, X = world_industries(cont, cells)
+        h = W.hours.to_numpy()
+        xv = X.to_numpy()
+        eq = {k: qmap(W[k].to_numpy(), h) for k in ("hours", "cap", "energy")}
+        pt = {k: mawd(v, xv)[0] for k, v in eq.items()}
+        est = pt["hours"] - min(pt["cap"], pt["energy"])
+        rng = np.random.default_rng(29 + y)
+        bs = []
+        for _ in range(B):
+            ii = rng.integers(0, len(h), len(h))
+            m = {k: mawd(v[ii], xv[ii])[0] for k, v in eq.items()}
+            bs.append(m["hours"] - min(m["cap"], m["energy"]))
+        lo, hi = np.quantile(bs, [0.05, 0.95])
+        rows29.append(dict(year=y, est=est, ci90_lo=lo, ci90_hi=hi, label=decide(est, lo, hi, 0, 0.01, "<")))
+        if y in (2000, 2005, 2009, 2010, 2014):
+            pidx = cont["_pidx"]
+            tr = cells.code.map(traded) & (cells.country != "ROW") & (cells.x > 0) & np.isfinite(pidx) & (pidx > 0)
+            cdf = cells[tr][["country", "code", "x"]].copy()
+            cdf["p"] = pidx[tr.values]
+            for k in ("hours_adj_pl1", "lab"):
+                cdf["z_" + k] = cont[k][tr.values]
+            cells_store[y] = cdf
+        print("outcomes", y, flush=True)
+    R29 = pd.DataFrame(rows29)
+    m = R29.est.mean()
+    out = [dict(outcome="29 (2014)", **R29[R29.year == 2014].iloc[0][["est", "ci90_lo", "ci90_hi", "label"]].to_dict()),
+           dict(outcome="29 (mean over years; CI = mean of yearly bounds)", est=m, ci90_lo=R29.ci90_lo.mean(),
+                ci90_hi=R29.ci90_hi.mean(), label=decide(m, R29.ci90_lo.mean(), R29.ci90_hi.mean(), 0, 0.01, "<"))]
+    N = pd.read_csv(OUT / "s3_national_vs_world.csv")
+    byc = N.groupby("country").world_better.mean() > 0.5
+    out.append(share_row("28: countries where world-average labour beats national (majority of years)", byc, 0.5, 0.15, ">"))
+    n05 = N[N.year == 2005]
+    out.append(share_row("28 (2005)", n05.world_better, 0.5, 0.15, ">"))
+    # 33: R2(b) - R2(c) in 5-year changes, mean over windows, bootstrap by country
+    wins = ((2000, 2005), (2005, 2010), (2009, 2014))
+    merged = {w: cells_store[w[0]].merge(cells_store[w[1]], on=["country", "code"], suffixes=("_a", "_b")) for w in wins}
+
+    def stat(sel):
+        v = []
+        for w, m_ in merged.items():
+            d = m_[m_.country.isin(sel)] if sel is not None else m_
+            dP = np.log(d.p_b / d.p_a).to_numpy()
+            wt = d.x_b.to_numpy()
+            r = {k: t1(dP, np.log(d["z_" + k + "_b"] / d["z_" + k + "_a"]).to_numpy(), wt) for k in ("hours_adj_pl1", "lab")}
+            v.append(r["hours_adj_pl1"] - r["lab"])
+        return float(np.mean(v))
+    est = stat(None)
+    cs = merged[wins[0]].country.unique()
+    rng = np.random.default_rng(33)
+    bs = []
+    for _ in range(B):
+        pick = rng.choice(cs, len(cs), replace=True)
+        vals = []
+        for w, m_ in merged.items():
+            d = pd.concat([m_[m_.country == c] for c in pick])
+            dP = np.log(d.p_b / d.p_a).to_numpy()
+            wt = d.x_b.to_numpy()
+            r = {k: t1(dP, np.log(d["z_" + k + "_b"] / d["z_" + k + "_a"]).to_numpy(), wt) for k in ("hours_adj_pl1", "lab")}
+            vals.append(r["hours_adj_pl1"] - r["lab"])
+        bs.append(np.mean(vals))
+    lo, hi = np.quantile(bs, [0.05, 0.95])
+    out.append(dict(outcome="33: R2(b) - R2(c), 5-year changes, mean of windows", est=est, ci90_lo=lo, ci90_hi=hi,
+                    label=decide(est, lo, hi, 0, 0.05, ">")))
+    O4 = pd.read_csv(OUT / "s4_outcomes_by_year.csv")
+    for k in ("30 b-c", "31 b-min(cap,energy)", "32 a-b"):
+        r = O4[(O4.year == 2005) & (O4.outcome == k)].iloc[0]
+        out.append(dict(outcome=k + " (2005)", est=r.est, ci90_lo=r.ci90_lo, ci90_hi=r.ci90_hi, label=r.label))
+    R29.to_csv(OUT / "s3_outcome29_by_year.csv", index=False)
+    pd.DataFrame(out).to_csv(OUT / "s34_outcomes.csv", index=False)
+    return pd.DataFrame(out)
+
+
 if __name__ == "__main__":
-    yrs = [int(a) for a in sys.argv[1:]] or YEARS
-    run(yrs)
+    if len(sys.argv) > 1 and sys.argv[1] == "outcomes":
+        pd.set_option("display.width", 250)
+        print(outcomes().round(4).to_string())
+    else:
+        yrs = [int(a) for a in sys.argv[1:]] or YEARS
+        run(yrs)

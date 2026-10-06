@@ -1,0 +1,3 @@
+outcome,est,ci90_lo,ci90_hi,theta0,delta,direction,label
+"gradient: share of permutations better (MAWD), detail - summary",0.659,-0.14915,0.8120499999999999,0,0.1,<,неинформативно
+"gradient: MAWD(flat) - MAWD(hours), detail - summary",-0.030519019260523084,-0.14564456941074105,0.09663077042681878,0,0.02,>,неинформативно

@@ -1,0 +1,5 @@
+outcome,est,ci90_lo,ci90_hi,k,n,theta0,delta,direction,label,subset
+"7 B0: labour informative vs physical flat and permutations, h = 5",0.375,0.16115994929027644,0.652029352995119,3,8,0.5,0.15,>,неинформативно,all
+"7 B0: labour informative vs physical flat and permutations, h = 5",0.25,0.0865070033792796,0.5398716011915111,2,8,0.5,0.15,>,неинформативно,all_nohed
+"7 B0: labour informative vs physical flat and permutations, h = 5",0.75,0.46012839880848877,0.9134929966207204,6,8,0.5,0.15,>,неинформативно,core
+"7 B0: labour informative vs physical flat and permutations, h = 5",0.5,0.2486251757128503,0.7513748242871496,4,8,0.5,0.15,>,неинформативно,core_nohed

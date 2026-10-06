@@ -170,21 +170,29 @@ def ratios(d, name, n_perm=1000, seed=8):
 
 
 # ---------------------------------------------------------------- 2.3 turnover (US)
+def nipa_q4(codes):
+    """End-of-year levels (Q4) from the quarterly NIPA file (inventories are published quarterly only)."""
+    d = pd.read_csv(R8 / "NipaDataQ.txt", dtype=str)
+    d.columns = ["code", "period", "v"]
+    d = d[d.code.isin(codes) & d.period.str.endswith("Q4")]
+    d["v"] = pd.to_numeric(d.v.str.replace(",", ""), errors="coerce")
+    d["year"] = d.period.str[:4].astype(int)
+    return d.pivot(index="year", columns="code", values="v")
+
 DUR = {"C16", "C22-C23", "C24-C25", "C26", "C27", "C28", "C29-C30", "C31-C33"}
 
 
 def turnover():
     p = klems()
     us = p[p.geo == "US"].copy()
-    inv = nipa(["B372RC", "B377RC", "B378RC", "A379RC", "A382RC", "B864RC", "A385RC"]) / 1  # millions? (NIPA units -6)
-    inv = inv * 1.0
+    inv = nipa_q4(["B372RC", "N377RC", "N378RC", "N379RC", "N382RC", "N864RC", "N385RC"])   # NAICS basis, end of Q4
     us["F"] = us.II + us.W
     grp = np.where(us.ind == "A", "farm", np.where(us.ind.str.startswith("C") & us.ind.isin(DUR), "mdur",
                    np.where(us.ind.str.startswith("C"), "mnondur", np.where(us.ind == "G46", "whole",
                    np.where(us.ind == "G47", "retail", np.where(us.ind == "G45", "mvd", "other"))))))
     us["grp"] = grp
-    m = {"farm": "B372RC", "mdur": "B377RC", "mnondur": "B378RC", "whole": "A379RC", "mvd": "B864RC", "other": "A385RC"}
-    inv["retail_ex"] = inv.A382RC - inv.B864RC
+    m = {"farm": "B372RC", "mdur": "N377RC", "mnondur": "N378RC", "whole": "N379RC", "mvd": "N864RC", "other": "N385RC"}
+    inv["retail_ex"] = inv.N382RC - inv.N864RC
     m["retail"] = "retail_ex"
     us["INV"] = np.nan
     for (g, y), s in us.groupby(["grp", "year"]):
@@ -192,6 +200,7 @@ def turnover():
         us.loc[s.index, "INV"] = tot * s.F / s.F.sum()
     us["tau"] = us.INV / us.F
     us["Kadv"] = us.K + us.INV
+    us = us[us.INV.notna()].copy()                                     # same sample for both specifications
     rows = []
     for name, K_ in (("K", us.K), ("K + inventories", us.Kadv)):
         rows.append(dict(item=f"b, US KLEMS, {name}", **bfit(us, np.log(us.PI / us.W), np.log(K_ / us.W))))

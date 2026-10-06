@@ -256,6 +256,7 @@ def outcome34_paired(B=499, seed=34):
     w = w[~w.code.isin(["O84", "P85", "Q", "T", "U", "L68", "B", "D35", "K64", "K65", "K66"])]
     w = w[(w.CAP > 0) & (w.LAB > 0) & (w.K > 0)].copy()
     w["PI"], w["W"] = w.CAP, w.LAB
+    w["kw"] = w.K / w.W
 
     def both(d):
         d1 = d.assign(cy=d.country + d.year.astype(str), ind=d.code)

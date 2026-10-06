@@ -33,6 +33,7 @@ UNPROD = {"main": {"whl", "ret", "fin", "rea", "leg", "mgt", "adm", "gov"}}
 UNPROD["V2 transport unproductive"] = UNPROD["main"] | {"trn"}
 UNPROD["V3 information + computer design unproductive"] = UNPROD["main"] | {"inf", "csd"}
 UNPROD["V4 all professional services unproductive"] = UNPROD["main"] | {"csd", "mps"}
+UNPROD["V5 Tsoulfidis-Paitaridis classification (journal 12)"] = UNPROD["main"] | {"mps", "wst"}
 
 
 def norm(s):

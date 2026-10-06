@@ -20,3 +20,46 @@
 /home/user/LT/src/lts/v9/stage5.py:56: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
   return hours.sum(0).to_numpy(), skill, comp, nos, cfc
 2021 narrow North {'total_hours': 9649097.27535755, 'north_imports': 896892.6730467697, 'north_exports': 78737.45221788337, 'net': 818155.2208288864, 'net_low': np.float64(203706.6646421408), 'net_med': np.float64(562466.2589435672), 'net_high': np.float64(51982.29724317833), 'wage_value_MEUR': 17825743.06136617, 'year': 2021, 'north': 'narrow North'}
+/home/user/LT/src/lts/v9/stage5.py:51: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  skill[lev] = F[rows.str.startswith("Employment hours: " + lev)].sum(0).to_numpy()
+/home/user/LT/src/lts/v9/stage5.py:52: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  comp = {lev: F[rows == f"Compensation of employees; wages, salaries, & employers' social contributions: {lev}"].sum(0).to_numpy()
+/home/user/LT/src/lts/v9/stage5.py:54: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  nos = F[rows == "Operating surplus: Remaining net operating surplus"].sum(0).to_numpy()
+/home/user/LT/src/lts/v9/stage5.py:55: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  cfc = F[rows == "Operating surplus: Consumption of fixed capital"].sum(0).to_numpy()
+/home/user/LT/src/lts/v9/stage5.py:56: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  return hours.sum(0).to_numpy(), skill, comp, nos, cfc
+2017 IMF advanced {'total_hours': 8072120.389700313, 'north_imports': 744503.1571925421, 'north_exports': 74127.56135895406, 'net': 670375.595833588, 'net_low': np.float64(168679.65618075192), 'net_med': np.float64(462234.48898561846), 'net_high': np.float64(39461.450667217716), 'wage_value_MEUR': 13540284.409865461, 'year': 2017, 'north': 'IMF advanced'}
+/home/user/LT/src/lts/v9/stage5.py:142: RuntimeWarning: divide by zero encountered in divide
+  w = np.where(ok, (q / hrs) / pib, 1.0)
+/home/user/LT/src/lts/v9/stage5.py:142: RuntimeWarning: invalid value encountered in divide
+  w = np.where(ok, (q / hrs) / pib, 1.0)
+/home/user/LT/src/lts/v9/stage5.py:142: RuntimeWarning: divide by zero encountered in divide
+  w = np.where(ok, (q / hrs) / pib, 1.0)
+/home/user/LT/src/lts/v9/stage5.py:142: RuntimeWarning: invalid value encountered in divide
+  w = np.where(ok, (q / hrs) / pib, 1.0)
+/home/user/LT/src/lts/v9/stage5.py:142: RuntimeWarning: divide by zero encountered in divide
+  w = np.where(ok, (q / hrs) / pib, 1.0)
+/home/user/LT/src/lts/v9/stage5.py:142: RuntimeWarning: invalid value encountered in divide
+  w = np.where(ok, (q / hrs) / pib, 1.0)
+/home/user/LT/src/lts/v9/stage5.py:51: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  skill[lev] = F[rows.str.startswith("Employment hours: " + lev)].sum(0).to_numpy()
+/home/user/LT/src/lts/v9/stage5.py:52: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  comp = {lev: F[rows == f"Compensation of employees; wages, salaries, & employers' social contributions: {lev}"].sum(0).to_numpy()
+/home/user/LT/src/lts/v9/stage5.py:54: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  nos = F[rows == "Operating surplus: Remaining net operating surplus"].sum(0).to_numpy()
+/home/user/LT/src/lts/v9/stage5.py:55: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  cfc = F[rows == "Operating surplus: Consumption of fixed capital"].sum(0).to_numpy()
+/home/user/LT/src/lts/v9/stage5.py:56: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  return hours.sum(0).to_numpy(), skill, comp, nos, cfc
+2017 narrow North {'total_hours': 8072120.389700313, 'north_imports': 737991.2355876049, 'north_exports': 72774.16153261479, 'net': 665217.0740549902, 'net_low': np.float64(166559.56533747105), 'net_med': np.float64(458812.7705381021), 'net_high': np.float64(39844.738179417065), 'wage_value_MEUR': 13689582.15737499, 'year': 2017, 'north': 'narrow North'}
+/home/user/LT/src/lts/v9/stage5.py:142: RuntimeWarning: divide by zero encountered in divide
+  w = np.where(ok, (q / hrs) / pib, 1.0)
+/home/user/LT/src/lts/v9/stage5.py:142: RuntimeWarning: invalid value encountered in divide
+  w = np.where(ok, (q / hrs) / pib, 1.0)
+   year  pl_year  adjust_services   net_hours  net_adjusted_hours  a_productivity_hours  b_emmanuel_MEUR  wN_per_adj_hour  wS_per_adj_hour  c_profit_MEUR  os_share_SN  os_share_NS   va_SN_MEUR  share_hours_weight1   north
+0  2017     2017             True  670375.596          429394.078            240981.518      3101883.164            9.757            2.533     169618.384         0.33        0.259  2399135.170                0.344     NaN
+1  2017     2017            False  670375.596          477205.629            193169.967      4967501.733           12.724            2.314     169618.384         0.33        0.259  2399135.170                0.615     NaN
+2  2017     2011             True  670375.596          439642.870            230732.726      3348032.602           10.113            2.498     169618.384         0.33        0.259  2399135.170                0.344     NaN
+3  2017     2017             True  665217.074          427103.666            238113.408      3121130.789            9.855            2.548     176473.710         0.33        0.258  2448475.735                0.344  narrow

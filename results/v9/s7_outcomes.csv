@@ -1,0 +1,13 @@
+variant,item,est,se,ci90_lo,ci90_hi,label
+main,outcome 37: trend of r_m per year,-0.0010502159311058159,0.00031641201220557327,-0.0015707136911839838,-0.0005297181710276479,подтверждено
+main,outcome 38: trend of r_m - trend of r,-0.0007231994333608432,0.0004418569774443168,-0.0014500541612567444,3.655294535057996e-06,неинформативно
+main,conventional r: trend per year,-0.00032701649774496597,0.0002188712000406384,,,
+V2 transport unproductive,outcome 37: trend of r_m per year,-0.0016220350282945533,0.00034350232964888033,-0.002187096360566961,-0.0010569736960221452,подтверждено
+V2 transport unproductive,outcome 38: trend of r_m - trend of r,-0.0012950185305495832,0.0004501120334439795,-0.0020354528255649294,-0.000554584235534237,подтверждено
+V2 transport unproductive,conventional r: trend per year,-0.00032701649774496597,0.0002188712000406384,,,
+V3 information + computer design unproductive,outcome 37: trend of r_m per year,-0.0006883235033773392,0.0004919146759718748,-0.0014975231453510734,0.0001208761385963949,неинформативно
+V3 information + computer design unproductive,outcome 38: trend of r_m - trend of r,-0.0003613070056323821,0.0005992302408850388,-0.001347040751888271,0.0006244267406235067,неинформативно
+V3 information + computer design unproductive,conventional r: trend per year,-0.00032701649774496597,0.0002188712000406384,,,
+V4 all professional services unproductive,outcome 37: trend of r_m per year,9.849711510345662e-05,0.0003567251656896164,-0.0004883157824559623,0.0006853100126628756,неинформативно
+V4 all professional services unproductive,outcome 38: trend of r_m - trend of r,0.00042551361284841587,0.0004884553005344493,-0.00037799535653075316,0.001229022582227585,неинформативно
+V4 all professional services unproductive,conventional r: trend per year,-0.00032701649774496597,0.0002188712000406384,,,

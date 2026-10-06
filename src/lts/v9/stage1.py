@@ -68,7 +68,7 @@ def recompute():
 
 
 # ---------------------------------------------------------------- gradient, paired bootstrap
-def gradient_paired(B=2000, coverage_fix=False, E_override=None, tag=""):
+def gradient_paired(B=2000, coverage_fix=False, E_override=None, tag="", indep=False):
     from ..core import leontief_inverse
     from ..v2.placebo_cost import metrics_mat
     from ..v8.stage3 import bea_detail_system, concordance, detail_employment, level_maps
@@ -126,15 +126,26 @@ def gradient_paired(B=2000, coverage_fix=False, E_override=None, tag=""):
             r[lev] = stats_on(lev_obj[lev], ii) if len(ii) > 5 else None
         if all(v is not None for v in r.values()):
             draws.append(r)
+    ind_draws = {}
+    if indep:                                                  # pre-registered scheme of iteration 8 (independent levels)
+        for lev, o in lev_obj.items():
+            J = len(o["xe"])
+            I = np.random.default_rng(7 + J).integers(0, J, (B, J))
+            ind_draws[lev] = [stats_on(o, I[b]) for b in range(B)]
     rows = []
     for k, theta_d, direction in (("perm_mawd", 0.1, "<"), ("perm_d", 0.1, "<"), ("fmh", 0.02, ">")):
         est = point["detail"][k] - point["summary"][k]
+        if indep:
+            di = np.array([a[k] - b_[k] for a, b_ in zip(ind_draws["detail"], ind_draws["summary"])])
+            ilo, ihi = np.quantile(di, [0.05, 0.95])
         dd = np.array([d["detail"][k] - d["summary"][k] for d in draws])
         lo, hi = np.quantile(dd, [0.05, 0.95])
         rows.append(dict(variant=tag or ("coverage fix" if coverage_fix else "main"), stat=k, detail=point["detail"][k],
                          naics3=point["naics3"][k], summary=point["summary"][k], diff=est, ci90_lo=lo, ci90_hi=hi,
                          boot_median=float(np.median(dd)), n_draws=len(dd),
-                         label=decide(est, lo, hi, 0, theta_d, direction)))
+                         label=decide(est, lo, hi, 0, theta_d, direction),
+                         **(dict(indep_lo=ilo, indep_hi=ihi, label_prereg=decide(est, ilo, ihi, 0, theta_d, direction))
+                            if indep else {})))
     return pd.DataFrame(rows)
 
 

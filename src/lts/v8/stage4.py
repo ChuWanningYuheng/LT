@@ -69,7 +69,7 @@ def normal(u, kind):
     if kind == "mean":
         return pd.Series(u.mean(), index=u.index)
     if kind == "hp":
-        return u - hp_gap(u.to_numpy(), 100)
+        return u - hp_gap(u.to_numpy(), 100) / 100                     # hp_gap returns 100*(u - trend); journal 8
     return pd.Series(80.0, index=u.index)
 
 

@@ -1,0 +1,16 @@
+                                             check  m_zero  m_insig      n  beta_max  lo95_at_m20  m_compat_min  m_compat_max grid_end_reached    b_m0    b_m1  b_m3_5   se_m1  m_lo90_ge_0_9   beta0      p0  beta_m1    p_m1  median_U_over_K     est       t      RV
+0       R4 profile (a): m compatible with beta = 0     3.5     0.45  11733    0.0169      -0.0212          0.45          20.0             True     NaN     NaN     NaN     NaN            NaN     NaN     NaN      NaN     NaN              NaN     NaN     NaN     NaN
+1                               R2 log form, asinh     NaN      NaN  11733       NaN          NaN           NaN           NaN              NaN  0.1511  0.1809  0.2346  0.0402            NaN     NaN     NaN      NaN     NaN              NaN     NaN     NaN     NaN
+2                          R2 log form, p1 replace     NaN      NaN  11733       NaN          NaN           NaN           NaN              NaN  0.4351  0.4815  0.5714  0.1225            NaN     NaN     NaN      NaN     NaN              NaN     NaN     NaN     NaN
+3                            R2 log form, positive     NaN      NaN   9619       NaN          NaN           NaN           NaN              NaN  0.5331  0.5954  0.7018  0.1096            NaN     NaN     NaN      NaN     NaN              NaN     NaN     NaN     NaN
+4                    R3 SEC profile, all countries     NaN     0.05  11302       NaN          NaN          0.05          20.0             True     NaN     NaN     NaN     NaN            NaN -0.0224  0.0375  -0.0073  0.1552           0.8439     NaN     NaN     NaN
+5              R6 CH robustness value, clustered t     NaN      NaN  11276       NaN          NaN           NaN           NaN              NaN     NaN     NaN     NaN     NaN            NaN     NaN     NaN      NaN     NaN              NaN -0.0260 -2.4066  0.0224
+6  R15 corr(K_nonNA/K, ln K/W) within country-year     NaN      NaN  12343       NaN          NaN           NaN           NaN              NaN     NaN     NaN     NaN     NaN            NaN     NaN     NaN      NaN     NaN              NaN -0.5901     NaN     NaN
+       variant  lambda_strict  R2_strict
+0         main         0.1573     0.6947
+1  HS = simple         0.2265     0.5114
+2       OJT x0         0.1626     0.6918
+3       OJT x1         0.1503     0.6763
+4    exp x0.25         0.1525     0.7459
+5     exp x0.5         0.1458     0.7694
+6        O*NET         0.1313     0.6383

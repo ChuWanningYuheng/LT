@@ -20,6 +20,7 @@ from ..v9 import stage2 as v9s2
 from .stage1 import OUT, R, nipa
 
 R9 = OUT.parents[1] / "results" / "v9"
+v9s2.AM = v9s2.AM[v9s2.AM.year <= 2024].copy()                  # journal 2: no AMECO forecast years
 WEBB = np.array([-np.sqrt(1.5), -1, -np.sqrt(0.5), np.sqrt(0.5), 1, np.sqrt(1.5)])
 
 
@@ -72,6 +73,7 @@ def ecm_panel(shock="slack"):
     a["lw"] = np.log(a.HWCDW / a.NLHA / a.PCPH)
     a["ly"] = np.log(a.RVGDE / a.NLHA)
     sl = slack_annual()
+    sl = sl[sl.year <= 2024]
     inv = {v: k for k, v in v9s2.AM_TO2.items() if v}
     sl["geo"] = sl.geo.map(lambda g: inv.get(g, inv.get({"EL": "GR", "UK": "GB"}.get(g, g))))
     sl = sl.dropna(subset=["geo"]).rename(columns={"value": "slack"})
@@ -106,6 +108,7 @@ def ecm_us_u6():
     u6 = pd.read_csv(OUT.parents[1] / "data" / "raw" / "v9" / "fred_U6RATE.csv")
     u6.columns = ["date", "v"]
     u6 = u6.assign(year=pd.to_datetime(u6.date).dt.year).groupby("year").v.mean()
+    u6 = u6[u6.index <= 2024]
     d = pd.DataFrame({"dlw": lw.diff(), "gap1": (lw - ly).shift(), "s1": u6.shift().reindex(lw.index),
                       "u1": a.ZUTN.shift(), "dlw1": lw.diff().shift(), "dlw2": lw.diff().shift(2),
                       "dly1": ly.diff().shift(), "dly2": ly.diff().shift(2)}).dropna()
@@ -365,6 +368,10 @@ if __name__ == "__main__":
         o27 = outcome27()
         Cl, P22 = lci_pt()
         Dt, T = tot_2021()
+        EG9, A9 = v9s2.anchor()                                   # iteration 9 outcomes 26-27 without forecast years
+        A9.to_csv(OUT / "s4_anchor_v9_corrected.csv", index=False)
+        EG9.to_csv(OUT / "s4_anchor_eg_v9_corrected.csv", index=False)
+        print(A9.round(4).to_string(), flush=True)
         out = pd.concat([E, U, pd.DataFrame([o27]), P22, T], ignore_index=True)
         out.to_csv(OUT / "s4_outcomes.csv", index=False)
         Cl.to_csv(OUT / "s4_lci_lp.csv", index=False)

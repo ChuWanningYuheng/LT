@@ -1,0 +1,148 @@
+b0b AUT 2010
+b0b AUT 2011
+b0b AUT 2012
+b0b AUT 2013
+b0b AUT 2014
+b0b AUT 2015
+b0b AUT 2016
+b0b AUT 2017
+b0b AUT 2018
+b0b AUT 2019
+b0b AUT 2020
+b0b AUT 2021
+b0b AUT 2022
+b0b CZE 2010
+b0b CZE 2011
+b0b CZE 2012
+b0b CZE 2013
+b0b CZE 2014
+b0b CZE 2015
+b0b CZE 2016
+b0b CZE 2017
+b0b CZE 2018
+b0b CZE 2019
+b0b CZE 2020
+b0b CZE 2021
+b0b CZE 2022
+b0b DEU 2010
+b0b DEU 2011
+b0b DEU 2012
+b0b DEU 2013
+b0b DEU 2014
+b0b DEU 2015
+b0b DEU 2016
+b0b DEU 2017
+b0b DEU 2018
+b0b DEU 2019
+b0b DEU 2020
+b0b DEU 2021
+b0b DEU 2022
+b0b ESP 2010
+b0b ESP 2011
+b0b ESP 2012
+b0b ESP 2013
+b0b ESP 2014
+b0b ESP 2015
+b0b ESP 2016
+b0b ESP 2017
+b0b ESP 2018
+b0b ESP 2019
+b0b ESP 2020
+b0b ESP 2021
+b0b ESP 2022
+b0b FRA 2010
+b0b FRA 2011
+b0b FRA 2012
+b0b FRA 2013
+b0b FRA 2014
+b0b FRA 2015
+b0b FRA 2016
+b0b FRA 2017
+b0b FRA 2018
+b0b FRA 2019
+b0b FRA 2020
+b0b FRA 2021
+b0b FRA 2022
+b0b ITA 2010
+b0b ITA 2011
+b0b ITA 2012
+b0b ITA 2013
+b0b ITA 2014
+b0b ITA 2015
+b0b ITA 2016
+b0b ITA 2017
+b0b ITA 2018
+b0b ITA 2019
+b0b ITA 2020
+b0b ITA 2021
+b0b ITA 2022
+b0b NLD 2010
+b0b NLD 2011
+b0b NLD 2012
+b0b NLD 2013
+b0b NLD 2014
+b0b NLD 2015
+b0b NLD 2016
+b0b NLD 2017
+b0b NLD 2018
+b0b NLD 2019
+b0b NLD 2020
+b0b NLD 2021
+b0b NLD 2022
+b0b POL 2010
+b0b POL 2011
+b0b POL 2012
+b0b POL 2013
+b0b POL 2014
+b0b POL 2015
+b0b POL 2016
+b0b POL 2017
+b0b POL 2018
+b0b POL 2019
+b0b POL 2020
+b0b POL 2021
+b0b POL 2022
+b0b GBR 2010
+b0b GBR 2011
+b0b GBR 2012
+b0b GBR 2013
+b0b GBR 2014
+b0b GBR 2015
+b0b GBR 2016
+b0b GBR 2017
+b0b GBR 2018
+b0b GBR 2019
+b0b GBR 2020
+b0b GBR 2021
+b0b GBR 2022
+        cand  n  hours_sig_better_both  not_worse  hours_point_better_both     mask      method
+0    capital  8                      6          0                        8      all  a_quantile
+1        cfc  9                      5          0                        9      all  a_quantile
+2   eu_gross  9                      7          0                        9      all  a_quantile
+3     eu_net  9                      6          0                        9      all  a_quantile
+7  nonlabour  9                      1          6                        8      all  a_quantile
+0    capital  8                      7          0                        8      all     b_power
+1        cfc  9                      6          0                        9      all     b_power
+2   eu_gross  9                      8          0                        9      all     b_power
+3     eu_net  9                      7          0                        9      all     b_power
+7  nonlabour  9                      1          6                        7      all     b_power
+0    capital  8                      7          0                        8      all    c_common
+1        cfc  9                      6          0                        9      all    c_common
+2   eu_gross  9                      8          0                        9      all    c_common
+3     eu_net  9                      7          0                        9      all    c_common
+7  nonlabour  9                      1          6                        7      all    c_common
+0    capital  8                      7          0                        8  no_rent  a_quantile
+1        cfc  9                      9          0                        9  no_rent  a_quantile
+2   eu_gross  9                      9          0                        9  no_rent  a_quantile
+3     eu_net  9                      7          0                        9  no_rent  a_quantile
+7  nonlabour  9                      3          3                        9  no_rent  a_quantile
+0    capital  8                      8          0                        8  no_rent     b_power
+1        cfc  9                      9          0                        9  no_rent     b_power
+2   eu_gross  9                      9          0                        9  no_rent     b_power
+3     eu_net  9                      8          0                        9  no_rent     b_power
+7  nonlabour  9                      1          3                        8  no_rent     b_power
+0    capital  8                      8          0                        8  no_rent    c_common
+1        cfc  9                      9          0                        9  no_rent    c_common
+2   eu_gross  9                      9          0                        9  no_rent    c_common
+3     eu_net  9                      8          0                        9  no_rent    c_common
+7  nonlabour  9                      2          3                        8  no_rent    c_common

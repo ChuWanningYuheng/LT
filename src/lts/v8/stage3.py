@@ -290,7 +290,7 @@ def bea_detail_system():
     return inds, Z, m, x, comp
 
 
-def detail_employment(inds, comp):
+def detail_employment(inds, comp, coverage_fix=False):
     cc = concordance()
     emp = qcew_private()
     tok_owner = {}
@@ -313,6 +313,11 @@ def detail_employment(inds, comp):
             E[o] += e * wi
     E = pd.Series(E)
     matched = E > 0
+    if coverage_fix:                                                 # journal 7: QCEW coverage gaps
+        wpe = pd.Series(comp, index=inds)[matched] / E[matched]
+        bad = wpe.index[wpe > 5 * wpe.median()]
+        E[bad] = 0.0
+        matched = E > 0
     wage = comp[matched.to_numpy()].sum() / E[matched].sum()
     imputed = (~matched) & (pd.Series(comp, index=inds) > 0)
     E[imputed] = np.asarray(comp)[imputed.to_numpy()] / wage
@@ -325,9 +330,10 @@ def level_maps(inds):
     return {"detail": list(inds), "naics3": [i[:3] for i in inds], "summary": summ}
 
 
-def gradient(B=2000, n_p=1000):
+def gradient(B=2000, n_p=1000, coverage_fix=False):
+    tag = "_fix" if coverage_fix else ""
     inds, Z, m, x, comp = bea_detail_system()
-    E, matched, info = detail_employment(inds, comp)
+    E, matched, info = detail_employment(inds, comp, coverage_fix)
     gov = np.array([i.startswith(("S00", "GSLG")) or i in ("531HSO", "531HST", "814000") for i in inds])
     ev_det = matched.to_numpy() & ~gov & (x > 0)
     res, store = [], {}
@@ -380,7 +386,7 @@ def gradient(B=2000, n_p=1000):
         res.append(row)
         print("s3 gradient", lev, ev.sum(), flush=True)
     R = pd.DataFrame(res)
-    R.to_csv(OUT / "s3_gradient.csv", index=False)
+    R.to_csv(OUT / f"s3_gradient{tag}.csv", index=False)
     out = []
     det, sm_ = R.set_index("level").loc["detail"], R.set_index("level").loc["summary"]
     for name, k, i, theta_d, direction in (("gradient: share of permutations better (MAWD), detail - summary",
@@ -393,7 +399,7 @@ def gradient(B=2000, n_p=1000):
         from .rule import decide
         out.append(dict(outcome=name, est=est, ci90_lo=lo, ci90_hi=hi, theta0=0, delta=theta_d, direction=direction,
                         label=decide(est, lo, hi, 0, theta_d, direction)))
-    pd.DataFrame(out).to_csv(OUT / "s3_gradient_outcomes.csv", index=False)
+    pd.DataFrame(out).to_csv(OUT / f"s3_gradient{tag}_outcomes.csv", index=False)
     return R, pd.DataFrame(out)
 
 
@@ -459,7 +465,7 @@ if __name__ == "__main__":
         C.to_csv(OUT / "s3_gross_counts.csv", index=False)
         print(C[C.cand.isin(["capital", "eu_gross", "eu_net", "cfc", "nonlabour"])].to_string())
     elif part == "gradient":
-        R, O = gradient()
+        R, O = gradient(coverage_fix=len(sys.argv) > 2 and sys.argv[2] == "fix")
         print(R.round(4).to_string())
         print(O.round(4).to_string())
     elif part == "hedonic":

@@ -1,0 +1,26 @@
+outcome,est,ci90_lo,ci90_hi,n,theta0,delta,direction,label,variant,k
+1 asym: share of commodity bases better than hours (MAWD),0.02969059354988415,0.006203473945409423,0.05776351197092693,13,0.5,0.1,<,подтверждено,all,
+2 sym: share of commodity bases better than hours (MAWD),0.5082517832481341,0.4656712503669152,0.5507368379686288,13,0.5,0.1,<,опровергнуто,all,
+"3 stage P: hours in top 5% vs placebos (a), (b)",0.7692307692307693,0.5419132128393064,0.9037756231328763,13,0.05,0.15,>,подтверждено,all,10.0
+4 flat better than hours (MAWD),0.9230769230769231,0.717718509692703,0.9826496611207272,13,0.5,0.15,<,опровергнуто,all,12.0
+5 PP (actual wages) better than hours (MAWD),1.0,0.8277078382340536,1.0,13,0.5,0.15,<,опровергнуто,all,13.0
+1 asym: share of commodity bases better than hours (MAWD),0.04192163599549382,0.013743080740599349,0.07971510803214202,13,0.5,0.1,<,подтверждено,market,
+2 sym: share of commodity bases better than hours (MAWD),0.4648674765446039,0.41892370105769605,0.512335761434433,13,0.5,0.1,<,опровергнуто,market,
+"3 stage P: hours in top 5% vs placebos (a), (b)",0.6923076923076923,0.4647546991180559,0.853594469433503,13,0.05,0.15,>,подтверждено,market,9.0
+4 flat better than hours (MAWD),0.6923076923076923,0.4647546991180559,0.853594469433503,13,0.5,0.15,<,неинформативно,market,9.0
+5 PP (actual wages) better than hours (MAWD),0.9230769230769231,0.717718509692703,0.9826496611207272,13,0.5,0.15,<,опровергнуто,market,12.0
+1 asym: share of commodity bases better than hours (MAWD),0.0400259741231862,0.012693262072914675,0.07514905179479693,13,0.5,0.1,<,подтверждено,market_fc,
+2 sym: share of commodity bases better than hours (MAWD),0.4694319287809288,0.4257459317633015,0.5137175192021198,13,0.5,0.1,<,опровергнуто,market_fc,
+"3 stage P: hours in top 5% vs placebos (a), (b)",0.6923076923076923,0.4647546991180559,0.853594469433503,13,0.05,0.15,>,подтверждено,market_fc,9.0
+4 flat better than hours (MAWD),0.7692307692307693,0.5419132128393064,0.9037756231328763,13,0.5,0.15,<,опровергнуто,market_fc,10.0
+5 PP (actual wages) better than hours (MAWD),0.9230769230769231,0.717718509692703,0.9826496611207272,13,0.5,0.15,<,опровергнуто,market_fc,12.0
+1 asym: share of commodity bases better than hours (MAWD),0.050436208077428324,0.01545619393013933,0.09271218126494726,13,0.5,0.1,<,подтверждено,market_nofisim,
+2 sym: share of commodity bases better than hours (MAWD),0.4988302377004755,0.44566375255325774,0.5533815193062019,13,0.5,0.1,<,опровергнуто,market_nofisim,
+"3 stage P: hours in top 5% vs placebos (a), (b)",0.6923076923076923,0.4647546991180559,0.853594469433503,13,0.05,0.15,>,подтверждено,market_nofisim,9.0
+4 flat better than hours (MAWD),0.6923076923076923,0.4647546991180559,0.853594469433503,13,0.5,0.15,<,неинформативно,market_nofisim,9.0
+5 PP (actual wages) better than hours (MAWD),0.9230769230769231,0.717718509692703,0.9826496611207272,13,0.5,0.15,<,опровергнуто,market_nofisim,12.0
+1 asym: share of commodity bases better than hours (MAWD),0.049051420530036784,0.014697461347585407,0.09086863605911918,13,0.5,0.1,<,подтверждено,market_nofisim_fc,
+2 sym: share of commodity bases better than hours (MAWD),0.5039643776324554,0.4536256616281431,0.5556093252341976,13,0.5,0.1,<,опровергнуто,market_nofisim_fc,
+"3 stage P: hours in top 5% vs placebos (a), (b)",0.6923076923076923,0.4647546991180559,0.853594469433503,13,0.05,0.15,>,подтверждено,market_nofisim_fc,9.0
+4 flat better than hours (MAWD),0.6923076923076923,0.4647546991180559,0.853594469433503,13,0.5,0.15,<,неинформативно,market_nofisim_fc,9.0
+5 PP (actual wages) better than hours (MAWD),0.9230769230769231,0.717718509692703,0.9826496611207272,13,0.5,0.15,<,опровергнуто,market_nofisim_fc,12.0

@@ -1,0 +1,2 @@
+/home/user/LT/src/lts/v8/stage3.py:281: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  q = V.loc[:, comms].drop(index=[i for i in V.index if not i or i.startswith("T0")], errors="ignore").sum(0).to_numpy()

@@ -1,0 +1,163 @@
+s3 hedonic USA
+s3 hedonic DEU
+s3 hedonic MEX
+s3 hedonic FRA
+/home/user/LT/src/lts/v4/b0.py:28: RuntimeWarning: invalid value encountered in divide
+  phys = np.where(np.isfinite(P0 / P) & (e.x > 0), P0 / P, 0.0)     # constant per unit of real output
+/home/user/LT/src/lts/v3/placebo_disp.py:47: RuntimeWarning: divide by zero encountered in divide
+  s = (self.x.sum() - self.mu @ self.x) / (lam @ self.x)
+/home/user/LT/src/lts/v3/placebo_disp.py:48: RuntimeWarning: invalid value encountered in multiply
+  return s[:, None] * lam + self.mu[None]
+/home/user/LT/src/lts/v4/b0.py:28: RuntimeWarning: invalid value encountered in divide
+  phys = np.where(np.isfinite(P0 / P) & (e.x > 0), P0 / P, 0.0)     # constant per unit of real output
+/home/user/LT/src/lts/v3/placebo_disp.py:47: RuntimeWarning: divide by zero encountered in divide
+  s = (self.x.sum() - self.mu @ self.x) / (lam @ self.x)
+/home/user/LT/src/lts/v3/placebo_disp.py:48: RuntimeWarning: invalid value encountered in multiply
+  return s[:, None] * lam + self.mu[None]
+/home/user/LT/src/lts/v4/b0.py:28: RuntimeWarning: invalid value encountered in divide
+  phys = np.where(np.isfinite(P0 / P) & (e.x > 0), P0 / P, 0.0)     # constant per unit of real output
+/home/user/LT/src/lts/v3/placebo_disp.py:47: RuntimeWarning: divide by zero encountered in divide
+  s = (self.x.sum() - self.mu @ self.x) / (lam @ self.x)
+/home/user/LT/src/lts/v3/placebo_disp.py:48: RuntimeWarning: invalid value encountered in multiply
+  return s[:, None] * lam + self.mu[None]
+/home/user/LT/src/lts/v4/b0.py:28: RuntimeWarning: invalid value encountered in divide
+  phys = np.where(np.isfinite(P0 / P) & (e.x > 0), P0 / P, 0.0)     # constant per unit of real output
+/home/user/LT/src/lts/v3/placebo_disp.py:47: RuntimeWarning: divide by zero encountered in divide
+  s = (self.x.sum() - self.mu @ self.x) / (lam @ self.x)
+/home/user/LT/src/lts/v3/placebo_disp.py:48: RuntimeWarning: invalid value encountered in multiply
+  return s[:, None] * lam + self.mu[None]
+/home/user/LT/src/lts/v4/b0.py:28: RuntimeWarning: invalid value encountered in divide
+  phys = np.where(np.isfinite(P0 / P) & (e.x > 0), P0 / P, 0.0)     # constant per unit of real output
+/home/user/LT/src/lts/v3/placebo_disp.py:47: RuntimeWarning: divide by zero encountered in divide
+  s = (self.x.sum() - self.mu @ self.x) / (lam @ self.x)
+/home/user/LT/src/lts/v3/placebo_disp.py:48: RuntimeWarning: invalid value encountered in multiply
+  return s[:, None] * lam + self.mu[None]
+/home/user/LT/src/lts/v4/b0.py:28: RuntimeWarning: invalid value encountered in divide
+  phys = np.where(np.isfinite(P0 / P) & (e.x > 0), P0 / P, 0.0)     # constant per unit of real output
+/home/user/LT/src/lts/v3/placebo_disp.py:47: RuntimeWarning: divide by zero encountered in divide
+  s = (self.x.sum() - self.mu @ self.x) / (lam @ self.x)
+/home/user/LT/src/lts/v3/placebo_disp.py:48: RuntimeWarning: invalid value encountered in multiply
+  return s[:, None] * lam + self.mu[None]
+/home/user/LT/src/lts/v4/b0.py:28: RuntimeWarning: invalid value encountered in divide
+  phys = np.where(np.isfinite(P0 / P) & (e.x > 0), P0 / P, 0.0)     # constant per unit of real output
+/home/user/LT/src/lts/v3/placebo_disp.py:47: RuntimeWarning: divide by zero encountered in divide
+  s = (self.x.sum() - self.mu @ self.x) / (lam @ self.x)
+/home/user/LT/src/lts/v3/placebo_disp.py:48: RuntimeWarning: invalid value encountered in multiply
+  return s[:, None] * lam + self.mu[None]
+/home/user/LT/src/lts/v4/b0.py:28: RuntimeWarning: invalid value encountered in divide
+  phys = np.where(np.isfinite(P0 / P) & (e.x > 0), P0 / P, 0.0)     # constant per unit of real output
+/home/user/LT/src/lts/v3/placebo_disp.py:47: RuntimeWarning: divide by zero encountered in divide
+  s = (self.x.sum() - self.mu @ self.x) / (lam @ self.x)
+/home/user/LT/src/lts/v3/placebo_disp.py:48: RuntimeWarning: invalid value encountered in multiply
+  return s[:, None] * lam + self.mu[None]
+/home/user/LT/src/lts/v4/b0.py:28: RuntimeWarning: invalid value encountered in divide
+  phys = np.where(np.isfinite(P0 / P) & (e.x > 0), P0 / P, 0.0)     # constant per unit of real output
+/home/user/LT/src/lts/v3/placebo_disp.py:47: RuntimeWarning: divide by zero encountered in divide
+  s = (self.x.sum() - self.mu @ self.x) / (lam @ self.x)
+/home/user/LT/src/lts/v3/placebo_disp.py:48: RuntimeWarning: invalid value encountered in multiply
+  return s[:, None] * lam + self.mu[None]
+/home/user/LT/src/lts/v4/b0.py:28: RuntimeWarning: invalid value encountered in divide
+  phys = np.where(np.isfinite(P0 / P) & (e.x > 0), P0 / P, 0.0)     # constant per unit of real output
+/home/user/LT/src/lts/v3/placebo_disp.py:47: RuntimeWarning: divide by zero encountered in divide
+  s = (self.x.sum() - self.mu @ self.x) / (lam @ self.x)
+/home/user/LT/src/lts/v3/placebo_disp.py:48: RuntimeWarning: invalid value encountered in multiply
+  return s[:, None] * lam + self.mu[None]
+/home/user/LT/src/lts/v4/b0.py:28: RuntimeWarning: invalid value encountered in divide
+  phys = np.where(np.isfinite(P0 / P) & (e.x > 0), P0 / P, 0.0)     # constant per unit of real output
+/home/user/LT/src/lts/v3/placebo_disp.py:47: RuntimeWarning: divide by zero encountered in divide
+  s = (self.x.sum() - self.mu @ self.x) / (lam @ self.x)
+/home/user/LT/src/lts/v3/placebo_disp.py:48: RuntimeWarning: invalid value encountered in multiply
+  return s[:, None] * lam + self.mu[None]
+/home/user/LT/src/lts/v4/b0.py:28: RuntimeWarning: invalid value encountered in divide
+  phys = np.where(np.isfinite(P0 / P) & (e.x > 0), P0 / P, 0.0)     # constant per unit of real output
+/home/user/LT/src/lts/v3/placebo_disp.py:47: RuntimeWarning: divide by zero encountered in divide
+  s = (self.x.sum() - self.mu @ self.x) / (lam @ self.x)
+/home/user/LT/src/lts/v3/placebo_disp.py:48: RuntimeWarning: invalid value encountered in multiply
+  return s[:, None] * lam + self.mu[None]
+/home/user/LT/src/lts/v4/b0.py:28: RuntimeWarning: invalid value encountered in divide
+  phys = np.where(np.isfinite(P0 / P) & (e.x > 0), P0 / P, 0.0)     # constant per unit of real output
+/home/user/LT/src/lts/v3/placebo_disp.py:47: RuntimeWarning: divide by zero encountered in divide
+  s = (self.x.sum() - self.mu @ self.x) / (lam @ self.x)
+/home/user/LT/src/lts/v3/placebo_disp.py:48: RuntimeWarning: invalid value encountered in multiply
+  return s[:, None] * lam + self.mu[None]
+s3 hedonic ITA
+/home/user/LT/src/lts/v4/b0.py:28: RuntimeWarning: invalid value encountered in divide
+  phys = np.where(np.isfinite(P0 / P) & (e.x > 0), P0 / P, 0.0)     # constant per unit of real output
+/home/user/LT/src/lts/v3/placebo_disp.py:47: RuntimeWarning: divide by zero encountered in divide
+  s = (self.x.sum() - self.mu @ self.x) / (lam @ self.x)
+/home/user/LT/src/lts/v3/placebo_disp.py:48: RuntimeWarning: invalid value encountered in multiply
+  return s[:, None] * lam + self.mu[None]
+/home/user/LT/src/lts/v4/b0.py:28: RuntimeWarning: invalid value encountered in divide
+  phys = np.where(np.isfinite(P0 / P) & (e.x > 0), P0 / P, 0.0)     # constant per unit of real output
+/home/user/LT/src/lts/v3/placebo_disp.py:47: RuntimeWarning: divide by zero encountered in divide
+  s = (self.x.sum() - self.mu @ self.x) / (lam @ self.x)
+/home/user/LT/src/lts/v3/placebo_disp.py:48: RuntimeWarning: invalid value encountered in multiply
+  return s[:, None] * lam + self.mu[None]
+/home/user/LT/src/lts/v4/b0.py:28: RuntimeWarning: invalid value encountered in divide
+  phys = np.where(np.isfinite(P0 / P) & (e.x > 0), P0 / P, 0.0)     # constant per unit of real output
+/home/user/LT/src/lts/v3/placebo_disp.py:47: RuntimeWarning: divide by zero encountered in divide
+  s = (self.x.sum() - self.mu @ self.x) / (lam @ self.x)
+/home/user/LT/src/lts/v3/placebo_disp.py:48: RuntimeWarning: invalid value encountered in multiply
+  return s[:, None] * lam + self.mu[None]
+/home/user/LT/src/lts/v4/b0.py:28: RuntimeWarning: invalid value encountered in divide
+  phys = np.where(np.isfinite(P0 / P) & (e.x > 0), P0 / P, 0.0)     # constant per unit of real output
+/home/user/LT/src/lts/v3/placebo_disp.py:47: RuntimeWarning: divide by zero encountered in divide
+  s = (self.x.sum() - self.mu @ self.x) / (lam @ self.x)
+/home/user/LT/src/lts/v3/placebo_disp.py:48: RuntimeWarning: invalid value encountered in multiply
+  return s[:, None] * lam + self.mu[None]
+/home/user/LT/src/lts/v4/b0.py:28: RuntimeWarning: invalid value encountered in divide
+  phys = np.where(np.isfinite(P0 / P) & (e.x > 0), P0 / P, 0.0)     # constant per unit of real output
+/home/user/LT/src/lts/v3/placebo_disp.py:47: RuntimeWarning: divide by zero encountered in divide
+  s = (self.x.sum() - self.mu @ self.x) / (lam @ self.x)
+/home/user/LT/src/lts/v3/placebo_disp.py:48: RuntimeWarning: invalid value encountered in multiply
+  return s[:, None] * lam + self.mu[None]
+/home/user/LT/src/lts/v4/b0.py:28: RuntimeWarning: invalid value encountered in divide
+  phys = np.where(np.isfinite(P0 / P) & (e.x > 0), P0 / P, 0.0)     # constant per unit of real output
+/home/user/LT/src/lts/v3/placebo_disp.py:47: RuntimeWarning: divide by zero encountered in divide
+  s = (self.x.sum() - self.mu @ self.x) / (lam @ self.x)
+/home/user/LT/src/lts/v3/placebo_disp.py:48: RuntimeWarning: invalid value encountered in multiply
+  return s[:, None] * lam + self.mu[None]
+/home/user/LT/src/lts/v4/b0.py:28: RuntimeWarning: invalid value encountered in divide
+  phys = np.where(np.isfinite(P0 / P) & (e.x > 0), P0 / P, 0.0)     # constant per unit of real output
+/home/user/LT/src/lts/v3/placebo_disp.py:47: RuntimeWarning: divide by zero encountered in divide
+  s = (self.x.sum() - self.mu @ self.x) / (lam @ self.x)
+/home/user/LT/src/lts/v3/placebo_disp.py:48: RuntimeWarning: invalid value encountered in multiply
+  return s[:, None] * lam + self.mu[None]
+/home/user/LT/src/lts/v4/b0.py:28: RuntimeWarning: invalid value encountered in divide
+  phys = np.where(np.isfinite(P0 / P) & (e.x > 0), P0 / P, 0.0)     # constant per unit of real output
+/home/user/LT/src/lts/v3/placebo_disp.py:47: RuntimeWarning: divide by zero encountered in divide
+  s = (self.x.sum() - self.mu @ self.x) / (lam @ self.x)
+/home/user/LT/src/lts/v3/placebo_disp.py:48: RuntimeWarning: invalid value encountered in multiply
+  return s[:, None] * lam + self.mu[None]
+/home/user/LT/src/lts/v4/b0.py:28: RuntimeWarning: invalid value encountered in divide
+  phys = np.where(np.isfinite(P0 / P) & (e.x > 0), P0 / P, 0.0)     # constant per unit of real output
+/home/user/LT/src/lts/v3/placebo_disp.py:47: RuntimeWarning: divide by zero encountered in divide
+  s = (self.x.sum() - self.mu @ self.x) / (lam @ self.x)
+/home/user/LT/src/lts/v3/placebo_disp.py:48: RuntimeWarning: invalid value encountered in multiply
+  return s[:, None] * lam + self.mu[None]
+/home/user/LT/src/lts/v4/b0.py:28: RuntimeWarning: invalid value encountered in divide
+  phys = np.where(np.isfinite(P0 / P) & (e.x > 0), P0 / P, 0.0)     # constant per unit of real output
+/home/user/LT/src/lts/v3/placebo_disp.py:47: RuntimeWarning: divide by zero encountered in divide
+  s = (self.x.sum() - self.mu @ self.x) / (lam @ self.x)
+/home/user/LT/src/lts/v3/placebo_disp.py:48: RuntimeWarning: invalid value encountered in multiply
+  return s[:, None] * lam + self.mu[None]
+/home/user/LT/src/lts/v4/b0.py:28: RuntimeWarning: invalid value encountered in divide
+  phys = np.where(np.isfinite(P0 / P) & (e.x > 0), P0 / P, 0.0)     # constant per unit of real output
+/home/user/LT/src/lts/v3/placebo_disp.py:47: RuntimeWarning: divide by zero encountered in divide
+  s = (self.x.sum() - self.mu @ self.x) / (lam @ self.x)
+/home/user/LT/src/lts/v3/placebo_disp.py:48: RuntimeWarning: invalid value encountered in multiply
+  return s[:, None] * lam + self.mu[None]
+/home/user/LT/src/lts/v4/b0.py:28: RuntimeWarning: invalid value encountered in divide
+  phys = np.where(np.isfinite(P0 / P) & (e.x > 0), P0 / P, 0.0)     # constant per unit of real output
+/home/user/LT/src/lts/v3/placebo_disp.py:47: RuntimeWarning: divide by zero encountered in divide
+  s = (self.x.sum() - self.mu @ self.x) / (lam @ self.x)
+/home/user/LT/src/lts/v3/placebo_disp.py:48: RuntimeWarning: invalid value encountered in multiply
+  return s[:, None] * lam + self.mu[None]
+/home/user/LT/src/lts/v4/b0.py:28: RuntimeWarning: invalid value encountered in divide
+  phys = np.where(np.isfinite(P0 / P) & (e.x > 0), P0 / P, 0.0)     # constant per unit of real output
+/home/user/LT/src/lts/v3/placebo_disp.py:47: RuntimeWarning: divide by zero encountered in divide
+  s = (self.x.sum() - self.mu @ self.x) / (lam @ self.x)
+/home/user/LT/src/lts/v3/placebo_disp.py:48: RuntimeWarning: invalid value encountered in multiply
+  return s[:, None] * lam + self.mu[None]
+s3 hedonic ESP
+s3 hedonic NLD

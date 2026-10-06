@@ -1,0 +1,49 @@
+s3 market USA
+s3 market DEU
+s3 market MEX
+s3 market FRA
+s3 market ITA
+s3 market ESP
+s3 market NLD
+s3 market AUT
+s3 market POL
+s3 market CZE
+s3 market KOR
+s3 market JPN
+s3 market GBR
+/home/user/LT/src/lts/v8/stage3.py:93: Pandas4Warning: Starting with pandas version 4.0 all arguments of all will be keyword-only.
+  L = pd.read_csv(OUT / "s3_market_levels.csv") if L is None else L
+/home/user/LT/src/lts/v8/stage3.py:93: Pandas4Warning: Starting with pandas version 4.0 all arguments of all will be keyword-only.
+  L = pd.read_csv(OUT / "s3_market_levels.csv") if L is None else L
+/home/user/LT/src/lts/v8/stage3.py:93: Pandas4Warning: Starting with pandas version 4.0 all arguments of all will be keyword-only.
+  L = pd.read_csv(OUT / "s3_market_levels.csv") if L is None else L
+/home/user/LT/src/lts/v8/stage3.py:93: Pandas4Warning: Starting with pandas version 4.0 all arguments of all will be keyword-only.
+  L = pd.read_csv(OUT / "s3_market_levels.csv") if L is None else L
+/home/user/LT/src/lts/v8/stage3.py:93: Pandas4Warning: Starting with pandas version 4.0 all arguments of all will be keyword-only.
+  L = pd.read_csv(OUT / "s3_market_levels.csv") if L is None else L
+                                                      outcome    est  ci90_lo  ci90_hi   n  theta0  delta direction           label            variant     k
+0   1 asym: share of commodity bases better than hours (MAWD)  0.030    0.006    0.058  13    0.50   0.10         <    подтверждено                all   NaN
+1    2 sym: share of commodity bases better than hours (MAWD)  0.508    0.466    0.551  13    0.50   0.10         <    опровергнуто                all   NaN
+2             3 stage P: hours in top 5% vs placebos (a), (b)  0.769    0.542    0.904  13    0.05   0.15         >    подтверждено                all  10.0
+3                             4 flat better than hours (MAWD)  0.923    0.718    0.983  13    0.50   0.15         <    опровергнуто                all  12.0
+4                5 PP (actual wages) better than hours (MAWD)  1.000    0.828    1.000  13    0.50   0.15         <    опровергнуто                all  13.0
+5   1 asym: share of commodity bases better than hours (MAWD)  0.042    0.014    0.080  13    0.50   0.10         <    подтверждено             market   NaN
+6    2 sym: share of commodity bases better than hours (MAWD)  0.465    0.419    0.512  13    0.50   0.10         <    опровергнуто             market   NaN
+7             3 stage P: hours in top 5% vs placebos (a), (b)  0.692    0.465    0.854  13    0.05   0.15         >    подтверждено             market   9.0
+8                             4 flat better than hours (MAWD)  0.692    0.465    0.854  13    0.50   0.15         <  неинформативно             market   9.0
+9                5 PP (actual wages) better than hours (MAWD)  0.923    0.718    0.983  13    0.50   0.15         <    опровергнуто             market  12.0
+10  1 asym: share of commodity bases better than hours (MAWD)  0.040    0.013    0.075  13    0.50   0.10         <    подтверждено          market_fc   NaN
+11   2 sym: share of commodity bases better than hours (MAWD)  0.469    0.426    0.514  13    0.50   0.10         <    опровергнуто          market_fc   NaN
+12            3 stage P: hours in top 5% vs placebos (a), (b)  0.692    0.465    0.854  13    0.05   0.15         >    подтверждено          market_fc   9.0
+13                            4 flat better than hours (MAWD)  0.769    0.542    0.904  13    0.50   0.15         <    опровергнуто          market_fc  10.0
+14               5 PP (actual wages) better than hours (MAWD)  0.923    0.718    0.983  13    0.50   0.15         <    опровергнуто          market_fc  12.0
+15  1 asym: share of commodity bases better than hours (MAWD)  0.050    0.015    0.093  13    0.50   0.10         <    подтверждено     market_nofisim   NaN
+16   2 sym: share of commodity bases better than hours (MAWD)  0.499    0.446    0.553  13    0.50   0.10         <    опровергнуто     market_nofisim   NaN
+17            3 stage P: hours in top 5% vs placebos (a), (b)  0.692    0.465    0.854  13    0.05   0.15         >    подтверждено     market_nofisim   9.0
+18                            4 flat better than hours (MAWD)  0.692    0.465    0.854  13    0.50   0.15         <  неинформативно     market_nofisim   9.0
+19               5 PP (actual wages) better than hours (MAWD)  0.923    0.718    0.983  13    0.50   0.15         <    опровергнуто     market_nofisim  12.0
+20  1 asym: share of commodity bases better than hours (MAWD)  0.049    0.015    0.091  13    0.50   0.10         <    подтверждено  market_nofisim_fc   NaN
+21   2 sym: share of commodity bases better than hours (MAWD)  0.504    0.454    0.556  13    0.50   0.10         <    опровергнуто  market_nofisim_fc   NaN
+22            3 stage P: hours in top 5% vs placebos (a), (b)  0.692    0.465    0.854  13    0.05   0.15         >    подтверждено  market_nofisim_fc   9.0
+23                            4 flat better than hours (MAWD)  0.692    0.465    0.854  13    0.50   0.15         <  неинформативно  market_nofisim_fc   9.0
+24               5 PP (actual wages) better than hours (MAWD)  0.923    0.718    0.983  13    0.50   0.15         <    опровергнуто  market_nofisim_fc  12.0

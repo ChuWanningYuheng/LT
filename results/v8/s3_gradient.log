@@ -1,0 +1,12 @@
+/home/user/LT/src/lts/v8/stage3.py:281: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  q = V.loc[:, comms].drop(index=[i for i in V.index if not i or i.startswith("T0")], errors="ignore").sum(0).to_numpy()
+s3 gradient detail 388
+s3 gradient naics3 84
+s3 gradient summary 63
+     level    n  n_all   qcew_total  unmatched  n_imputed  hours_mawd  flat_mawd  perm_better_mawd  lnorm_better_mawd  hours_d  flat_d  perm_better_d  lnorm_better_d  flat_minus_hours_mawd                                      fmh_ci90                     perm_ci90
+0   detail  388    402  122386599.0   219719.0         10      0.4301     0.1272             0.816              0.189   0.4349  0.1848          0.746           0.507                -0.3029  (-0.37121965806433704, -0.24065678986094982)                (0.314, 0.962)
+1   naics3   84     89  122386599.0   219719.0         10      0.3962     0.1154             0.022              0.009   0.5755  0.1519          0.949           0.970                -0.2808  (-0.38825888394294783, -0.17907870350321833)  (0.006, 0.47614999999999985)
+2  summary   63     71  122386599.0   219719.0         10      0.3804     0.1183             0.048              0.002   0.4505  0.1550          0.588           0.283                -0.2621   (-0.3611078673734833, -0.16048089681438812)                (0.016, 0.594)
+                                                           outcome     est  ci90_lo  ci90_hi  theta0  delta direction           label
+0  gradient: share of permutations better (MAWD), detail - summary  0.7680  -0.0200   0.8701       0   0.10         <  неинформативно
+1             gradient: MAWD(flat) - MAWD(hours), detail - summary -0.0408  -0.1656   0.0797       0   0.02         >  неинформативно

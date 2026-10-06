@@ -1,0 +1,4 @@
+outcome,est,ci90_lo,ci90_hi,k,n,theta0,delta,direction,label
+outcome 35 (stan): share of countries cointegrated,0.0,-1.3877787807814457e-17,0.17229216176594653,0.0,13,0.05,0.15,>,опровергнуто
+outcome 35 (wiod): share of countries cointegrated,0.23809523809523808,0.14796848920650144,0.35992781783488725,10.0,42,0.05,0.15,>,подтверждено
+"outcome 36: mean RMSE ratio ECM / AR(1), h = 3",1.2315288428098254,1.0660715848823255,1.3933404174325232,,13,,,,опровергнуто

@@ -4,3 +4,37 @@ KLEMS d done
 KLEMS e done
 WIOD a, b done
 WIOD c done
+WIOD d done
+WIOD e done
+Eurostat a, b done
+Eurostat c done
+Eurostat d done
+Eurostat e done
+       panel                                estimator      b  ci90_lo  ci90_hi     se      n  share_lost           label   values_regime                                           note
+0      KLEMS                          (a) log, PI > 0  0.552    0.384    0.721  0.102  10115       0.186    подтверждено    подтверждено                                               
+1      KLEMS                          (b) asinh(PI/W)  0.161    0.099    0.223  0.038  12419       0.000    подтверждено    подтверждено                                               
+2      KLEMS                        (c) NLS in levels  1.192    0.454    2.000  0.538  12419       0.000  неинформативно    подтверждено                                               
+3      KLEMS                   (d) PPML, gross profit  0.702    0.533    0.800  0.080  11922       0.040    подтверждено    подтверждено                                               
+4      KLEMS        (d') PPML, net profit, losses = 0  0.640    0.396    0.772  0.113  12419       0.000    подтверждено    подтверждено                                               
+5      KLEMS              (e) grouped (K/W quintiles)  0.396    0.220    0.651  0.133   2697       0.088    подтверждено    подтверждено  share_lost = share of groups with sum PI <= 0
+6      KLEMS  (f1) IV: same industry, other countries  0.633    0.405    0.860  0.138  10050       0.191    подтверждено    подтверждено                      first-stage t approx 79.6
+7      KLEMS          (f2) hours instead of W, PI > 0  0.712    0.558    0.866  0.094  10115       0.186    подтверждено    подтверждено                                               
+8       WIOD                          (a) log, PI > 0  0.476    0.362    0.589  0.069  22195       0.152    подтверждено    подтверждено                                               
+9       WIOD                          (b) asinh(PI/W)  0.058   -0.032    0.149  0.055  26186       0.000    подтверждено  неинформативно                                               
+10      WIOD                        (c) NLS in levels  1.544    0.994    2.000  0.284  26186       0.000  неинформативно    подтверждено                                               
+11      WIOD                   (d) PPML, gross profit  0.469    0.349    0.727  0.120  24837       0.052    подтверждено    подтверждено                                               
+12      WIOD        (d') PPML, net profit, losses = 0  0.400    0.263    0.664  0.126  26186       0.000    подтверждено    подтверждено                                               
+13      WIOD              (e) grouped (K/W quintiles)  0.281    0.140    0.512  0.113   3017       0.064    подтверждено    подтверждено  share_lost = share of groups with sum PI <= 0
+14      WIOD  (f1) IV: same industry, other countries  0.563    0.331    0.794  0.141  22195       0.152    подтверждено    подтверждено                      first-stage t approx 96.2
+15      WIOD          (f2) hours instead of W, PI > 0  0.622    0.496    0.748  0.076  21669       0.172    подтверждено    подтверждено                                               
+16  Eurostat                          (a) log, PI > 0  0.491    0.382    0.599  0.066  18555       0.179    подтверждено    подтверждено                                               
+17  Eurostat                          (b) asinh(PI/W)  0.140    0.076    0.204  0.039  22598       0.000    подтверждено    подтверждено                                               
+18  Eurostat                        (c) NLS in levels  0.749    0.467    2.000  0.378  22598       0.000  неинформативно    подтверждено                                               
+19  Eurostat                   (d) PPML, gross profit  0.647    0.532    0.740  0.063  21438       0.051    подтверждено    подтверждено                                               
+20  Eurostat        (d') PPML, net profit, losses = 0  0.575    0.418    0.688  0.084  22598       0.000    подтверждено    подтверждено                                               
+21  Eurostat              (e) grouped (K/W quintiles)  0.494    0.275    0.626  0.104   3502       0.060    подтверждено    подтверждено  share_lost = share of groups with sum PI <= 0
+22  Eurostat  (f1) IV: same industry, other countries  0.562    0.413    0.711  0.090  18444       0.184    подтверждено    подтверждено                     first-stage t approx 100.8
+      panel    b_c    b_e    gap                                  conclusion       label_e
+0  Eurostat  0.749  0.494  0.255  interval between (c) and (e): 0.49 to 0.75  подтверждено
+1     KLEMS  1.192  0.396  0.796  interval between (c) and (e): 0.40 to 1.19  подтверждено
+2      WIOD  1.544  0.281  1.263  interval between (c) and (e): 0.28 to 1.54  подтверждено

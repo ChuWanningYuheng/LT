@@ -1,0 +1,22 @@
+/home/user/LT/src/lts/v9/stage5.py:51: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  skill[lev] = F[rows.str.startswith("Employment hours: " + lev)].sum(0).to_numpy()
+/home/user/LT/src/lts/v9/stage5.py:52: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  comp = {lev: F[rows == f"Compensation of employees; wages, salaries, & employers' social contributions: {lev}"].sum(0).to_numpy()
+/home/user/LT/src/lts/v9/stage5.py:54: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  nos = F[rows == "Operating surplus: Remaining net operating surplus"].sum(0).to_numpy()
+/home/user/LT/src/lts/v9/stage5.py:55: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  cfc = F[rows == "Operating surplus: Consumption of fixed capital"].sum(0).to_numpy()
+/home/user/LT/src/lts/v9/stage5.py:56: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  return hours.sum(0).to_numpy(), skill, comp, nos, cfc
+2021 IMF advanced {'total_hours': 9649097.27535755, 'north_imports': 907284.6757854247, 'north_exports': 80314.08871553978, 'net': 826970.5870698849, 'net_low': np.float64(207010.02489463592), 'net_med': np.float64(567880.7531620451), 'net_high': np.float64(52079.80901320366), 'wage_value_MEUR': 17654908.356994327, 'year': 2021, 'north': 'IMF advanced'}
+/home/user/LT/src/lts/v9/stage5.py:51: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  skill[lev] = F[rows.str.startswith("Employment hours: " + lev)].sum(0).to_numpy()
+/home/user/LT/src/lts/v9/stage5.py:52: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  comp = {lev: F[rows == f"Compensation of employees; wages, salaries, & employers' social contributions: {lev}"].sum(0).to_numpy()
+/home/user/LT/src/lts/v9/stage5.py:54: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  nos = F[rows == "Operating surplus: Remaining net operating surplus"].sum(0).to_numpy()
+/home/user/LT/src/lts/v9/stage5.py:55: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  cfc = F[rows == "Operating surplus: Consumption of fixed capital"].sum(0).to_numpy()
+/home/user/LT/src/lts/v9/stage5.py:56: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  return hours.sum(0).to_numpy(), skill, comp, nos, cfc
+2021 narrow North {'total_hours': 9649097.27535755, 'north_imports': 896892.6730467697, 'north_exports': 78737.45221788337, 'net': 818155.2208288864, 'net_low': np.float64(203706.6646421408), 'net_med': np.float64(562466.2589435672), 'net_high': np.float64(51982.29724317833), 'wage_value_MEUR': 17825743.06136617, 'year': 2021, 'north': 'narrow North'}

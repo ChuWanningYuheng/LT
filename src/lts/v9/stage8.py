@@ -34,7 +34,8 @@ def bea_hours(coverage_fix=False):
     inds, Z, m, x, comp = bea_detail_system()
     E, matched, info = detail_employment(inds, comp, coverage_fix)
     ip = ip_2017()
-    hrs, hpw = ip.L20.dropna(), (ip.L20 / ip.W20).dropna()
+    # L20: millions of hours; W20: thousands of jobs; QCEW employment E: persons (journal 11)
+    hrs, hpw = ip.L20.dropna() * 1e6, (ip.L20 / ip.W20).dropna() * 1e3
     cc = concordance()
     ci = dict(zip(inds, comp))
     owners = {}
@@ -59,7 +60,7 @@ def bea_hours(coverage_fix=False):
             k3 = t[0][:3] if t else ""
             r = hpw.get(k3, hpw.get(k3[:2], np.nan))
             if not np.isfinite(r):
-                r = float(hrs.sum() / ip.W20.dropna().sum())
+                r = float(ip.L20.dropna().sum() / ip.W20.dropna().sum() * 1e3)
             H[det], how[det] = E[det] * r, "qcew x ip hours/job"
     H = pd.Series(H)
     how = pd.Series(how)

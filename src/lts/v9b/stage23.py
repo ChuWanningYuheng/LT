@@ -71,7 +71,11 @@ def outcome44(N):
             ii = rng.integers(0, len(a), len(a))
             bs.append(a[ii].mean() - b[ii].mean())
         lo, hi = np.quantile(bs, [0.05, 0.95])
+        from scipy.stats import binomtest
+        n10, n01 = int(((a == 1) & (b == 0)).sum()), int(((a == 0) & (b == 1)).sum())
+        mcn = binomtest(n10, n10 + n01, 0.5, alternative="greater").pvalue if n10 + n01 else np.nan
         rows.append(dict(outcome=f"44: share(hours) - share({other}), world beats national", est=est, ci90_lo=lo, ci90_hi=hi,
+                         discordant_hours_only=n10, discordant_other_only=n01, mcnemar_p_one_sided=mcn,
                          share_hours=float(sh["hours"]), share_other=float(sh[other]), n=len(piv),
                          label=decide(est, lo, hi, 0, 0.1, ">")))
     return pd.DataFrame(rows)
@@ -173,16 +177,24 @@ def decompose_additive(f, F, pl_year=2017, adjust_services=True, reference="nort
     Wf, Pf, Rf = flowSN(W_), flowSN(P_), flowSN(R_)
     if reference == "north production":
         hN = hrs[isN].sum()
+        hNs = (hrs * w)[isN].sum()
         wN, pN, rN = W_[isN].sum() / hN, P_[isN].sum() / hN, R_[isN].sum() / hN
     else:                                                             # North production for exports to the South
         hN = flowNS(hrs)
+        hNs = flowNS(hrs * w)
         wN, pN, rN = flowNS(W_) / hN, flowNS(P_) / hN, flowNS(R_) / hN
+    k = hN / hNs                                                      # journal 3: rates per adjusted northern hour
+    wNs, pNs, rNs = wN * k, pN * k, rN * k
     G = H * (wN + pN + rN) - (Wf + Pf + Rf)
     a = (H - Hs) * (wN + pN + rN)
     b = Hs * wN - Wf
     c = Hs * pN - Pf
     d = Hs * rN - Rf
-    return dict(pl_year=pl_year, adjust_services=adjust_services, reference=reference, H_SN=H, Hstar_SN=Hs,
+    a2 = H * (wN + pN + rN) - Hs * (wNs + pNs + rNs)
+    b2, c2, d2 = Hs * wNs - Wf, Hs * pNs - Pf, Hs * rNs - Rf
+    cons = dict(north_adj_hours_per_hour=1 / k, a2_productivity=a2, b2_wage=b2, c2_profit=c2, d2_rest=d2,
+                check2=G - (a2 + b2 + c2 + d2), share2_a=a2 / G, share2_b=b2 / G, share2_c=c2 / G, share2_d=d2 / G)
+    return cons | dict(pl_year=pl_year, adjust_services=adjust_services, reference=reference, H_SN=H, Hstar_SN=Hs,
                 VA_SN_MEUR=Wf + Pf + Rf, W_SN=Wf, P_SN=Pf, R_SN=Rf, wN=wN, pN=pN, rN=rN, VA_at_north_rates=H * (wN + pN + rN),
                 G=G, a_productivity=a, b_wage=b, c_profit=c, d_rest=d, check=G - (a + b + c + d), share_a=a / G,
                 share_b=b / G, share_c=c / G, share_d=d / G, share_hours_weight1=sh1)
@@ -217,6 +229,13 @@ if __name__ == "__main__":
         d45.to_csv(OUT / "s2_changes_world.csv", index=False)
         l46.to_csv(OUT / "s2_ppp_levels_2005.csv", index=False)
         print(O.round(4).to_string(), "\n", d45.round(3).to_string(), "\n", l46.round(3).to_string())
+    if part == "o44":
+        N = pd.read_csv(OUT / "s2_national_vs_world.csv")
+        o44 = outcome44(N)
+        O = pd.read_csv(OUT / "s2_outcomes.csv")
+        O = pd.concat([o44, O[~O.outcome.str.startswith("44")]], ignore_index=True)
+        O.to_csv(OUT / "s2_outcomes.csv", index=False)
+        print(o44.round(4).to_string())
     if part in ("unequal", "all"):
         D = stage3()
         D.to_csv(OUT / "s3_decomposition_additive.csv", index=False)

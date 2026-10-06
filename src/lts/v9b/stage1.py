@@ -423,6 +423,13 @@ def decompose(L, periods=((1997, 2024), (1947, 2024), (1947, 1973), (1973, 1997)
         real = real + k[nm].loc[2017] * q[nm] / q[nm].loc[2017]
     real = real.reindex(x.index)
     PK = x.C / real
+    # journal 3 (R2): Tornqvist aggregate of productive real stock
+    codes = [c for c in SECTORS if c != "gov" and c not in UNPROD["main"]]
+    nomd = pd.DataFrame({c: k[norm(FA_NAME.get(c, SECTORS[c]))] for c in codes}).reindex(x.index)
+    qd = pd.DataFrame({c: q[norm(FA_NAME.get(c, SECTORS[c]))] for c in codes}).reindex(x.index)
+    sh = nomd.div(nomd.sum(1), axis=0)
+    dlt = ((sh + sh.shift()) / 2 * np.log(qd / qd.shift())).sum(1, min_count=1)
+    tq_ln = dlt.fillna(0).cumsum()
     rows = []
     for a, b in periods:
         w = x.loc[a:b]
@@ -435,7 +442,9 @@ def decompose(L, periods=((1997, 2024), (1947, 2024), (1947, 1973), (1973, 1997)
         ndp_real = w.ndp / py.reindex(w.index)
         d_vol = float(np.log((real.loc[b] / ndp_real.loc[b]) / (real.loc[a] / ndp_real.loc[a])))
         d_price = float(np.log((PK.loc[b] / py.loc[b]) / (PK.loc[a] / py.loc[a])))
-        rows.append(dict(period=f"{a}-{b}", dln_rm=tot, contrib_kappa=ck, contrib_nu=cn, residual=tot - ck - cn,
+        d_vol_t = float((tq_ln.loc[b] - tq_ln.loc[a]) - np.log(ndp_real.loc[b] / ndp_real.loc[a]))
+        rows.append(dict(period=f"{a}-{b}", dln_K_real_over_NDP_real_tornqvist=d_vol_t, dln_PK_over_PY_tornqvist=dk - d_vol_t,
+                         dln_rm=tot, contrib_kappa=ck, contrib_nu=cn, residual=tot - ck - cn,
                          dln_kappa=dk, dln_K_real_over_NDP_real=d_vol, dln_PK_over_PY=d_price,
                          kappa_first=w.kappa.iloc[0], kappa_last=w.kappa.iloc[-1], nu_first=w.nu.iloc[0], nu_last=w.nu.iloc[-1],
                          em_first=w.e_m.iloc[0], em_last=w.e_m.iloc[-1]))

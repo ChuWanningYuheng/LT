@@ -10,11 +10,11 @@
 8                            K5 both                      KLEMS -0.0273  0.0134      NaN      NaN  0.0409           NaN          NaN  10950     NaN    3.45     0.35     NaN  -0.0159  0.2093
 9      K5 no owner-labour industries                       WIOD -0.0859  0.0134      NaN      NaN  0.0000           NaN          NaN  22875     NaN     NaN      NaN     NaN      NaN     NaN
              table                                                    vector   sd_ln    mawd       d  c2_mawd    c2_d  hours_mawd  gain_vs_c2_mawd  gain_vs_c2_d  beats_c2_both
-0         BEA 2022                                              psi Rowthorn  0.0349  0.3066  0.3123   0.3090  0.3157       0.312           0.0024        0.0034           True
-1         BEA 2022  positive control: wages compressed to SD ln psi Rowthorn  0.0349  0.3006  0.3090   0.3025  0.3103       0.312           0.0018        0.0013           True
-2         BEA 2022                                                psi Shaikh  0.2366  0.3029  0.2905   0.3112  0.3157       0.312           0.0082        0.0253           True
-3         BEA 2022    positive control: wages compressed to SD ln psi Shaikh  0.2366  0.2495  0.2534   0.2729  0.2777       0.312           0.0234        0.0242           True
-4  FIGARO USA 2022                                              psi Rowthorn  0.0330  0.3360  0.3614   0.3329  0.3619       0.339          -0.0031        0.0005          False
-5  FIGARO USA 2022  positive control: wages compressed to SD ln psi Rowthorn  0.0330  0.3309  0.3556   0.3298  0.3558       0.339          -0.0010        0.0002          False
-6  FIGARO USA 2022                                                psi Shaikh  0.2189  0.3370  0.3495   0.3312  0.3605       0.339          -0.0058        0.0110          False
-7  FIGARO USA 2022    positive control: wages compressed to SD ln psi Shaikh  0.2189  0.2866  0.3012   0.2991  0.3227       0.339           0.0125        0.0215           True
+0         BEA 2022                                              psi Rowthorn  0.0342  0.3058  0.3114   0.3086  0.3148       0.312           0.0029        0.0034           True
+1         BEA 2022  positive control: wages compressed to SD ln psi Rowthorn  0.0342  0.3009  0.3092   0.3026  0.3104       0.312           0.0018        0.0012           True
+2         BEA 2022                                                psi Shaikh  0.2310  0.2977  0.2845   0.3072  0.3137       0.312           0.0095        0.0293           True
+3         BEA 2022    positive control: wages compressed to SD ln psi Shaikh  0.2310  0.2502  0.2549   0.2740  0.2786       0.312           0.0238        0.0237           True
+4  FIGARO USA 2022                                              psi Rowthorn  0.0325  0.3349  0.3592   0.3322  0.3603       0.339          -0.0027        0.0011          False
+5  FIGARO USA 2022  positive control: wages compressed to SD ln psi Rowthorn  0.0325  0.3310  0.3558   0.3300  0.3560       0.339          -0.0010        0.0002          False
+6  FIGARO USA 2022                                                psi Shaikh  0.2146  0.3302  0.3357   0.3253  0.3552       0.339          -0.0049        0.0194          False
+7  FIGARO USA 2022    positive control: wages compressed to SD ln psi Shaikh  0.2146  0.2876  0.3025   0.3002  0.3236       0.339           0.0126        0.0211           True

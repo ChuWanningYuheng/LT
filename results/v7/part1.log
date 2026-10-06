@@ -1,0 +1,31 @@
+   panel                                 spec   beta0      p0  m_zero  m_insig      n  m_obs_b
+0  KLEMS                a: non-NA, D = I - dU -0.0319  0.0085    3.50     0.45  11733      NaN
+1  KLEMS                a: non-NA, delta 0.05 -0.0319  0.0085   15.85     4.90  11733      NaN
+2  KLEMS                a: non-NA, delta 0.15 -0.0319  0.0085   15.50     3.00  11733      NaN
+3  KLEMS                a: non-NA, delta 0.20 -0.0319  0.0085   15.10     1.95  11733      NaN
+4  KLEMS                    a: OrgCap + Brand -0.0319  0.0085    6.60     0.80  11733      NaN
+5  KLEMS                             a: Train -0.0319  0.0085     NaN     5.85  11733      NaN
+6  KLEMS  b: U = m W in low-K/W, g = observed -0.0284  0.0215     NaN     0.30  12595   0.3551
+7  KLEMS       b: U = m W in low-K/W, g = 0.0 -0.0284  0.0215     NaN     0.15  12595   0.3551
+8  KLEMS      b: U = m W in low-K/W, g = 0.02 -0.0284  0.0215     NaN     0.20  12595   0.3551
+9  KLEMS      b: U = m W in low-K/W, g = 0.05 -0.0284  0.0215     NaN     0.35  12595   0.3551
+  panel                                      spec   beta0   p0  m_zero  m_insig      n
+0  WIOD          a: KLEMS intensity, profit + g U -0.0862  0.0     NaN      NaN  25571
+1  WIOD  a: KLEMS intensity, no profit correction -0.0862  0.0     NaN      NaN  25571
+2  WIOD         b: U = m W in low-K/W, g observed -0.0862  0.0     NaN      NaN  25571
+                                              check  panel    beta       p      n
+0                          low-intangible subsample  KLEMS -0.0569  0.0030   3954
+1          within country-industry (+ country-year)  KLEMS -0.0767  0.0690  12595
+2                          low-intangible subsample   WIOD -0.1005  0.0000  10130
+3          within country-industry (+ country-year)   WIOD  0.0217  0.2046  25571
+4  non-NA spending as unproductive cost (PI + I, K)  KLEMS -0.0850  0.0000  12343
+5             non-NA as capital (m = 1, D = I - dU)  KLEMS -0.0161  0.1792  11733
+6          corr(K_RD/K, ln K/W) within country-year  KLEMS -0.0119     NaN  11276
+7                             K without R&D capital  KLEMS -0.0370  0.0007  11276
+8               same sample, K with R&D (reference)  KLEMS -0.0263  0.0082  11276
+            method  beta_short  beta_long  R2_short  R2_long   Rmax  beta_star   beta        t  partial_R2_x   RV_q1  R2_D_on_RD  partialR2_Y_on_RD  bias_max  beta_adj_towards_zero  R2_DU_bound  R2_YU_bound
+0            Oster     -0.0263      0.038    0.0148   0.1169  0.152     0.0601    NaN      NaN           NaN     NaN         NaN                NaN       NaN                    NaN          NaN          NaN
+1  Cinelli-Hazlett         NaN        NaN       NaN      NaN    NaN        NaN -0.026 -12.9676        0.0147  0.1149      0.0001              0.015       NaN                    NaN          NaN          NaN
+2     CH bound k=1         NaN        NaN       NaN      NaN    NaN        NaN -0.026      NaN           NaN     NaN         NaN                NaN    0.0003                -0.0257       0.0001       0.0152
+3     CH bound k=2         NaN        NaN       NaN      NaN    NaN        NaN -0.026      NaN           NaN     NaN         NaN                NaN    0.0006                -0.0254       0.0003       0.0304
+4     CH bound k=3         NaN        NaN       NaN      NaN    NaN        NaN -0.026      NaN           NaN     NaN         NaN                NaN    0.0009                -0.0251       0.0004       0.0456

@@ -223,3 +223,34 @@ python -m lts.v7.sec threshold   # порог на профиле SEC (results/v
 python -m lts.v7.profiles   # национальные проверки профиля (ONS, CBS)
 python -m lts.v7.part2      # часть 2: ψ по профессиям, тест надбавок, ценовые тесты с эталонами сжатия
 ```
+
+После независимой рецензии итерации 7 (журнал п. 6):
+
+```bash
+python -m lts.v7.extra           # проверки по внешней рецензии (b, MDE, (б′), К5, мощность теста 3)
+python -m lts.v7.review_checks   # проверки по независимой рецензии (порог в логарифмах, SEC на всей панели, RV, R² строгой формы)
+```
+
+## Итерация 8: единое правило вывода, чистка тестов цен, закон тенденции
+
+Отчёт: [`report/REPORT_v8.md`](report/REPORT_v8.md); сводная таблица исходов: [`report/outcomes_table.md`](report/outcomes_table.md); предрегистрация и журнал: [`pre_registration_v8.md`](pre_registration_v8.md); доступность данных: [`data/raw/v8_availability.md`](data/raw/v8_availability.md).
+
+Данные (`data/raw/v8/`, записаны в MANIFEST):
+* Eurostat `nama_10_nfa_st`, `nama_10_a64` (по переменным), `ei_bsin_q_r2`, `gov_10a_*`;
+* квартальные NIPA (`NipaDataQ.txt`);
+* таблицы BEA SUP (`AllTablesSUP.zip`); детальные Make/Use 2017 — из `data/raw/bea/AllTablesIO.zip`;
+* QCEW 2017;
+* FRED (CUMFNS, TCU, USREC, JHDUSRGDPBR, HOANBS);
+* Census Economic Census (концентрация 2012, 2017, 2022).
+
+```bash
+export PYTHONPATH=src OMP_NUM_THREADS=2
+python -m lts.v8.stage2            # степень трансформации b, отношения, время оборота, концентрация
+python -m lts.v8.stage3 market     # рыночный сектор, факторные издержки, ФИСИМ (~15 мин)
+python -m lts.v8.stage3 gross      # валовой запас Eurostat в тесте Б0б
+python -m lts.v8.stage3 gradient   # градиент по дезагрегации (BEA 2017 + QCEW); "gradient fix" — вариант охвата (журнал п. 7)
+python -m lts.v8.stage3 hedonic    # T1 без гедонически дефлируемых отраслей
+python -m lts.v8.stage4            # закон тенденции: r_n, фазы, обесценение, сжатие прибыли, внешний критерий, налоги
+python -m lts.v8.stage5            # Маркс против Калецки (квартальные NIPA)
+python -m lts.v8.stage1            # сводная таблица исходов 1–19 по единому правилу -> report/outcomes_table.md
+```

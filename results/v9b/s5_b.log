@@ -1,2 +1,7 @@
 {'panel': 'KLEMS', 'b_nls': np.float64(1.1923233107795894), 'ci90_lo': np.float64(0.4601993238241687), 'ci90_hi': np.float64(2.8951670481728837), 'share_at_upper': 0.01002004008016032, 'share_at_lower': 0.0, 'share_above_2': 0.16032064128256512, 'iv_first_stage_F_clustered': 3045.2349604198694, 'n_clusters': 34}
 {'panel': 'WIOD', 'b_nls': np.float64(1.5439180862277844), 'ci90_lo': np.float64(1.0047913582758319), 'ci90_hi': np.float64(3.1660280858947427), 'share_at_upper': 0.04809619238476954, 'share_at_lower': 0.0, 'share_above_2': 0.08016032064128256, 'iv_first_stage_F_clustered': 8203.787121699503, 'n_clusters': 43}
+{'panel': 'Eurostat', 'b_nls': np.float64(0.7486633469425806), 'ci90_lo': np.float64(0.4500277635285186), 'ci90_hi': np.float64(1.9049893746006192), 'share_at_upper': 0.004008016032064128, 'share_at_lower': 0.0, 'share_above_2': 0.03807615230460922, 'iv_first_stage_F_clustered': 2368.136546944171, 'n_clusters': 50}
+      panel  b_nls  ci90_lo  ci90_hi  share_at_upper  share_at_lower  share_above_2  iv_first_stage_F_clustered  n_clusters
+0     KLEMS  1.192    0.460    2.895           0.010             0.0          0.160                    3045.235          34
+1      WIOD  1.544    1.005    3.166           0.048             0.0          0.080                    8203.787          43
+2  Eurostat  0.749    0.450    1.905           0.004             0.0          0.038                    2368.137          50

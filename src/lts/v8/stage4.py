@@ -142,6 +142,7 @@ def phases():
             x = g.loc[a:b]
             if len(x) < 3:
                 continue
+            a, b = int(x.index.min()), int(x.index.max())
             sl_rm = np.polyfit(x.index, x.rM, 1)[0]
             dk = np.log1p(x.k.iloc[-1]) - np.log1p(x.k.iloc[0])
             c = contrib(lg, a, b)

@@ -35,7 +35,8 @@ def es(path):
         r["value"] = v
         rows.append(r)
     f = pd.DataFrame(rows)
-    f["time"] = f.time.astype(int)
+    if f.time.str.fullmatch(r"\d{4}").all():
+        f["time"] = f.time.astype(int)
     return f
 
 

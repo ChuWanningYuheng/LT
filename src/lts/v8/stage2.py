@@ -212,10 +212,10 @@ def turnover():
 def cr4_klems():
     z = zipfile.ZipFile(R8 / "census_EC1700SIZECONCEN.zip")
     d = pd.read_csv(z.open("EC1700SIZECONCEN.dat"), sep="|", low_memory=False, dtype=str)
-    d = d[(d["#GEOTYPE"] == "1") & (d.TYPOP == "0")]
+    d = d[(d["#GEOTYPE"].astype(int) == 1) & (d.TYPOP.astype(int) == 0)]
     d["RCPTOT"] = pd.to_numeric(d.RCPTOT, errors="coerce")
-    tot = d[d.CONCENFI == "1"].set_index("NAICS2017").RCPTOT
-    c4 = d[d.CONCENFI == "604"].set_index("NAICS2017").RCPTOT
+    tot = d[d.CONCENFI.astype(int) == 1].set_index("NAICS2017").RCPTOT
+    c4 = d[d.CONCENFI.astype(int) == 604].set_index("NAICS2017").RCPTOT
     cr = pd.DataFrame({"tot": tot, "c4": c4}).dropna()
     cr = cr[cr.index.str.len() == 6]
     cr["cr4"] = cr.c4 / cr.tot
@@ -225,7 +225,9 @@ def cr4_klems():
         dk = divs(k)
         sel = cr[[b in BEA_TO_NACE and set(BEA_TO_NACE[b]) <= set(dk) if b else False for b in cr.bea]]
         if len(sel):
-            out.append(dict(ind=k, cr4=float(np.average(sel.cr4, weights=sel.tot)), n_naics=len(sel)))
+            sel = sel[np.isfinite(sel.cr4)]
+            if len(sel):
+                out.append(dict(ind=k, cr4=float(np.average(sel.cr4, weights=sel.tot)), n_naics=len(sel)))
     return pd.DataFrame(out)
 
 
@@ -238,7 +240,7 @@ def concentration():
     p["dev_r"] = p.r - p.groupby("year").r.transform("mean")
     m = mueller(p, "dev_r")
     cr = cr4_klems()
-    j = m.merge(cr, on="ind")
+    j = m.merge(cr, on="ind").replace([np.inf, -np.inf], np.nan).dropna(subset=["cr4", "lam", "lr"])
     rows = []
     for y in ("lam", "lr"):
         Xc = sm.add_constant(j.cr4)

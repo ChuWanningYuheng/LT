@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/user/LT/src/lts/v9b/stage45.py", line 390, in <module>
+    o34 = outcome34_paired()
+          ^^^^^^^^^^^^^^^^^^
+  File "/home/user/LT/src/lts/v9b/stage45.py", line 265, in outcome34_paired
+    est = both(w)
+          ^^^^^^^
+  File "/home/user/LT/src/lts/v9b/stage45.py", line 263, in both
+    return grouped_b(d2)[0] - grouped_b(d1)[0]
+           ^^^^^^^^^^^^^
+  File "/home/user/LT/src/lts/v9/b_est.py", line 114, in grouped_b
+    a = grouped(d, yname)
+        ^^^^^^^^^^^^^^^^^
+  File "/home/user/LT/src/lts/v9/b_est.py", line 107, in grouped
+    d["rk"] = d.groupby("cy").kw.rank(pct=True, method="first")
+              ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/pandas/core/groupby/groupby.py", line 1115, in __getattr__
+    raise AttributeError(
+AttributeError: 'DataFrameGroupBy' object has no attribute 'kw'

@@ -1,0 +1,7 @@
+                                               item     est  ci90_lo  ci90_hi       p  n_crisis  n_other      years
+0          Z.1 NFC reval_real: crisis - other years -0.0294  -0.0491  -0.0097  0.0176        19       55  1952-2025
+1        Z.1 NFC other_volume: crisis - other years  0.0020  -0.0107   0.0146  0.7925        19       55  1952-2025
+2  Z.1 NFC equity_real_growth: crisis - other years -0.0488  -0.1354   0.0379  0.3463        21       59  1946-2025
+                                                         outcome    est  ci90_lo  ci90_hi  k   n  theta0  delta direction           label
+0                      outcome 35, main from 9b: STAN, ADF lag 1  0.077    0.017    0.282  1  13    0.05   0.15         >  неинформативно
+1  outcome 35 variant: WIOD, economy-wide VA deflator, ADF lag 1  0.095    0.043    0.196  4  42    0.05   0.15         >    опровергнуто

@@ -211,7 +211,7 @@ EU_UNPROD["V6"] = EU_UNPROD["main"] + ["P", "Q"]
 EXCL = {"EU27_2020", "EU28", "EU15", "EA", "EA19", "EA20", "EA21", "EA12", "EU"}
 
 
-def eu_country_panel():
+def eu_country_panel(extended=False):
     it, st = es_load()
     piv = lambda d: d.pivot_table(index=["geo", "time"], columns="nace_r2", values="value")  # noqa: E731
     D1, B1G, P51C, N = piv(it["D1"]), piv(it["B1G"]), piv(it["P51C"]), piv(st)
@@ -229,6 +229,11 @@ def eu_country_panel():
             for u in unp:
                 opts = u if isinstance(u, tuple) else (u,)
                 hit = [o for o in opts if np.isfinite(d.get(o, np.nan)) and np.isfinite(n.get(o, np.nan))]
+                if not hit and extended and opts[0] == "M69_M70" and all(
+                        np.isfinite(x.get(k, np.nan)) for x, k in ((d, "M69_M70"), (d, "M"), (n, "M"))):
+                    un_d += d["M69_M70"]                     # journal 1: stock of M split by compensation shares
+                    un_n += n["M"] * d["M69_M70"] / d["M"]
+                    continue
                 if not hit:
                     ok = False
                     break
@@ -503,6 +508,11 @@ if __name__ == "__main__":
         C.to_csv(OUT / "s1_eu_trends.csv", index=False)
         Sh.to_csv(OUT / "s1_eu_outcomes.csv", index=False)
         print(C[C.variant == "main"].round(5).to_string(), "\n", Sh.round(3).to_string(), flush=True)
+        Px = eu_country_panel(extended=True)
+        Cx, Shx = eu_outcomes(Px)
+        Cx.to_csv(OUT / "s1_eu_trends_extended.csv", index=False)
+        Shx.to_csv(OUT / "s1_eu_outcomes_extended.csv", index=False)
+        print(Cx[Cx.variant == "main"].round(5).to_string(), "\n", Shx.round(3).to_string(), flush=True)
         KP, KT, KS = klems_gross()
         KP.to_csv(OUT / "s1_klems_gross_panel.csv", index=False)
         KT.to_csv(OUT / "s1_klems_gross_trends.csv", index=False)

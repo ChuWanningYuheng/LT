@@ -84,6 +84,7 @@ def build():
     o27 = an.loc["institutions: ln(w/y) on cbc, per 10 pp (outcome 27)"]
     rows.append(row("27", "Уровень ln(w/y) на охват договорами, на 10 п. п.", o27.est, o27.ci90_lo, o27.ci90_hi,
                     o27.label, "`results/v9/s2_anchor.csv`", 0, 0.01, ">"))
+    R6 = "поправка (б) сокращает собственные часы ячейки: на прямом уровне это 1 / (PL · π̄), обратный уровень цен (рецензия, Р6); исход проверяет уровни цен PLD, а не время труда"
     s34 = r("s34_outcomes.csv").set_index("outcome")
     o28 = s34.loc["28: countries where world-average labour beats national (majority of years)"]
     rows.append(row("28", "Среднемировой труд лучше национального (доля стран, большинство лет)", o28.est, o28.ci90_lo,
@@ -96,19 +97,24 @@ def build():
                     ("32 a-b (2005)", "MAWD(сырые часы) − MAWD(поправленные часы), 2005")):
         o = s34.loc[k]
         rows.append(row(k[:2], name, o.est, o.ci90_lo, o.ci90_hi, o.label, "`results/v9/s4_outcomes_by_year.csv`", 0,
-                        0.01, ">" if k.startswith("32") else "<"))
+                        0.01, ">" if k.startswith("32") else "<", note=R6))
     o33 = s34.loc["33: R2(b) - R2(c), 5-year changes, mean of windows"]
     rows.append(row("33", "R²(поправленные часы) − R²(фонд оплаты), изменения за 5 лет", o33.est, o33.ci90_lo, o33.ci90_hi,
-                    o33.label, "`results/v9/s34_outcomes.csv`", 0, 0.05, ">"))
+                    o33.label, "`results/v9/s34_outcomes.csv`", 0, 0.05, ">", note=R6))
     o34 = r("s5_b_between_outcome.csv").iloc[0]
     rows.append(row("34", "b между странами − b между отраслями (сгруппированная, WIOD)", o34.est, o34.ci90_lo,
-                    o34.ci90_hi, o34.label, "`results/v9/s5_b_between*.csv`", 0, 0.1, "<"))
+                    o34.ci90_hi, o34.label, "`results/v9/s5_b_between*.csv`", 0, 0.1, "<",
+                    note="ДИ — нормальное приближение (журнал 6); перцентильный ДИ парного бутстрепа рецензента −0,385; 0,073 — "
+                         "неинформативно (Р5); логарифм −0,02, НМНК +0,26"))
     s6 = r("s6_outcomes.csv")
     o35 = s6[s6.outcome.str.startswith("outcome 35 (stan)")].iloc[0]
     o35w = s6[s6.outcome.str.startswith("outcome 35 (wiod)")].iloc[0]
     rows.append(row("35", "Доля стран, где реальный курс коинтегрирован с относительной реальной стоимостью труда (STAN)",
                     o35.est, o35.ci90_lo, o35.ci90_hi, o35.label, "`results/v9/s6_coint.csv`", 0.05, 0.15, ">",
-                    note=f"WIOD (15 лет): {int(o35w.k)} из {int(o35w.n)}, «{o35w.label}»"))
+                    note=(f"WIOD (15 лет, дефлятор ДС обработки): {int(o35w.k)} из {int(o35w.n)}, «{o35w.label}». "
+                          + "; ".join(f"лаг ADF {lag}: STAN {int(v.k)} из {int(v.n)} «{v.label}»"
+                                      for lag in (0, 1) for v in [s6[s6.outcome.str.startswith(f"variant (journal 14), ADF lag {lag} (stan)")].iloc[0]])
+                          + " (журнал 14, Р3)")))
     o36 = s6[s6.outcome.str.startswith("outcome 36")].iloc[0]
     rows.append(row("36", "RMSE ECM / AR(1), прогноз реального курса на 3 года", o36.est, o36.ci90_lo, o36.ci90_hi,
                     o36.label, "`results/v9/s6_oos.csv`", 1, 0.05, "<"))
@@ -121,7 +127,10 @@ def build():
         rows.append(row(n, name, o.est, o.ci90_lo, o.ci90_hi, o.label, "`results/v9/s7_outcomes.csv`", 0, 0.0002, "<",
                         note="варианты классификации: " + "; ".join(f"{v.variant.split(' ')[0]} {fmt(v.est, 5)} «{v.label}»"
                                                                     for v in vv.itertuples() if v.variant != "main")))
-    return pd.DataFrame(rows)
+    D = pd.DataFrame(rows)
+    num = D.select_dtypes("number").columns
+    D[num] = D[num].mask(D[num].abs() < 1e-12, 0.0)        # floating-point zeros (review R14)
+    return D
 
 
 def write_md(D):

@@ -28,7 +28,7 @@ SECTORS = {"agr": "Agriculture, forestry, fishing, and hunting", "min": "Mining"
            "wst": "Waste management and remediation services", "edu": "Educational services",
            "hlt": "Health care and social assistance", "art": "Arts, entertainment, and recreation",
            "acc": "Accommodation and food services", "oth": "Other services, except government", "gov": "Government"}
-FA_NAME = {"hlt": "Health care and social assistance", "oth": "Other services, except government"}
+FA_NAME = {"hlt": "Health and social assistance", "oth": "Other services, except government"}
 UNPROD = {"main": {"whl", "ret", "fin", "rea", "leg", "mgt", "adm", "gov"}}
 UNPROD["V2 transport unproductive"] = UNPROD["main"] | {"trn"}
 UNPROD["V3 information + computer design unproductive"] = UNPROD["main"] | {"inf", "csd"}
@@ -89,6 +89,8 @@ def build():
         kk = k.get(norm(FA_NAME.get(code, name)))
         if v is None:
             raise KeyError(name)
+        if kk is None and code != "gov":
+            raise KeyError("fixed assets: " + name)
         for y in YEARS:
             rows.append(dict(code=code, year=y, comp=v.comp.get(y), va=v[["comp", "tax", "gos"]].loc[y].sum(),
                              K=(kk.get(y) if kk is not None else np.nan) if code != "gov" else 0.0))

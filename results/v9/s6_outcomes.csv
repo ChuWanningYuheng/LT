@@ -1,4 +1,8 @@
 outcome,est,ci90_lo,ci90_hi,k,n,theta0,delta,direction,label
 outcome 35 (stan): share of countries cointegrated,0.0,-1.3877787807814457e-17,0.17229216176594653,0.0,13,0.05,0.15,>,опровергнуто
+"variant (journal 14), ADF lag 0 (stan): share cointegrated",0.07692307692307693,0.017350338879273064,0.2822814903072971,1.0,13,0.05,0.15,>,неинформативно
+"variant (journal 14), ADF lag 1 (stan): share cointegrated",0.07692307692307693,0.017350338879273064,0.2822814903072971,1.0,13,0.05,0.15,>,неинформативно
 outcome 35 (wiod): share of countries cointegrated,0.23809523809523808,0.14796848920650144,0.35992781783488725,10.0,42,0.05,0.15,>,подтверждено
+"variant (journal 14), ADF lag 0 (wiod): share cointegrated",0.07142857142857142,0.028903350436405045,0.16583606108586735,3.0,42,0.05,0.15,>,опровергнуто
+"variant (journal 14), ADF lag 1 (wiod): share cointegrated",0.047619047619047616,0.015883808797148284,0.13411890336525037,2.0,42,0.05,0.15,>,опровергнуто
 "outcome 36: mean RMSE ratio ECM / AR(1), h = 3",1.2315288428098254,1.0660715848823255,1.3933404174325232,,13,,,,опровергнуто

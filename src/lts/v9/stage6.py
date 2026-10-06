@@ -72,8 +72,11 @@ def sea_manuf():
     return out
 
 
-def eg(d):
-    t, p, _ = coint(d.q, d.v, trend="c")
+def eg(d, maxlag=None):
+    if maxlag is None:
+        t, p, _ = coint(d.q, d.v, trend="c")
+    else:
+        t, p, _ = coint(d.q, d.v, trend="c", maxlag=maxlag, autolag=None)
     beta = sm.OLS(d.q, sm.add_constant(d.v)).fit().params.v
     return p, beta
 
@@ -105,8 +108,10 @@ def run():
             if len(d) < 12:
                 continue
             p, beta = eg(d)
+            p0, _ = eg(d, 0)
+            p1, _ = eg(d, 1)
             rows.append(dict(source=src, country=c, years=f"{d.index.min()}-{d.index.max()}", n=len(d), eg_p=p, beta=beta,
-                             coint=p < 0.05))
+                             coint=p < 0.05, eg_p_lag0=p0, coint_lag0=p0 < 0.05, eg_p_lag1=p1, coint_lag1=p1 < 0.05))
             if src == "stan":
                 for h in (1, 3):
                     fc.append(oos(d, h) | dict(country=c))
@@ -116,6 +121,9 @@ def run():
     from ..v8.rule import share_row
     for src, g in R.groupby("source"):
         out.append(share_row(f"outcome 35 ({src}): share of countries cointegrated", g.coint, 0.05, 0.15, ">"))
+        for lag in (0, 1):
+            out.append(share_row(f"variant (journal 14), ADF lag {lag} ({src}): share cointegrated", g[f"coint_lag{lag}"],
+                                 0.05, 0.15, ">"))
     f3 = F[F.h == 3].ratio_ecm_ar.to_numpy()
     rng = np.random.default_rng(66)
     m = f3[rng.integers(0, len(f3), (2000, len(f3)))].mean(1)

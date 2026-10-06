@@ -257,7 +257,7 @@ python -m lts.v8.stage1            # сводная таблица исходо�
 
 ## Итерация 9: итоги о прибыли, рабочая сила как товар, мировой рынок, непроизводительный труд
 
-Отчёт: [`report/REPORT_v9.md`](report/REPORT_v9.md); сводная таблица исходов 1–38: [`report/outcomes_table.md`](report/outcomes_table.md); предрегистрация и журнал (п. 1–12): [`pre_registration_v9.md`](pre_registration_v9.md); доступность данных: [`data/raw/v9_availability.md`](data/raw/v9_availability.md).
+Отчёт: [`report/REPORT_v9.md`](report/REPORT_v9.md); сводная таблица исходов 1–38: [`report/outcomes_table.md`](report/outcomes_table.md); предрегистрация и журнал (п. 1–13): [`pre_registration_v9.md`](pre_registration_v9.md); доступность данных: [`data/raw/v9_availability.md`](data/raw/v9_availability.md).
 
 Данные (`data/raw/v9/`, записаны в MANIFEST): OECD SDMX (почасовой заработок, ИПЦ, охват договорами, профсоюзы), Eurostat (HICP, LCI, ИЦП, безработица, slack), FRED, BLS (ECI, ip), GGDC PLD 2005 и 2023, PWT 11, EXIOBASE 3.8.2 (2011, 2017 ixi; 2017, 2021 pxp), приложения Hickel et al. 2024, BEA GDP by Industry, MPRA 81542 и 84035. Повторно — AMECO, WIOD 2016 + SEA, OECD STAN, BEA FA, EU KLEMS, BEA 2017 + QCEW.
 

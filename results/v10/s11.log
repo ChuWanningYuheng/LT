@@ -1,0 +1,13 @@
+                                                                                              outcome     est  ci90_lo  ci90_hi    k    n  theta0  delta direction         label  countries  windows_falling  windows_all
+0               62: share of country-windows with Marx-biased technical change (PWT 11, OECD, 5-year)  0.6009   0.5616   0.6390  259  431     0.5   0.10         >  подтверждено       38.0              NaN          NaN
+1  63: among windows with falling r, share where Y/K gives > half of the fall and omega does not rise  0.5217   0.4647   0.5782  108  207     0.5   0.15         >  опровергнуто        NaN            207.0        473.0 
+                                                                                item     est    n
+0                                       share Marx-biased, windows within 1950-1975  0.6148  122
+1                                       share Marx-biased, windows within 1975-2000  0.5414  157
+2                                       share Marx-biased, windows within 2000-2020  0.6513  152
+3  falling-r windows: share where Y/K gives > half of the fall (omega unrestricted)  0.8551  207
+4                                    falling-r windows: share with omega not rising  0.5217  207
+5                                            Basu: mean d ln(real Y/K) over windows -0.0187  431
+6                                      Basu: mean d ln(pl_k / pl_gdpo) over windows -0.1795  437
+7                                       Basu: corr(d ln nominal Y/K, d ln real Y/K)  0.5614  431
+8         BSDB business sector 1960-1995 (persons): share Marx-biased (descriptive)  0.6929  127

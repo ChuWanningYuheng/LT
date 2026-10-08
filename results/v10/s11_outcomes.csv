@@ -1,0 +1,3 @@
+outcome,est,ci90_lo,ci90_hi,k,n,theta0,delta,direction,label,countries,windows_falling,windows_all
+"62: share of country-windows with Marx-biased technical change (PWT 11, OECD, 5-year)",0.6009280742459396,0.5616115758692715,0.6389851301598872,259,431,0.5,0.1,>,подтверждено,38.0,,
+"63: among windows with falling r, share where Y/K gives > half of the fall and omega does not rise",0.5217391304347826,0.46471396576869095,0.5782032560898607,108,207,0.5,0.15,>,опровергнуто,,207.0,473.0

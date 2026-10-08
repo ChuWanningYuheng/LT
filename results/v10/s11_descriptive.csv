@@ -1,0 +1,10 @@
+item,est,n
+"share Marx-biased, windows within 1950-1975",0.6147540983606558,122
+"share Marx-biased, windows within 1975-2000",0.5414012738853503,157
+"share Marx-biased, windows within 2000-2020",0.6513157894736842,152
+falling-r windows: share where Y/K gives > half of the fall (omega unrestricted),0.855072463768116,207
+falling-r windows: share with omega not rising,0.5217391304347826,207
+Basu: mean d ln(real Y/K) over windows,-0.018738542696211235,431
+Basu: mean d ln(pl_k / pl_gdpo) over windows,-0.17945341089033848,437
+"Basu: corr(d ln nominal Y/K, d ln real Y/K)",0.5614025230656103,431
+BSDB business sector 1960-1995 (persons): share Marx-biased (descriptive),0.6929133858267716,127

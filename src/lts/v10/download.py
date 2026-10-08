@@ -73,6 +73,8 @@ FILES = [
     ("wb_NY.GDP.TOTL.RT.ZS.json", WB + "NY.GDP.TOTL.RT.ZS?format=json&per_page=20000", "World Bank (CC BY 4.0)",
      "total natural resources rents, % of GDP"),
     # stage 6
+    # stage 8 (added with journal 12)
+    ("fred_WPU11.csv", FRED + "WPU11", "FRED terms", "US PPI by commodity: machinery and equipment, monthly"),
     ("bls_atussum-0324.zip", "https://www.bls.gov/tus/datafiles/atussum-0324.zip", "public domain (BLS)",
      "ATUS 2003-2024 activity summary file"),
 ]

@@ -27,7 +27,9 @@ def ameco():
     for f in sorted(glob.glob(str(ROOT / "data" / "raw" / "v6" / "ameco" / "AMECO*.TXT"))):
         d = pd.read_csv(f, sep=";", dtype=str, encoding="latin1")
         p = d.CODE.str.split(".", expand=True)
-        keep = p[5].isin(CODES) & (p[1] == "1") & (p[2] == "0") & (p[3] == "0") & (p[4] == "0")
+        # real GDP (OVGD) is stored as XXX.1.1.0.0.OVGD (national currency, reference-year prices)
+        keep = p[5].isin(CODES) & (p[1] == "1") & (p[3] == "0") & (p[4] == "0") & \
+            ((p[2] == "0") | ((p[5] == "OVGD") & (p[2] == "1")))
         for _, r in d[keep].iterrows():
             c = r.CODE.split(".")
             for y in [k for k in d.columns if k.strip().isdigit()]:

@@ -96,6 +96,7 @@ def flags(df):
     df["R2"] = ev & (df.x > 0) & (df.h_share < 0.002)
     df["R3"] = ev & (df.x > 0) & ((df.hours <= 0) | (df.persons <= 0))
     df = df.sort_values(["source", "country", "code", "year"]).reset_index(drop=True)
+    ev = df["eval"].astype(bool)                                  # re-aligned after sorting (journal 9)
     df["hpp"] = (df.hours / df.persons).where((df.hours > 0) & (df.persons > 0))
     g = df.groupby(["source", "country", "code"])
     py, ny = g.year.shift(1), g.year.shift(-1)

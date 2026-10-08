@@ -144,18 +144,25 @@ def run():
             s0, l0, ml0 = shares(e0)
             e1, _ = build(c, y)
             e1 = patch(e1, dmap[y])
-            s1, l1, ml1 = shares(e1)
+            note = ""
+            try:
+                s1, l1, ml1 = shares(e1)
+            except ValueError as exc:                        # journal 14: d >= 1 -> not productive
+                s1 = l1 = ml1 = np.nan
+                note = f"not productive: {exc}"[:80]
             rows.append(dict(country=c, year=y, d=dmap[y], d_source=src, share_d0=s0, share_d=s1, labour_part_d0=l0,
                              labour_part_d=l1, mawd_labour_d0=ml0, mawd_labour_d=ml1,
-                             bundle_scale=e1.meta.get("_d_bundle_scale", 1.0)))
-            print("s6", c, y, round(s0, 3), round(s1, 3), flush=True)
+                             bundle_scale=e1.meta.get("_d_bundle_scale", 1.0), note=note))
+            print("s6", c, y, round(s0, 3), s1, flush=True)
+        pd.DataFrame(rows).to_csv(OUT / "s6_outcome2.csv", index=False)
     R = pd.DataFrame(rows)
     R.to_csv(OUT / "s6_outcome2.csv", index=False)
     by = R.groupby("country")[["share_d0", "share_d", "labour_part_d0", "labour_part_d", "d"]].mean()
+    ok = by.share_d.notna()
     out = [mean_row("2 [d = 0, countries with d]: share of commodity bases better than labour, symmetric",
                     by.share_d0.to_numpy(), 0.5, 0.10, "<"),
-           mean_row("2 [with household labour d]: share of commodity bases better than labour, symmetric",
-                    by.share_d.to_numpy(), 0.5, 0.10, "<")]
+           mean_row("2 [d = 0, countries where the system with d is productive]", by.share_d0[ok].to_numpy(), 0.5, 0.10, "<"),
+           mean_row("2 [with household labour d, productive countries only]", by.share_d[ok].to_numpy(), 0.5, 0.10, "<")]
     O = pd.DataFrame(out)
     O.to_csv(OUT / "s6_outcomes.csv", index=False)
     by.to_csv(OUT / "s6_by_country.csv")

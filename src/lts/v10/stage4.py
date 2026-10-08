@@ -119,8 +119,8 @@ def second_source(F, W):
     Fw["key"] = Fw.code.map(fig2wiod)
     Ww = W[W.country.isin(V3) & W.year.between(2010, 2014)].copy()
     Ww["key"] = Ww.code.where(~Ww.code.isin(NOT_1TO1_W))
-    a = Fw.merge(Ww[["country", "year", "key", "R1", "R2", "R3", "R4", "w_rel"]], on=["country", "year", "key"],
-                 how="left", suffixes=("", "_2"))
+    a = Fw.merge(Ww[["country", "year", "key", "R1", "R2", "R3", "R4", "w_rel"]].dropna(subset=["key"]),
+                 on=["country", "year", "key"], how="left", suffixes=("", "_2"))   # NaN keys never match (journal 15)
     Wf = W.copy()
     Wf["key"] = Wf.code.where(~Wf.code.isin(NOT_1TO1_W))
     Fk = F[F.year.between(2010, 2014)].copy()
@@ -134,7 +134,7 @@ def second_source(F, W):
             if not r.flag:
                 res.append("")
                 continue
-            if pd.isna(r.R1_2):
+            if pd.isna(r.key) or pd.isna(r.R1_2):
                 res.append("нет второго источника")
                 continue
             same = (r.R1 and r.R1_2 and np.sign(np.log(r.w_rel)) == np.sign(np.log(r.w_rel_2))) or \

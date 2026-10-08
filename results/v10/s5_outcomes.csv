@@ -1,0 +1,3 @@
+outcome,est,ci90_lo,ci90_hi,k,n,theta0,delta,direction,label,n_firm_years
+56: share of years where Laplace/Subbotin beats shifted gamma by BIC (r_op),1.0,0.8471692545334145,1.0,15.0,15.0,0.5,0.15,>,подтверждено,
+57: median over years of QCD(op. income / labour cost) - QCD(op. income / assets),0.17598645443117034,0.11682757083460922,0.23205165844332581,,,,,,опровергнуто,1314.0

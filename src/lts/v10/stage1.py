@@ -481,6 +481,8 @@ def run_rtw():
         S = stack(P, ev, CONTROL)
         for oc in ("gos_share", "comp_share"):
             r = did(S, oc)
+            if oc == "comp_share":                      # descriptive; the label rule of outcome 50 does not apply
+                r["label"] = "описательно"
             rows.append(dict(variant=vname, outcome=oc, **r))
             print(vname, oc, {k: (round(v, 4) if isinstance(v, float) else v) for k, v in r.items()}, flush=True)
             e = event_study(S, oc)
@@ -490,12 +492,14 @@ def run_rtw():
     for st, E in TREAT.items():
         S = stack(P, {st: E}, CONTROL)
         r = did(S, "gos_share", B=1999)
+        r["label"] = "описательно (один кластер лечения)"
         rows.append(dict(variant=f"single state {st} {E}", outcome="gos_share", **r))
     Ps = state_panel(sic=True)
     Ps.to_csv(OUT / "s1_rtw_state_panel_sic.csv", index=False)
     S = stack(Ps, SIC_EVENTS, CONTROL)
     for oc in ("gos_share", "comp_share"):
         r = did(S, oc)
+        r["label"] = "описательно"
         rows.append(dict(variant="SIC 1963-1997: LA 1976, ID 1985 (descriptive)", outcome=oc, **r))
         e = event_study(S, oc)
         e["variant"], e["outcome"] = "SIC", oc
@@ -508,6 +512,34 @@ def run_rtw():
              ci90_hi=m.ci90_hi, n=m.n, theta0=0, delta=0.5, direction=">", label=m.label, G=m.G, p_wild=m.p_wild)
     print(Rr.round(4).to_string(), flush=True)
     return pd.DataFrame([o])
+
+
+def trend_adjusted(S, outcome, B=9999, seed=51):
+    """post hoc (journal 4): treated-state linear trend fitted on the pre-window, mean deviation over years 0..+5.
+    Regressors: D (coefficient = mean post effect), treated x rel, and (1[rel=r] - 1[rel=0]) for r = 1..5."""
+    S = S.dropna(subset=[outcome])
+    tr = S.rel.notna().astype(float).to_numpy()
+    rel = np.nan_to_num(S.rel.to_numpy())
+    cols = [S.D.to_numpy(), tr * rel] + [((S.rel == r).astype(float) - (S.rel == 0).astype(float)).to_numpy()
+                                          for r in range(1, 6)]
+    u, t = S.st + "_" + S.stk, S.year.astype(str) + "_" + S.stk
+    M = demean2(np.column_stack([S[outcome].to_numpy()] + cols), u, t)
+    b, se, lo_b, hi_b, p, G = wild_t(M[:, 1:], M[:, 0], S.st.to_numpy(), 0, B=B, seed=seed)
+    lo, hi, lab = widest(b, se, G, lo_b, hi_b, 0.5, ">")
+    return dict(est=b, se=se, ci90_lo=lo, ci90_hi=hi, p_wild=p, G=G, n=len(S), label=lab)
+
+
+def run_rtw_trend():
+    P = pd.read_csv(OUT / "s1_rtw_state_panel.csv")
+    rows = []
+    for vname, ev in (("first full year (main)", TREAT), ("enactment year", ENACT)):
+        S = stack(P, ev, CONTROL)
+        for oc in ("gos_share", "comp_share"):
+            r = trend_adjusted(S, oc)
+            rows.append(dict(variant=vname, outcome=oc, **r))
+    R = pd.DataFrame(rows)
+    R.to_csv(OUT / "s1_rtw_trend_adjusted.csv", index=False)
+    print(R.round(4).to_string(), flush=True)
 
 
 # ================================================================ 1.3 synthetic control
@@ -660,6 +692,8 @@ if __name__ == "__main__":
         run_gas()
     if "steel" in parts:
         run_steel()
+    if "rtw_trend" in parts:
+        run_rtw_trend()
     if outs:
         O = pd.concat(outs, ignore_index=True)
         prev = OUT / "s1_outcomes.csv"

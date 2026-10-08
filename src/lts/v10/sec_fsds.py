@@ -1,7 +1,8 @@
 """Iteration 10, stage 0: firm-year extract from SEC Financial Statement Data Sets (2009q2-2026q2).
 
 All 10-K / 10-K/A filings with fp = FY in every quarterly archive; tags below; USD (shares/pure for employees);
-no co-registrant; flows with qtrs = 4, stocks with qtrs = 0; ddate at the fiscal year end (period);
+no co-registrant; no dimensional rows (segments empty; journal 7); flows with qtrs = 4, stocks with qtrs = 0;
+ddate at the fiscal year end (period); keys with conflicting values left after these filters are dropped;
 latest filing per company x fiscal year x tag. Archives are not kept (as in iteration 7).
 
 Output: data/raw/v10/sec/sec_fy_<quarter>.csv (per archive) and data/raw/v10/sec/sec_firm_fy_all.csv
@@ -57,9 +58,9 @@ def fetch(q):
     raise RuntimeError(q)
 
 
-def extract(q):
+def extract(q, force=False):
     out = RAW / f"sec_fy_{q}.csv"
-    if out.exists():
+    if out.exists() and not force:
         return
     data, url = fetch(q)
     z = zipfile.ZipFile(io.BytesIO(data))
@@ -69,20 +70,24 @@ def extract(q):
     keep = set(sub.adsh)
     parts = []
     for ch in pd.read_csv(z.open("num.txt"), sep="\t", dtype=str, chunksize=2_000_000, quoting=csv.QUOTE_NONE,
-                          usecols=["adsh", "tag", "coreg", "ddate", "qtrs", "uom", "value"]):
-        ch = ch[ch.adsh.isin(keep) & ch.tag.isin(TAGS) & ch.coreg.isna()]
+                          usecols=["adsh", "tag", "coreg", "segments", "ddate", "qtrs", "uom", "value"]):
+        ch = ch[ch.adsh.isin(keep) & ch.tag.isin(TAGS) & ch.coreg.isna() & ch.segments.isna()]
         parts.append(ch)
     num = pd.concat(parts).merge(sub, on="adsh")
     num = num[num.ddate == num.period]
     isflow = num.tag.isin(FLOWS)
     num = num[(isflow & (num.qtrs == "4")) | (~isflow & (num.qtrs == "0"))]
     num = num[(num.uom == "USD") | (num.tag == "EntityNumberOfEmployees")]
-    num.drop(columns=["coreg"]).to_csv(out, index=False)
+    key = ["adsh", "tag", "ddate", "qtrs", "uom"]
+    nv = num.groupby(key).value.transform("nunique")
+    n_conf = int((nv > 1).sum())
+    num = num[nv == 1].drop_duplicates(key)
+    num.drop(columns=["coreg", "segments"]).to_csv(out, index=False)
     with open(ROOT / "data" / "raw" / "MANIFEST.csv", "a", newline="") as f:
         csv.writer(f).writerow(["v10", f"sec/sec_fy_{q}.csv", url, "public domain (SEC)",
                                 "iteration 10, extract of 10-K FY values (archive not kept)", len(data),
                                 hashlib.sha256(data).hexdigest(), dt.datetime.now().isoformat(timespec="seconds")])
-    print("sec", q, len(sub), len(num), flush=True)
+    print("sec", q, len(sub), len(num), "conflicting rows dropped:", n_conf, flush=True)
 
 
 def merge():
@@ -100,10 +105,10 @@ def merge():
 
 if __name__ == "__main__":
     part = sys.argv[1] if len(sys.argv) > 1 else "build"
-    if part == "build":
+    if part in ("build", "rebuild"):
         for q in quarters():
             try:
-                extract(q)
+                extract(q, force=part == "rebuild")
             except Exception as exc:  # noqa: BLE001
                 print("FAILED", q, exc, flush=True)
         merge()

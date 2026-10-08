@@ -1,0 +1,1241 @@
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+wiod15 AUS
+wiod15 AUT
+wiod15 BEL
+wiod15 BGR
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+wiod15 BRA
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+wiod15 CAN
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+wiod15 CHE
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+wiod15 CYP
+wiod15 CZE
+wiod15 DEU
+wiod15 DNK
+wiod15 ESP
+wiod15 EST
+wiod15 FIN
+wiod15 FRA
+wiod15 GBR
+wiod15 GRC
+wiod15 HRV
+wiod15 HUN
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+wiod15 IDN
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+wiod15 IND
+wiod15 IRL
+wiod15 ITA
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+wiod15 JPN
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+wiod15 KOR
+wiod15 LTU
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+wiod15 LUX
+wiod15 LVA
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+wiod15 MEX
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v3/placebo_disp.py:46: RuntimeWarning: invalid value encountered in matmul
+  lam = np.atleast_2d(Lrows) @ self.L
+/home/user/LT/src/lts/v3/placebo_disp.py:47: RuntimeWarning: invalid value encountered in matmul
+  s = (self.x.sum() - self.mu @ self.x) / (lam @ self.x)
+/usr/local/lib/python3.11/dist-packages/numpy/_core/_methods.py:188: RuntimeWarning: invalid value encountered in subtract
+  x = um.subtract(arr, arrmean, out=...)
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+wiod15 MLT
+wiod15 NLD
+wiod15 NOR
+wiod15 POL
+wiod15 PRT
+wiod15 ROU
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+wiod15 RUS
+wiod15 SVK
+wiod15 SVN
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+/home/user/LT/src/lts/v2/placebo_cost.py:39: RuntimeWarning: divide by zero encountered in divide
+  q = 1 / Z
+/home/user/LT/src/lts/v2/placebo_cost.py:40: RuntimeWarning: invalid value encountered in multiply
+  mawd = (np.abs(q - 1) * w).sum(1)
+/home/user/LT/src/lts/v2/placebo_cost.py:41: RuntimeWarning: invalid value encountered in divide
+  cos = q.sum(1) / (np.linalg.norm(q, axis=1) * np.sqrt(Z.shape[1]))
+wiod15 SWE
+wiod15 TWN
+wiod15 USA

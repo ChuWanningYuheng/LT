@@ -1,0 +1,2 @@
+outcome,est,ci90_lo,ci90_hi,n,theta0,delta,direction,label,elections_with_tally,matched,matched_firms,matched_in_window,in_window_with_droa2,ambiguous_sec_names
+53: RD jump in delta ROA (t-1 -> t+2) at 50% union vote share,6.934295286305273,2.2815555857212546,11.587034986889293,265,0,0.005,<,опровергнуто,19639,1673,323,644,265,240

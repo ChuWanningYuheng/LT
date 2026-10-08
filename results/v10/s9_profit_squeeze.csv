@@ -1,0 +1,2 @@
+item,coef,se,ci90_lo,ci90_hi,n,countries
+"d ln e on unemployment(t-1), unit = country x source FE, clusters = countries",0.0053016424361646865,0.0011628876683695067,0.003388692221696848,0.007214592650632525,1615,32

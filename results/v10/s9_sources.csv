@@ -1,0 +1,6 @@
+source,years,sector,stock,gross_net,valuation
+OECD BSDB,1960-1997 (quarterly),business sector,"KBV: business capital stock, volume; x PIB",gross (OECD BSDB definition; documentation not available),replacement (deflated by PIB)
+OECD ISDB,1960-1997,industries,KTVO (suffix meanings undocumented),not used in the main series,-
+EU KLEMS 2009,1970-2007,"industries (NACE 1); market = TOT - 70, L-Q","K_GFCF (real, 1995 prices) x Ip_GFCF (1995 = 1)","net (PIM, geometric)",current replacement
+EU KLEMS 2025,1995-2021,MARKT; industries (NACE 2),K_GFCF,net,current replacement
+PWT 11,1950-2023,total economy,cn (current PPP),net (PIM),current PPP

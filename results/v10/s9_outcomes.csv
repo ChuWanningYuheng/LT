@@ -1,0 +1,6 @@
+outcome,est,ci90_lo,ci90_hi,k,n,theta0,delta,direction,label,robust_ends
+58: share of countries with a 'confirmed' falling business-sector r (>= 30 years),0.35294117647058826,0.1948994375550591,0.5513710558600258,6.0,17.0,0.5,0.15,>,неинформативно,4.0
+58 (variant: splice on mean ratio 1995-2000),0.29411764705882354,0.1511919021993658,0.49358678858175314,5.0,17.0,0.5,0.15,>,опровергнуто,
+PWT 11 total economy (descriptive): share with 'confirmed' falling r,0.5526315789473685,0.42088532341376594,0.677380228184554,21.0,38.0,0.5,0.15,>,неинформативно,
+"59: share of countries with a 'confirmed' falling Marxian r_m (KLEMS 2009 + 2025, >= 30 years)",0.0,0.0,0.21297179881198092,0.0,10.0,0.5,0.15,>,опровергнуто,0.0
+generalisation of the law of the tendency over the long period (9b rule),,,,,,,,,нет,

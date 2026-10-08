@@ -155,7 +155,7 @@ def group_levels(spec, s72, s87, nai):
     c = combine(nai, spec["naics_plus"], spec["naics_minus"]).loc[1997:2025]
     out, fac = {}, {}
     for v in ("gos", "va", "comp"):
-        sa, sb, sc = ((d.sum(1) if v == "va" else d[v]) for d in (a, b, c))
+        sa, sb, sc = ((d.sum(axis=1) if v == "va" else d[v]) for d in (a, b, c))
         f1 = sc.loc[1997] / sb.loc[1997]
         sb = sb * f1
         f2 = sb.loc[1987] / sa.loc[1987]
@@ -438,7 +438,7 @@ def stack(P, events, controls, window=5):
         sub = P[P.st.isin([st] + controls) & P.year.between(E - window, E + window)].copy()
         if st == "MI":
             sub = sub[~((sub.st == "MI") & (sub.year >= 2024))]
-        sub["stack"] = st
+        sub["stk"] = st
         sub["D"] = ((sub.st == st) & (sub.year >= E)).astype(float)
         sub["rel"] = np.where(sub.st == st, sub.year - E, np.nan)
         parts.append(sub)
@@ -447,7 +447,7 @@ def stack(P, events, controls, window=5):
 
 def did(S, outcome, B=9999, seed=50):
     S = S.dropna(subset=[outcome])
-    u, t = S.st + "_" + S.stack, S.year.astype(str) + "_" + S.stack
+    u, t = S.st + "_" + S.stk, S.year.astype(str) + "_" + S.stk
     M = demean2(np.column_stack([S[outcome], S.D]), u, t)
     b, se, lo_b, hi_b, p, G = wild_t(M[:, [1]], M[:, 0], S.st.to_numpy(), 0, B=B, seed=seed)
     lo, hi, lab = widest(b, se, G, lo_b, hi_b, 0.5, ">")
@@ -458,7 +458,7 @@ def event_study(S, outcome):
     S = S.dropna(subset=[outcome])
     rels = [r for r in range(-5, 6) if r != -1]
     D = np.column_stack([(S.rel == r).astype(float) for r in rels])
-    u, t = S.st + "_" + S.stack, S.year.astype(str) + "_" + S.stack
+    u, t = S.st + "_" + S.stk, S.year.astype(str) + "_" + S.stk
     M = demean2(np.column_stack([S[outcome], D]), u, t)
     y, X = M[:, 0], M[:, 1:]
     keep = X.std(0) > 0
@@ -638,7 +638,7 @@ def run_steel():
     rows = []
     for name, ns in groups.items():
         f = sum(v[n][["comp", "tax", "gos"]] for n in ns)
-        pi = 100 * f.gos / f.sum(1)
+        pi = 100 * f.gos / f.sum(axis=1)
         rows.append(dict(group=name, pi_2015_2017=pi.loc[2015:2017].mean(), pi_2018_2019=pi.loc[2018:2019].mean(),
                          change=pi.loc[2018:2019].mean() - pi.loc[2015:2017].mean()))
     R = pd.DataFrame(rows)

@@ -136,6 +136,25 @@ def run():
     print(R.round(4).to_string(), "\n", o, flush=True)
 
 
+def robust():
+    """post hoc (journal 13): one election per firm-year (vote share of the largest unit), and without Starbucks"""
+    M = pd.read_csv(OUT / "s2_matched_elections.csv")
+    M["votes"] = M.yes_votes + M.no_votes
+    one = M.sort_values("votes").groupby(["cik", "year"]).tail(1)
+    sb = M[M.cik != 829224]
+    rows = []
+    for name, D in (("one election per firm-year", one), ("without Starbucks (CIK 829224)", sb)):
+        for y in ("d_roa_1", "d_roa_2", "d_roa_3"):
+            rows.append(dict(sample=name, outcome=y, **rd(D, y)))
+    R = pd.DataFrame(rows)
+    R.to_csv(OUT / "s2_rd_robust.csv", index=False)
+    print(R.round(4).to_string(), flush=True)
+
+
 if __name__ == "__main__":
+    import sys
     pd.set_option("display.width", 250)
-    run()
+    if "robust" in sys.argv[1:]:
+        robust()
+    else:
+        run()

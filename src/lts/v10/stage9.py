@@ -62,7 +62,7 @@ def klems09():
     c = k09_long("capital")
     w = b[b["var"].isin(["VA", "COMP", "LAB"])].pivot_table(index=["geo", "code", "year"], columns="var", values="v")
     k = c[c["var"].isin(["K_GFCF", "Ip_GFCF"])].pivot_table(index=["geo", "code", "year"], columns="var", values="v")
-    k["Knom"] = k.K_GFCF * k.Ip_GFCF / 100
+    k["Knom"] = k.K_GFCF * k.Ip_GFCF                                  # Ip_GFCF: 1995 = 1 (journal 11)
     return w.join(k[["Knom"]], how="left").reset_index()
 
 
@@ -281,7 +281,7 @@ def sources_table():
         dict(source="OECD ISDB", years="1960-1997", sector="industries", stock="KTVO (suffix meanings undocumented)",
              gross_net="not used in the main series", valuation="-"),
         dict(source="EU KLEMS 2009", years="1970-2007", sector="industries (NACE 1); market = TOT - 70, L-Q",
-             stock="K_GFCF (real, 1995 prices) x Ip_GFCF", gross_net="net (PIM, geometric)", valuation="current replacement"),
+             stock="K_GFCF (real, 1995 prices) x Ip_GFCF (1995 = 1)", gross_net="net (PIM, geometric)", valuation="current replacement"),
         dict(source="EU KLEMS 2025", years="1995-2021", sector="MARKT; industries (NACE 2)", stock="K_GFCF",
              gross_net="net", valuation="current replacement"),
         dict(source="PWT 11", years="1950-2023", sector="total economy", stock="cn (current PPP)", gross_net="net (PIM)",

@@ -1,0 +1,16 @@
+outcome,est,ci90_lo,ci90_hi,n,theta0,delta,direction,label,k,not_top,discordant_hours_only,discordant_other_only,mcnemar_p_one_sided,share_hours,share_other,n_outcome,variant
+1 [orig]: share of commodity bases better than labour (MAWD),0.038300069025510544,0.014081885856079395,0.06669853282026683,13,0.5,0.1,<,подтверждено,,,,,,,,1,orig
+1 [clean]: share of commodity bases better than labour (MAWD),0.027368668406473094,0.010753142638998707,0.047906457868507196,13,0.5,0.1,<,подтверждено,,,,,,,,1,clean
+1 [corr]: share of commodity bases better than labour (MAWD),0.038300069025510544,0.014081885856079395,0.06669853282026683,13,0.5,0.1,<,подтверждено,,,,,,,,1,corr
+3 [orig]: countries with hours in the top 5% of placebos (a) and (b),0.7692307692307693,0.5419132128393064,0.9037756231328763,13,0.05,0.15,>,подтверждено,10.0,"NLD,POL,USA",,,,,,3,orig
+3 [clean]: countries with hours in the top 5% of placebos (a) and (b),0.9230769230769231,0.717718509692703,0.9826496611207272,13,0.05,0.15,>,подтверждено,12.0,USA,,,,,,3,clean
+3 [corr]: countries with hours in the top 5% of placebos (a) and (b),0.7692307692307693,0.5419132128393064,0.9037756231328763,13,0.05,0.15,>,подтверждено,10.0,"NLD,POL,USA",,,,,,3,corr
+15 [orig]: WIOD countries with hours in the top 5% of placebos,0.5853658536585366,0.4573804359974371,0.7027805486722967,41,0.05,0.15,>,подтверждено,24.0,"BGR,DNK,EST,GRC,HRV,HUN,IRL,LTU,LVA,NLD,NOR,POL,PRT,ROU,SVK,TWN,USA",,,,,,15,orig
+15 [clean]: WIOD countries with hours in the top 5% of placebos,0.6585365853658537,0.530320058799494,0.7671217698728691,41,0.05,0.15,>,подтверждено,27.0,"BGR,CZE,DNK,EST,GRC,HRV,HUN,IRL,LVA,NOR,POL,ROU,TWN,USA",,,,,,15,clean
+15 [corr]: WIOD countries with hours in the top 5% of placebos,0.5853658536585366,0.4573804359974371,0.7027805486722967,41,0.05,0.15,>,подтверждено,24.0,"BGR,DNK,EST,GRC,HRV,HUN,IRL,LTU,LVA,NLD,NOR,POL,PRT,ROU,SVK,TWN,USA",,,,,,15,corr
+28 [orig]: countries where world-average labour beats national (majority of years),0.813953488372093,0.6988718231614376,0.8918599239112951,43,0.5,0.15,>,подтверждено,35.0,,,,,,,28,orig
+"44 [orig]: share(hours) - share(lab), world beats national",0.16279069767441856,0.023255813953488302,0.3023255813953488,43,0.0,0.1,>,подтверждено,,,11.0,4.0,0.05923461914062499,0.813953488372093,0.6511627906976745,44,orig
+28 [clean]: countries where world-average labour beats national (majority of years),0.9285714285714286,0.8341639389141327,0.9710966495635949,42,0.5,0.15,>,подтверждено,39.0,,,,,,,28,clean
+"44 [clean]: share(hours) - share(lab), world beats national",0.1428571428571429,0.023809523809523836,0.26190476190476186,42,0.0,0.1,>,подтверждено,,,8.0,2.0,0.0546875,0.9285714285714286,0.7857142857142857,44,clean
+28 [corr]: countries where world-average labour beats national (majority of years),0.813953488372093,0.6988718231614376,0.8918599239112951,43,0.5,0.15,>,подтверждено,35.0,,,,,,,28,corr
+"44 [corr]: share(hours) - share(lab), world beats national",0.16279069767441856,0.023255813953488302,0.3023255813953488,43,0.0,0.1,>,подтверждено,,,11.0,4.0,0.05923461914062499,0.813953488372093,0.6511627906976745,44,corr

@@ -610,7 +610,7 @@ def run_gas():
     rows_bd = [c * N + ind.index(p) for c in range(len(cty)) for p in ("B", "D35")]
     out = []
     for g, s in pi.groupby("geo"):
-        s = s.set_index("time")
+        s = s.set_index("time")[["A", "C", "sup"]]
         if not (set(pre) | set(post)) <= set(s.index) or s.loc[pre + post].isna().any().any():
             continue
         dlt = s.loc[post].mean() - s.loc[pre].mean()

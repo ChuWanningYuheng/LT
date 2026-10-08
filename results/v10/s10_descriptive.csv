@@ -1,0 +1,7 @@
+item,est,se,ci90_lo,ci90_hi,n,G,label,p
+"d(A01) on ln real agriculture index, country FE (descriptive)",-0.01959980107200378,0.03156935213327949,-0.0758654645190591,0.036665862375051525,169,13.0,неинформативно,
+"d(L) on ln BIS real house price index, country FE (descriptive)",-0.1512494629789056,0.09127298819684138,-0.3185966064035938,0.02529010005126539,169,13.0,неинформативно,
+Spearman: country mean d(B) vs WB natural resource rents % GDP (descriptive),0.10989010989010989,,,,13,,,0.7208097995138618
+"BEA 1998-2023: mean d of 111CA, 211, 212 (descriptive)",-0.07899006476352072,,,,26,,,
+BEA 1998-2023: mean d of HS+ORE (housing merged with other real estate),0.4884287925552451,,,,26,,,
+"61 (BEA variant): mean d(211, 212) on ln real energy+metals index, HAC",0.13746032522185056,0.03572974735934475,0.07868489081572845,0.19623575962797268,26,,подтверждено,

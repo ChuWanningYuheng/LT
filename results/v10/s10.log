@@ -1,0 +1,11 @@
+                                                                                            outcome     est  ci90_lo  ci90_hi    n  theta0  delta direction           label  placebo_percentile  placebo_median  placebo_p95  pool   d_A01     d_B     d_L      se     G
+0                            60: mean d = ln(p/pp) of rent industries A01, B, L (FIGARO, 2010-2022)  0.1332   0.0964   0.1742   13       0   0.05         >    подтверждено               0.997         -0.0428       0.0623  40.0 -0.0533  0.0338  0.4191     NaN   NaN
+1  60: mean d = ln(p/pp) of rent industries A01, B, L (FIGARO, 2010-2022) [variant pp_uniform_wage]  0.0416  -0.0072   0.0908   13       0   0.05         >  неинформативно               0.731         -0.0163       0.1440  40.0 -0.4109  0.0918  0.4441     NaN   NaN
+2                    61: elasticity of d(B) w.r.t. ln real energy+metals index (FIGARO, country FE)  0.3236   0.1271   0.5201  169       0   0.05         >    подтверждено                 NaN             NaN          NaN   NaN     NaN     NaN     NaN  0.1103  13.0 
+                                                                            item     est      se  ci90_lo  ci90_hi    n     G           label       p
+0                 d(A01) on ln real agriculture index, country FE (descriptive) -0.0196  0.0316  -0.0759   0.0367  169  13.0  неинформативно     NaN
+1               d(L) on ln BIS real house price index, country FE (descriptive) -0.1512  0.0913  -0.3186   0.0253  169  13.0  неинформативно     NaN
+2  Spearman: country mean d(B) vs WB natural resource rents % GDP (descriptive)  0.1099     NaN      NaN      NaN   13   NaN             NaN  0.7208
+3                        BEA 1998-2023: mean d of 111CA, 211, 212 (descriptive) -0.0790     NaN      NaN      NaN   26   NaN             NaN     NaN
+4       BEA 1998-2023: mean d of HS+ORE (housing merged with other real estate)  0.4884     NaN      NaN      NaN   26   NaN             NaN     NaN
+5        61 (BEA variant): mean d(211, 212) on ln real energy+metals index, HAC  0.1375  0.0357   0.0787   0.1962   26   NaN    подтверждено     NaN

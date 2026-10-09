@@ -142,6 +142,7 @@ def signals():
     for y in YEARS:
         for c in countries:
             e = wiod.economy(c, y)
+            e.hours = np.where(np.isfinite(e.hours), e.hours, 0.0)   # EMPE = 0 in SEA -> hours missing (journal 2)
             try:
                 S = Setup(e)
                 r = e.actual_profit_rate(True)
@@ -193,6 +194,8 @@ def prepare(sig, perm=None):
     d["rj"] = np.where(d.K > 0, (d.CAP - d.delta * d.K) / d.K.where(d.K > 0), np.nan)
     d["SE"] = d.EMP - d.EMPE
     d["lint"] = np.log((d.hours / d.GO).where((d.hours > 0) & (d.GO > 0)))
+    for c in ("Sv", "Spp", "SppU", "Sflat", "rj", "lint"):                  # journal 2: non-finite -> missing
+        d[c] = d[c].where(np.isfinite(d[c]))
     d = d.join(sigma(sig), on=["country", "ind"])
     if perm is not None:
         Z = perm.to_numpy(float)

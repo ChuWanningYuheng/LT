@@ -1,0 +1,8 @@
+outcome,est,ci90_lo,ci90_hi,n,theta0,delta,direction,label,k,se,p_wild,G,mde,events
+68 [main: ltrate real vs r PWT]: mean over countries of the share of years with i < r,0.8411580594679187,0.7902973395931143,0.8897104851330203,18,0.5,0.15,>,подтверждено,,,,,,
+"69: share of JST countries where i_real (ltrate) and r (PWT) are cointegrated (Engle-Granger, p < 0.10)",0.7222222222222222,0.5286762160639469,0.8576847585799068,18,0.5,0.15,<,опровергнуто,13.0,,,,,
+"70 [main: stir nominal, recession onset]: change of r - i in the event year minus other years",-0.0010914258540084033,-0.005058994176330148,0.002876142468313342,1251,0.0,0.005,<,неинформативно,,0.0022807271683028233,0.6244624462446244,18.0,0.006386036071247905,127.0
+"71 [q (MV / K, BEA fixed capital)]: mean abnormal 3-year rise before NBER peaks",0.031113319046586332,-0.029994632567848206,0.09222127066102087,11,0.0,0.05,>,неинформативно,,0.03371545510429356,0.40234023402340235,11.0,0.09440327429202196,
+72 [F (MV / (NOS / Aaa))]: mean abnormal 3-year rise before NBER peaks,0.17986110847943476,0.044644067018337924,0.31563117435196986,11,0.0,0.05,>,подтверждено,,0.07460410585322476,0.034403440344034406,11.0,0.20889149638902932,
+73: abnormal 3-year rise of ln(P/D) before JST crises (clusters: countries),-0.05908883765463594,-0.1282737939474006,0.010096118638128725,73,0.0,0.05,>,неинформативно,,0.03946547004089451,0.14331433143314332,16.0,0.11050331611450463,
+74: abnormal 3-year rise of credit/GDP before JST crises (clusters: countries),0.056963648808551925,0.035087670297724985,0.07883962731937887,73,0.0,0.02,>,подтверждено,,0.012575243693259259,0.0,18.0,0.03521068234112592,

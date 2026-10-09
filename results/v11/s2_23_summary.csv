@@ -1,0 +1,7 @@
+item,est,se,ci90_lo,ci90_hi,p_wild,G,n,mde,theta0,delta,direction,label
+abnormal rise of ln(FA/NOS) before peaks (descriptive),0.027182555457993567,0.023255930868404134,-0.014967915115784897,0.06933949760549922,0.2751275127512751,11.0,11,0.06511660643153157,0.0,0.05,>,неинформативно
+abnormal change of ln(FA/NOS) peak-1 -> peak+1,0.03759818559925204,0.02245836514205958,-0.003106728102639858,0.07843010278480611,0.12481248124812482,11.0,11,0.06288342239776683,0.0,0.05,<,неинформативно
+revaluation / FA(t-1): recession years (mean),-0.014630333009496892,,,,,,11,,,,,
+revaluation / FA(t-1): other years (mean),0.020691298988957944,,,,,,69,,,,,
+years with revaluation < 0 and r NFC falling / revaluation < 0,11.0,,,,,,18,,,,,
+years with revaluation >= 0 and r NFC falling / revaluation >= 0,27.0,,,,,,56,,,,,

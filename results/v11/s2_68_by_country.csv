@@ -1,0 +1,65 @@
+spec,iso,share,years
+main: ltrate real vs r PWT,AUS,0.9014084507042254,71
+main: ltrate real vs r PWT,BEL,0.6197183098591549,71
+main: ltrate real vs r PWT,CAN,0.7746478873239436,71
+main: ltrate real vs r PWT,CHE,0.971830985915493,71
+main: ltrate real vs r PWT,DEU,0.6338028169014085,71
+main: ltrate real vs r PWT,DNK,0.7464788732394366,71
+main: ltrate real vs r PWT,ESP,0.7887323943661971,71
+main: ltrate real vs r PWT,FIN,0.5915492957746479,71
+main: ltrate real vs r PWT,FRA,0.7887323943661971,71
+main: ltrate real vs r PWT,GBR,1.0,71
+main: ltrate real vs r PWT,IRL,0.9859154929577465,71
+main: ltrate real vs r PWT,ITA,0.9014084507042254,71
+main: ltrate real vs r PWT,JPN,1.0,71
+main: ltrate real vs r PWT,NLD,0.8591549295774648,71
+main: ltrate real vs r PWT,NOR,0.9014084507042254,71
+main: ltrate real vs r PWT,PRT,0.7887323943661971,71
+main: ltrate real vs r PWT,SWE,0.9154929577464789,71
+main: ltrate real vs r PWT,USA,0.971830985915493,71
+nominal ltrate vs r PWT,AUS,0.5774647887323944,71
+nominal ltrate vs r PWT,BEL,0.23943661971830985,71
+nominal ltrate vs r PWT,CAN,0.5352112676056338,71
+nominal ltrate vs r PWT,CHE,0.704225352112676,71
+nominal ltrate vs r PWT,DEU,0.352112676056338,71
+nominal ltrate vs r PWT,DNK,0.5211267605633803,71
+nominal ltrate vs r PWT,ESP,0.5915492957746479,71
+nominal ltrate vs r PWT,FIN,0.2535211267605634,71
+nominal ltrate vs r PWT,FRA,0.3380281690140845,71
+nominal ltrate vs r PWT,GBR,0.7887323943661971,71
+nominal ltrate vs r PWT,IRL,0.704225352112676,71
+nominal ltrate vs r PWT,ITA,0.5211267605633803,71
+nominal ltrate vs r PWT,JPN,0.8732394366197183,71
+nominal ltrate vs r PWT,NLD,0.43661971830985913,71
+nominal ltrate vs r PWT,NOR,0.5070422535211268,71
+nominal ltrate vs r PWT,PRT,0.39436619718309857,71
+nominal ltrate vs r PWT,SWE,0.5352112676056338,71
+nominal ltrate vs r PWT,USA,0.7183098591549296,71
+stir real vs r PWT,AUS,0.9295774647887324,71
+stir real vs r PWT,BEL,0.7887323943661971,71
+stir real vs r PWT,CAN,0.8732394366197183,71
+stir real vs r PWT,CHE,0.9859154929577465,71
+stir real vs r PWT,DEU,0.8873239436619719,71
+stir real vs r PWT,DNK,0.8732394366197183,71
+stir real vs r PWT,ESP,0.8732394366197183,71
+stir real vs r PWT,FIN,0.7605633802816901,71
+stir real vs r PWT,FRA,0.9014084507042254,71
+stir real vs r PWT,GBR,1.0,71
+stir real vs r PWT,IRL,0.9577464788732394,71
+stir real vs r PWT,ITA,0.9577464788732394,71
+stir real vs r PWT,JPN,1.0,64
+stir real vs r PWT,NLD,0.9014084507042254,71
+stir real vs r PWT,NOR,0.8857142857142857,70
+stir real vs r PWT,PRT,0.9154929577464789,71
+stir real vs r PWT,SWE,0.9295774647887324,71
+stir real vs r PWT,USA,1.0,71
+ltrate real vs r AMECO,AUS,0.7049180327868853,61
+ltrate real vs r AMECO,CAN,1.0,30
+ltrate real vs r AMECO,DEU,0.8360655737704918,61
+ltrate real vs r AMECO,FRA,0.7213114754098361,61
+ltrate real vs r AMECO,GBR,0.9836065573770492,61
+ltrate real vs r AMECO,ITA,0.8688524590163934,61
+ltrate real vs r AMECO,JPN,0.7804878048780488,41
+ltrate real vs r AMECO,NLD,0.7049180327868853,61
+ltrate real vs r AMECO,SWE,0.7540983606557377,61
+ltrate real vs r AMECO,USA,0.9180327868852459,61

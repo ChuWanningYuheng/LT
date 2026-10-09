@@ -95,7 +95,10 @@ def rd(df, y, bw=BW):
 def run():
     E = elections()
     lookup, P, n_amb = firms()
-    E["cik"] = [next((lookup[n] for n in ns if n in lookup), np.nan) for ns in E.names]
+    # journal 16 (b): an election whose names lead to different CIKs is ambiguous and dropped (was order-dependent)
+    hits = [{lookup[n] for n in ns if n in lookup} for ns in E.names]
+    E["n_cik"] = [len(h) for h in hits]
+    E["cik"] = [next(iter(h)) if len(h) == 1 else np.nan for h in hits]
     M = E.dropna(subset=["cik", "year"]).copy()
     M["cik"] = M.cik.astype(int)
     M["year"] = M.year.astype(int)
@@ -108,7 +111,8 @@ def run():
             M[f"d_{col}_{k}"] = np.array(get(col, k)) - base
     M.drop(columns=["names"]).to_csv(OUT / "s2_matched_elections.csv", index=False)
     inwin = M[(M.v - 0.5).abs() <= BW]
-    stats_ = dict(elections_with_tally=len(E), matched=len(M), matched_firms=M.cik.nunique(),
+    stats_ = dict(elections_with_tally=len(E), ambiguous_elections_dropped=int((E.n_cik > 1).sum()), matched=len(M),
+                  matched_firms=M.cik.nunique(),
                   matched_in_window=len(inwin), in_window_with_droa2=int(inwin.d_roa_2.notna().sum()),
                   ambiguous_sec_names=n_amb)
     print(stats_, flush=True)
@@ -143,7 +147,9 @@ def robust():
     one = M.sort_values("votes").groupby(["cik", "year"]).tail(1)
     sb = M[M.cik != 829224]
     rows = []
-    for name, D in (("one election per firm-year", one), ("without Starbucks (CIK 829224)", sb)):
+    donut = M[M.v != 0.5]
+    for name, D in (("one election per firm-year", one), ("without Starbucks (CIK 829224)", sb),
+                    ("without ties at v = 0.5 (donut)", donut)):
         for y in ("d_roa_1", "d_roa_2", "d_roa_3"):
             rows.append(dict(sample=name, outcome=y, **rd(D, y)))
     R = pd.DataFrame(rows)

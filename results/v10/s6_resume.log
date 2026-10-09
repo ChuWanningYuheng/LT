@@ -60,3 +60,47 @@ s6 AUT 2016 0.484 0.06451612903225806
 s6 AUT 2017 0.5 0.04838709677419355
 s6 AUT 2018 0.516 0.08064516129032258
 s6 AUT 2019 0.516 0.08064516129032258
+s6 AUT 2020 0.484 0.0967741935483871
+s6 AUT 2021 0.403 0.0967741935483871
+s6 AUT 2022 0.468 0.03225806451612903
+s6 POL 2010 0.484 nan
+s6 POL 2011 0.484 nan
+s6 POL 2012 0.5 nan
+s6 POL 2013 0.484 nan
+s6 POL 2014 0.435 nan
+s6 POL 2015 0.435 nan
+s6 POL 2016 0.484 nan
+s6 POL 2017 0.484 nan
+s6 POL 2018 0.452 nan
+s6 POL 2019 0.403 nan
+s6 POL 2020 0.403 nan
+s6 POL 2021 0.435 nan
+s6 POL 2022 0.403 nan
+s6 GBR 2010 0.597 nan
+s6 GBR 2011 0.581 nan
+s6 GBR 2012 0.629 nan
+s6 GBR 2013 0.661 nan
+s6 GBR 2014 0.645 nan
+s6 GBR 2015 0.565 nan
+s6 GBR 2016 0.597 nan
+s6 GBR 2017 0.548 nan
+s6 GBR 2018 0.581 nan
+s6 GBR 2019 0.597 nan
+s6 GBR 2020 0.629 nan
+s6 GBR 2021 0.613 nan
+s6 GBR 2022 0.516 nan
+         share_d0  share_d  labour_part_d0  labour_part_d      d
+country                                                         
+AUT         0.473    0.065           0.565          0.849  0.972
+DEU         0.443      NaN           0.670            NaN  1.103
+ESP         0.524      NaN           0.532            NaN  1.118
+FRA         0.489      NaN           0.610            NaN  1.142
+GBR         0.597      NaN           0.576            NaN  1.028
+ITA         0.343      NaN           0.584            NaN  1.079
+NLD         0.589      NaN           0.613            NaN  1.042
+POL         0.453      NaN           0.474            NaN  1.108
+USA         0.652    0.044           0.666          0.960  0.814 
+                                                                                outcome     est  ci90_lo  ci90_hi  n  theta0  delta direction           label
+0  2 [d = 0, countries with d]: share of commodity bases better than labour, symmetric  0.5068   0.4588   0.5580  9     0.5    0.1         <    опровергнуто
+1                           2 [d = 0, countries where the system with d is productive]  0.5621   0.4727   0.6516  2     0.5    0.1         <  неинформативно
+2                               2 [with household labour d, productive countries only]  0.0541   0.0437   0.0645  2     0.5    0.1         <    подтверждено

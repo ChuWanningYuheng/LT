@@ -122,14 +122,21 @@ def shares(e, capital=True):
     return float(np.mean(better)), float(np.nanmedian(lshare)), ml
 
 
-def run():
+def run(resume=False):
     A = atus_d()
     A.to_csv(OUT / "s6_atus_d.csv")
     Hd = hetus_d()
     Hd.to_csv(OUT / "s6_hetus_d.csv")
     print(A.round(3).to_string(), "\n", Hd.round(3).to_string(), flush=True)
     rows = []
+    done = set()
+    if resume and (OUT / "s6_outcome2.csv").exists():                 # continue an interrupted run (complete countries)
+        prev = pd.read_csv(OUT / "s6_outcome2.csv")
+        done = {c for c, g in prev.groupby("country") if len(g) == len(YEARS)}
+        rows = prev[prev.country.isin(done)].to_dict("records")
     for c in V3:
+        if c in done:
+            continue
         if c == "USA":
             dmap = {y: float(A.d.get(y, A.d.loc[A.index[A.index <= y].max()])) for y in YEARS}
             src = "ATUS"
@@ -171,4 +178,5 @@ def run():
 
 
 if __name__ == "__main__":
-    run()
+    import sys
+    run(resume="resume" in sys.argv[1:])

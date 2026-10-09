@@ -1,0 +1,61 @@
+/home/user/LT/src/lts/v10/stage6.py:41: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  d["w"] = np.where(d.TUYEAR == 2020, d.TU20FWGT, d.TUFNWGTP)
+/home/user/LT/src/lts/v10/stage6.py:43: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  d["dom"] = d[dom].sum(axis=1)
+/home/user/LT/src/lts/v10/stage6.py:44: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  d["work"] = d[work].sum(axis=1)
+        dom_min  work_min      d
+TUYEAR                          
+2003    163.999   199.807  0.821
+2004    162.876   199.781  0.815
+2005    162.840   201.384  0.809
+2006    160.504   204.062  0.787
+2007    163.094   208.209  0.783
+2008    156.094   202.535  0.771
+2009    160.255   190.572  0.841
+2010    157.432   188.241  0.836
+2011    154.862   192.262  0.805
+2012    152.200   191.347  0.795
+2013    155.751   188.294  0.827
+2014    155.341   195.101  0.796
+2015    158.521   191.326  0.829
+2016    157.724   196.869  0.801
+2017    156.083   193.960  0.805
+2018    152.642   193.939  0.787
+2019    152.406   195.808  0.778
+2020    161.703   183.574  0.881
+2021    160.301   193.258  0.829
+2022    157.347   193.590  0.813
+2023    159.221   195.597  0.814
+2024    164.401   188.061  0.874 
+ acl00  time   AC1A    AC3      d
+geo                             
+AT     2010  3.533  3.433  0.972
+BE     2010  2.400  3.200  1.333
+BG     2000  2.967  3.883  1.309
+DE     2010  2.750  3.033  1.103
+EE     2010  3.200  3.267  1.021
+EL     2010  2.533  3.017  1.191
+ES     2010  2.967  3.317  1.118
+FI     2010  2.800  3.083  1.101
+FR     2010  2.817  3.217  1.142
+HU     2010  2.717  3.717  1.368
+IT     2010  3.167  3.417  1.079
+LT     2000  4.050  3.417  0.844
+LV     2000  4.117  2.967  0.721
+NL     2010  2.750  2.867  1.042
+NO     2010  3.217  3.117  0.969
+PL     2010  3.250  3.600  1.108
+RO     2010  3.367  3.633  1.079
+RS     2010  2.433  3.583  1.473
+SI     2000  3.217  3.817  1.187
+UK     2010  2.950  3.033  1.028
+s6 AUT 2010 0.419 0.06451612903225806
+s6 AUT 2011 0.484 0.06451612903225806
+s6 AUT 2012 0.484 0.06451612903225806
+s6 AUT 2013 0.452 0.04838709677419355
+s6 AUT 2014 0.468 0.04838709677419355
+s6 AUT 2015 0.468 0.04838709677419355
+s6 AUT 2016 0.484 0.06451612903225806
+s6 AUT 2017 0.5 0.04838709677419355
+s6 AUT 2018 0.516 0.08064516129032258

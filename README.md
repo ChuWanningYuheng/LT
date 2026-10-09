@@ -298,3 +298,37 @@ python -m lts.v9b.stage45 o34         # парный бутстреп исход
 python -m lts.v9b.stage45 b           # НМНК b на сетке [−1; 4], кластерная F первого шага ИП
 python -m lts.v9b.outcomes            # сводная таблица исходов 1–46
 ```
+
+
+## Итерация 10: особая роль труда как контроль над трудом; закрытие открытых вопросов о ценах и прибыли
+
+Отчёт: [`report/REPORT_v10.md`](report/REPORT_v10.md); сводная таблица исходов 1–63: [`report/outcomes_table.md`](report/outcomes_table.md); предрегистрация и журнал (15 пунктов): [`pre_registration_v10.md`](pre_registration_v10.md); доступность данных и список для ручной загрузки: [`data/raw/v10_availability.md`](data/raw/v10_availability.md).
+
+Данные (`data/raw/v10/`, записаны в MANIFEST):
+* BEA Regional (штаты);
+* шоки нефти BH, Känzig, Kilian; FRED (WTI, газ, безработица, PPI машин);
+* Eurostat `namq_10_a10`, HETUS;
+* NLRB (SQLite, 1,1 ГБ, не коммитится);
+* SEC FSDS 2009q2–2026q2 (выписка; архивы не хранятся);
+* OECD BSDB и ISDB; EU KLEMS 2009;
+* Pink Sheet, BIS, WDI;
+* ATUS; Comtrade HS 847950.
+
+```bash
+export PYTHONPATH=src OMP_NUM_THREADS=2
+python -P -m lts.v10.download && python -P -m lts.v10.download2   # загрузка; Känzig — из клона репозитория автора
+python -P -m lts.v10.sec_fsds rebuild   # выписка SEC (без размерных строк; журнал 7; ~1,5 ч)
+python -P -m lts.v10.stage1             # шоки силы труда против поставщиков: США, RTW, синтетический контроль, газ, сталь (47–51)
+python -P -m lts.v10.stage1 rtw_trend   # RTW с предтрендом (журнал 4)
+python -P -m lts.v10.stage2             # выборы NLRB × SEC, разрыв на 50% (53); `robust` — проверки (журнал 13)
+python -P -m lts.v10.stage3             # плацебо исхода 44 (54; ~1 ч), фазы обесценения, Мозли-опережение
+python -P -m lts.v10.stage4             # проверка данных R1–R4 и пересчёт 1, 3, 15, 28, 44 (55; ~1 ч)
+python -P -m lts.v10.stage5             # распределение норм прибыли фирм (56, 57)
+python -P -m lts.v10.stage6             # домашний труд в симметричной постановке (~1 ч; `resume` — продолжение)
+python -P -m lts.v10.stage7             # абсолютная и относительная прибавочная стоимость
+python -P -m lts.v10.stage8             # роботы
+python -P -m lts.v10.stage9             # длинные ряды нормы прибыли бизнес-сектора и r_m (58, 59)
+python -P -m lts.v10.stage10            # рента (60, 61)
+python -P -m lts.v10.stage11            # Окисио против Маркса (62, 63)
+python -P -m lts.v10.outcomes           # сводная таблица исходов 1–63
+```

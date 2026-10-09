@@ -50,7 +50,7 @@ def sc51():
                       dict(item="donor post-gap SD (pre-RMSPE <= 2x Germany)", value=good.post_gap.std(), n=len(good)),
                       dict(item="share of donors with |post gap| <= 0.5", value=(dn.post_gap.abs() <= 0.5).mean(), n=len(dn))])
     S.to_csv(OUT / "rv_sc51_summary.csv", index=False)
-    print(S.round(3).to_string(), "\n", de.round(2).to_string(), flush=True)
+    print(S.round(3).to_string(), "\n", de.drop("unit").astype(float).round(2).to_string(), flush=True)
 
 
 # ---------------------------------------------------------------- R2

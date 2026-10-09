@@ -1,0 +1,4 @@
+item,n,cointegrated,countries
+countries with unit root not rejected in both r and i_real (ADF p >= 0.10),5,2.0,"BEL,DEU,DNK,NLD,PRT"
+countries with i_real stationary by ADF (p < 0.10),13,,
+countries with r stationary by ADF (p < 0.10),5,,

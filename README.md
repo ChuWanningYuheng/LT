@@ -333,3 +333,22 @@ python -P -m lts.v10.stage11            # Окисио против Маркса
 python -P -m lts.v10.review             # проверки по независимой рецензии (журнал 16; этап 6 ~20 мин)
 python -P -m lts.v10.outcomes           # сводная таблица исходов 1–63
 ```
+
+
+## Итерация 11: закон стоимости как регулятор распределения труда; процент и фиктивный капитал
+
+Отчёт: [`report/REPORT_v11.md`](report/REPORT_v11.md); сводная таблица исходов 1–74: [`report/outcomes_table.md`](report/outcomes_table.md); предрегистрация и журнал: [`pre_registration_v11.md`](pre_registration_v11.md); доступность данных и список для ручной загрузки: [`data/raw/v11_availability.md`](data/raw/v11_availability.md).
+
+Данные (`data/raw/v11/`, записаны в MANIFEST): JST Macrohistory R6; FRED (GS10, TB3MS, FEDFUNDS, Aaa, Baa, CPI-U); OECD (долгосрочные и 3-месячные ставки). Повторно — WIOD 2016, EU KLEMS 2025, таблицы FIGARO, Z.1, BEA FA, PWT 11, ряды итерации 6.
+
+```bash
+export PYTHONPATH=src OMP_NUM_THREADS=2
+python -P -m lts.v11.download             # загрузка
+python -P -m lts.v11.stage1 signals       # сигналы S_v, S_pp, плацебо по WIOD (~3 мин; parquet не коммитится)
+python -P -m lts.v11.stage1 figaro_hours  # часы FIGARO (13 стран, 2010–2022)
+python -P -m lts.v11.stage1 estimate      # исходы 64–67, тест 1, плацебо, варианты, репликация FIGARO (~15 мин)
+python -P -m lts.v11.stage2               # процент и фиктивный капитал (68–74), разложение 2.3
+python -P -m lts.v11.checks               # описательные проверки после результатов (журнал 3)
+python -P -m lts.v11.outcomes             # сводная таблица исходов 1–74
+```
+

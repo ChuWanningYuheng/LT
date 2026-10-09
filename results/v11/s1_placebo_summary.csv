@@ -1,0 +1,9 @@
+,0
+dd_main,-0.027668398206531213
+dd_perm_p95,0.029838733182378858
+dd_share_perm_ge,1.0
+bv_main,-0.0007647152658872471
+bv_perm_p95,0.004353439930744015
+bv_share_perm_ge,0.59
+dd_specific,False
+bv_specific,False

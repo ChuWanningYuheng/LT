@@ -92,9 +92,12 @@ def build():
     row("54", "Плацебо исхода 44: доля(часы) − доля(случайный вектор с разбросом часов)", o54.est, o54.ci90_lo, o54.ci90_hi,
         o54.label, "`results/v10/s3_outcomes.csv`", 0, 0.1, ">")
     o55 = r("s4_outcomes.csv").iloc[0]
+    fb = r("s4_flags_by_country.csv").groupby("source")[["cells", "flagged", "corrected"]].sum()
     row("55", "Число меток исходов 1, 3, 15, 28, 44, изменившихся при проверке данных (R1–R4)", o55.est, float("nan"),
         float("nan"), "описательно", "`results/v10/s4_outcomes.csv`", "", "", "",
-        note="0 из 5; помечено 1 963 ячейки FIGARO и 5 734 WIOD (в основном R2 — малые отрасли); исправлено 1 и 9.")
+        note=f"0 из 5; помечено {int(fb.loc['FIGARO', 'flagged'])} из {int(fb.loc['FIGARO', 'cells'])} ячеек FIGARO и "
+             f"{int(fb.loc['WIOD', 'flagged'])} из {int(fb.loc['WIOD', 'cells'])} WIOD (в основном R2 — малые отрасли); "
+             f"исправлено {int(fb.loc['FIGARO', 'corrected'])} и {int(fb.loc['WIOD', 'corrected'])}.")
     s5 = r("s5_outcomes.csv")
     x = s5.iloc[0]
     row("56", "Доля лет, где Лаплас/Субботин лучше гаммы со сдвигом по BIC (норма прибыли фирм на активы, SEC)", x.est,

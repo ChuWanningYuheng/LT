@@ -1,2 +1,2 @@
-outcome,est,ci90_lo,ci90_hi,n,theta0,delta,direction,label,elections_with_tally,matched,matched_firms,matched_in_window,in_window_with_droa2,ambiguous_sec_names
-53: RD jump in delta ROA (t-1 -> t+2) at 50% union vote share,-0.023681962661694925,-0.04665057352017682,-0.0007133518032130283,285,0,0.005,<,подтверждено,19639,1672,322,644,285,239
+outcome,est,ci90_lo,ci90_hi,n,theta0,delta,direction,label,elections_with_tally,ambiguous_elections_dropped,matched,matched_firms,matched_in_window,in_window_with_droa2,ambiguous_sec_names
+53: RD jump in delta ROA (t-1 -> t+2) at 50% union vote share,-0.023789295183784896,-0.04686152396340393,-0.0007170664041658593,284,0,0.005,<,подтверждено,19639,13,1659,320,641,284,239

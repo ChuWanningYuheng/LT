@@ -169,7 +169,8 @@ def run(resume=False):
     out = [mean_row("2 [d = 0, countries with d]: share of commodity bases better than labour, symmetric",
                     by.share_d0.to_numpy(), 0.5, 0.10, "<"),
            mean_row("2 [d = 0, countries where the system with d is productive]", by.share_d0[ok].to_numpy(), 0.5, 0.10, "<"),
-           mean_row("2 [with household labour d, productive countries only]", by.share_d[ok].to_numpy(), 0.5, 0.10, "<")]
+           dict(mean_row("2 [with household labour d, productive countries only]", by.share_d[ok].to_numpy(), 0.5, 0.10, "<"),
+                label="описательно (n = 2; постановка снята, журнал 16в)")]
     O = pd.DataFrame(out)
     O.to_csv(OUT / "s6_outcomes.csv", index=False)
     by.to_csv(OUT / "s6_by_country.csv")

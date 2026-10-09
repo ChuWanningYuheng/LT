@@ -1,4 +1,4 @@
 outcome,est,ci90_lo,ci90_hi,n,theta0,delta,direction,label
 "2 [d = 0, countries with d]: share of commodity bases better than labour, symmetric",0.5068186083366348,0.4588138563945015,0.5580114593397325,9,0.5,0.1,<,опровергнуто
-"2 [d = 0, countries where the system with d is productive]",0.5621442125237192,0.47270471464019853,0.6515837104072398,2,0.5,0.1,<,неинформативно
-"2 [with household labour d, productive countries only]",0.05412835109229796,0.043740573152337855,0.06451612903225806,2,0.5,0.1,<,подтверждено
+"2 [d = 0, countries where the system with d is productive]",0.5621442125237192,0.4727047146401985,0.6515837104072398,2,0.5,0.1,<,неинформативно
+"2 [with household labour d, productive countries only]",0.0541283510922979,0.0437405731523378,0.064516129032258,2,0.5,0.1,<,"описательно (n = 2; постановка снята, журнал 16в)"

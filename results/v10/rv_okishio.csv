@@ -1,0 +1,8 @@
+outcome,est,ci90_lo,ci90_hi,k,n,theta0,delta,direction,label
+62 (descriptive): without the 2015-2020 window,0.5826972010178118,0.5413496854557316,0.622913671413803,229.0,393,0.5,0.1,>,неинформативно
+62 (descriptive): country-cluster bootstrap,0.6009280742459396,0.552077319091609,0.6481278628749199,,431,,,,подтверждено
+62 (descriptive): leave-one-country-out estimates <= 0.60,0.39473684210526316,,,,38,,,,
+63 (descriptive): falling-r windows with non-rising real hourly wage,16.0,,,,187,,,,
+"63 (descriptive): 'Marx' windows (Y/K > half, omega not rising) with rising real wage",78.0,,,,108,,,,
+63 (descriptive): Y/K-dominant windows with rising omega,69.0,,,,177,,,,
+63 (descriptive): falling-r windows with rising omega (all),99.0,,,,207,,,,

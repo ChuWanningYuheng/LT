@@ -1,0 +1,64 @@
+                                          item  value   n
+0               donor post-gap SD (all donors)  3.221  20
+1  donor post-gap SD (pre-RMSPE <= 2x Germany)  1.734  10
+2       share of donors with |post gap| <= 0.5  0.150  20 
+ post_gap     0.10
+rmspe_pre    0.33
+gap_2005     0.66
+gap_2006     0.99
+gap_2007     1.42
+gap_2008     0.37
+gap_2009    -0.97
+gap_2010    -0.62
+gap_2011    -0.02
+gap_2012    -1.01
+           mean  count  rank
+industry                    
+L         0.419     13     1
+K64       0.252     13     2
+K65       0.189     13     3
+S96       0.165     12     4
+G46       0.134     13     5
+K66       0.102     13     6
+A02       0.100     12     7
+N77       0.081     13     8
+C21       0.081     12     9
+G47       0.076     12    10
+Q86       0.060     13    11
+M74_75    0.055     12    12 
+            mean  count  rank
+industry                    
+B         0.034     13    15
+A01      -0.053     13    41
+L         0.419     13     1
+                                                                                 outcome      est  ci90_lo  ci90_hi      k    n  theta0  delta direction           label
+0                                         62 (descriptive): without the 2015-2020 window   0.5827   0.5413   0.6229  229.0  393     0.5    0.1         >  неинформативно
+1                                            62 (descriptive): country-cluster bootstrap   0.6009   0.5521   0.6481    NaN  431     NaN    NaN       NaN    подтверждено
+2                              62 (descriptive): leave-one-country-out estimates <= 0.60   0.3947      NaN      NaN    NaN   38     NaN    NaN       NaN             NaN
+3                   63 (descriptive): falling-r windows with non-rising real hourly wage  16.0000      NaN      NaN    NaN  187     NaN    NaN       NaN             NaN
+4  63 (descriptive): 'Marx' windows (Y/K > half, omega not rising) with rising real wage  78.0000      NaN      NaN    NaN  108     NaN    NaN       NaN             NaN
+5                               63 (descriptive): Y/K-dominant windows with rising omega  69.0000      NaN      NaN    NaN  177     NaN    NaN       NaN             NaN
+6                            63 (descriptive): falling-r windows with rising omega (all)  99.0000      NaN      NaN    NaN  207     NaN    NaN       NaN             NaN
+    geo      years      est           label
+0   AUS  1964-2007  0.00659    опровергнуто
+1   AUT  1960-2021  0.00057    опровергнуто
+2   BEL  1970-2021  0.00066    опровергнуто
+3   CAN  1966-1996  0.00139    опровергнуто
+4   CHE  1961-1993 -0.00393    подтверждено
+5   DEU  1960-2021  0.00054    опровергнуто
+6   DNK  1960-2021  0.00107    опровергнуто
+7   ESP  1964-2021  0.00030  неинформативно
+8   FIN  1960-2021  0.00156    опровергнуто
+9   FRA  1965-2021  0.00024  неинформативно
+10  GBR  1963-2021  0.00042  неинформативно
+11  IRL  1961-2021  0.00583    опровергнуто
+12  ITA  1960-2021 -0.00105    подтверждено
+13  JPN  1965-2020 -0.00004  неинформативно
+14  NLD  1969-2021  0.00351    опровергнуто
+15  SWE  1965-2021  0.00063    опровергнуто
+16  USA  1960-2021  0.00111    опровергнуто 
+ {'outcome': '58 (descriptive): self-employed adjusted labour income', 'est': 0.11764705882352941, 'ci90_lo': np.float64(0.039724002459179925), 'ci90_hi': np.float64(0.300579280420041), 'k': 2, 'n': 17, 'theta0': 0.5, 'delta': 0.15, 'direction': '>', 'label': 'опровергнуто', 'countries': 'CHE,ITA'}
+                                                    item    k     n                                  note
+0                      Starbucks among matched elections  692  1659                                      
+1  Starbucks in the estimation sample (bw 0.15, d_roa_2)  122   284  years {2021: 2, 2022: 102, 2023: 18}
+2                   estimation sample at v = 0.5 exactly   24   284                                      

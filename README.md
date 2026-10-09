@@ -302,7 +302,7 @@ python -m lts.v9b.outcomes            # сводная таблица исход
 
 ## Итерация 10: особая роль труда как контроль над трудом; закрытие открытых вопросов о ценах и прибыли
 
-Отчёт: [`report/REPORT_v10.md`](report/REPORT_v10.md); сводная таблица исходов 1–63: [`report/outcomes_table.md`](report/outcomes_table.md); предрегистрация и журнал (15 пунктов): [`pre_registration_v10.md`](pre_registration_v10.md); доступность данных и список для ручной загрузки: [`data/raw/v10_availability.md`](data/raw/v10_availability.md).
+Отчёт: [`report/REPORT_v10.md`](report/REPORT_v10.md); сводная таблица исходов 1–63: [`report/outcomes_table.md`](report/outcomes_table.md); предрегистрация и журнал (16 пунктов): [`pre_registration_v10.md`](pre_registration_v10.md); доступность данных и список для ручной загрузки: [`data/raw/v10_availability.md`](data/raw/v10_availability.md).
 
 Данные (`data/raw/v10/`, записаны в MANIFEST):
 * BEA Regional (штаты);
@@ -330,5 +330,6 @@ python -P -m lts.v10.stage8             # роботы
 python -P -m lts.v10.stage9             # длинные ряды нормы прибыли бизнес-сектора и r_m (58, 59)
 python -P -m lts.v10.stage10            # рента (60, 61)
 python -P -m lts.v10.stage11            # Окисио против Маркса (62, 63)
+python -P -m lts.v10.review             # проверки по независимой рецензии (журнал 16; этап 6 ~20 мин)
 python -P -m lts.v10.outcomes           # сводная таблица исходов 1–63
 ```

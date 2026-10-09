@@ -1,0 +1,4 @@
+item,value,n
+donor post-gap SD (all donors),3.220611344954824,20
+donor post-gap SD (pre-RMSPE <= 2x Germany),1.7342090186458885,10
+share of donors with |post gap| <= 0.5,0.15,20

@@ -40,7 +40,8 @@ def build():
                    f"{fmt(p.loc['random vector, hours dispersion (b)', 'share'], 2)} (часы — "
                    f"{fmt(p.loc['hours (actual)', 'share'], 2)}), с разбросом фонда оплаты — "
                    f"{fmt(p.loc['random vector, LAB dispersion (b)', 'share'], 2)}; исход 54 «{o54.label}». "
-                   f"Перевес часов над фондом оплаты объясняется их бóльшим разбросом.")
+                   f"Описательно: разность плацебо с разбросом часов и фонда оплаты (0,16) почти равна исходу 44 — перевес "
+                   f"часов может объясняться их разбросом; по правилу не установлено (рецензия итерации 10, Р3).")
     rows = []
 
     def row(n, name, est, lo, hi, label, src, theta0, delta, direction, note=""):
@@ -73,9 +74,13 @@ def build():
              f"предтрендом эффект {fmt(tm.est, 2)} ({fmt(tm.ci90_lo, 2)}; {fmt(tm.ci90_hi, 2)}), «{tm.label}».")
     sc = r("s1_sc.csv").set_index("case")
     x = o1.loc["51"]
+    pg = r("rv_sc51_summary.csv").set_index("item").value
     row("51", "Хартц IV: разрыв доли прибыли Германии с синтетическим контролем, 2005–2012 (п. п.)", x.est, float("nan"),
         float("nan"), x.label, "`results/v10/s1_sc.csv`", 0, 0.5, ">",
-        note=f"ранговый p = {fmt(x.p_rank, 2)}; минимальная зарплата Германии 2015: {fmt(sc.loc['Germany minimum wage 2015', 'post_gap_pp'], 2)} "
+        note=f"особое правило (|разрыв| ≤ 0,5) точности не требовало: SD разрывов доноров-плацебо "
+             f"{fmt(pg['donor post-gap SD (all donors)'], 1)} п. п. ({fmt(pg['donor post-gap SD (pre-RMSPE <= 2x Germany)'], 1)} "
+             f"при хорошей подгонке); в 2005–2007 гг. разрыв +0,7…+1,4, после кризиса отрицателен (рецензия Р4). "
+             f"Ранговый p = {fmt(x.p_rank, 2)}; минимальная зарплата Германии 2015: {fmt(sc.loc['Germany minimum wage 2015', 'post_gap_pp'], 2)} "
              f"п. п. (p = {fmt(sc.loc['Germany minimum wage 2015', 'p_rank'], 2)}); NMW Великобритании 1999: "
              f"{fmt(sc.loc['UK NMW 1999', 'post_gap_pp'], 2)} (p = {fmt(sc.loc['UK NMW 1999', 'p_rank'], 2)}) — описательно.")
     s2 = r("s2_outcomes.csv").iloc[0]
@@ -85,10 +90,13 @@ def build():
     d3 = rd[(rd.outcome == "d_roa_3") & (rd.bw == 0.15)].iloc[0]
     row("53", "Выборы профсоюзов (NLRB × SEC): скачок Δ ROA (t − 1 → t + 2) на пороге 50%", s2.est, s2.ci90_lo,
         s2.ci90_hi, s2.label, "`results/v10/s2_outcomes.csv`", 0, 0.005, "<",
-        note=f"{int(s2.in_window_with_droa2)} выборов в окне; **хрупко** (журнал 13): t + 3 — {fmt(d3.est, 3)} "
+        note=f"{int(s2.in_window_with_droa2)} выборов в окне, из них 122 — Starbucks (43%); **не устойчиво** (журналы 13, 16б): "
+             f"t + 3 — {fmt(d3.est, 3)} "
              f"({fmt(d3.ci90_lo, 3)}; {fmt(d3.ci90_hi, 3)}); один выбор на фирма-год — "
              f"{fmt(rr.loc['one election per firm-year', 'est'], 3)} ({fmt(rr.loc['one election per firm-year', 'ci90_lo'], 3)}; "
-             f"{fmt(rr.loc['one election per firm-year', 'ci90_hi'], 3)}); окна 0,10 и 0,25 — ДИ включает 0.")
+             f"{fmt(rr.loc['one election per firm-year', 'ci90_hi'], 3)}); без Starbucks — "
+             f"{fmt(rr.loc['without Starbucks (CIK 829224)', 'est'], 3)} ({fmt(rr.loc['without Starbucks (CIK 829224)', 'ci90_lo'], 3)}; "
+             f"{fmt(rr.loc['without Starbucks (CIK 829224)', 'ci90_hi'], 3)}); окна 0,10 и 0,25 — ДИ включает 0.")
     row("54", "Плацебо исхода 44: доля(часы) − доля(случайный вектор с разбросом часов)", o54.est, o54.ci90_lo, o54.ci90_hi,
         o54.label, "`results/v10/s3_outcomes.csv`", 0, 0.1, ">")
     o55 = r("s4_outcomes.csv").iloc[0]
@@ -114,7 +122,8 @@ def build():
     row("58", "Доля стран с «подтверждённым» падением нормы прибыли бизнес-сектора (BSDB → KLEMS 2009 → 2025, ≥ 30 лет)",
         x.est, x.ci90_lo, x.ci90_hi, x.label, "`results/v10/s9_outcomes.csv`", 0.5, 0.15, ">",
         note=f"{int(x.k)} из {int(x.n)}; устойчивы к концам {int(x.robust_ends)}; стык по среднему 1995–2000: "
-             f"{int(v.k)} из {int(v.n)} «{v.label}».")
+             f"{int(v.k)} из {int(v.n)} «{v.label}». С поправкой на смешанный доход самозанятых (описательно, рецензия Р8) — "
+             f"{int(r('rv_s9_selfemp_outcome.csv').iloc[0].k)} из 17 (CHE, ITA). Ряды CHE и CAN кончаются в 1993 и 1996 гг.")
     x = s9.iloc[3]
     row("59", "Доля стран с «подтверждённым» падением марксовой нормы r_m (KLEMS 2009 + 2025, ≥ 30 лет)", x.est, x.ci90_lo,
         x.ci90_hi, x.label, "`results/v10/s9_outcomes.csv`", 0.5, 0.15, ">",
@@ -124,8 +133,10 @@ def build():
     x, xv = s10.iloc[0], s10.iloc[1]
     row("60", "Среднее отклонение цены от цены производства рентных отраслей (A01, B, L), FIGARO", x.est, x.ci90_lo,
         x.ci90_hi, x.label, "`results/v10/s10_outcomes.csv`", 0, 0.05, ">",
-        note=f"держится на L (недвижимость с вменённой рентой): A01 {fmt(x.d_A01, 3)}, B {fmt(x.d_B, 3)}, L {fmt(x.d_L, 3)}; "
-             f"перцентиль плацебо {fmt(x.placebo_percentile, 3)}; при единой зарплате — {fmt(xv.est, 3)} «{xv.label}».")
+        note=f"**ренту не измеряет** (рецензия Р1): цены производства в коде — наценка на поток затрат, а не на запас; "
+             f"держится на L: A01 {fmt(x.d_A01, 3)}, B {fmt(x.d_B, 3)}, L {fmt(x.d_L, 3)}; превышение того же порядка у финансов "
+             f"(K64 +0,25) и опта (G46 +0,13); перцентиль плацебо {fmt(x.placebo_percentile, 3)}; при единой зарплате — "
+             f"{fmt(xv.est, 3)} «{xv.label}».")
     x = s10.iloc[2]
     dd = r("s10_descriptive.csv").set_index("item")
     bv = dd.loc["61 (BEA variant): mean d(211, 212) on ln real energy+metals index, HAC"]
@@ -136,11 +147,14 @@ def build():
     x = s11.iloc[0]
     row("62", "Доля окон (страна × 5 лет, PWT, ОЭСР) с марксовым техническим прогрессом", x.est, x.ci90_lo, x.ci90_hi,
         x.label, "`results/v10/s11_outcomes.csv`", 0.5, 0.1, ">",
-        note=f"{int(x.k)} из {int(x.n)}; на пороге (θ₀ + Δ = 0,60); ДИ Уилсона не учитывает связь окон внутри страны.")
+        note=f"{int(x.k)} из {int(x.n)}; на пороге (θ₀ + Δ = 0,60); без окна 2015–2020 (COVID) — 0,583 «неинформативно»; "
+             f"кластерный бутстреп по странам (0,552; 0,648) метку не меняет (рецензия Р6).")
     x = s11.iloc[1]
     row("63", "Окна с падающей r: доля, где Y/K даёт больше половины падения и ω не растёт", x.est, x.ci90_lo, x.ci90_hi,
         x.label, "`results/v10/s11_outcomes.csv`", 0.5, 0.15, ">",
-        note=f"{int(x.k)} из {int(x.n)}; Y/K даёт больше половины падения в 86% окон, но ω растёт примерно в половине.")
+        note=f"{int(x.k)} из {int(x.n)}; **не тест Окисио** (рецензия Р7, журнал 16д): теорема исходит из постоянной реальной "
+             f"зарплаты, а при Δω ≤ 0 Y/K даёт всё падение по тождеству; реальная зарплата не росла лишь в 16 из 187 окон с "
+             f"падающей r.")
     return pd.concat([D, pd.DataFrame(rows)], ignore_index=True)
 
 

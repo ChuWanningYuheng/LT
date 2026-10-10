@@ -246,7 +246,7 @@ def stage5_checks():
 def misc_checks():
     from .stage6 import COUNTRIES, klems
     k = klems().reset_index()
-    tot = k[k.nace_r2_code == "TOT"].groupby("geo_code").kva.median().rename("K_GFCF/VA_CP, TOT, median 2010-2021")
+    tot = k[(k.nace_r2_code == "TOT") & k.year.between(2010, 2021)].groupby("geo_code").kva.median().rename("K_GFCF/VA_CP, TOT, median 2010-2021")
     tot.to_csv(OUT / "rv_klems_kva.csv")
     v10 = pd.read_csv(ROOT / "results" / "v10" / "s10_rent_d_pp_actual_wage.csv").set_index("country")
     rows = [dict(item="R13 iteration 10 d(L) (flow-based pp, country means over its years), same 11 countries: mean",

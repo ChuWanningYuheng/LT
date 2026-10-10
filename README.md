@@ -349,6 +349,8 @@ python -P -m lts.v11.stage1 figaro_hours  # часы FIGARO (13 стран, 2010
 python -P -m lts.v11.stage1 estimate      # исходы 64–67, тест 1, плацебо, варианты, репликация FIGARO (~15 мин)
 python -P -m lts.v11.stage2               # процент и фиктивный капитал (68–74), разложение 2.3
 python -P -m lts.v11.checks               # описательные проверки после результатов (журнал 3)
+python -P -c "from lts.levels import run; run(countries=('JPN',), years=range(2010, 2023), tag='robust_jpnfix')"   # таблицы Японии с текущими данными (рецензия Р4)
+python -P -m lts.v11.review               # проверки по независимой рецензии (журнал 5; FIGARO ~10 мин)
 python -P -m lts.v11.outcomes             # сводная таблица исходов 1–74
 ```
 

@@ -82,9 +82,27 @@ def final_demand(y):
     return FD, countries
 
 
+def patch_china(cells, y):
+    """WIOD SEA has no employee hours for China (EMPE, H_EMPE missing; journal 3): H = EMP x PWT avh / 1000
+    (EMP in thousands, H in millions of hours), then hours per dollar and productivity weights are recomputed."""
+    from ..v9.stage34 import adj_weights
+    p = pd.read_excel(ROOT / "data" / "raw" / "v9" / "pwt110.xlsx", sheet_name="Data", usecols=["countrycode", "year", "avh"])
+    avh = float(p[(p.countrycode == "CHN") & (p.year == y)].avh.iloc[0])
+    m = (cells.country == "CHN") & cells.H.isna() & (cells.EMP > 0)
+    cells.loc[m, "H"] = cells.loc[m, "EMP"] * avh / 1000
+    hx = np.divide(cells.H, cells["GO$"], out=np.full(len(cells), np.nan), where=cells["GO$"] > 0)
+    cells.loc[m, "H_x"] = np.nan_to_num(hx[m.to_numpy()])
+    for v in ("pl1", "pl2", "pl3"):
+        cells["w_" + v] = adj_weights(cells, v)
+    us = cells[(cells.country == "USA") & (cells.EMP > 0)]
+    return cells, dict(year=y, cells_patched=int(m.sum()), avh=avh, us_median_H_per_EMP=float((us.H / us.EMP).median()))
+
+
 def flows_year(y):
     from ..v9.stage34 import year_system
     A, cells = year_system(y)
+    cells, info = patch_china(cells, y)
+    print(info, flush=True)
     W = wiod.wiot(y)
     FD, countries = final_demand(y)
     n = len(cells)

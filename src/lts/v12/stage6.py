@@ -4,8 +4,8 @@ p = p M + mu + r (p K_d + 1 K_m) + w b, K_d = g_d (x) k, K_m = g_m (x) k; k_j = 
 a KLEMS group by consumption of fixed capital; r = (VA - labour income - CFC) / sum K; w from sum p x = sum x.
 d_j = -ln p_j. Outcomes 84 (A01 and B), 85 (L), 86 (elasticity of d(B) on real energy+metals index).
 
-Usage: PYTHONPATH=src python -P -m lts.v12.stage6
-Outputs: results/v12/s6_*.csv
+Usage: PYTHONPATH=src python -P -m lts.v12.stage6 [fallback]
+Outputs: results/v12/s6_*.csv (variant with coarser KLEMS groups, journal 9: s6_*_fallback.csv)
 """
 from __future__ import annotations
 
@@ -33,6 +33,14 @@ FIG2KLEMS = {"A01": "A", "A02": "A", "A03": "A", "B": "B", "C10-12": "C10-C12", 
              "M73": "M", "M74_75": "M", "N77": "N", "N78": "N", "N79": "N", "N80-82": "N", "O84": "O", "P85": "P",
              "Q86": "Q", "Q87_88": "Q", "R90-92": "R", "R93": "R", "S94": "S", "S95": "S", "S96": "S", "T": "T"}
 RENT = ["A01", "B"]
+# journal 9 (after the result): coarser KLEMS groups tried in order when the fine group has no data
+INTER = {"C20": "C20-C21", "C21": "C20-C21", "C26": "C26-C27", "C27": "C26-C27", "Q86": "Q", "Q87_88": "Q"}
+COMBINED = {"D": "D-E", "E": "D-E", "M": "M-N", "N": "M-N", "O": "O-Q", "P": "O-Q", "Q": "O-Q", "R": "R-S", "S": "R-S"}
+
+
+def chain(code):
+    out = [FIG2KLEMS.get(code), INTER.get(code), code[0], COMBINED.get(code[0])]
+    return [g for i, g in enumerate(out) if g and g not in out[:i]]
 
 
 def klems():
@@ -46,12 +54,23 @@ def klems():
     return m.set_index(["geo_code", "nace_r2_code", "year"]).kva
 
 
-def stock_coeffs(e, kva, g2, y):
+def resolve(code, kva, g2, y):
+    for g in chain(code):
+        r = kva.get((g2, g, y), np.nan)
+        if np.isfinite(r) and r > 0:
+            return g
+    return None
+
+
+def stock_coeffs(e, kva, g2, y, fallback=False):
     """k_j (capital per unit of output, FIGARO units) for each FIGARO label; NaN where unmapped"""
     n = e.n
     groups = []
     for lab in e.labels:
-        gs = sorted({FIG2KLEMS.get(m) for m in lab.split("+")} - {None})
+        if fallback and lab not in ("T", "U"):
+            gs = sorted({resolve(m, kva, g2, y) for m in lab.split("+")} - {None})
+        else:
+            gs = sorted({FIG2KLEMS.get(m) for m in lab.split("+")} - {None})
         groups.append(gs)
     K = np.zeros(n)
     ok = np.ones(n, bool)
@@ -97,13 +116,14 @@ def prices_stock(e, k):
     return p, r, rho
 
 
-def run():
+def run(fallback=False):
+    sfx = "_fallback" if fallback else ""
     kva = klems()
     rows, skipped = [], []
     for c, g2 in COUNTRIES.items():
         for y in YEARS:
             e, _ = build(c, y)
-            k, ok = stock_coeffs(e, kva, g2, y)
+            k, ok = stock_coeffs(e, kva, g2, y, fallback)
             try:
                 p, r, rho = prices_stock(e, k)
             except ValueError as exc:
@@ -114,8 +134,8 @@ def run():
                                           rho=rho)))
             print("s6", c, y, round(r, 4), flush=True)
     D = pd.concat(rows, ignore_index=True)
-    D.to_csv(OUT / "s6_prices_stock.csv", index=False)
-    pd.DataFrame(skipped).to_csv(OUT / "s6_skipped.csv", index=False)
+    D.to_csv(OUT / f"s6_prices_stock{sfx}.csv", index=False)
+    pd.DataFrame(skipped).to_csv(OUT / f"s6_skipped{sfx}.csv", index=False)
     D = D[D.mapped & ~D.industry.isin(["T", "U"]) & np.isfinite(D.d)]
     out, desc = [], []
     s84 = D[D.industry.isin(RENT)].groupby(["country", "year"]).d.mean().groupby(level=0).mean()
@@ -142,7 +162,7 @@ def run():
                     theta0=0, delta=0.05, direction=">", **r86))
     # descriptive: d by industry, d(L) and real house prices
     by = D.groupby("industry").agg(d=("d", "mean"), k=("k", "mean"), n=("d", "size")).sort_values("d")
-    by.to_csv(OUT / "s6_d_by_industry.csv")
+    by.to_csv(OUT / f"s6_d_by_industry{sfx}.csv")
     hp = s10.bis_real().reset_index()
     iso2 = {"USA": "US", "DEU": "DE", "FRA": "FR", "ITA": "IT", "ESP": "ES", "NLD": "NL", "AUT": "AT", "POL": "PL",
             "CZE": "CZ", "JPN": "JP", "GBR": "GB"}
@@ -157,8 +177,8 @@ def run():
         desc.append(dict(item=f"d(L) on house prices failed: {exc}"))
     desc.append(dict(item="actual profit rate on the stock r: mean over country-years", est=float(D.groupby(["country", "year"]).r.first().mean())))
     O = pd.DataFrame(out)
-    O.to_csv(OUT / "s6_outcomes.csv", index=False)
-    pd.DataFrame(desc).to_csv(OUT / "s6_descriptive.csv", index=False)
+    O.to_csv(OUT / f"s6_outcomes{sfx}.csv", index=False)
+    pd.DataFrame(desc).to_csv(OUT / f"s6_descriptive{sfx}.csv", index=False)
     pd.set_option("display.width", 250)
     print(O.round(4).to_string())
     print(pd.DataFrame(desc).round(4).to_string())
@@ -166,4 +186,5 @@ def run():
 
 
 if __name__ == "__main__":
-    run()
+    import sys
+    run(fallback="fallback" in sys.argv[1:])

@@ -95,8 +95,8 @@ def oews(year):
         z = zipfile.ZipFile(R12 / "bls_oesm23nat.zip")
         d = pd.read_excel(z.open("oesm23nat/national_M2023_dl.xlsx"))
     d.columns = [c.upper() for c in d.columns]
-    grp = "OCC_GROUP" if "OCC_GROUP" in d else "GROUP"
-    d = d[d[grp].astype(str).str.lower().isin(["detailed", "nan"]) & d.OCC_CODE.astype(str).str.match(r"^\d\d-\d{4}$")]
+    grp = next(c for c in ("O_GROUP", "OCC_GROUP", "GROUP") if c in d)  # 2004: "group", empty for detailed rows
+    d = d[d[grp].fillna("detailed").astype(str).str.lower().eq("detailed") & d.OCC_CODE.astype(str).str.match(r"^\d\d-\d{4}$")]
     d = d[~d.OCC_CODE.str.endswith("0000")]
     d["emp"] = pd.to_numeric(d.TOT_EMP, errors="coerce")
     return d[["OCC_CODE", "emp"]].dropna()

@@ -1,0 +1,4 @@
+outcome,est,ci90_lo,ci90_hi,n,theta0,delta,direction,label,placebo_percentile,placebo_median,pool,d_A01,d_B,se,G
+"84: mean d = ln(p/pp_stock) of A01 and B (FIGARO x KLEMS, 2010-2021)",-0.04475229409576708,-0.09699891223508002,0.01434591380728461,11,0,0.05,>,неинформативно,0.187,0.04651195308579235,9.0,-0.05528272436805832,-0.03422186382347584,,
+85: mean d of real estate L (stock-based prices of production),-0.29378608324726746,-0.40206942376606436,-0.19303876525363659,11,0,0.05,>,опровергнуто,,,,,,,
+"86: elasticity of d(B) w.r.t. ln real energy+metals index (stock-based pp, country FE)",0.3495604645065404,0.11687334913485897,0.5822475798782218,131,0,0.05,>,подтверждено,,,,,,0.1283818518604765,11.0

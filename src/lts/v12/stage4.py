@@ -173,5 +173,16 @@ def run():
     print(pd.DataFrame(src).to_string())
 
 
+def levels():
+    """descriptive, added after the main run: cross-occupation mean and SD of each item by version (comparability)"""
+    rows = []
+    for v in VERS:
+        a, _, _ = work_context(v)
+        rows.append(dict(version=v, n=len(a), **{f"{k}_mean": a[k].mean() for k in a}, **{f"{k}_sd": a[k].std() for k in a}))
+    L = pd.DataFrame(rows)
+    L.to_csv(OUT / "s4_item_levels.csv", index=False)
+    return L
+
+
 if __name__ == "__main__":
     run()

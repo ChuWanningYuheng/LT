@@ -1,0 +1,4 @@
+outcome,est,ci90_lo,ci90_hi,n,theta0,delta,direction,label
+"87: mean within-occupation change of autonomy, O*NET 15.0 -> 30.0",-0.11039899382867621,-0.1590326790069776,-0.058761616001202305,605,0,0.1,<,подтверждено
+"88: mean within-occupation change of pace control, O*NET 15.0 -> 30.0",0.02892068552448093,-0.007743251682935739,0.06609859071589622,605,0,0.1,>,опровергнуто
+"89: change of the employment share of Job Zone 3 (middle), OEWS 2004 -> 2023",-0.05772561614461588,-0.13634732731441432,0.024785861257571158,1493,0,0.02,<,неинформативно

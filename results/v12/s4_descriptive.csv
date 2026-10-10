@@ -1,0 +1,25 @@
+item,est,ci90_lo,ci90_hi,n,common_codes
+15.0 -> 30.0: mean within-occupation change of autonomy (SD units; re-rated occupations),-0.11039899382867621,-0.1590326790069776,-0.058761616001202305,605,621
+15.0 -> 30.0: mean within-occupation change of freedom (SD units; re-rated occupations),-0.15839756990884638,-0.21343969867449175,-0.10136178115029042,605,621
+15.0 -> 30.0: mean within-occupation change of structured (SD units; re-rated occupations),-0.06240041774850604,-0.11647494599986954,-0.007886763660870608,605,621
+15.0 -> 30.0: mean within-occupation change of pace (SD units; re-rated occupations),0.02892068552448093,-0.007743251682935739,0.06609859071589622,605,621
+15.0 -> 30.0: mean within-occupation change of repeat (SD units; re-rated occupations),0.1170938055926347,0.0610411267627583,0.17594792224448538,605,621
+15.0 -> 30.0: mean within-occupation change of job_zone (SD units; re-rated occupations),0.008264462809917356,-0.019917355371900824,0.03809917355371893,605,621
+10.0 -> 15.0: mean within-occupation change of autonomy (SD units; re-rated occupations),-0.19234685978290267,-0.26034102796876923,-0.125226806370692,271,796
+10.0 -> 15.0: mean within-occupation change of freedom (SD units; re-rated occupations),-0.18536400548932264,-0.2586808090362602,-0.10941337546713903,271,796
+10.0 -> 15.0: mean within-occupation change of structured (SD units; re-rated occupations),-0.19932971407648273,-0.2746897525044006,-0.12352770289008046,271,796
+10.0 -> 15.0: mean within-occupation change of pace (SD units; re-rated occupations),0.3638162961386032,0.29999825680419795,0.4243094947310729,486,796
+10.0 -> 15.0: mean within-occupation change of repeat (SD units; re-rated occupations),0.619278967530286,0.5426063334551076,0.6947663416350847,486,796
+10.0 -> 15.0: mean within-occupation change of job_zone (SD units; re-rated occupations),-0.055441478439425054,-0.10472279260780287,-0.006160164271047228,487,796
+20.1 -> 30.0: mean within-occupation change of autonomy (SD units; re-rated occupations),-0.09366619927981823,-0.1429125534286433,-0.04548136445776256,590,711
+20.1 -> 30.0: mean within-occupation change of freedom (SD units; re-rated occupations),-0.14973374342590218,-0.20463671677668763,-0.0956580183687191,590,711
+20.1 -> 30.0: mean within-occupation change of structured (SD units; re-rated occupations),-0.03759865513373428,-0.08793333822897803,0.014875914789862546,590,711
+20.1 -> 30.0: mean within-occupation change of pace (SD units; re-rated occupations),0.023194300318260343,-0.013362700299356147,0.05928555938548614,590,711
+20.1 -> 30.0: mean within-occupation change of repeat (SD units; re-rated occupations),0.10390352654254179,0.050884597145455165,0.16269444394540072,590,711
+20.1 -> 30.0: mean within-occupation change of job_zone (SD units; re-rated occupations),-0.03220338983050847,-0.05771186440677966,-0.005084745762711864,590,711
+5.0 -> 30.0: mean within-occupation change of autonomy (SD units; re-rated occupations),-0.4973636178855594,-0.7199258987196117,-0.28301951710524714,39,497
+5.0 -> 30.0: mean within-occupation change of freedom (SD units; re-rated occupations),-0.48934212003570876,-0.6890340743713511,-0.2967420804831928,39,497
+5.0 -> 30.0: mean within-occupation change of structured (SD units; re-rated occupations),-0.5053851157354101,-0.79252189439811,-0.2188579692991702,39,497
+5.0 -> 30.0: mean within-occupation change of pace (SD units; re-rated occupations),0.5781815261844819,0.5040012110461457,0.652032861791561,497,497
+5.0 -> 30.0: mean within-occupation change of repeat (SD units; re-rated occupations),2.0847372821070587,1.9853148059871446,2.190417456816681,497,497
+5.0 -> 30.0: mean within-occupation change of job_zone (SD units; re-rated occupations),-0.024193548387096774,-0.08679435483870968,0.03840725806451604,496,497

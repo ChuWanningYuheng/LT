@@ -354,3 +354,25 @@ python -P -m lts.v11.review               # проверки по независ
 python -P -m lts.v11.outcomes             # сводная таблица исходов 1–74
 ```
 
+
+
+## Итерация 12: противодействующие факторы закона тенденции, круг неравноценного обмена, воспроизводство, процесс труда, рента на запасе
+
+Отчёт: [`report/REPORT_v12.md`](report/REPORT_v12.md); сводная таблица исходов 1–89: [`report/outcomes_table.md`](report/outcomes_table.md); предрегистрация и журнал: [`pre_registration_v12.md`](pre_registration_v12.md); доступность данных и список для ручной загрузки: [`data/raw/v12_availability.md`](data/raw/v12_availability.md).
+
+Данные (`data/raw/v12/`, записаны в MANIFEST): NIPA (B394RC, B933RC, B934RC, A445RC, A051RC), BEA Fixed Assets (FAAt401, FAAt101/102), Z.1 (LM263192005), Eurostat nasa (D43 НФК), OECD (CIT, EPL), WDI, CEPII geo_cepii, O*NET 5.0–30.0, OEWS 2004–2023, соответствие SOC 2000 → 2010, файл задач Дорна. Повторно — ряды итераций 6 и 9б, AMECO, EXIOBASE 2017/2021, PLD 2023, WIOD 2016, PWT 11, FIGARO, EU KLEMS 2025.
+
+```bash
+export PYTHONPATH=src OMP_NUM_THREADS=2
+python -P -m lts.v12.download             # загрузка
+python -P -m lts.v12.stage1               # противодействующие факторы, разложение, противофактическая r (75–80)
+python -P -m lts.v12.stage2 all           # рамки неравноценного обмена (EXIOBASE) и круг (WIOD; 81–82)
+python -P -m lts.v12.stage3               # подразделения I/II перед рецессиями (83)
+python -P -m lts.v12.stage6               # рента с ценами производства на запас (84–86; ~15 мин)
+python -P -m lts.v12.stage6 fallback      # вариант с крупными группами KLEMS (журнал 9)
+python -P -m lts.v12.korea                # проверка Кореи (FIGARO итерации 11; ~15 мин)
+python -P -m lts.v12.stage4               # O*NET и OEWS (87–89)
+python -P -m lts.v12.stage5               # государство и прибыльность (разведочно)
+python -P -m lts.v12.extra                # описательные дополнения (журнал 8)
+python -P -m lts.v12.outcomes             # сводная таблица исходов 1–89
+```

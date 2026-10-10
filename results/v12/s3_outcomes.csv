@@ -1,0 +1,2 @@
+outcome,est,se,ci90_lo,ci90_hi,p_wild,G,n,mde,theta0,delta,direction,label
+"83: LPM recession onset in t+1/t+2 on D_t = d3 ln(X_I/X_II) (std), with d3 ln(GFCF/GDP), country FE, WIOD 2003-2014",0.07180787908466502,0.023198279609030294,0.028050670259503356,0.11492998897223479,0.009900990099009901,43,516,0.06495518290528482,0.0,0.02,>,подтверждено

@@ -16,3 +16,8 @@ results/v3/*.log
 results/v3/placebo_disp_contrib_prefix_jpn.csv
 results/v4/*.log
 results/v11/*.parquet
+results/v12b/*.log
+results/v12b/s0_*/v10/s4_flags_all.csv.gz
+results/v12b/s0_*/v10/s4_o15_shares.csv
+results/v12b/s0_*/v10/s4_o3_shares.csv
+results/v12b/s0_*/v10/s4_o1_country_years.csv

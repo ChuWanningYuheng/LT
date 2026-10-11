@@ -1,0 +1,2 @@
+outcome,est,ci90_lo,ci90_hi,n,theta0,delta,direction,label
+"54: share(hours) - share(random vector with hours dispersion), world beats national",0.05534883720930228,0.020343023255813986,0.09873837209302322,43,0,0.1,>,опровергнуто

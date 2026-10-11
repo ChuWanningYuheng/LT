@@ -1,0 +1,5 @@
+outcome,est,ci90_lo,ci90_hi,discordant_hours_only,discordant_other_only,mcnemar_p_one_sided,share_hours,share_other,n,label,share_cells_weight1
+"44: share(hours) - share(lab), world beats national",0.34883720930232553,0.2325581395348837,0.4651162790697675,15.0,0.0,3.0517578125e-05,1.0,0.6511627906976745,43,подтверждено,
+"44: share(hours) - share(cap), world beats national",0.41860465116279066,0.3023255813953488,0.5348837209302326,18.0,0.0,3.814697265625e-06,1.0,0.5813953488372093,43,подтверждено,
+"45: R2(hours) - max(R2 cap, R2 energy), world industries, 5-year changes, mean of windows",-1.760555073395165,-3.248609219230594,-1.152959674655118,,,,,,50,опровергнуто,
+"46: MAWD(hours) - min(cap, energy), world industries, PPP weights 2005, equal dispersion",-0.019794925242776595,-0.8777820250842212,0.8539891372857332,,,,,,50,неинформативно,0.14083175803402648

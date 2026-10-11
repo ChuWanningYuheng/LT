@@ -400,5 +400,6 @@ python -P -m lts.v12b.stage3                # обработка: США и Ев
 python -P -m lts.v12b.stage3 extra          # разложение и фазы обработки США (журнал 12)
 python -P -m lts.v12b.stage4                # масса прибыли перед кризисами (104–109)
 python -P -m lts.v12b.stage4 lp             # локальные проекции (журнал 8)
+python -P -m lts.v12b.review all            # проверки по независимой рецензии (журнал 14; ~10 мин)
 python -P -m lts.v12b.outcomes              # сводная таблица исходов 1–109
 ```

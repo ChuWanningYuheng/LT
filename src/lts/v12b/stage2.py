@@ -163,5 +163,22 @@ def run():
     print(info)
 
 
+def run_decomp():
+    """journal 13: ln r_w = ln(sum P / sum Y) + ln(sum Y / sum K), PWT exchange-rate weights, balanced panel."""
+    b = balanced(pwt(), "xr")
+    g = b.groupby("year")
+    share, yk = g.P_xr.sum() / g.Y_xr.sum(), g.Y_xr.sum() / g.K_xr.sum()
+    rows = []
+    for a, b_ in ((Y0, Y1), (1960, 1980), (1980, 2019)):
+        for nm, s in (("ln(sum P / sum Y)", share), ("ln(sum Y / sum K)", yk)):
+            rows.append(dict(item=f"{nm}, {a}-{b_}", **trend(np.log(s.loc[a:b_]), 4, 0.002, "<")))
+    D = pd.DataFrame(rows)
+    D.to_csv(OUT / "s2_decomp.csv", index=False)
+    pd.DataFrame({"profit_share": share, "Y/K": yk}).to_csv(OUT / "s2_decomp_levels.csv")
+    print(D[["item", "est", "ci90_lo", "ci90_hi", "label"]].round(5).to_string())
+    print(pd.DataFrame({"share": share, "Y/K": yk}).loc[[1960, 1980, 2000, 2019]].round(4))
+
+
 if __name__ == "__main__":
-    run()
+    import sys
+    run_decomp() if sys.argv[1:] == ["decomp"] else run()

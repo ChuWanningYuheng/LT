@@ -56,3 +56,11 @@
 {"time": "2026-10-11T18:17:56", "url": "https://download.bls.gov/pub/time.series/ce/ce.data.80b.OtherServices.AllEmployeeHoursAndEarnings", "status": 200, "note": "fetch bls_ces/ce.data.80b.OtherServices.AllEmployeeHoursAndEarnings"}
 {"time": "2026-10-11T18:17:57", "url": "https://download.bls.gov/pub/time.series/ce/ce.data.80c.OtherServices.ProductionEmployeeHoursAndEarnings", "status": 200, "note": "fetch bls_ces/ce.data.80c.OtherServices.ProductionEmployeeHoursAndEarnings"}
 {"time": "2026-10-11T18:17:58", "url": "https://download.bls.gov/pub/time.series/ce/ce.data.90a.Government.Employment", "status": 200, "note": "fetch bls_ces/ce.data.90a.Government.Employment"}
+{"time": "2026-10-11T18:19:46", "url": "https://www.worldklems.net/documents/31/usa_wk_mar_2017.xlsx", "status": 200, "note": "fetch jhs/usa_wk_mar_2017.xlsx"}
+{"time": "2026-10-11T18:19:50", "url": "https://www.worldklems.net/documents/30/usa_wk_apr_2013.xlsx", "status": 200, "note": "fetch jhs/usa_wk_apr_2013.xlsx"}
+{"time": "2026-10-11T18:20:17", "url": "https://www.worldklems.net/documents/35/USA_WK_apr_2013_labour.xlsx", "status": 200, "note": "fetch jhs/USA_WK_apr_2013_labour.xlsx"}
+{"time": "2026-10-11T18:20:19", "url": "https://www.worldklems.net/documents/38/jorgenson_ho_samuels.USProductionAccount.pdf", "status": 200, "note": "fetch jhs/jorgenson_ho_samuels.USProductionAccount.pdf"}
+{"time": "2026-10-11T18:20:20", "url": "https://www.worldklems.net/documents/41/usa_wk_apr_2013_source.pdf", "status": 200, "note": "fetch jhs/usa_wk_apr_2013_source.pdf"}
+{"time": "2026-10-11T18:20:22", "url": "https://www.worldklems.net/documents/29/usa_wk_11_2010.xls", "status": 200, "note": "fetch jhs/usa_wk_11_2010.xls"}
+{"time": "2026-10-11T18:20:25", "url": "https://www.worldklems.net/documents/24/usa_wk_11_2010_add.xls", "status": 200, "note": "fetch jhs/usa_wk_11_2010_add.xls"}
+{"time": "2026-10-11T18:20:26", "url": "https://www.worldklems.net/documents/40/usa_wk_11_2010_source.pdf", "status": 200, "note": "fetch jhs/usa_wk_11_2010_source.pdf"}

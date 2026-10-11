@@ -46,6 +46,16 @@ SOURCES = {
                  "BLS CES national, metadata" if not f.startswith("ce.data") else f"BLS CES national, data file {f}")
                 for f in ["ce.txt", "ce.series", "ce.industry", "ce.datatype", "ce.supersector", "ce.period",
                           "ce.seasonal", "ce.footnote"] + [f"ce.data.{s}" for s in CE_SECTORS]],
+    "jhs": [(n, "https://www.worldklems.net/documents/" + u, "WorldKLEMS / Jorgenson-Ho-Samuels (research use)", d) for n, u, d in (
+        ("usa_wk_mar_2017.xlsx", "31/usa_wk_mar_2017.xlsx", "WorldKLEMS US basic file, March 2017 release"),
+        ("usa_wk_apr_2013.xlsx", "30/usa_wk_apr_2013.xlsx", "WorldKLEMS US basic file, April 2013 release"),
+        ("USA_WK_apr_2013_labour.xlsx", "35/USA_WK_apr_2013_labour.xlsx", "WorldKLEMS US labour file, April 2013"),
+        ("jorgenson_ho_samuels.USProductionAccount.pdf", "38/jorgenson_ho_samuels.USProductionAccount.pdf",
+         "Jorgenson, Ho, Samuels: A prototype industry-level production account for the US (paper)"),
+        ("usa_wk_apr_2013_source.pdf", "41/usa_wk_apr_2013_source.pdf", "April 2013 release: additional note"),
+        ("usa_wk_11_2010.xls", "29/usa_wk_11_2010.xls", "WorldKLEMS US basic file, November 2010 release"),
+        ("usa_wk_11_2010_add.xls", "24/usa_wk_11_2010_add.xls", "WorldKLEMS US additional file, November 2010"),
+        ("usa_wk_11_2010_source.pdf", "40/usa_wk_11_2010_source.pdf", "November 2010 release: sources and notes"))],
 }
 
 
@@ -137,6 +147,13 @@ DESCRIPTIONS = {
                 "earnings (USD), 56/57/81/82 aggregate weekly hours and payrolls; all-employee hours and earnings only "
                 "from 2006; production/nonsupervisory hours from 1939 (manufacturing), 1947 (mining, construction), "
                 "1964 (total private), mostly 1990 for detailed industries; S = seasonally adjusted, U = not"),
+    "jhs": ("contents: Jorgenson-Ho-Samuels US industry production account as published on worldklems.net. "
+            "Mar 2017 (usa_wk_mar_2017.xlsx): 65 BEA/NAICS industries, 1947-2014, nominal and constant gross output, "
+            "capital, labour, intermediate input (no hours). Apr 2013 (usa_wk_apr_2013.xlsx): 40 ISIC Rev.3 codes incl. "
+            "aggregates, 1947-2010, WorldKLEMS variables GO, II, VA, EMP (thousands), H_EMP (millions of hours), LAB, "
+            "CAP (USD millions), price and volume indices 2005=100. Labour file Apr/May 2013: compensation per hour, "
+            "persons and weekly hours by industry (31 ISIC) x sex x class (employee, self-employed/family) x education "
+            "x age, 1947-2010. Nov 2010 (usa_wk_11_2010*.xls): 40 codes, 1960-2007, incl. EMPE, H_EMPE"),
 }
 
 

@@ -196,11 +196,18 @@ def run_figaro():
     pe = pe[pe.indic == "NETDOM_EUSE"]
     rows = []
     for c, g2 in FIG_COUNTRIES.items():
+        kc = k[(k.geo_code == g2) & k.nace_r2_code.isin(KLEMS_PROD) & k.year.between(2010, 2022)]
+        # journal 11 (after the result): skip years with fewer asset types than the country's usual coverage
+        cov = kc.groupby("year").apply(lambda d: sum(np.isfinite(d[f"K_{a}"].sum(min_count=1)) for a in ASSET_TO_FIG))
+        usual = int(cov.mode().max()) if len(cov) else 0
         for y in range(2010, 2023):
             kk = k[(k.geo_code == g2) & (k.year == y) & k.nace_r2_code.isin(KLEMS_PROD)]
             if kk.empty:
                 continue
             assets = {a: float(kk[f"K_{a}"].sum(min_count=1)) for a in ASSET_TO_FIG}
+            if sum(np.isfinite(v) for v in assets.values()) < usual:
+                print("skip (partial KLEMS assets)", c, y, flush=True)
+                continue
             vak = float(na[(na.geo_code == g2) & (na.year == y) & (na.nace_r2_code == "TOT")].VA_CP.sum())
             p2 = {"UK": "UK"}.get(g2, g2)
             P = pe[(pe.geo == p2) & (pe.year == y)].set_index("nace").v

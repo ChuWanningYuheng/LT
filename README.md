@@ -377,3 +377,28 @@ python -P -m lts.v12.extra                # описательные допол�
 python -P -m lts.v12.review               # проверки по независимой рецензии (журнал 10; ~10 мин)
 python -P -m lts.v12.outcomes             # сводная таблица исходов 1–89
 ```
+
+
+## Итерация 12б: закон тенденции в часах, мировая норма прибыли, обработка, масса прибыли перед кризисами
+
+Отчёт: [`report/REPORT_v12b.md`](report/REPORT_v12b.md); сводная таблица исходов 1–109: [`report/outcomes_table.md`](report/outcomes_table.md); предрегистрация и журнал: [`pre_registration_v12b.md`](pre_registration_v12b.md); доступность данных и список для ручной загрузки: [`data/raw/v12b_availability.md`](data/raw/v12b_availability.md).
+
+Данные (`data/raw/v12b/`, записаны в MANIFEST): BEA, исторические таблицы «затраты–выпуск» 1947–1996 и GDP by Industry 1947–1997 (NAICS), EIA (первичная энергия), Eurostat PEFA, текст Maito (2014). Повторно — BEA use/make 1997–2023, NIPA, OECD Table 7, BEA SIC, BEA Fixed Assets, WIOD 2016, PWT 11, EPWT 7.0, FIGARO, EU KLEMS 2009 и 2025, AMECO, JST R6, ряды НФК итерации 6.
+
+```bash
+export PYTHONPATH=src OMP_NUM_THREADS=2
+python -P -m lts.v12b.download              # загрузка
+python -P -m lts.v12b.stage0 a              # часы Китая в мировой системе WIOD, вменение (а): пересчёт 28–33, 44–46, 54, 55, T_c (~1 ч)
+python -P -m lts.v12b.stage0 b              # то же, вменение (б)
+python -P -m lts.v12b.stage0 compare        # таблица «было — (а) — (б)»
+python -P -m lts.v12b.stage1                # норма прибыли в часах, США 1948–2023 (90–94; ряды и тесты)
+python -P -m lts.v12b.stage1_extra          # «новая интерпретация», фазы, денежные нормы (журнал 10)
+python -P -m lts.v12b.stage1_world all      # WIOD, FIGARO, мировая система в часах (95, 96, 100)
+python -P -m lts.v12b.stage2                # мировая норма прибыли PWT / EPWT, сдвиг-доля (97–99)
+python -P -m lts.v12b.stage2 decomp         # разложение ΣΠ/ΣY × ΣY/ΣK (журнал 13)
+python -P -m lts.v12b.stage3                # обработка: США и Европа (101–103)
+python -P -m lts.v12b.stage3 extra          # разложение и фазы обработки США (журнал 12)
+python -P -m lts.v12b.stage4                # масса прибыли перед кризисами (104–109)
+python -P -m lts.v12b.stage4 lp             # локальные проекции (журнал 8)
+python -P -m lts.v12b.outcomes              # сводная таблица исходов 1–109
+```

@@ -157,6 +157,12 @@ def europe():
     return pd.DataFrame(rows), k09[~k09.geo.isin(NON_EUROPE)]
 
 
+def _item(row):
+    """share_row writes the name under 'outcome'; descriptive rows use 'item' (review R17)."""
+    row["item"] = row.pop("outcome")
+    return row
+
+
 def run():
     d = us_series()
     d.to_csv(OUT / "s3_us_manufacturing.csv")
@@ -194,8 +200,8 @@ def run():
             t_ = trend(np.log(rn), 4, 0.002, "<")
             net.append(t_["label"] == "подтверждено")
             desc.append(dict(item=f"Europe {geo}: KLEMS 2009 net r manufacturing ({int(rn.index.min())}-{int(rn.index.max())})", **t_))
-    desc.append(share_row("Europe, KLEMS 2009 net r manufacturing (>= 30 years): share confirmed falling", np.array(net),
-                          0.5, 0.15, ">"))
+    desc.append(_item(share_row("Europe, KLEMS 2009 net r manufacturing (>= 30 years): share confirmed falling", np.array(net),
+                          0.5, 0.15, ">")))
     labs, labs_t, rel = [], [], []
     for geo, g in E.groupby("geo"):
         gm = g[g.sector == "mfg"].set_index("year").r
@@ -214,8 +220,8 @@ def run():
     r103 = share_row("103: Europe (EU KLEMS 2009 + 2025, >= 30 years), share of countries with a confirmed falling r in "
                      "manufacturing", np.array(labs), 0.5, 0.15, ">")
     out.append(r103)
-    desc.append(share_row("Europe: share of countries with a confirmed falling r, total economy", np.array(labs_t), 0.5, 0.15, ">"))
-    desc.append(share_row("Europe: share of countries where r_mfg falls faster than r_total (confirmed)", np.array(rel), 0.5, 0.15, ">"))
+    desc.append(_item(share_row("Europe: share of countries with a confirmed falling r, total economy", np.array(labs_t), 0.5, 0.15, ">")))
+    desc.append(_item(share_row("Europe: share of countries where r_mfg falls faster than r_total (confirmed)", np.array(rel), 0.5, 0.15, ">")))
     O = pd.DataFrame(out)
     O.to_csv(OUT / "s3_outcomes.csv", index=False)
     D = pd.DataFrame(desc)

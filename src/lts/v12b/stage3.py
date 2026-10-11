@@ -228,5 +228,30 @@ def run():
                 ["r_mfg", "r_sp_mfg", "r_priv", "r_sp_priv", "rm_mfg", "rh_mfg"]].round(4).to_string())
 
 
+def run_extra():
+    """journal 12: decomposition ln r = ln(Pi/VA) + ln(VA/K) and pooled within-phase slope, US manufacturing."""
+    from ..v8.rule import decide
+    from ..v11.stage1 import reg
+    from .stage1 import US_PEAKS
+    d = pd.read_csv(OUT / "s3_us_manufacturing.csv").set_index("year")
+    rows = []
+    for s_ in ("mfg", "priv"):
+        prof = d[f"VA_{s_}"] - d[f"W_{s_}"] - d[f"CFC_{s_}"]
+        for nm, ser, dr in ((f"ln(Pi/VA) {s_}", prof / d[f"VA_{s_}"], "<"), (f"ln(VA/K) {s_}", d[f"VA_{s_}"] / d[f"K_{s_}"], "<")):
+            rows.append(dict(item=f"US trend {nm}", **trend(np.log(ser), 4, 0.002, dr)))
+    bounds = [1948] + US_PEAKS + [2023]
+    ph = pd.Series(index=d.index, dtype=object)
+    for a, b in zip(bounds[:-1], bounds[1:]):
+        ph.loc[(d.index >= a) & (d.index <= b) & ph.isna()] = f"{a}-{b}"
+    x = pd.DataFrame({"t": d.index.astype(float), "phase": ph, "y": np.log(d.r_mfg)})
+    r = reg(x, "y", ["t"], 0, fe=("phase",), cl="phase")
+    rows.append(dict(item="US manufacturing: pooled within-phase slope of ln r (phase effects, clusters = phases)", **r,
+                     label=decide(r["est"], r["ci90_lo"], r["ci90_hi"], 0, 0.002, "<")))
+    D = pd.DataFrame(rows)
+    D.to_csv(OUT / "s3_extra.csv", index=False)
+    print(D[["item", "est", "ci90_lo", "ci90_hi", "label"]].round(5).to_string())
+
+
 if __name__ == "__main__":
-    run()
+    import sys
+    run_extra() if sys.argv[1:] == ["extra"] else run()

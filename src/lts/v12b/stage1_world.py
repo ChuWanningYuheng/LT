@@ -51,15 +51,42 @@ def rates(A_tot, x, l, b, K, extra_rows=None):
 
 
 # ================================================================ WIOD national systems
+def wiod_economy_chn(y):
+    """lts.revisit.wiod.economy for China, whose SEA has no EMPE / H_EMPE: hours = EMP x PWT avh / 1000 (stage 0 (a));
+    journal 2."""
+    from ..core import Economy
+    from ..revisit import wiod
+    from .stage0 import avh_china
+    W = wiod.wiot(y)
+    C = W["countries"]
+    Nn = wiod.N
+    ci = C.index("CHN")
+    sl = slice(ci * Nn, (ci + 1) * Nn)
+    x = W["x"][sl]
+    Zc = W["Z"][:, sl]
+    with np.errstate(divide="ignore", invalid="ignore"):
+        A = np.where(x[None, :] > 0, Zc[sl] / x[None, :], 0.0)
+        imp = sum(Zc[j * Nn:(j + 1) * Nn] for j in range(len(C)) if j != ci)
+        Am = np.where(x[None, :] > 0, imp / x[None, :], 0.0)
+    fd = {k: W["F"][k][:, ci] for k in (57, 60)}
+    dom = {k: v[sl] for k, v in fd.items()}
+    impf = {k: sum(v[j * Nn:(j + 1) * Nn] for j in range(len(C)) if j != ci) for k, v in fd.items()}
+    s = wiod.sea()
+    s = s[(s.country == "CHN") & (s.year == y)].pivot_table(index="code", columns="variable", values="v")
+    s = s.reindex(W["codes"])
+    hours = np.nan_to_num(s.EMP.to_numpy()) * avh_china(y) / 1000
+    conv = np.divide(x, s.GO.to_numpy(), out=np.zeros(Nn), where=s.GO.to_numpy() > 0)
+    wages = np.nan_to_num(s.COMP.to_numpy() * conv)
+    K = np.nan_to_num(s.K.to_numpy() * conv).clip(min=0)
+    return Economy(labels=list(W["codes"]), A=A, Am=Am, x=x, hours=hours, wages=wages, cfc=np.zeros(Nn),
+                   gfcf_dom=dom[60].clip(min=0), gfcf_imp=impf[60].clip(min=0), hh_dom=dom[57], hh_imp=impf[57],
+                   va=W["va"][sl], labour_income=wages, meta=dict(country="CHN", year=y, K=K))
+
+
 def wiod_country_year(c, y):
     from ..revisit import wiod
-    e = wiod.economy(c, y)
+    e = wiod_economy_chn(y) if c == "CHN" else wiod.economy(c, y)
     hours = e.hours.copy()
-    if c == "CHN":
-        from .stage0 import avh_china
-        s = wiod.sea()
-        s = s[(s.country == c) & (s.year == y) & (s.variable == "EMP")].set_index("code").v.reindex(e.labels)
-        hours = np.nan_to_num(s.to_numpy()) * avh_china(y) / 1000
     prod = np.array([lb not in WIOD_UNPROD for lb in e.labels])
     x = e.x
     if hours[prod].sum() <= 0:
@@ -74,10 +101,10 @@ def wiod_country_year(c, y):
     return dict(country=c, year=y, **r)
 
 
-def run_wiod():
+def run_wiod(only=None):
     from ..revisit import wiod
     W = wiod.wiot(2010)
-    countries = [c for c in W["countries"] if c != "ROW"]
+    countries = [c for c in W["countries"] if c != "ROW" and (only is None or c in only)]
     rows = []
     for y in wiod.YEARS:
         for c in countries:
@@ -90,6 +117,9 @@ def run_wiod():
                 rows.append(r)
         print("wiod", y, flush=True)
     D = pd.DataFrame(rows)
+    if only is not None and (OUT / "s1w_wiod.csv").exists():
+        prev = pd.read_csv(OUT / "s1w_wiod.csv")
+        D = pd.concat([prev[~prev.country.isin(only)], D], ignore_index=True)
     D.to_csv(OUT / "s1w_wiod.csv", index=False)
     return D
 
@@ -287,6 +317,8 @@ if __name__ == "__main__":
     part = sys.argv[1] if len(sys.argv) > 1 else "all"
     if part in ("wiod", "all"):
         run_wiod()
+    if part == "wiod_chn":
+        run_wiod(only={"CHN"})
     if part in ("figaro", "all"):
         run_figaro()
     if part in ("world", "all"):

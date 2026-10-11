@@ -1,0 +1,4 @@
+outcome,est,ci90_lo,ci90_hi,n,y0,y1,theta0,delta,direction,label
+"97: trend ln world r (PWT 11, exchange-rate weights, balanced 1960-2019, 79 countries)",-0.005467464515283389,-0.0069315422715550325,-0.004003386759011745,60,1960,2019,0.0,0.002,<,подтверждено
+98: trend of cumulative within-country index (/ r_w 1960),-0.008278643531963802,-0.009464067099244536,-0.007093219964683067,60,1960,2019,0.0,0.002,<,подтверждено
+99: trend of cumulative country-weights index (/ r_w 1960),0.003494489778326431,0.0030708573859833943,0.003918122170669468,60,1960,2019,0.0,0.002,>,подтверждено

@@ -40,9 +40,16 @@ def epwt():
     e["Y_ppp"], e["K_ppp"] = e.XGDPppp2017, e.Kppp2017
     e["P_ppp"] = (1 - e.LabShare) * e.Y_ppp - e.delta * e.K_ppp
     # journal 4 (after the result): current national prices converted at PWT 11 exchange rates
-    xr = pd.read_excel(ROOT / "data" / "raw" / "v9" / "pwt110.xlsx", sheet_name="Data", usecols=["countrycode", "year", "xr"])
-    e = e.merge(xr.rename(columns={"countrycode": "c"}), on=["c", "year"], how="left")
-    e["Y_cur"], e["K_cur"] = e.XGDPnatcur / e.xr, e.Knatcur / e.xr
+    # EPWT national currency units can differ from PWT's for redenominated currencies, so EPWT supplies only the
+    # current-price ratios (K / X, labour share, delta) and PWT 11 the nominal GDP in US$ (cgdpo x pl_gdpo)
+    pw = pd.read_excel(ROOT / "data" / "raw" / "v9" / "pwt110.xlsx", sheet_name="Data",
+                       usecols=["countrycode", "year", "cgdpo", "pl_gdpo"])
+    pw["Yusd"] = pw.cgdpo * pw.pl_gdpo
+    e = e.merge(pw[["countrycode", "year", "Yusd"]].rename(columns={"countrycode": "c"}), on=["c", "year"], how="left")
+    for v in ("XGDPnatcur", "Knatcur", "LabShare", "delta"):
+        e[v] = pd.to_numeric(e[v], errors="coerce")
+    e["Y_cur"] = e.Yusd
+    e["K_cur"] = e.Knatcur / e.XGDPnatcur * e.Yusd
     e["P_cur"] = (1 - e.LabShare) * e.Y_cur - e.delta * e.K_cur
     return e
 

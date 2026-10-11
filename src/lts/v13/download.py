@@ -118,6 +118,43 @@ SOURCES = {
         ("FixedAssets.txt", "TXT/FixedAssets.txt", "BEA Fixed Assets flat file, all tables (series code, period, value)"),
         ("FA_TablesRegister.txt", "TXT/TablesRegister.txt", "BEA Fixed Assets tables register"),
         ("FA_SeriesRegister.txt", "TXT/SeriesRegister.txt", "BEA Fixed Assets series register"))],
+    "shaikh_capitalism": [(nm, "https://drive.google.com/uc?export=download&id=" + fid, "A. Shaikh (author's public Google Drive)",
+                           "Shaikh (2016) Capitalism: data tables of the book appendices, from realecon.org/data -> Google Drive "
+                           "folder 1_EonoTKayfETIoTJZQoKedr5ygOykjMd") for fid, nm in (
+        ("1_tWL4sxALcGMOX5C7cVBhCr-LWWAgnN9", "Appendix_2.2_Data_Tables.xlsx"),
+        ("1_sXzj5CsdBK9cb1qBfkxCuGPaZhowncL", "Appendix_4.2_Numerical_Calculations_Production_and_Costs.docx"),
+        ("1_oWibfhadka_kRXr-8BRNmeRbjit7n-W", "Appendix_5.3_Data_Tables.xlsx"),
+        ("1_kbJELg5AJRDBqe8ecxbzg9BlnboMRnu", "Appendix_6.8_Data_Tables_Corrected.xlsx"),
+        ("1_k9jOPEPR8V1mzHfzZuI3Ne2CjqHvMpJ", "Appendix_6.8_Data_Tables.xlsx"),
+        ("1_jxrQNY76JMqYVGhMeu4XSKrEJ-8dROb", "Appendix_7.2_Data_Tables.xlsx"),
+        ("1_jBDkc6_lmwE_HiNgwftoKRMNzhavUU3", "Appendix_8.1_Data_Tables.xlsx"),
+        ("1_ijlLBhpnwzwH5PFm7wla2-DygySh0-V", "Appendix_9.3_Data_Tables.xls"),
+        ("1__h4fhmMQT3ZUJ8VBlI3IqYZHJ07tDu2", "Appendix_10.2_Data_Tables.xlsx"),
+        ("1_Yu3QbgpcdyXWMNql0H-SoETZALOAhX7", "Appendix_11.2_Data_Tables.xlsx"),
+        ("1_RMLimPqh1J6BE6UY4c3QCats52BzTK0", "Appendix_12.2_Data_Tables.xlsx"),
+        ("1_N_lrsP6R-CTzzMiw3aAnp3JKmvSvcA2", "Appendix_14.3_Data_Tables.xlsx"),
+        ("1_KYIpzqwlRuh7NxOeHUP2CchgzxM5Yii", "Appendix_15.2_Data_Tables.xlsx"),
+        ("1_J2FGi0yM1kqxQofKEcgWqMkdVNJsCnn", "Appendix_16.2_Data_Tables.xlsx"),
+        ("1_xhrE4RpUiahIxUZLaQttl5FZv2YzXs6", "Appendix_17.2_Data_Tables.xls"))],
+    "literature": [(n, u, lic, d) for n, u, lic, d in (
+        ("basu_manolakos_2010_umass_wp2010-04.pdf", "https://www.umass.edu/economics/publications/2010-04.pdf",
+         "author working paper", "Basu & Manolakos (2010) UMass Econ WP 2010-04, working version of RRPE 45(1) 2013"),
+        ("basu_huato_larajauregui_wasner_umass_wp318.pdf",
+         "https://scholarworks.umass.edu/server/api/core/bitstreams/69ff54a4-6554-48b9-9b5b-58008cb25725/content",
+         "author working paper", "Basu, Huato, Lara Jauregui, Wasner, World Profit Rates 1960-2019, UMass Econ WP 318"),
+        ("tsoulfidis_paitaridis_2017_mpra84035.pdf", "https://mpra.ub.uni-muenchen.de/84035/1/MPRA_paper_84035.pdf",
+         "MPRA (author)", "Tsoulfidis & Paitaridis, MPRA 84035 (working version of the 2019 follow-up on unproductive activities "
+         "in the US 1964-2015); NOT the 2012 RRPE paper"),
+        ("kliman_2009_persistent_fall_data_graphs.xls", "http://akliman.squarespace.com/storage/Persistent%20Fall%20Data%20Graphs.xls",
+         "author (research use; see 'citation' sheet)", "Kliman (2009) The Persistent Fall in Profitability: spreadsheet "
+         "accompanying the paper (US corporations 1929-2007); not the 2012 book tables"),
+        ("mpra_81542.pdf", "https://mpra.ub.uni-muenchen.de/81542/1/MPRA_paper_81542.pdf", "MPRA (author)",
+         "MPRA 81542 (found in search for Paitaridis-Tsoulfidis 2012; contents recorded in availability file)"))],
+    "dumenil_levy": [(n, "https://www.cepremap.fr/membres/dlevy/" + n, "authors (research use)", d) for n, d in (
+        ("dle2016e.htm", "Dumenil & Levy (2016) note: historical trends of technology and distribution in the US economy since 1869"),
+        ("dle2016e.pdf", "Dumenil & Levy (2016) PDF of the note"),
+        ("uslt.txt", "Dumenil & Levy long-term US data table (private nonresidential economy, since 1869)"),
+        ("dle1994e.pdf", "Dumenil & Levy (1994) sources and construction of the series 1869-1992"))],
 }
 
 
@@ -250,6 +287,20 @@ DESCRIPTIONS = {
                       "cost investment, 3.8-3.9; E/S/I and total), section 4 (nonresidential by legal form), section 6 "
                       "(by legal form and industry); annual 1947-2025 (section 3), millions of dollars, year-end; flat file "
                       "FixedAssets.txt with all series and registers"),
+    "shaikh_capitalism": ("contents: 15 files from Shaikh's public folder 'Shaikh Capitalism Data' (dated 2024-01-24): data "
+                          "tables for book appendices 2.2, 4.2 (docx), 5.3, 6.8 (original and corrected: business accounts, "
+                          "noncorporate measures, GPIM capital stock tests, net and gross capital, corporate profit rates, "
+                          "capacity utilization), 7.2 (Salter data, US industry and OECD profit rates), 8.1, 9.3 (US IO "
+                          "tables 1947-1998, vertically integrated unit labour costs), 10.2, 11.2, 12.2, 14.3, 15.2, 16.2, 17.2"),
+    "literature": ("contents: Kliman (2009) Persistent Fall spreadsheet (sheets citation, sources/defs, basic data, ROP "
+                   "data, misc graph data; US corporations 1929-2007; use requires citation per sheet 'citation'); "
+                   "Tsoulfidis, Tsimis, Paitaridis MPRA 84035 (2018, unproductive activities in the US 1964-2015); "
+                   "Tsoulfidis & Paitaridis MPRA 81542 (2017, capital intensity, unproductive activities and the Great "
+                   "Recession). Not obtained: Basu & Manolakos WP 2010-04 (404), Basu et al. WP 318 (403)"),
+    "dumenil_levy": ("contents: Dumenil & Levy (2016) long-term data for the US private nonresidential economy, annual "
+                     "1869-2015 (uslt.txt): net domestic product (current and 2009 $ bn), compensation of employees + "
+                     "self-employed ($ bn), FTE employees + self-employed (millions), net stock of fixed capital (current "
+                     "and 2009 $ bn), total hours worked (billions), GDP ($ bn); note (htm, pdf) and 1994 sources paper"),
 }
 
 

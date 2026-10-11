@@ -16,6 +16,12 @@
 | 5 | BLS: TFP по крупным отраслям, часы и занятость по детальным отраслям | **скачано** (прежний адрес TFP — 404, новые адреса найдены) | `data/raw/v13/bls_productivity/` |
 | 6 | BEA Fixed Assets, Detailed Data (активы × отрасли) | **скачано** (текущая и фиксированная стоимость; исторической стоимости на уровне «актив × отрасль» BEA не публикует) | `data/raw/v13/bea_fa_detail/` |
 | 7 | BEA Fixed Assets, таблицы 3.3, 3.6, 3.7 (историческая стоимость) и разделы 2, 4, 6 | **скачано** | `data/raw/v13/bea_fa_tables/` |
+| 8 | Kliman (2012), таблицы данных | **частично**: таблица к статье 2009 г. «Persistent Fall» (данные той же линии работ); таблиц самой книги в открытом доступе нет | `data/raw/v13/literature/` |
+| 9 | Basu & Manolakos (2013), рабочая версия и данные | **не скачано**: UMass WP 2010-04 — 404; данных в открытом доступе не нашли | — |
+| 10 | Basu, Huato, Lara Jauregui, Wasner (2025): WP 318 и World Profitability Dashboard | **не скачано**: ScholarWorks UMass — 403 (сервер); адрес дашборда не найден; аннотация сохранена в 12б | — |
+| 11 | Mohun (2014, 2005), Paitaridis & Tsoulfidis (2012) | **частично**: открытых версий этих статей нет; скачаны две рабочие статьи Tsoulfidis, Paitaridis и соавторов 2017–2018 гг. (продолжение той же работы) | `data/raw/v13/literature/` |
+| 12 | Shaikh & Tonak (1994), Moseley (1991); Shaikh (2016) «Capitalism» | **частично**: таблицы данных «Capitalism» скачаны (папка автора); у Shaikh & Tonak и Moseley открытых таблиц нет | `data/raw/v13/shaikh_capitalism/` |
+| 18 | Duménil & Lévy, данные по США с 1869 г. | **скачано** | `data/raw/v13/dumenil_levy/` |
 | 2 | Jorgenson–Ho–Samuels, производственный счёт США | **частично** (релизы WorldKLEMS 2010, 2013, 2017; более новых версий в открытом доступе не нашли) | `data/raw/v13/jhs/` |
 
 ## Описания наборов
@@ -137,6 +143,40 @@
 * **Раздел 2** — по видам активов, включая историческую стоимость (2.3, 2.6, 2.7). **Раздел 4** — нежилые фонды по правовой форме (корпорации, некорпоративный бизнес). **Раздел 6** — по правовой форме и отраслям.
 * Плоский файл `FixedAssets.txt` — все ряды всех таблиц (код ряда, период, значение).
 * **Швы:** выпуск 2026 г. новее файлов итерации 6 (`data/raw/v6/bea_fa/`, выпуск 2025 г.); уровни могли пересмотреть.
+
+### 8–12. Сверка с литературой
+
+* **Kliman** (`literature/kliman_2009_persistent_fall_data_graphs.xls`):
+  * со страницы http://akliman.squarespace.com/persistent-fall (ссылка из архива OPE-L, октябрь 2009 г.);
+  * таблица к статье «The Persistent Fall in Profitability Underlying the Current Crisis: New Temporalist Evidence» (2009), корпорации США 1929–2007 гг.;
+  * листы: citation (условия использования — ссылка на URL, название, автора), sources/defs, basic data, ROP data, misc graph data.
+  * Это предшественник анализа книги 2012 г.; **таблиц самой книги** на сайте автора (`/failure-capitalist-production/`, `/writings/`), у Pluto Press и у Marxist-Humanist Initiative не нашли.
+* **Basu & Manolakos:** IDEAS указывает файл `http://www.umass.edu/economics/publications/2010-04.pdf` — переадресация 301, затем 404. Данных отдельно не нашли.
+* **Basu, Huato, Lara Jauregui, Wasner:**
+  * ScholarWorks UMass (`scholarworks.umass.edu/econ_workingpaper/318`, файл `…/server/api/core/bitstreams/69ff54a4-…/content`) — 403 Forbidden от сервера, не от фильтра сети; не обходили;
+  * страница bepress (`works.bepress.com/deepankar_dasu/41`) переадресует на digitalcommons.elsevier.com;
+  * адрес World Profitability Dashboard в найденных источниках не указан;
+  * аннотация — в `data/raw/v12b/basu2025_ideas_abstract.html`.
+* **Mohun (2014)** RRPE 46(3) и **Mohun (2005)** CJE 29(5): по данным RePEc полный текст только по подписке, открытых рабочих версий не нашли. **Paitaridis & Tsoulfidis (2012)** RRPE 44(2): открытой версии нет.
+  * Скачаны две открытые рабочие статьи тех же авторов, развивающие ту же работу. Это **не** замена статьи 2012 г.:
+    * MPRA 84035 — Tsoulfidis, Tsimis, Paitaridis (2018), «The Rise and Fall of Unproductive Activities in the US Economy 1964–2015»;
+    * MPRA 81542 — Tsoulfidis & Paitaridis (2017), «Capital Intensity, Unproductive Activities and the Great Recession of the US Economy».
+* **Shaikh (2016) «Capitalism»** (`shaikh_capitalism/`, 15 файлов):
+  * адрес anwarshaikhecon.org переадресует на https://www.realecon.org; страница `/data` (отрисована в Chromium — сайт на JS) ведёт на открытую папку Google Drive «Shaikh Capitalism Data» (`1_EonoTKayfETIoTJZQoKedr5ygOykjMd`); файлы от 24.01.2024;
+  * таблицы к приложениям 2.2, 4.2 (docx), 5.3, **6.8** (исходная и исправленная версии: бизнес-счета, некорпоративный сектор, проверки GPIM, чистый и валовой капитал, нормы прибыли корпораций, загрузка мощностей), 7.2 (данные Солтера, нормы прибыли по отраслям США и ОЭСР), 8.1, 9.3 (таблицы «затраты — выпуск» США 1947–1998 гг., вертикально интегрированные затраты на труд), 10.2, 11.2, 12.2, 14.3, 15.2, 16.2, 17.2.
+* **Shaikh & Tonak (1994), Moseley (1991):** открытых таблиц не нашли (книги; архив Shaikh в Bard Digital Commons — сканы рабочих материалов). → список для пользователя.
+
+### 18. Duménil & Lévy, США с 1869 г. (`dumenil_levy/`, 4 файла)
+
+* **Откуда:** https://www.cepremap.fr/membres/dlevy/dle2016e.htm → `uslt.txt`, `dle2016e.pdf`; источники и построение — `dle1994e.pdf` (1994 г., ряды 1869–1992 гг.).
+* **`uslt.txt`** — частная нежилая экономика США, годовые 1869–2015:
+  * чистый внутренний продукт (млрд долл., текущие и 2009 г.);
+  * оплата наёмных и самозанятых (млрд долл.);
+  * эквивалент полной занятости наёмных и самозанятых (млн);
+  * чистый запас основного капитала (млрд долл., текущие и 2009 г.);
+  * всего отработанных часов (млрд);
+  * ВВП (млрд долл.).
+* Набор заменяет прежний USLT авторов. Швы — по описанию в `dle2016e.pdf` и `dle1994e.pdf`.
 
 ## Для пользователя (ручная загрузка или ключи API)
 

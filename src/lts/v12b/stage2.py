@@ -39,6 +39,11 @@ def epwt():
     e = e.rename(columns={"Countrycode": "c", "Year": "year"})
     e["Y_ppp"], e["K_ppp"] = e.XGDPppp2017, e.Kppp2017
     e["P_ppp"] = (1 - e.LabShare) * e.Y_ppp - e.delta * e.K_ppp
+    # journal 4 (after the result): current national prices converted at PWT 11 exchange rates
+    xr = pd.read_excel(ROOT / "data" / "raw" / "v9" / "pwt110.xlsx", sheet_name="Data", usecols=["countrycode", "year", "xr"])
+    e = e.merge(xr.rename(columns={"countrycode": "c"}), on=["c", "year"], how="left")
+    e["Y_cur"], e["K_cur"] = e.XGDPnatcur / e.xr, e.Knatcur / e.xr
+    e["P_cur"] = (1 - e.LabShare) * e.Y_cur - e.delta * e.K_cur
     return e
 
 
@@ -116,7 +121,16 @@ def run():
             continue
         s = s.loc[Y0:Y1] if "unbalanced" not in nm else s
         desc.append(dict(item=f"trend ln {nm}", **trend(np.log(s.dropna()), 4, 0.002, "<")))
-    for nm, ssx in (("PWT ppp", ssp), ("EPWT 7.0", sse)):
+    bc = balanced(e, "cur")
+    rc, _, _ = world(bc, "cur")
+    series["EPWT 7.0 current prices, PWT xr, balanced"] = rc
+    ssc = shift_share(bc, "cur")
+    ssc.to_csv(OUT / "s2_shift_share_epwt_current.csv")
+    desc.append(dict(item=f"trend ln EPWT 7.0 current prices, PWT xr, balanced ({bc.c.nunique()} countries)",
+                     **trend(np.log(rc.loc[Y0:Y1].dropna()), 4, 0.002, "<")))
+    for a, b_ in ((1960, 1980), (1980, 2019)):
+        desc.append(dict(item=f"trend ln world r, EPWT 7.0 current prices, {a}-{b_}", **trend(np.log(rc.loc[a:b_].dropna()), 4, 0.002, "<")))
+    for nm, ssx in (("PWT ppp", ssp), ("EPWT 7.0", sse), ("EPWT 7.0 current", ssc)):
         desc.append(dict(item=f"{nm}: trend cumulative within (/ r_w 1960)", **trend(ssx.cum_within_rel, 4, 0.002, "<")))
         desc.append(dict(item=f"{nm}: trend cumulative weights (/ r_w 1960)", **trend(ssx.cum_between_rel, 4, 0.002, ">")))
     for a, b_ in ((1960, 1980), (1980, 2019)):

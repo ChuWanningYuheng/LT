@@ -182,6 +182,10 @@ DESCRIPTIONS = {
                      "44 industries 1947-1963 and 63 industries 1963-2016: nominal gross output, intermediate input, "
                      "capital input by type, college / non-college labour input, quantity indexes and total hours (hrs; "
                      "units not stated in the file); tables 11.1-11.7. (4) archive vintages 2021 and 2022 (1987-2020)"),
+    "nipa_hours_fred": ("contents: hours worked by full-time and part-time employees (NIPA tables 6.9B/C/D lines as "
+                        "republished by FRED), millions of hours, annual; sector level only (about 20 lines): totals "
+                        "B4701-B4703 1948-2022; sector lines J47xx 1948-1969, B47xx 1987-2000 (SIC), N47xx 2000-2022 "
+                        "(NAICS); no sector series for 1970-1986 on FRED; employees only (no self-employed)"),
 }
 
 

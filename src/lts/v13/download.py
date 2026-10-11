@@ -56,6 +56,25 @@ SOURCES = {
         ("usa_wk_11_2010.xls", "29/usa_wk_11_2010.xls", "WorldKLEMS US basic file, November 2010 release"),
         ("usa_wk_11_2010_add.xls", "24/usa_wk_11_2010_add.xls", "WorldKLEMS US additional file, November 2010"),
         ("usa_wk_11_2010_source.pdf", "40/usa_wk_11_2010_source.pdf", "November 2010 release: sources and notes"))],
+    "bea_bls_ilpa": [(u.split("/")[-1], "https://www.bea.gov" + u, "BEA/BLS (public domain)", d) for u, d in (
+        ("/sites/default/files/2026-04/BEA-BLS-industry-level-production-account-1997-2024.xlsx",
+         "BEA-BLS integrated industry-level production account (KLEMS), production account tables 1997-2024"),
+        ("/sites/default/files/2026-04/BEA-BLS-industry-level-production-account-1998-2024-CONTR.xlsx",
+         "BEA-BLS ILPA, contributions tables 1998-2024"),
+        ("/sites/default/files/2026-04/BEA-BLS-industry-level-production-account-Expanded-Capital-Detail-1997-2024.xlsx",
+         "BEA-BLS ILPA, production account tables with detailed capital, 1997-2024"),
+        ("/sites/default/files/2026-04/BEA-BLS-industry-level-production-account-Expanded-Capital-Detail-1998-2024-CONTR.xlsx",
+         "BEA-BLS ILPA, contributions tables with detailed capital, 1998-2024"),
+        ("/sites/default/files/2020-11/Technical-Document-Toward-a-BEA-BLS-Integrated-Industry-level-Production-Account-for-1947-2016.pdf",
+         "Technical document: Toward a BEA-BLS integrated industry-level production account for 1947-2016"),
+        ("/sites/default/files/2020-11/KLEMS-Research-Tables-BEA-BLS-Integrated-Industry-Level-Production-Account-1947-2016_0.xlsx",
+         "KLEMS research tables, BEA-BLS integrated industry-level production account 1947-2016"),
+        ("/sites/default/files/2020-11/KLEMS-Research-Tables-Underlying-Data_0.xlsx",
+         "KLEMS research tables 1947-2016: underlying data"),
+        ("/sites/default/files/2023-09/BEA-BLS-industry-level-production-account-archive-data-2022.zip",
+         "BEA-BLS ILPA archive data, 2022 vintage"),
+        ("/sites/default/files/2023-09/BEA-BLS-industry-level-production-account-archive-data-2021.zip",
+         "BEA-BLS ILPA archive data, 2021 vintage"))],
 }
 
 
@@ -154,6 +173,15 @@ DESCRIPTIONS = {
             "CAP (USD millions), price and volume indices 2005=100. Labour file Apr/May 2013: compensation per hour, "
             "persons and weekly hours by industry (31 ISIC) x sex x class (employee, self-employed/family) x education "
             "x age, 1947-2010. Nov 2010 (usa_wk_11_2010*.xls): 40 codes, 1960-2007, incl. EMPE, H_EMPE"),
+    "bea_bls_ilpa": ("contents: (1) BEA-BLS integrated industry-level production account, release 2026-04-27, 63 industries "
+                     "(BEA summary, NAICS) + aggregates, 1997-2024: quantity indexes 2017=100 (gross output, VA, energy, "
+                     "materials, services, capital by type art/R&D/IT/software/other, labour college/non-college, labour "
+                     "input, labour hours) and nominal compensation (USD millions) by input; hours only as an index. "
+                     "(2) Expanded capital detail 1997-2024 (computers, communication, instruments, transport, other "
+                     "equipment, structures). (3) Research account 1947-2016 (Eldridge et al. 2020): underlying data, "
+                     "44 industries 1947-1963 and 63 industries 1963-2016: nominal gross output, intermediate input, "
+                     "capital input by type, college / non-college labour input, quantity indexes and total hours (hrs; "
+                     "units not stated in the file); tables 11.1-11.7. (4) archive vintages 2021 and 2022 (1987-2020)"),
 }
 
 

@@ -185,6 +185,36 @@ DESCRIPTIONS = {
 }
 
 
+def fred_hours():
+    """NIPA tables 6.9B (B), 6.9C (J), 6.9D (N): hours worked by full-time and part-time employees by industry, as
+    republished by FRED (series {B,J,N}47NNC0A222NBEA, millions of hours). Enumerates NN = 01..99; titles from the
+    series page."""
+    src = "nipa_hours_fred"
+    titles = []
+    for pre in ("B", "J", "N"):
+        for nn in range(1, 100):
+            sid = f"{pre}47{nn:02d}C0A222NBEA"
+            if (RAW / src / f"{sid}.csv").exists():
+                continue
+            url = f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={sid}"
+            ok = fetch(src, f"{sid}.csv", url, "BEA via FRED (public domain)",
+                       f"NIPA table 6.9{dict(B='B', J='C', N='D')[pre]} line via FRED, series {sid}", tries=2)
+            time.sleep(0.5)
+            if ok:
+                try:
+                    req = urllib.request.Request(f"https://fred.stlouisfed.org/series/{sid}", headers={"User-Agent": UA})
+                    html = urllib.request.urlopen(req, timeout=120).read().decode("utf-8", "replace")
+                    import re
+                    m = re.search(r"<title>(.*?)</title>", html, re.S)
+                    titles.append((sid, m.group(1).strip() if m else ""))
+                except Exception as e:                           # noqa: BLE001
+                    titles.append((sid, f"title not read: {e}"))
+                time.sleep(0.5)
+    if titles:
+        with open(RAW / src / "_titles.csv", "a", newline="") as f:
+            csv.writer(f).writerows(titles)
+
+
 def run(sources):
     for s in sources:
         for name, url, lic, note in SOURCES[s]:
@@ -197,5 +227,7 @@ if __name__ == "__main__":
     if sys.argv[1:2] == ["annotate"]:
         for src in sys.argv[2:]:
             annotate(src, DESCRIPTIONS[src])
+    elif sys.argv[1:2] == ["fred_hours"]:
+        fred_hours()
     else:
         run(sys.argv[1:])

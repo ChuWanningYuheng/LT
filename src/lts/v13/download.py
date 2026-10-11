@@ -100,6 +100,24 @@ SOURCES = {
          "BLS research: industry production account, capital"),
         ("/productivity/articles-and-research/industry-production-account-capital-expanded-detail.xlsx",
          "BLS research: industry production account, capital, expanded detail"))],
+    "bea_fa_detail": [(n, "https://apps.bea.gov/national/FA2004/Details/xls/" + n, "BEA (public domain)", d) for n, d in (
+        ("detailnonres_stk1.xlsx", "BEA fixed assets detailed data: private nonresidential net stocks, current cost, asset x industry"),
+        ("detailnonres_stk2.xlsx", "BEA fixed assets detailed data: private nonresidential net stocks, fixed (chained) cost"),
+        ("detailnonres_dep1.xlsx", "BEA fixed assets detailed data: depreciation, current cost"),
+        ("detailnonres_dep2.xlsx", "BEA fixed assets detailed data: depreciation, fixed cost"),
+        ("detailnonres_inv1.xlsx", "BEA fixed assets detailed data: investment, current dollars"),
+        ("detailnonres_inv2.xlsx", "BEA fixed assets detailed data: investment, fixed cost"),
+        ("DetailNonres_rate.xlsx", "BEA fixed assets detailed data: implied rates of depreciation"),
+        ("detailresidential.xlsx", "BEA fixed assets detailed data: residential"),
+        ("DetailCDG.xlsx", "BEA fixed assets detailed data: consumer durable goods"))],
+    "bea_fa_tables": [(n, "https://apps.bea.gov/national/FixedAssets/Release/" + u, "BEA (public domain)", d) for n, u, d in (
+        ("Section2All_xls.xlsx", "XLS/Section2All_xls.xlsx", "BEA Fixed Assets section 2 (by type of asset), all tables"),
+        ("Section3All_xls.xlsx", "XLS/Section3All_xls.xlsx", "BEA Fixed Assets section 3 (private by industry): 3.1-3.9 E/S/I"),
+        ("Section4All_xls.xlsx", "XLS/Section4All_xls.xlsx", "BEA Fixed Assets section 4 (private nonresidential by legal form)"),
+        ("Section6All_xls.xlsx", "XLS/Section6All_xls.xlsx", "BEA Fixed Assets section 6 (by legal form and industry)"),
+        ("FixedAssets.txt", "TXT/FixedAssets.txt", "BEA Fixed Assets flat file, all tables (series code, period, value)"),
+        ("FA_TablesRegister.txt", "TXT/TablesRegister.txt", "BEA Fixed Assets tables register"),
+        ("FA_SeriesRegister.txt", "TXT/SeriesRegister.txt", "BEA Fixed Assets series register"))],
 }
 
 
@@ -221,6 +239,17 @@ DESCRIPTIONS = {
                          "industries, 1987-2024; total economy hours and employment by class (employees, proprietors, "
                          "unpaid family workers), quarterly 1947-2026; historical SIC manufacturing 1949-2003 (labor "
                          "productivity) and 1949-2001 (TFP, text file)"),
+    "bea_fa_detail": ("contents: BEA fixed assets detailed data (vintage updated 2026-09-30), private nonresidential, "
+                      "74 industry sheets (BEA FA industry codes, e.g. 110C, 2110) x about 100 NIPA asset types; "
+                      "investment 1901-2025, net stocks and depreciation 1925-2025; millions of dollars; current cost "
+                      "(stk1, dep1, inv1) and fixed (chained 2017) cost (stk2, dep2, inv2); implied depreciation rates; "
+                      "residential and consumer durables files. No historical-cost detail at asset x industry level"),
+    "bea_fa_tables": ("contents: BEA Fixed Assets published tables, files created 2026-09-28: section 2 (by asset type), "
+                      "section 3 (private by industry; 3.1 current-cost net stock, 3.2 quantity indexes, 3.3 historical-"
+                      "cost net stock, 3.4 current-cost depreciation, 3.6 historical-cost depreciation, 3.7 historical-"
+                      "cost investment, 3.8-3.9; E/S/I and total), section 4 (nonresidential by legal form), section 6 "
+                      "(by legal form and industry); annual 1947-2025 (section 3), millions of dollars, year-end; flat file "
+                      "FixedAssets.txt with all series and registers"),
 }
 
 

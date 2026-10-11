@@ -75,6 +75,31 @@ SOURCES = {
          "BEA-BLS ILPA archive data, 2022 vintage"),
         ("/sites/default/files/2023-09/BEA-BLS-industry-level-production-account-archive-data-2021.zip",
          "BEA-BLS ILPA archive data, 2021 vintage"))],
+    "bls_productivity": [(u.split("/")[-1], "https://www.bls.gov" + u, "BLS (public domain)", d) for u, d in (
+        ("/productivity/tables/major-industry-total-factor-productivity-klems.xlsx",
+         "BLS total factor productivity for major industries (KLEMS)"),
+        ("/productivity/tables/hours-employment-detailed-industries.xlsx", "BLS hours and employment, detailed industries"),
+        ("/productivity/tables/labor-productivity-detailed-industries.xlsx", "BLS labor productivity, detailed industries"),
+        ("/productivity/tables/historical-labor-productivity-detailed-industries-discontinued.xlsx",
+         "BLS historical labor productivity, detailed industries (discontinued series)"),
+        ("/productivity/tables/total-factor-productivity-manufacturing-and-transportation-detailed-industries.xlsx",
+         "BLS TFP, manufacturing and transportation detailed industries"),
+        ("/productivity/tables/total-factor-productivity-major-sectors.xlsx", "BLS TFP, major sectors"),
+        ("/productivity/tables/total-factor-productivity-major-sectors-historical.xlsx", "BLS TFP, major sectors, historical"),
+        ("/productivity/tables/total-factor-productivity-capital-details-major-sectors-and-industries.xlsx",
+         "BLS TFP capital details, major sectors and industries"),
+        ("/productivity/tables/rental-prices-major-industries.xlsx", "BLS capital rental prices, major industries"),
+        ("/productivity/tables/major-sector-industries-nonprofit-owner-occupied-capital-measures.xlsx",
+         "BLS capital measures incl. nonprofit and owner-occupied"),
+        ("/productivity/tables/labor-productivity-manufacturing-sectors-historical-sic-1949-2003.xlsx",
+         "BLS labor productivity, manufacturing sectors, historical SIC 1949-2003"),
+        ("/productivity/tables/total-factor-productivity-manufacturing-historical-sic-1949-2001.txt",
+         "BLS TFP, manufacturing, historical SIC 1949-2001"),
+        ("/web/prod2/total-economy-hours-employment.xlsx", "BLS total economy hours and employment"),
+        ("/productivity/articles-and-research/industry-production-account-capital.xlsx",
+         "BLS research: industry production account, capital"),
+        ("/productivity/articles-and-research/industry-production-account-capital-expanded-detail.xlsx",
+         "BLS research: industry production account, capital, expanded detail"))],
 }
 
 
@@ -186,6 +211,16 @@ DESCRIPTIONS = {
                         "republished by FRED), millions of hours, annual; sector level only (about 20 lines): totals "
                         "B4701-B4703 1948-2022; sector lines J47xx 1948-1969, B47xx 1987-2000 (SIC), N47xx 2000-2022 "
                         "(NAICS); no sector series for 1970-1986 on FRED; employees only (no self-employed)"),
+    "bls_productivity": ("contents: BLS Office of Productivity and Technology tables (machine-readable sheets). Major "
+                         "industries TFP (KLEMS): 81 NAICS industries/aggregates, 1987-2024, 51 measures incl. hours "
+                         "worked (millions), labor composition, capital input, combined inputs, intermediate/energy "
+                         "inputs; hours and employment for detailed industries: 774 NAICS codes (2- to 6-digit), "
+                         "1987-2025, all workers (millions of hours, thousands of jobs); labor productivity detailed "
+                         "industries 1987-2025 (hours, labor compensation, output); capital details: productive capital "
+                         "stock, wealth stock, investment, rental prices, depreciation rates by asset category, 84 sectors/"
+                         "industries, 1987-2024; total economy hours and employment by class (employees, proprietors, "
+                         "unpaid family workers), quarterly 1947-2026; historical SIC manufacturing 1949-2003 (labor "
+                         "productivity) and 1949-2001 (TFP, text file)"),
 }
 
 

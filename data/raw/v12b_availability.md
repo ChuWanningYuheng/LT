@@ -11,6 +11,7 @@
 | 1 | EIA, Monthly Energy Review | производство (T01.02) и потребление (T01.03) первичной энергии по источникам, 1949– | `eia_T01.02.csv`, `eia_T01.03.csv` |
 | 1 | Eurostat `env_ac_pefa04` | физические счета энергии по NACE (добыча природной энергии, чистое внутреннее использование), DE, FR, IT, ES, NL, AT, PL, CZ, 2000–2024 | `es_env_ac_pefa04.json` |
 | 2 | Maito (2014), MPRA 55894 | текст статьи (методика, страны) | `maito2014_mpra55894.pdf` |
+| 2 | IDEAS/RePEc: Basu, Huato, Lara Jauregui, Wasner (2025) | библиографическая запись и аннотация (скачано после рецензии, Р6) | `basu2025_ideas_abstract.html` |
 
 ## Используется из прошлых итераций
 
@@ -30,7 +31,7 @@
 | Приоритет | Источник | Зачем (этап) | Где взять | Что сделано без него |
 |---|---|---|---|---|
 | средний | **Энергетические счета WIOD 2016** (Kulionis, 2019; энергия по отраслям WIOD, 2000–2014, ТДж) и/или **JRC WIOD Environmental Accounts Update 2000–2016** (Corsatea et al., 2019, EUR 29727 EN) | 1, 2: единица «энергия» на WIOD | запись набора: https://service.tib.eu/ldm_nfdi4energy/ldmservice/vdataset/openaire_396c8408-0c28-4a29-948c-dc3b3b298fc5 (в архиве «download_all» только метаданные, без файлов); отчёт JRC: https://publications.jrc.ec.europa.eu/repository/handle/JRC116234 | энергия — только США (EIA) и 8 стран ЕС (PEFA, FIGARO) |
-| средний | **Basu, Huato, Lara Jauregui, Wasner, World Profit Rates 1960–2019**: текст рабочей версии и данные «World Profitability Dashboard» | 2: сверка | ScholarWorks UMass (Economics Department Working Paper 318; скачивание PDF отвечает 403) | расчёт повторён на их источнике (EPWT 7.0); сверка — по аннотации статьи |
+| средний | **Basu, Huato, Lara Jauregui, Wasner, World Profit Rates 1960–2019**: текст рабочей версии и данные «World Profitability Dashboard» | 2: сверка | ScholarWorks UMass (Economics Department Working Paper 318; скачивание PDF отвечает 403) | расчёт повторён на их источнике (EPWT 7.0); сверка — только с аннотацией (страница IDEAS, сохранена) |
 | низкий | **BLS Total Factor Productivity for Major Industries** (часы всех занятых по ~60 отраслям, 1987–) | 1: вариант с фактическими часами вместо лиц | bls.gov/productivity (прежний адрес `total-factor-productivity-major-industries.xlsx` отвечает 404; в репозитории — сохранённая страница ошибки) | лица, занятые в производстве (одинаковые часы на человека внутри года) |
 | низкий | NIPA, исторические таблицы 6.9B / 6.9C (часы наёмных по отраслям SIC, 1948–2000) | 1: часы до 1998 г. | apps.bea.gov, интерактивные таблицы NIPA, раздел 6 (в плоских файлах только версии D) | лица, занятые в производстве |
 

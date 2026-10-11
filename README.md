@@ -374,5 +374,6 @@ python -P -m lts.v12.korea                # проверка Кореи (FIGARO 
 python -P -m lts.v12.stage4               # O*NET и OEWS (87–89)
 python -P -m lts.v12.stage5               # государство и прибыльность (разведочно)
 python -P -m lts.v12.extra                # описательные дополнения (журнал 8)
+python -P -m lts.v12.review               # проверки по независимой рецензии (журнал 10; ~10 мин)
 python -P -m lts.v12.outcomes             # сводная таблица исходов 1–89
 ```

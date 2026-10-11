@@ -119,6 +119,27 @@ def fetch(source, name, url, licence, note, tries=4, headers=None):
     return True
 
 
+def annotate(source, text):
+    """append a content description to the MANIFEST notes of this source's v13 rows"""
+    rows = list(csv.reader(open(MANIFEST, newline="")))
+    for r in rows[1:]:
+        if r[0] == "v13" and (r[1].startswith(f"v13/{source}/") or r[1].startswith(f"EXTERNAL:LT_external/v13/{source}/")) \
+                and text not in r[4]:
+            r[4] = f"{r[4]}; {text}"
+    with open(MANIFEST, "w", newline="") as f:
+        csv.writer(f).writerows(rows)
+
+
+DESCRIPTIONS = {
+    "bls_ces": ("contents: CES national establishment survey; monthly M01-M12 (+M13 annual average for NSA), 1939-2026; "
+                "850 industry codes (CES codes ~ NAICS, supersectors to 6-digit); datatypes 01 all employees and 06 "
+                "production & nonsupervisory employees (thousands), 02/07 average weekly hours, 03/08 average hourly "
+                "earnings (USD), 56/57/81/82 aggregate weekly hours and payrolls; all-employee hours and earnings only "
+                "from 2006; production/nonsupervisory hours from 1939 (manufacturing), 1947 (mining, construction), "
+                "1964 (total private), mostly 1990 for detailed industries; S = seasonally adjusted, U = not"),
+}
+
+
 def run(sources):
     for s in sources:
         for name, url, lic, note in SOURCES[s]:
@@ -128,4 +149,8 @@ def run(sources):
 
 
 if __name__ == "__main__":
-    run(sys.argv[1:])
+    if sys.argv[1:2] == ["annotate"]:
+        for src in sys.argv[2:]:
+            annotate(src, DESCRIPTIONS[src])
+    else:
+        run(sys.argv[1:])

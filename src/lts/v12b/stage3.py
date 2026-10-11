@@ -80,9 +80,13 @@ def us_series():
                          K_priv=fa_sector("FAAt301", "private fixed assets", y), **mfg_hours(y)))
     d = pd.DataFrame(rows).set_index("year")
     for s in ("mfg", "priv"):
-        prof = d[f"VA_{s}"] - d[f"W_{s}"] - d[f"CFC_{s}"]
-        d[f"r_{s}"] = prof / d[f"K_{s}"]
-        d[f"rm_{s}"] = prof / (d[f"K_{s}"] + d[f"W_{s}"])
+        # journal 7 (after the result): SIC labour share spliced to the NAICS level of 1987
+        f = (d.loc[1987, f"W_{s}"] / d.loc[1987, f"VA_{s}"]) / float(ls[s].loc[1987])
+        d[f"Wsp_{s}"] = d[f"W_{s}"].where(d.index >= 1987, d[f"W_{s}"] * f)
+        for w, suf in (("W", ""), ("Wsp", "_sp")):
+            prof = d[f"VA_{s}"] - d[f"{w}_{s}"] - d[f"CFC_{s}"]
+            d[f"r{suf}_{s}"] = prof / d[f"K_{s}"]
+            d[f"rm{suf}_{s}"] = prof / (d[f"K_{s}"] + d[f"{w}_{s}"])
     return d
 
 
@@ -150,7 +154,7 @@ def europe():
             sp = pd.concat([s09[s09.index < s25.index.min()] * f, s25]).sort_index()
             for y, v in sp.items():
                 rows.append(dict(geo=geo, sector=lab, year=int(y), r=float(v), splice=f))
-    return pd.DataFrame(rows)
+    return pd.DataFrame(rows), k09[~k09.geo.isin(NON_EUROPE)]
 
 
 def run():
@@ -167,8 +171,31 @@ def run():
         desc.append(dict(item=f"US trend {nm}", **trend(np.log(s), 4, 0.002, dr)))
     for a, b in ((1948, 1973), (1973, 1997), (1997, 2023)):
         desc.append(dict(item=f"US trend ln r manufacturing {a}-{b}", **trend(np.log(d.r_mfg.loc[a:b]), 4, 0.002, "<")))
-    E = europe()
+    # journal 7 (after the result): compensation before 1987 spliced at 1987
+    o = trend(np.log(d.r_sp_mfg), 4, 0.002, "<")
+    o.update(robust(np.log(d.r_sp_mfg), 0.002, "<"))
+    desc.append(dict(item="101 variant (journal 7, after result): SIC share spliced to NAICS 1987", **o))
+    desc.append(dict(item="102 variant (journal 7, after result): ln(r_mfg / r_priv), both spliced",
+                     **trend(np.log(d.r_sp_mfg / d.r_sp_priv), 4, 0.002, "<")))
+    desc.append(dict(item="US trend ln r private sector, spliced", **trend(np.log(d.r_sp_priv), 4, 0.002, "<")))
+    for a, b in ((1948, 1973), (1973, 1997)):
+        desc.append(dict(item=f"US trend ln r manufacturing {a}-{b}, spliced",
+                         **trend(np.log(d.r_sp_mfg.loc[a:b]), 4, 0.002, "<")))
+    desc.append(dict(item="US Europe-comparable gross: trend ln (VA - W) / K manufacturing, spliced",
+                     **trend(np.log((d.VA_mfg - d.Wsp_mfg) / d.K_mfg), 4, 0.002, "<")))
+    E, k09 = europe()
     E.to_csv(OUT / "s3_europe.csv", index=False)
+    # journal 6: net rate, KLEMS 2009 only (descriptive)
+    net = []
+    for geo, g in k09[k09.code == "D"].groupby("geo"):
+        rn = g.set_index("year").r_net.dropna()
+        rn = rn[np.isfinite(rn) & (rn > 0)]
+        if len(rn) >= 30:
+            t_ = trend(np.log(rn), 4, 0.002, "<")
+            net.append(t_["label"] == "подтверждено")
+            desc.append(dict(item=f"Europe {geo}: KLEMS 2009 net r manufacturing ({int(rn.index.min())}-{int(rn.index.max())})", **t_))
+    desc.append(share_row("Europe, KLEMS 2009 net r manufacturing (>= 30 years): share confirmed falling", np.array(net),
+                          0.5, 0.15, ">"))
     labs, labs_t, rel = [], [], []
     for geo, g in E.groupby("geo"):
         gm = g[g.sector == "mfg"].set_index("year").r
@@ -197,7 +224,8 @@ def run():
     pd.set_option("display.max_colwidth", 90)
     print(O.round(5).to_string())
     print(D.round(5).to_string())
-    print(d.loc[[1948, 1960, 1973, 1980, 1997, 2007, 2023], ["r_mfg", "r_priv", "rm_mfg", "rh_mfg"]].round(4).to_string())
+    print(d.loc[[1948, 1960, 1973, 1980, 1986, 1987, 1997, 2007, 2023],
+                ["r_mfg", "r_sp_mfg", "r_priv", "r_sp_priv", "rm_mfg", "rh_mfg"]].round(4).to_string())
 
 
 if __name__ == "__main__":

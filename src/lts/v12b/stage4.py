@@ -217,5 +217,44 @@ def run():
     print(PJ.round(4).to_string())
 
 
+def run_lp():
+    """journal 8: local projections y(t+h) - y(t-1) on the peak dummy, h = 0..3 (descriptive)."""
+    def lp_cols(g):
+        g = g.sort_values("year").set_index("year")
+        base = {"ln Pi_real": np.log(g.Pi_real.where(g.Pi_real > 0)), "ln(Pi/Y)": np.log((g.Pi / g.Y).where(g.Pi > 0)),
+                "ln Y_real": np.log(g.Y_real), "ln u": np.log(g.u) if "u" in g else np.nan, "W/Y": g.W / g.Y,
+                "ln r": np.log(g.r.where(g.r > 0))}
+        if "I_real" in g:
+            base["ln I_real"] = np.log(g.I_real.where(g.I_real > 0))
+        cols = {}
+        for nm, y in base.items():
+            if not isinstance(y, pd.Series):
+                continue
+            for h in range(4):
+                cols[f"{nm}|{h}"] = y.shift(-h) - y.shift(1)
+        return pd.DataFrame(cols, index=g.index).reset_index()
+    rows = []
+    U = us_data("gdp")
+    L = lp_cols(U)
+    L["peak"] = L.year.isin(US_PEAKS).astype(float)
+    for c in [c for c in L.columns if "|" in c]:
+        nm, h = c.split("|")
+        rows.append(dict(sample="US", var=nm, h=int(h), **event_reg(L[c], L.peak)))
+    A = jst_data()
+    LJ = pd.concat([lp_cols(g).assign(iso=i) for i, g in A.groupby("iso")], ignore_index=True)
+    LJ = LJ.merge(A[["iso", "year", "peak"]], on=["iso", "year"])
+    for c in [c for c in LJ.columns if "|" in c]:
+        nm, h = c.split("|")
+        x = LJ.dropna(subset=[c, "peak"]).rename(columns={c: "yy"})
+        r = reg(x, "yy", ["peak"], 0, fe=("iso",), cl="iso")
+        rows.append(dict(sample="JST", var=nm, h=int(h), est=r["est"], ci90_lo=r["ci90_lo"], ci90_hi=r["ci90_hi"],
+                         n=r.get("n"), events=int(x.peak.sum())))
+    D = pd.DataFrame(rows)
+    D.to_csv(OUT / "s4_lp.csv", index=False)
+    pd.set_option("display.width", 250)
+    print(D.round(4).to_string())
+
+
 if __name__ == "__main__":
-    run()
+    import sys
+    run_lp() if sys.argv[1:] == ["lp"] else run()

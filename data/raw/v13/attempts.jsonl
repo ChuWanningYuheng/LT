@@ -427,3 +427,21 @@
 {"time": "2026-10-11T18:41:04", "url": "https://www.umass.edu/economics/publications/2010-04.pdf", "status": 404, "note": "fetch literature/basu_manolakos_2010_umass_wp2010-04.pdf"}
 {"time": "2026-10-11T18:41:05", "url": "https://scholarworks.umass.edu/server/api/core/bitstreams/69ff54a4-6554-48b9-9b5b-58008cb25725/content", "status": 403, "note": "fetch literature/basu_huato_larajauregui_wasner_umass_wp318.pdf"}
 {"time": "2026-10-11T18:41:06", "url": "http://akliman.squarespace.com/storage/Persistent%20Fall%20Data%20Graphs.xls", "status": 200, "note": "fetch literature/kliman_2009_persistent_fall_data_graphs.xls"}
+{"time": "2026-10-11T18:42:38", "url": "https://zenodo.org/records/23039074/files/LICENSE.txt?download=1", "status": 200, "note": "fetch exiobase/LICENSE.txt"}
+{"time": "2026-10-11T18:42:38", "url": "https://zenodo.org/records/23039074/files/Changelog.txt?download=1", "status": 200, "note": "fetch exiobase/Changelog.txt"}
+{"time": "2026-10-11T18:42:39", "url": "https://zenodo.org/records/23039074/files/hashes.csv?download=1", "status": 200, "note": "fetch exiobase/hashes.csv"}
+{"time": "2026-10-11T18:44:31", "url": "https://zenodo.org/records/23039074/files/IOT_1995_ixi.zip?download=1", "status": 200, "note": "fetch exiobase/IOT_1995_ixi.zip"}
+{"time": "2026-10-11T18:45:44", "url": "https://zenodo.org/records/23039074/files/IOT_1996_ixi.zip?download=1", "status": 200, "note": "fetch exiobase/IOT_1996_ixi.zip"}
+{"time": "2026-10-11T18:46:34", "url": "https://dataverse.nl/api/access/datafile/554025", "status": 200, "note": "fetch pwt_docs/pwt110_user_guide_to_data_files.pdf"}
+{"time": "2026-10-11T18:46:35", "url": "https://dataverse.nl/api/access/datafile/554031", "status": 200, "note": "fetch pwt_docs/pwt110_whatsnew.pdf"}
+{"time": "2026-10-11T18:46:37", "url": "https://dataverse.nl/api/access/datafile/554029", "status": 200, "note": "fetch pwt_docs/pwt110_capital_detail.xlsx"}
+{"time": "2026-10-11T18:46:46", "url": "https://www.rug.nl/ggdc/docs/the_next_generation_of_the_penn_world_table.pdf", "status": 200, "note": "fetch pwt_docs/the_next_generation_of_the_penn_world_table.pdf"}
+{"time": "2026-10-11T18:46:48", "url": "https://www.rug.nl/ggdc/docs/pwt91_capitalservices_ipmrevision.pdf", "status": 200, "note": "fetch pwt_docs/pwt91_capitalservices_ipmrevision.pdf"}
+{"time": "2026-10-11T18:46:51", "url": "https://sdmx.oecd.org/public/rest/data/OECD.STI.PIE,DSD_TIMBC_2023@DF_TIMBC_2023,/EMPN...W.PS.A.?format=csv", "status": 200, "note": "fetch oecd_tim/timbc_2023_empn.csv"}
+{"time": "2026-10-11T18:47:29", "url": "https://zenodo.org/records/23039074/files/IOT_1997_ixi.zip?download=1", "status": 200, "note": "fetch exiobase/IOT_1997_ixi.zip"}
+{"time": "2026-10-11T18:48:48", "url": "https://zenodo.org/records/23039074/files/IOT_1998_ixi.zip?download=1", "status": 200, "note": "fetch exiobase/IOT_1998_ixi.zip"}
+{"time": "2026-10-11T18:50:42", "url": "https://zenodo.org/records/23039074/files/IOT_1999_ixi.zip?download=1", "status": 200, "note": "fetch exiobase/IOT_1999_ixi.zip"}
+{"time": "2026-10-11T18:52:03", "url": "https://zenodo.org/records/23039074/files/IOT_2000_ixi.zip?download=1", "status": 200, "note": "fetch exiobase/IOT_2000_ixi.zip"}
+{"time": "2026-10-11T18:53:36", "url": "https://zenodo.org/records/23039074/files/IOT_2001_ixi.zip?download=1", "status": 200, "note": "fetch exiobase/IOT_2001_ixi.zip"}
+{"time": "2026-10-11T18:55:24", "url": "https://zenodo.org/records/23039074/files/IOT_2002_ixi.zip?download=1", "status": 200, "note": "fetch exiobase/IOT_2002_ixi.zip"}
+{"time": "2026-10-11T18:55:24", "url": "https://zenodo.org/records/23039074/files/IOT_2003_ixi.zip?download=1", "status": "URLError: <urlopen error [Errno 111] Connection refused>", "note": "fetch exiobase/IOT_2003_ixi.zip"}

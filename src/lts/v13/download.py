@@ -155,6 +155,28 @@ SOURCES = {
         ("dle2016e.pdf", "Dumenil & Levy (2016) PDF of the note"),
         ("uslt.txt", "Dumenil & Levy long-term US data table (private nonresidential economy, since 1869)"),
         ("dle1994e.pdf", "Dumenil & Levy (1994) sources and construction of the series 1869-1992"))],
+    "exiobase": [(n, f"https://zenodo.org/records/23039074/files/{n}?download=1", "EXIOBASE 3 (CC BY-SA 4.0, see LICENSE.txt)",
+                  "EXIOBASE 3.11.2 (Zenodo record 23039074, 2026-09-30) " + d) for n, d in (
+        [("LICENSE.txt", "licence"), ("Changelog.txt", "changelog"), ("hashes.csv", "file hashes")]
+        + [(f"IOT_{y}_ixi.zip", f"industry-by-industry MRIO with satellite accounts, {y}") for y in range(1995, 2025)])],
+    "pwt_docs": [(n, u, "GGDC (CC BY 4.0)", d) for n, u, d in (
+        ("pwt110_user_guide_to_data_files.pdf", "https://dataverse.nl/api/access/datafile/554025", "PWT 11.0 user guide to data files"),
+        ("pwt110_whatsnew.pdf", "https://dataverse.nl/api/access/datafile/554031", "What is new in PWT 11.0"),
+        ("pwt110_capital_detail.xlsx", "https://dataverse.nl/api/access/datafile/554029",
+         "PWT 11.0 capital detail (capital stocks by asset type)"),
+        ("the_next_generation_of_the_penn_world_table.pdf",
+         "https://www.rug.nl/ggdc/docs/the_next_generation_of_the_penn_world_table.pdf",
+         "Feenstra, Inklaar, Timmer (2015) The Next Generation of the Penn World Table"),
+        ("pwt91_capitalservices_ipmrevision.pdf", "https://www.rug.nl/ggdc/docs/pwt91_capitalservices_ipmrevision.pdf",
+         "Capital services in PWT 9.1 (capital methodology note)"))],
+    "capital_matrices": [(f"Kbar_exio_v3_8_2_{y}_cfc_{k}.mat",
+                          f"https://zenodo.org/records/7073276/files/Kbar_exio_v3_8_2_{y}_cfc_{k}.mat?download=1",
+                          "CC BY 4.0", f"Sodersten et al. capital use matrices for EXIOBASE 3.8.2, {y}, {k}")
+                         for y in range(1995, 2021) for k in ("pxi", "pxp")],
+    "oecd_tim": [("timbc_2023_empn.csv",
+                  "https://sdmx.oecd.org/public/rest/data/OECD.STI.PIE,DSD_TIMBC_2023@DF_TIMBC_2023,/EMPN...W.PS.A.?format=csv",
+                  "OECD (CC BY 4.0)", "TiMBC 2023 edition: employment by industry (ICIO 2023 aggregates) and workforce "
+                  "characteristic")],
 }
 
 

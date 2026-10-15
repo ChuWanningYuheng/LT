@@ -465,3 +465,4 @@
 {"time": "2026-10-15T14:36:48", "url": "https://journals.sagepub.com/doi/pdf/10.1177/0486613411423899", "status": 403, "note": "probe"}
 {"time": "2026-10-15T14:36:48", "url": "https://www.tandfonline.com/doi/full/10.1080/09538259.2022.2140007", "status": 403, "note": "probe"}
 {"time": "2026-10-15T14:37:09", "url": "https://zenodo.org/records/23039074/files/IOT_2004_ixi.zip?download=1", "status": 200, "note": "fetch exiobase/IOT_2004_ixi.zip"}
+{"time": "2026-10-15T14:40:24", "url": "https://zenodo.org/records/23039074/files/IOT_2005_ixi.zip?download=1", "status": 200, "note": "fetch exiobase/IOT_2005_ixi.zip"}

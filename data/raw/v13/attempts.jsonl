@@ -459,3 +459,9 @@
 {"time": "2026-10-15T14:33:47", "url": "https://zenodo.org/records/23039074/files/IOT_2002_ixi.zip?download=1", "status": 200, "note": "fetch exiobase/IOT_2002_ixi.zip"}
 {"time": "2026-10-15T14:34:43", "url": "https://dataverse.nl/api/access/datafile/199110", "status": 200, "note": "fetch wiod_energy/wiod2013_Environmental_Accounts.zip"}
 {"time": "2026-10-15T14:34:44", "url": "https://dataverse.nl/api/access/datafile/199109", "status": 200, "note": "fetch wiod_energy/wiod2013_Environmental_Sources.pdf"}
+{"time": "2026-10-15T14:36:46", "url": "https://doi.org/10.7275/1373847", "status": 403, "note": "probe"}
+{"time": "2026-10-15T14:36:47", "url": "https://scholarworks.umass.edu/econ_workingpaper/99", "status": 403, "note": "probe"}
+{"time": "2026-10-15T14:36:47", "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=904484", "status": 403, "note": "probe"}
+{"time": "2026-10-15T14:36:48", "url": "https://journals.sagepub.com/doi/pdf/10.1177/0486613411423899", "status": 403, "note": "probe"}
+{"time": "2026-10-15T14:36:48", "url": "https://www.tandfonline.com/doi/full/10.1080/09538259.2022.2140007", "status": 403, "note": "probe"}
+{"time": "2026-10-15T14:37:09", "url": "https://zenodo.org/records/23039074/files/IOT_2004_ixi.zip?download=1", "status": 200, "note": "fetch exiobase/IOT_2004_ixi.zip"}

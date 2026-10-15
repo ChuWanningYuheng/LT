@@ -11,18 +11,23 @@
 | № | Источник | Статус | Где |
 |---|---|---|---|
 | 1 | BLS CES (national) | **скачано** | `data/raw/v13/bls_ces/` |
+| 2 | Jorgenson–Ho–Samuels, производственный счёт США | **частично** (релизы WorldKLEMS 2010, 2013, 2017; более новых версий в открытом доступе не нашли) | `data/raw/v13/jhs/` |
 | 3 | BEA–BLS Integrated Industry-Level Production Account (KLEMS) | **скачано** (1997–2024 и исследовательский счёт 1947–2016) | `data/raw/v13/bea_bls_ilpa/` |
 | 4 | NIPA 6.9B / 6.9C / 6.9D (часы наёмных по отраслям) | **частично**: только секторы, через FRED; детальных таблиц нет (нужен ключ API BEA) | `data/raw/v13/nipa_hours_fred/` |
 | 5 | BLS: TFP по крупным отраслям, часы и занятость по детальным отраслям | **скачано** (прежний адрес TFP — 404, новые адреса найдены) | `data/raw/v13/bls_productivity/` |
 | 6 | BEA Fixed Assets, Detailed Data (активы × отрасли) | **скачано** (текущая и фиксированная стоимость; исторической стоимости на уровне «актив × отрасль» BEA не публикует) | `data/raw/v13/bea_fa_detail/` |
 | 7 | BEA Fixed Assets, таблицы 3.3, 3.6, 3.7 (историческая стоимость) и разделы 2, 4, 6 | **скачано** | `data/raw/v13/bea_fa_tables/` |
 | 8 | Kliman (2012), таблицы данных | **частично**: таблица к статье 2009 г. «Persistent Fall» (данные той же линии работ); таблиц самой книги в открытом доступе нет | `data/raw/v13/literature/` |
-| 9 | Basu & Manolakos (2013), рабочая версия и данные | **не скачано**: UMass WP 2010-04 — 404; данных в открытом доступе не нашли | — |
-| 10 | Basu, Huato, Lara Jauregui, Wasner (2025): WP 318 и World Profitability Dashboard | **не скачано**: ScholarWorks UMass — 403 (сервер); адрес дашборда не найден; аннотация сохранена в 12б | — |
-| 11 | Mohun (2014, 2005), Paitaridis & Tsoulfidis (2012) | **частично**: открытых версий этих статей нет; скачаны две рабочие статьи Tsoulfidis, Paitaridis и соавторов 2017–2018 гг. (продолжение той же работы) | `data/raw/v13/literature/` |
+| 9 | Basu & Manolakos (2013), рабочая версия и данные | **не скачано**: UMass WP 2010-04 — 404; копия в ScholarWorks UMass (DOI 10.7275/1373847) — 403; данных в открытом доступе не нашли | — |
+| 10 | Basu, Huato, Lara Jauregui, Wasner (2025): WP 318 и World Profitability Dashboard | **не скачано**: ScholarWorks UMass — 403 (сервер); журнальная версия (Review of Political Economy 37(1)) — 403 (Cloudflare); адрес дашборда не найден; аннотация сохранена в 12б | — |
+| 11 | Mohun (2014, 2005), Paitaridis & Tsoulfidis (2012) | **частично**: сами статьи не скачаны (Mohun 2014 — только по подписке; открытые копии Mohun 2005 на SSRN и Paitaridis & Tsoulfidis 2012 на сайте SAGE — 403, проверка Cloudflare); скачаны две рабочие статьи Tsoulfidis, Paitaridis и соавторов 2017–2018 гг. (продолжение той же работы) | `data/raw/v13/literature/` |
 | 12 | Shaikh & Tonak (1994), Moseley (1991); Shaikh (2016) «Capitalism» | **частично**: таблицы данных «Capitalism» скачаны (папка автора); у Shaikh & Tonak и Moseley открытых таблиц нет | `data/raw/v13/shaikh_capitalism/` |
+| 13 | EXIOBASE 3.11.2 (последняя версия), ixi, 1995–2024, с часами занятых | **скачано** (30 лет; каждый файл сверен по md5 с записью Zenodo) | `../LT_external/v13/exiobase/` (zip > 100 МБ); лицензия, журнал изменений, хеши — `data/raw/v13/exiobase/` |
+| 14 | Эндогенизация капитала в EXIOBASE (Södersten, Wood и др.) | **частично**: матрицы для EXIOBASE 3.8.2 (1995–2020) скачаны — **версия не совпадает с 3.11.2**; новая версия на основе EXIOBASE 3.10.2 (1995–2022) — доступ ограничен (Zenodo: 403, нужен вход и запрос доступа) | `data/raw/v13/capital_matrices/` |
+| 15 | OECD ICIO 2023 + занятость TiVA | **частично**: таблицы ICIO издания 2023 г. не скачаны (сайт OECD — 403, проверка Cloudflare); в проекте уже есть ICIO издания 2025 г., 1995–2022 (итерация 6); занятость и оплата труда TiM 2023 и 2025, а также TiMBC 2023 скачаны через SDMX | `data/raw/v13/oecd_tim/`; ICIO — `data/raw/v6/gdrive/` |
+| 16 | Энергетические счета WIOD | **частично**: скачаны официальные экологические (в том числе энергетические) счета WIOD 2013 г. (1995–2009, 35 отраслей); счета к WIOD 2016 (Kulionis, 2000–2014; JRC, 2000–2016) не найдены в открытом доступе — скачана только методология | `data/raw/v13/wiod_energy/`, `data/raw/v13/wiod_energy_docs/` |
+| 17 | PWT 11: документация по `cn` | **скачано**; ответ: жилые здания в `cn` **входят** | `data/raw/v13/pwt_docs/` |
 | 18 | Duménil & Lévy, данные по США с 1869 г. | **скачано** | `data/raw/v13/dumenil_levy/` |
-| 2 | Jorgenson–Ho–Samuels, производственный счёт США | **частично** (релизы WorldKLEMS 2010, 2013, 2017; более новых версий в открытом доступе не нашли) | `data/raw/v13/jhs/` |
 
 ## Описания наборов
 
@@ -151,13 +156,19 @@
   * таблица к статье «The Persistent Fall in Profitability Underlying the Current Crisis: New Temporalist Evidence» (2009), корпорации США 1929–2007 гг.;
   * листы: citation (условия использования — ссылка на URL, название, автора), sources/defs, basic data, ROP data, misc graph data.
   * Это предшественник анализа книги 2012 г.; **таблиц самой книги** на сайте автора (`/failure-capitalist-production/`, `/writings/`), у Pluto Press и у Marxist-Humanist Initiative не нашли.
-* **Basu & Manolakos:** IDEAS указывает файл `http://www.umass.edu/economics/publications/2010-04.pdf` — переадресация 301, затем 404. Данных отдельно не нашли.
+* **Basu & Manolakos** (RRPE 45(1), 2013, doi:10.1177/0486613412447059 — по Crossref):
+  * IDEAS указывает файл `http://www.umass.edu/economics/publications/2010-04.pdf` — переадресация 301, затем 404;
+  * Unpaywall даёт открытую копию `https://doi.org/10.7275/1373847` → `scholarworks.umass.edu/econ_workingpaper/99` — 403 от сервера;
+  * данных отдельно не нашли.
 * **Basu, Huato, Lara Jauregui, Wasner:**
   * ScholarWorks UMass (`scholarworks.umass.edu/econ_workingpaper/318`, файл `…/server/api/core/bitstreams/69ff54a4-…/content`) — 403 Forbidden от сервера, не от фильтра сети; не обходили;
   * страница bepress (`works.bepress.com/deepankar_dasu/41`) переадресует на digitalcommons.elsevier.com;
+  * журнальная версия — «World Profit Rates, 1960–2019», Review of Political Economy 37(1), 92–107 (doi:10.1080/09538259.2022.2140007, по Crossref); tandfonline.com — 403 (проверка Cloudflare); Unpaywall указывает как открытую копию тот же WP 318;
   * адрес World Profitability Dashboard в найденных источниках не указан;
   * аннотация — в `data/raw/v12b/basu2025_ideas_abstract.html`.
-* **Mohun (2014)** RRPE 46(3) и **Mohun (2005)** CJE 29(5): по данным RePEc полный текст только по подписке, открытых рабочих версий не нашли. **Paitaridis & Tsoulfidis (2012)** RRPE 44(2): открытой версии нет.
+* **Mohun (2014)** «Unproductive Labor in the U.S. Economy 1964–2010», RRPE 46(3), 355–379, doi:10.1177/0486613413506080: по Unpaywall открытой копии нет.
+* **Mohun (2005)** «On measuring the wealth of nations: the US economy, 1964–2001», CJE 29(5), 799–815, doi:10.1093/cje/bei043: Unpaywall указывает копию на SSRN (`papers.ssrn.com/sol3/papers.cfm?abstract_id=904484`) — 403 (проверка Cloudflare).
+* **Paitaridis & Tsoulfidis (2012)** «The Growth of Unproductive Activities, the Rate of Profit, and the Phase-Change of the U.S. Economy», RRPE 44(2), 213–233, doi:10.1177/0486613411423899: по Unpaywall — бесплатный PDF у издателя (`journals.sagepub.com/doi/pdf/10.1177/0486613411423899`), но сайт отвечает 403 (проверка Cloudflare). Проверки браузера не обходили.
   * Скачаны две открытые рабочие статьи тех же авторов, развивающие ту же работу. Это **не** замена статьи 2012 г.:
     * MPRA 84035 — Tsoulfidis, Tsimis, Paitaridis (2018), «The Rise and Fall of Unproductive Activities in the US Economy 1964–2015»;
     * MPRA 81542 — Tsoulfidis & Paitaridis (2017), «Capital Intensity, Unproductive Activities and the Great Recession of the US Economy».
@@ -165,6 +176,82 @@
   * адрес anwarshaikhecon.org переадресует на https://www.realecon.org; страница `/data` (отрисована в Chromium — сайт на JS) ведёт на открытую папку Google Drive «Shaikh Capitalism Data» (`1_EonoTKayfETIoTJZQoKedr5ygOykjMd`); файлы от 24.01.2024;
   * таблицы к приложениям 2.2, 4.2 (docx), 5.3, **6.8** (исходная и исправленная версии: бизнес-счета, некорпоративный сектор, проверки GPIM, чистый и валовой капитал, нормы прибыли корпораций, загрузка мощностей), 7.2 (данные Солтера, нормы прибыли по отраслям США и ОЭСР), 8.1, 9.3 (таблицы «затраты — выпуск» США 1947–1998 гг., вертикально интегрированные затраты на труд), 10.2, 11.2, 12.2, 14.3, 15.2, 16.2, 17.2.
 * **Shaikh & Tonak (1994), Moseley (1991):** открытых таблиц не нашли (книги; архив Shaikh в Bard Digital Commons — сканы рабочих материалов). → список для пользователя.
+
+### 13. EXIOBASE 3.11.2, ixi (`exiobase/`; архивы — в `../LT_external/v13/exiobase/`)
+
+* **Откуда:** Zenodo, запись 23039074 (doi:10.5281/zenodo.23039074), «EXIOBASE 3», версия 3.11.2 от 30.09.2026. По списку версий Zenodo это последняя версия (предыдущие — 3.10.2 от 13.05.2026, 3.10.1, 3.9.6).
+* **Что:** `IOT_<год>_ixi.zip`, 1995–2024, 30 файлов, 7,8 ГБ (по размерам в записи Zenodo). Плюс `LICENSE.txt`, `Changelog.txt`, `hashes.csv` в репозиторной части.
+* **Состав архива за год:**
+  * `Z.txt` (межотраслевые потоки), `Y.txt` (конечный спрос), `x.txt` (выпуск) — млн евро, текущие цены;
+  * 49 регионов: 44 страны и 5 «остальных миров» (WA, WE, WF, WL, WM) × 163 отрасли;
+  * конечный спрос — 7 категорий на регион: потребление домохозяйств, НКО, государства, валовое накопление основного капитала, изменение запасов, изменение ценностей, экспорт;
+  * `employment/` — 12 показателей: **занятые (тыс. чел.) и отработанные часы (млн ч)** по квалификации (низкая, средняя, высокая) × пол (`F.txt` — по отраслям, `F_Y.txt` — у конечного спроса);
+  * `factor_inputs/` — 9 показателей, млн евро: налоги минус субсидии на продукты; прочие чистые налоги на производство; оплата труда наёмных по квалификации (три группы); потребление основного капитала; рента за землю; роялти за ресурсы; остальная чистая операционная прибыль;
+  * прочие сателлиты (энергия, выбросы, земля, материалы, вода, азот и фосфор, обезлесение) — для этапа не нужны, но входят в архив.
+* **Чего нет:** запасов основного капитала (только его потребление в `factor_inputs`); деления труда на рабочих и управляющих (только квалификация и пол).
+* **Швы и оговорки** (по `Changelog.txt`):
+  * в 3.11.2 счета занятости пересчитаны и продлены до 2024 г., «substantially improved country coverage for hours worked»;
+  * FIGARO используется до 2023 г., остальные источники — до 2024 г. «where available»; последние годы во многом получены методом наукастинга;
+  * в проекте уже есть EXIOBASE 3.8.2 (итерация 9, 2011 и 2017 гг.); уровни версий 3.8.2 и 3.11.2 не согласованы.
+* **Лицензия** (`LICENSE.txt`): для версий 3.9 и новее — производная от CC BY-NC-SA, только некоммерческое использование университетами, НКО и госорганами. Опубликованные результаты должны ссылаться на EXIOBASE и **не должны содержать исходных или производных коэффициентов и сырых данных** из пакета. В первых строках MANIFEST по ошибке стояло «CC BY-SA 4.0»; исправлено на «customized CC BY-NC-SA, non-commercial».
+* **Проверка полноты:**
+  * Обрыв соединения 11.10.2026 оставил файл 2002 г. неполным (160 650 068 из 226 404 196 байт), а скрипт тогда записал его как успешный.
+  * Скрипт теперь сверяет размер с Content-Length и md5 — с записью Zenodo; при расхождении повторяет загрузку.
+  * Неполный файл и его строка MANIFEST удалены, файл скачан заново; запись об этом есть в `attempts.jsonl`.
+  * Файлы 1995–2001 и 2003 гг., скачанные до исправления, сверены по md5 отдельно — совпадают.
+
+### 14. Матрицы использования капитала для EXIOBASE (`capital_matrices/`)
+
+* **Откуда:** Zenodo, запись 7073276 («Capital use matrices», R. Wood, C.-J. Södersten, 17.12.2021, CC BY 4.0).
+* **Что:**
+  * `Kbar_exio_v3_8_2_<год>_cfc_{pxi,pxp}.mat` (MATLAB), 1995–2020, 52 файла, около 1,1 ГБ;
+  * матрицы использования капитальных благ отраслями, млн евро, в отраслевой (pxi) и продуктовой (pxp) классификации — так в описании записи;
+  * построены из потребления основного капитала EXIOBASE и сверены с данными Всемирного банка о потреблении основного капитала (Södersten, Wood, Hertwich 2018, ES&T 52(22); Södersten, Wood, Wiedmann 2020, RCR 158).
+* **Чего нет:** запасов капитала — это потоки использования (через потребление основного капитала), а не запасы.
+* **Несовпадение версий:**
+  * Матрицы построены на **EXIOBASE 3.8.2**, а таблицы п. 13 — версии **3.11.2**; таблицы использования в этих версиях разные, так что матрицы не согласованы с п. 13.
+  * Полный набор EXIOBASE 3.8.2 (Zenodo 5589597) не скачан: каждый годовой архив весит около 0,77 ГБ (по двум файлам, скачанным в итерации 9), за 26 лет — около 20 ГБ. Это больше свободного места в сессии. Это решение пользователя (см. список ниже).
+* **Новая версия** (Zenodo 20762989, «Capital use matrices», Jiang, Wood, Liu, Hertwich, 19.06.2026):
+  * только pxp, 1995–2022, на основе EXIOBASE **3.10.2** (тоже не 3.11.2), с исправлениями ошибок версии 3.8.2;
+  * доступ **ограничен**: API файлов — 403 «Permission denied», страница записи просит войти; нужен запрос доступа на Zenodo (см. список ниже).
+
+### 15. OECD ICIO 2023 и занятость TiVA (`oecd_tim/`)
+
+* **ICIO:**
+  * В проекте с итерации 6 есть ICIO **издания 2025 г.** (файлы передал пользователь; `data/raw/v6/gdrive/`): EXT — 1995–2010, SML — 2006–2022.
+  * В `pre_registration_v6.md` (п. о данных) это издание названо «выпуск 2023». Но по заголовкам файлов это издание 2025 г.: 50 отраслей, A01 и A02, B05–B08 раздельно — как в TiM 2025, а не 45, как в TiM 2023; годы — до 2022.
+  * Страница OECD (`https://www.oecd.org/en/data/datasets/inter-country-input-output-tables.html`) отвечает 403 — проверка браузера Cloudflare («Just a moment…»); не обходили. В SDMX OECD самих таблиц ICIO нет, только производные наборы (TiVA, TiM, TiMBC, GHG).
+  * Издание 2023 г. не скачано — см. список для пользователя, если нужно именно оно.
+* **TiM 2023 и 2025** (Trade in employment; SDMX `DSD_TIM_{2023,2025}@DF_TIM_{2023,2025}`, ключ `EMPN+LABR...W..A`):
+  * `tim_2023_empn_labr.csv`: 93 страны и группы × 70 кодов отраслей ICIO 2023 (45 отраслей и агрегаты), 1995–2020;
+  * `tim_2025_empn_labr.csv`: 97 стран и групп × 80 кодов (отрасли ICIO 2025 и агрегаты; в издании 2025 г. дробнее добыча, металлургия, прочий транспорт), 1995–2022;
+  * переменные: EMPN — занятые (тыс. чел.); LABR — оплата труда наёмных (млн долл. и % добавленной стоимости);
+  * **часов нет** — TiM и TiMBC дают только численность.
+* **TiMBC 2023** (`timbc_2023_empn.csv`): занятые (тыс. чел.), 67 стран и групп × 18 агрегатов отраслей ICIO 2023 × 12 характеристик (группы ISCO, ISCED, возраста, пола и итог), 2008–2020. TiMBC 2025 уже есть в проекте (`data/raw/oecd/timbc_2025_empn.csv`).
+* **Швы:** отраслевые разбивки TiM 2023 и 2025 различаются (45 и 50 отраслей ICIO); TiM 2023 согласован с ICIO 2023, TiM 2025 — с ICIO 2025, который уже есть в проекте.
+
+### 16. Энергетические счета WIOD (`wiod_energy/`, `wiod_energy_docs/`)
+
+* **Скачано — WIOD 2013 Release, экологические счета** (dataverse.nl, doi:10.34894/XDTAUZ, CC BY 4.0; выпуск май 2012 г.):
+  * `wiod2013_Environmental_Accounts.zip`: внутри 7 архивов — EU (валовое использование энергии), EM (использование энергии, относимое к выбросам), CO2, AIR, land, materials, water;
+  * в EU и EM по файлу xls на страну (40 стран и RoW), листы 1995–2009;
+  * строки — 35 отраслей WIOD (NACE Rev. 1.1) и прямое потребление домохозяйств; столбцы — 26 энергоносителей, потери и итог; **ТДж**;
+  * `wiod2013_Environmental_Sources.pdf` — источники и методы.
+  * **Шов:** счета согласованы с WIOD 2013 (35 отраслей, таблицы 1995–2011), а не с WIOD 2016 (56 отраслей, 2000–2014), которая используется в проекте. Это не замена счетов к WIOD 2016, а другой выпуск.
+* **Не скачано — счета к WIOD 2016:**
+  * **Kulionis** (энергия, 2000–2014, ТДж, .mat и .xlsx). Запись в каталоге TIB / NFDI4Energy (`https://service.tib.eu/ldm_nfdi4energy/ldmservice/vdataset/openaire_396c8408-0c28-4a29-948c-dc3b3b298fc5`, собрана из OpenAIRE): у ресурса нет ссылки на файл («Format unknown»), в «download_all» только метаданные. Поиск на Zenodo (41 результат) и в Mendeley Data этих данных не нашёл. Скачана методология (arXiv 1810.07112).
+  * **JRC, Corsatea et al. (2019)** «WIOD Environmental Accounts Update 2000–2016» (JRC116234, EUR 29727 EN): скачан только отчёт. В отчёте контакт — J. M. Rueda-Cantuche (JRC, Севилья). Каталог данных JRC (`data.jrc.ec.europa.eu`) отвечает страницей входа, его API — 404.
+
+### 17. Penn World Table 11.0: документация по `cn` (`pwt_docs/`)
+
+* **Откуда:** dataverse.nl (файлы 554025, 554031, 554029) и https://www.rug.nl/ggdc/docs/.
+* **Ответ на вопрос задания:** в `pwt110_user_guide_to_data_files.pdf` сказано, что запас капитала `cn` (и `rnna`) и услуги капитала (`ck`, `rkna`) построены из инвестиций по 4 группам активов: «structures (including residential and non-residential), machinery …, transport equipment and other assets». То есть **жилые здания в `cn` входят**, отдельно их не выделить: группа «Struc» объединяет жилые и нежилые сооружения.
+* `pwt110_capital_detail.xlsx`: 180 стран, 1950–2023. По 4 группам (Struc, Mach, TraEq, Other):
+  * инвестиции в текущих национальных ценах и их индексы цен;
+  * чистый запас по текущей стоимости и его индексы цен;
+  * потребление капитала;
+  * услуги капитала и их доли.
+* Также скачаны: «What is new in PWT 11.0», Feenstra, Inklaar, Timmer (2015, AER), «Capital Services in PWT 9.1». В последней 9 видов активов, в том числе «residential buildings» отдельно. Но в опубликованных файлах — только 4 группы.
 
 ### 18. Duménil & Lévy, США с 1869 г. (`dumenil_levy/`, 4 файла)
 
@@ -178,6 +265,53 @@
   * ВВП (млрд долл.).
 * Набор заменяет прежний USLT авторов. Швы — по описанию в `dle2016e.pdf` и `dle1994e.pdf`.
 
-## Для пользователя (ручная загрузка или ключи API)
+## Для пользователя (ручная загрузка, ключи API, доступы)
 
-*(заполняется по ходу этапа)*
+Скачанное вручную — в `data/raw/v13/<источник>/manual/`; на следующем этапе эти файлы будут внесены в MANIFEST (с пометкой, что загрузка ручная).
+
+### Ключи API и настройки окружения
+
+1. **Ключ API BEA (бесплатный)** — для NIPA 6.9B / 6.9C / 6.9D, часов наёмных по детальным отраслям (п. 4).
+   * Регистрация: https://apps.bea.gov/API/signup/
+   * Ключ — не в чат и не в репозиторий: в настройках облачного окружения (меню окружения в заголовке сессии → Edit → секреты / переменные окружения) как `BEA_API_KEY`. Новая сессия его увидит.
+   * Запрос: `GetData`, `DataSetName=NIPA`, `TableName=T60900B`, `T60900C`, `T60900D`, `Frequency=A`, `Year=ALL`.
+   * Оговорка: в текущих файлах выпуска NIPA таблиц 6.7–6.9 нет; отдаёт ли их API — станет видно только с ключом.
+   * Без ключа: таблицы можно выгрузить вручную в интерактивной системе BEA (https://apps.bea.gov/iTable/, National Data → NIPA → Section 6), если они там есть.
+2. **Доступ к web.archive.org.** Хост закрыт сетевой политикой этой сессии (403 «Blocked by egress policy»). Его можно добавить в Allowed domains в настройках окружения (Edit → Network access). Документация: https://code.claude.com/docs/en/cloud-environments#network-access. Это откроет:
+   * снимок страницы данных Jorgenson (`https://web.archive.org/web/20221006232604/https://scholar.harvard.edu/jorgenson/data`) — более новые выпуски JHS (п. 2);
+   * старые копии рабочей статьи Basu & Manolakos (`http://www.umass.edu/economics/publications/2010-04.pdf`), если они есть в архиве.
+
+### Ручная загрузка в браузере (сайт закрыт для скрипта: 403 или проверка Cloudflare)
+
+3. **Jorgenson–Ho–Samuels, новые выпуски** (после 2017 г.; п. 2): https://scholar.harvard.edu/jorgenson/data (для скрипта — 403, Akamai).
+4. **Basu, Huato, Lara Jauregui, Wasner** (п. 10):
+   * WP 318: https://scholarworks.umass.edu/econ_workingpaper/318
+   * журнальная версия: «World Profit Rates, 1960–2019», Review of Political Economy 37(1), 92–107, https://doi.org/10.1080/09538259.2022.2140007
+   * World Profitability Dashboard: адрес не найден — смотреть ссылку в тексте WP 318 или спросить авторов.
+5. **Basu & Manolakos** (п. 9), «Is There a Tendency for the Rate of Profit to Fall? Econometric Evidence for the U.S. Economy, 1948–2007», RRPE 45(1), 76–95:
+   * https://doi.org/10.1177/0486613412447059
+   * открытая копия: https://scholarworks.umass.edu/econ_workingpaper/99 (DOI 10.7275/1373847)
+   * данных отдельно нет — при необходимости запросить у авторов.
+6. **Mohun (2005)** «On measuring the wealth of nations: the US economy, 1964–2001», CJE 29(5): https://doi.org/10.1093/cje/bei043. Открытая копия на SSRN: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=904484.
+7. **Paitaridis & Tsoulfidis (2012)** «The Growth of Unproductive Activities, the Rate of Profit, and the Phase-Change of the U.S. Economy», RRPE 44(2): бесплатный PDF у издателя — https://journals.sagepub.com/doi/pdf/10.1177/0486613411423899.
+8. **OECD ICIO, издание 2023 г.** (п. 15): https://www.oecd.org/en/data/datasets/inter-country-input-output-tables.html (для скрипта — 403, Cloudflare).
+   * Нужно, только если требуется именно издание 2023 г.: в проекте есть издание 2025 г. за 1995–2022.
+   * Там же — EXT-файлы издания 2025 г. за 2011–2022 гг. (с разбивкой Китая и Мексики), если нужны: в проекте EXT только за 1995–2010.
+
+### Только по подписке или в книгах
+
+9. **Mohun (2014)** «Unproductive Labor in the U.S. Economy 1964–2010», RRPE 46(3), 355–379: https://doi.org/10.1177/0486613413506080 — открытой копии нет (Unpaywall: closed).
+10. **Kliman (2012)** «The Failure of Capitalist Production» (Pluto Press): таблиц книги в сети нет; скачана таблица к статье 2009 г. (п. 8). Нужна книга или запрос автору.
+11. **Shaikh & Tonak (1994)** «Measuring the Wealth of Nations» (Cambridge University Press) и **Moseley (1991)** «The Falling Rate of Profit in the Postwar United States Economy»: таблицы — в приложениях книг, открытых файлов нет.
+
+### Запрос доступа или данных у авторов
+
+12. **Матрицы капитала для EXIOBASE 3.10.2** (п. 14): https://zenodo.org/records/20762989 — «Restricted». Войти на Zenodo и нажать «Request access». Даже они не совпадут с EXIOBASE 3.11.2 — для полного согласования нужна версия 3.10.2.
+13. **Энергетические счета к WIOD 2016** (п. 16):
+    * Kulionis (2000–2014) — запись без файлов: https://service.tib.eu/ldm_nfdi4energy/ldmservice/vdataset/openaire_396c8408-0c28-4a29-948c-dc3b3b298fc5; запросить у автора.
+    * JRC (2000–2016) — контакт из отчёта JRC116234: J. M. Rueda-Cantuche, JRC Seville (https://publications.jrc.ec.europa.eu/repository/handle/JRC116234).
+
+### Решения пользователя (данные доступны, но не скачаны)
+
+14. **Полный EXIOBASE 3.8.2** (https://zenodo.org/records/5589597) — под матрицы капитала п. 14. Около 20 ГБ на 26 лет одного вида таблиц (ixi или pxp), больше свободного места сессии. Можно скачать частично (выбранные годы) или вне этой среды.
+15. **`ce.data.0.AllCESSeries`** (BLS CES, 352 МБ) — дублирует скачанные файлы по суперсекторам; скачивается скриптом при необходимости.

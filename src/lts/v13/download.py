@@ -156,7 +156,8 @@ SOURCES = {
         ("dle2016e.pdf", "Dumenil & Levy (2016) PDF of the note"),
         ("uslt.txt", "Dumenil & Levy long-term US data table (private nonresidential economy, since 1869)"),
         ("dle1994e.pdf", "Dumenil & Levy (1994) sources and construction of the series 1869-1992"))],
-    "exiobase": [(n, f"https://zenodo.org/records/23039074/files/{n}?download=1", "EXIOBASE 3 (CC BY-SA 4.0, see LICENSE.txt)",
+    "exiobase": [(n, f"https://zenodo.org/records/23039074/files/{n}?download=1",
+                  "EXIOBASE 3 (customized CC BY-NC-SA, non-commercial; see LICENSE.txt)",
                   "EXIOBASE 3.11.2 (Zenodo record 23039074, 2026-09-30) " + d) for n, d in (
         [("LICENSE.txt", "licence"), ("Changelog.txt", "changelog"), ("hashes.csv", "file hashes")]
         + [(f"IOT_{y}_ixi.zip", f"industry-by-industry MRIO with satellite accounts, {y}") for y in range(1995, 2025)])],
@@ -177,7 +178,15 @@ SOURCES = {
     "oecd_tim": [("timbc_2023_empn.csv",
                   "https://sdmx.oecd.org/public/rest/data/OECD.STI.PIE,DSD_TIMBC_2023@DF_TIMBC_2023,/EMPN...W.PS.A.?format=csv",
                   "OECD (CC BY 4.0)", "TiMBC 2023 edition: employment by industry (ICIO 2023 aggregates) and workforce "
-                  "characteristic")],
+                  "characteristic")] + [
+        (f"tim_{e}_empn_labr.csv",
+         f"https://sdmx.oecd.org/public/rest/data/OECD.STI.PIE,DSD_TIM_{e}@DF_TIM_{e},/EMPN+LABR...W..A?format=csv",
+         "OECD (CC BY 4.0)", f"TiM {e} edition (trade in employment): employment EMPN and compensation of employees LABR "
+         f"by ICIO {e} industry") for e in (2023, 2025)],
+    "wiod_energy": [(n, "https://dataverse.nl/api/access/datafile/" + i, "WIOD (CC BY 4.0)",
+                     "WIOD 2013 release (dataverse.nl doi:10.34894/XDTAUZ) " + d) for n, i, d in (
+        ("wiod2013_Environmental_Accounts.zip", "199110", "environmental accounts (energy use, emissions, other), 1995-2009"),
+        ("wiod2013_Environmental_Sources.pdf", "199109", "sources and methods of the environmental accounts"))],
     "wiod_energy_docs": [(n, u, "authors / JRC (documentation)", d) for n, u, d in (
         ("kulionis_2018_arxiv_1810.07112.pdf", "https://arxiv.org/pdf/1810.07112",
          "Kulionis, Constructing energy accounts for WIOD 2016 release (arXiv 1810.07112), methodology of the TIB dataset"),
@@ -286,12 +295,15 @@ def fetch(source, name, url, licence, note, tries=4, headers=None):
 
 
 def annotate(source, text):
-    """append a content description to the MANIFEST notes of this source's v13 rows"""
+    """append a content description to the MANIFEST notes of this source's v13 rows (and set the licence column to
+    the one in SOURCES, which was corrected for EXIOBASE after the first rows were written)"""
+    licence = {u: lic for _, u, lic, _ in SOURCES.get(source, [])}
     rows = list(csv.reader(open(MANIFEST, newline="")))
     for r in rows[1:]:
-        if r[0] == "v13" and (r[1].startswith(f"v13/{source}/") or r[1].startswith(f"EXTERNAL:LT_external/v13/{source}/")) \
-                and text not in r[4]:
-            r[4] = f"{r[4]}; {text}"
+        if r[0] == "v13" and (r[1].startswith(f"v13/{source}/") or r[1].startswith(f"EXTERNAL:LT_external/v13/{source}/")):
+            r[3] = licence.get(r[2], r[3])
+            if text not in r[4]:
+                r[4] = f"{r[4]}; {text}"
     with open(MANIFEST, "w", newline="") as f:
         csv.writer(f).writerows(rows)
 
@@ -358,6 +370,35 @@ DESCRIPTIONS = {
                      "1869-2015 (uslt.txt): net domestic product (current and 2009 $ bn), compensation of employees + "
                      "self-employed ($ bn), FTE employees + self-employed (millions), net stock of fixed capital (current "
                      "and 2009 $ bn), total hours worked (billions), GDP ($ bn); note (htm, pdf) and 1994 sources paper"),
+    "exiobase": ("contents: EXIOBASE 3.11.2 industry-by-industry MRIO, one zip per year 1995-2024; 49 regions (44 countries "
+                 "+ 5 rest-of-world) x 163 industries; Z, Y, x (M.EUR, current prices); satellite folders incl. "
+                 "employment/F.txt: persons (1000 p) and hours (M.hr) by skill (low, medium, high) x sex, and "
+                 "factor_inputs/F.txt: compensation of employees by skill, consumption of fixed capital, rents on land, "
+                 "royalties on resources, remaining net operating surplus, taxes (M.EUR); no capital stocks; files over "
+                 "100 MB kept outside the repository; md5 checked against the Zenodo record; licence: customized "
+                 "CC BY-NC-SA derivative for non-commercial academic use, publications must not include raw data points "
+                 "or coefficients (LICENSE.txt)"),
+    "capital_matrices": ("contents: Sodersten, Wood et al. capital use matrices Kbar (use of capital goods by industries, "
+                         "M.EUR, from EXIOBASE consumption of fixed capital benchmarked to World Bank CFC), MATLAB .mat, "
+                         "1995-2020, pxi and pxp; built on EXIOBASE 3.8.2, not on 3.11.2 (version mismatch; the newer "
+                         "3.10.2-based record zenodo 20762989, pxp 1995-2022, is access-restricted)"),
+    "pwt_docs": ("contents: PWT 11.0 documentation; user guide states cn (capital stock) is built from investment in 4 "
+                 "asset groups: structures (including residential and non-residential), machinery, transport equipment, "
+                 "other assets; capital detail file: 180 countries, 1950-2023, investment, net stock, consumption and "
+                 "capital services by these 4 assets (current national prices and price indices)"),
+    "oecd_tim": ("contents: OECD SDMX extracts. TiMBC 2023: employment (persons, thousands) for 67 areas x 18 ICIO 2023 "
+                 "activity aggregates x 12 workforce characteristics (ISCO, ISCED, age, sex groups and total), 2008-2020, "
+                 "no hours. TiM 2023 / 2025: employment EMPN (persons, thousands) and compensation of employees LABR "
+                 "(USD million and share of value added) for 93 / 97 areas x 70 / 80 ICIO activities and aggregates, "
+                 "1995-2020 / 1995-2022, no hours"),
+    "wiod_energy": ("contents: WIOD 2013 release (May 2012) environmental accounts, one xls per country (40 countries "
+                    "+ RoW), sheets 1995-2009: EU gross energy use and EM emission relevant energy use (TJ) by 35 WIOD "
+                    "industries (NACE Rev. 1.1 / ISIC Rev. 3) + households x 26 energy commodities, losses, total; CO2, "
+                    "AIR, land, materials, water archives; matches WIOD 2013 (35 industries), not WIOD 2016 (56 "
+                    "industries) used in the project"),
+    "wiod_energy_docs": ("contents: methodology documents only (Kulionis, arXiv 1810.07112; JRC116234 / EUR 29727 EN, WIOD "
+                         "environmental accounts 2000-2016); the WIOD 2016 energy account data files were not obtained "
+                         "(the WIOD 2013 release accounts are in wiod_energy)"),
 }
 
 

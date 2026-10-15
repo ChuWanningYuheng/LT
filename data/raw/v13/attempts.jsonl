@@ -449,3 +449,13 @@
 {"time": "2026-10-15T14:22:38", "url": "https://publications.jrc.ec.europa.eu/repository/bitstream/JRC116234/jrc116234_wiod_based_energy_and_co2_accounts_final_pubsy.pdf", "status": 200, "note": "fetch wiod_energy_docs/jrc116234_wiod_based_energy_and_co2_accounts.pdf"}
 {"time": "2026-10-15T14:23:53", "url": "https://zenodo.org/records/23039074/files/IOT_2003_ixi.zip?download=1", "status": 200, "note": "fetch exiobase/IOT_2003_ixi.zip"}
 {"time": "2026-10-15T14:27:42", "url": "https://zenodo.org/records/23039074/files/IOT_2002_ixi.zip?download=1", "status": "removed: truncated download (160650068 of 226404196 bytes, md5 mismatch) recorded as ok on 2026-10-11; fetch now checks Content-Length and Zenodo md5; file re-downloaded", "note": "fetch exiobase/IOT_2002_ixi.zip"}
+{"time": "2026-10-15T14:31:51", "url": "https://zenodo.org/records/23039074/files/IOT_2002_ixi.zip?download=1", "status": "URLError: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>", "note": "fetch exiobase/IOT_2002_ixi.zip"}
+{"time": "2026-10-15T14:31:56", "url": "https://sdmx.oecd.org/public/rest/data/OECD.STI.PIE,DSD_TIM_2023@DF_TIM_2023,/EMPN+LABR...W..A?format=csv", "status": 200, "note": "fetch oecd_tim/tim_2023_empn_labr.csv"}
+{"time": "2026-10-15T14:32:03", "url": "https://sdmx.oecd.org/public/rest/data/OECD.STI.PIE,DSD_TIM_2025@DF_TIM_2025,/EMPN+LABR...W..A?format=csv", "status": 200, "note": "fetch oecd_tim/tim_2025_empn_labr.csv"}
+{"time": "2026-10-15T14:32:05", "url": "https://www.oecd.org/en/data/datasets/inter-country-input-output-tables.html", "status": 403, "note": "probe"}
+{"time": "2026-10-15T14:32:05", "url": "https://zenodo.org/api/records/20762989/files", "status": 403, "note": "probe"}
+{"time": "2026-10-15T14:32:06", "url": "https://data.jrc.ec.europa.eu/api/3/action/package_search?q=WIOD", "status": 404, "note": "probe"}
+{"time": "2026-10-15T14:32:13", "url": "https://web.archive.org/web/20221006232604/https://scholar.harvard.edu/jorgenson/data", "status": "URLError: <urlopen error [Errno 104] Connection reset by peer>", "note": "probe"}
+{"time": "2026-10-15T14:33:47", "url": "https://zenodo.org/records/23039074/files/IOT_2002_ixi.zip?download=1", "status": 200, "note": "fetch exiobase/IOT_2002_ixi.zip"}
+{"time": "2026-10-15T14:34:43", "url": "https://dataverse.nl/api/access/datafile/199110", "status": 200, "note": "fetch wiod_energy/wiod2013_Environmental_Accounts.zip"}
+{"time": "2026-10-15T14:34:44", "url": "https://dataverse.nl/api/access/datafile/199109", "status": 200, "note": "fetch wiod_energy/wiod2013_Environmental_Sources.pdf"}

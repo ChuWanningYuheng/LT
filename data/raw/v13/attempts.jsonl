@@ -445,3 +445,7 @@
 {"time": "2026-10-11T18:53:36", "url": "https://zenodo.org/records/23039074/files/IOT_2001_ixi.zip?download=1", "status": 200, "note": "fetch exiobase/IOT_2001_ixi.zip"}
 {"time": "2026-10-11T18:55:24", "url": "https://zenodo.org/records/23039074/files/IOT_2002_ixi.zip?download=1", "status": 200, "note": "fetch exiobase/IOT_2002_ixi.zip"}
 {"time": "2026-10-11T18:55:24", "url": "https://zenodo.org/records/23039074/files/IOT_2003_ixi.zip?download=1", "status": "URLError: <urlopen error [Errno 111] Connection refused>", "note": "fetch exiobase/IOT_2003_ixi.zip"}
+{"time": "2026-10-15T14:22:36", "url": "https://arxiv.org/pdf/1810.07112", "status": 200, "note": "fetch wiod_energy_docs/kulionis_2018_arxiv_1810.07112.pdf"}
+{"time": "2026-10-15T14:22:38", "url": "https://publications.jrc.ec.europa.eu/repository/bitstream/JRC116234/jrc116234_wiod_based_energy_and_co2_accounts_final_pubsy.pdf", "status": 200, "note": "fetch wiod_energy_docs/jrc116234_wiod_based_energy_and_co2_accounts.pdf"}
+{"time": "2026-10-15T14:23:53", "url": "https://zenodo.org/records/23039074/files/IOT_2003_ixi.zip?download=1", "status": 200, "note": "fetch exiobase/IOT_2003_ixi.zip"}
+{"time": "2026-10-15T14:27:42", "url": "https://zenodo.org/records/23039074/files/IOT_2002_ixi.zip?download=1", "status": "removed: truncated download (160650068 of 226404196 bytes, md5 mismatch) recorded as ok on 2026-10-11; fetch now checks Content-Length and Zenodo md5; file re-downloaded", "note": "fetch exiobase/IOT_2002_ixi.zip"}

@@ -12,6 +12,7 @@ import csv
 import datetime as dt
 import hashlib
 import json
+import re
 import shutil
 import sys
 import time
@@ -177,6 +178,12 @@ SOURCES = {
                   "https://sdmx.oecd.org/public/rest/data/OECD.STI.PIE,DSD_TIMBC_2023@DF_TIMBC_2023,/EMPN...W.PS.A.?format=csv",
                   "OECD (CC BY 4.0)", "TiMBC 2023 edition: employment by industry (ICIO 2023 aggregates) and workforce "
                   "characteristic")],
+    "wiod_energy_docs": [(n, u, "authors / JRC (documentation)", d) for n, u, d in (
+        ("kulionis_2018_arxiv_1810.07112.pdf", "https://arxiv.org/pdf/1810.07112",
+         "Kulionis, Constructing energy accounts for WIOD 2016 release (arXiv 1810.07112), methodology of the TIB dataset"),
+        ("jrc116234_wiod_based_energy_and_co2_accounts.pdf",
+         "https://publications.jrc.ec.europa.eu/repository/bitstream/JRC116234/jrc116234_wiod_based_energy_and_co2_accounts_final_pubsy.pdf",
+         "Corsatea et al. (2019) WIOD environmental accounts update 2000-2016, JRC116234 / EUR 29727 EN (report only)"))],
 }
 
 
@@ -203,6 +210,22 @@ def probe(url, method="GET", headers=None):
     return st
 
 
+_ZENODO = {}
+
+
+def zenodo_md5(url):
+    """expected md5 of a Zenodo record file (from the record API), or None for other URLs"""
+    m = re.match(r"https://zenodo\.org/records/(\d+)/files/([^?]+)", url)
+    if not m:
+        return None
+    rec, name = m.groups()
+    if rec not in _ZENODO:
+        req = urllib.request.Request(f"https://zenodo.org/api/records/{rec}", headers={"User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=120) as r:
+            _ZENODO[rec] = {f["key"]: f["checksum"].split(":", 1)[1] for f in json.load(r)["files"]}
+    return _ZENODO[rec].get(name)
+
+
 def fetch(source, name, url, licence, note, tries=4, headers=None):
     d = RAW / source
     d.mkdir(parents=True, exist_ok=True)
@@ -215,7 +238,19 @@ def fetch(source, name, url, licence, note, tries=4, headers=None):
             req = urllib.request.Request(url, headers=h)
             with urllib.request.urlopen(req, timeout=1800) as r, open(out, "wb") as f:
                 st = r.status
+                expected = r.headers.get("Content-Length")
                 shutil.copyfileobj(r, f, 1 << 20)
+            # a dropped connection can end the copy without an exception: check completeness
+            if expected is not None and out.stat().st_size != int(expected):
+                raise IOError(f"truncated: {out.stat().st_size} of {expected} bytes")
+            md5 = zenodo_md5(url)
+            if md5 is not None:
+                got = hashlib.md5()
+                with open(out, "rb") as f:
+                    for b in iter(lambda: f.read(1 << 20), b""):
+                        got.update(b)
+                if got.hexdigest() != md5:
+                    raise IOError(f"md5 mismatch: {got.hexdigest()} != {md5}")
             break
         except urllib.error.HTTPError as e:
             st = e.code
@@ -227,7 +262,7 @@ def fetch(source, name, url, licence, note, tries=4, headers=None):
             log_attempt(url, st, f"fetch {source}/{name}")
         time.sleep(2 ** (k + 1))
     else:
-        st = st or "failed"
+        st = st if isinstance(st, str) else "failed"
     if not out.exists() or st != 200:
         if out.exists():
             out.unlink()

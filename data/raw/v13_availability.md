@@ -19,8 +19,8 @@
 | 6 | BEA Fixed Assets, Detailed Data (активы × отрасли) | **скачано** (текущая и фиксированная стоимость; исторической стоимости на уровне «актив × отрасль» BEA не публикует) | `data/raw/v13/bea_fa_detail/` |
 | 7 | BEA Fixed Assets, таблицы 3.3, 3.6, 3.7 (историческая стоимость) и разделы 2, 4, 6 | **скачано** | `data/raw/v13/bea_fa_tables/` |
 | 8 | Kliman (2012), таблицы данных | **частично**: таблица к статье 2009 г. «Persistent Fall» (данные той же линии работ); таблиц самой книги в открытом доступе нет | `data/raw/v13/literature/` |
-| 9 | Basu & Manolakos (2013), рабочая версия и данные | **не скачано**: UMass WP 2010-04 — 404; копия в ScholarWorks UMass (DOI 10.7275/1373847) — 403; данных в открытом доступе не нашли | — |
-| 10 | Basu, Huato, Lara Jauregui, Wasner (2025): WP 318 и World Profitability Dashboard | **не скачано**: ScholarWorks UMass — 403 (сервер); журнальная версия (Review of Political Economy 37(1)) — 403 (Cloudflare); адрес дашборда не найден; аннотация сохранена в 12б | — |
+| 9 | Basu & Manolakos (2013), рабочая версия и данные | **частично** (16.10.2026): журнальная версия статьи прислана пользователем; отдельных данных у статьи нет — она построена на рядах Duménil & Lévy (`uslt4x.txt`) и BEA | `data/raw/v13/literature_user/` |
+| 10 | Basu, Huato, Lara Jauregui, Wasner (2025): WP 318 и World Profitability Dashboard | **скачано** (16.10.2026): журнальная версия (прислана пользователем); рабочая версия 29.12.2021 и данные — через кнопки самого дашборда https://dbasu.shinyapps.io/World-Profitability/ (адрес указан в журнальной версии) | `data/raw/v13/literature_user/`, `data/raw/v13/world_profitability_dashboard/` |
 | 11 | Mohun (2014, 2005), Paitaridis & Tsoulfidis (2012) | **частично**: сами статьи не скачаны (Mohun 2014 — только по подписке; открытые копии Mohun 2005 на SSRN и Paitaridis & Tsoulfidis 2012 на сайте SAGE — 403, проверка Cloudflare); скачаны две рабочие статьи Tsoulfidis, Paitaridis и соавторов 2017–2018 гг. (продолжение той же работы) | `data/raw/v13/literature/` |
 | 12 | Shaikh & Tonak (1994), Moseley (1991); Shaikh (2016) «Capitalism» | **частично**: таблицы данных «Capitalism» скачаны (папка автора); у Shaikh & Tonak и Moseley открытых таблиц нет | `data/raw/v13/shaikh_capitalism/` |
 | 13 | EXIOBASE 3.11.2 (последняя версия), ixi, 1995–2024, с часами занятых | **скачано** (30 лет; каждый файл сверен по md5 с записью Zenodo) | `../LT_external/v13/exiobase/` (zip > 100 МБ); лицензия, журнал изменений, хеши — `data/raw/v13/exiobase/` |
@@ -300,11 +300,11 @@
 ### Ручная загрузка в браузере (сайт закрыт для скрипта: 403 или проверка Cloudflare)
 
 3. **Jorgenson–Ho–Samuels, новые выпуски** (после 2017 г.; п. 2): https://scholar.harvard.edu/jorgenson/data (для скрипта — 403, Akamai).
-4. **Basu, Huato, Lara Jauregui, Wasner** (п. 10):
+4. **сделано** (16.10.2026). **Basu, Huato, Lara Jauregui, Wasner** (п. 10):
    * WP 318: https://scholarworks.umass.edu/econ_workingpaper/318
    * журнальная версия: «World Profit Rates, 1960–2019», Review of Political Economy 37(1), 92–107, https://doi.org/10.1080/09538259.2022.2140007
-   * World Profitability Dashboard: адрес не найден — смотреть ссылку в тексте WP 318 или спросить авторов.
-5. **Basu & Manolakos** (п. 9), «Is There a Tendency for the Rate of Profit to Fall? Econometric Evidence for the U.S. Economy, 1948–2007», RRPE 45(1), 76–95:
+   * World Profitability Dashboard: **сделано** — адрес нашёлся в присланной журнальной версии, данные и рабочая версия скачаны с дашборда (п. 10).
+5. **сделано** (статья прислана). **Basu & Manolakos** (п. 9), «Is There a Tendency for the Rate of Profit to Fall? Econometric Evidence for the U.S. Economy, 1948–2007», RRPE 45(1), 76–95:
    * https://doi.org/10.1177/0486613412447059
    * открытая копия: https://scholarworks.umass.edu/econ_workingpaper/99 (DOI 10.7275/1373847)
    * данных отдельно нет — при необходимости запросить у авторов.

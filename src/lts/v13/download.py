@@ -301,6 +301,24 @@ def fetch(source, name, url, licence, note, tries=4, headers=None):
     return True
 
 
+def register_local(source, name, path, origin, licence, note):
+    """copy a file the user supplied (chat upload, shared folder) into RAW/<source>/ and add its MANIFEST row;
+    origin is where it came from (no download URL exists for this session)"""
+    d = RAW / source
+    d.mkdir(parents=True, exist_ok=True)
+    out = d / name
+    shutil.copyfile(path, out)
+    sha, size = hashlib.sha256(), out.stat().st_size
+    with open(out, "rb") as f:
+        for b in iter(lambda: f.read(1 << 20), b""):
+            sha.update(b)
+    with open(MANIFEST, "a", newline="") as f:
+        csv.writer(f).writerow(["v13", f"v13/{source}/{name}", origin, licence, f"iteration 13 stage D, {note}", size,
+                                sha.hexdigest(), dt.datetime.now().isoformat(timespec="seconds")])
+    log_attempt(origin, "user-supplied file registered", f"register {source}/{name}")
+    print("ok", source, name, size, flush=True)
+
+
 def annotate(source, text):
     """append a content description to the MANIFEST notes of this source's v13 rows (and set the licence column to
     the one in SOURCES, which was corrected for EXIOBASE after the first rows were written)"""

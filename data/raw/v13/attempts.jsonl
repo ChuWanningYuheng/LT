@@ -951,3 +951,41 @@
 {"time": "2026-10-16T20:26:29", "url": "https://dbasu.shinyapps.io/World-Profitability/ (button IL_downloadDataCountry, browser download via Playwright)", "status": "user-supplied file registered", "note": "register world_profitability_dashboard/il_country__United_States__Wholesale_and_retail_trade_and_repair_of_motor_vehicles_and_motorcycles.csv"}
 {"time": "2026-10-16T20:26:29", "url": "https://dbasu.shinyapps.io/World-Profitability/ (button IL_downloadDataCountry, browser download via Playwright)", "status": "user-supplied file registered", "note": "register world_profitability_dashboard/il_country__United_States__Wholesale_trade_except_of_motor_vehicles_and_motorcycles.csv"}
 {"time": "2026-10-16T20:26:45", "url": "https://dbasu.shinyapps.io/World-Profitability/ (index of all dashboard downloads)", "status": "user-supplied file registered", "note": "register world_profitability_dashboard/_download_index.csv"}
+{"time": "2026-10-16T20:34:15", "url": "https://dataverse.harvard.edu/api/access/datafile/655775", "status": 200, "note": "fetch jhs_dataverse/XGIISU__it.growth.tab"}
+{"time": "2026-10-16T20:34:16", "url": "https://dataverse.harvard.edu/api/access/datafile/655998", "status": 200, "note": "fetch jhs_dataverse/XGIISU__table2.pdf"}
+{"time": "2026-10-16T20:34:17", "url": "https://dataverse.harvard.edu/api/access/datafile/655999", "status": 200, "note": "fetch jhs_dataverse/XGIISU__table3.pdf"}
+{"time": "2026-10-16T20:34:17", "url": "https://dataverse.harvard.edu/api/access/datafile/656000", "status": 200, "note": "fetch jhs_dataverse/XGIISU__table5.pdf"}
+{"time": "2026-10-16T20:34:18", "url": "https://dataverse.harvard.edu/api/access/datafile/655997", "status": 200, "note": "fetch jhs_dataverse/XGIISU__table6.pdf"}
+{"time": "2026-10-16T20:34:19", "url": "https://dataverse.harvard.edu/api/access/datafile/656014", "status": 200, "note": "fetch jhs_dataverse/XGIISU__tableAEA1.pdf"}
+{"time": "2026-10-16T20:34:20", "url": "https://dataverse.harvard.edu/api/access/datafile/656016", "status": 200, "note": "fetch jhs_dataverse/XGIISU__tableAEA2.pdf"}
+{"time": "2026-10-16T20:34:20", "url": "https://dataverse.harvard.edu/api/access/datafile/656012", "status": 200, "note": "fetch jhs_dataverse/XGIISU__tableAEA3.pdf"}
+{"time": "2026-10-16T20:34:21", "url": "https://dataverse.harvard.edu/api/access/datafile/656010", "status": 200, "note": "fetch jhs_dataverse/XGIISU__tableAEA4.pdf"}
+{"time": "2026-10-16T20:34:21", "url": "https://dataverse.harvard.edu/api/access/datafile/656015", "status": 200, "note": "fetch jhs_dataverse/XGIISU__tableAEA5.pdf"}
+{"time": "2026-10-16T20:34:22", "url": "https://dataverse.harvard.edu/api/access/datafile/656017", "status": 200, "note": "fetch jhs_dataverse/XGIISU__tableAEA6.pdf"}
+{"time": "2026-10-16T20:34:22", "url": "https://dataverse.harvard.edu/api/access/datafile/656013", "status": 200, "note": "fetch jhs_dataverse/XGIISU__tableAEA7.pdf"}
+{"time": "2026-10-16T20:34:23", "url": "https://dataverse.harvard.edu/api/access/datafile/656011", "status": 200, "note": "fetch jhs_dataverse/XGIISU__tableAEA8.pdf"}
+{"time": "2026-10-16T20:34:24", "url": "https://dataverse.harvard.edu/api/access/datafile/655943", "status": 200, "note": "fetch jhs_dataverse/XGIISU__techgrowth.pdf"}
+{"time": "2026-10-16T20:34:25", "url": "https://dataverse.harvard.edu/api/access/datafile/697684", "status": 200, "note": "fetch jhs_dataverse/JJIB0J__eucapitaltsAug72007.xls"}
+{"time": "2026-10-16T20:34:26", "url": "https://dataverse.harvard.edu/api/access/datafile/697682", "status": 200, "note": "fetch jhs_dataverse/JJIB0J__EU_USlinkts.xls"}
+{"time": "2026-10-16T20:34:27", "url": "https://dataverse.harvard.edu/api/access/datafile/697687", "status": 200, "note": "fetch jhs_dataverse/JJIB0J__labor.euklem.cmp.60-05.tab"}
+{"time": "2026-10-16T20:34:28", "url": "https://dataverse.harvard.edu/api/access/datafile/697688", "status": 200, "note": "fetch jhs_dataverse/JJIB0J__labor.euklem.emp.60-05.tab"}
+{"time": "2026-10-16T20:34:28", "url": "https://dataverse.harvard.edu/api/access/datafile/697686", "status": 200, "note": "fetch jhs_dataverse/JJIB0J__labor.euklem.hrs.60-05.tab"}
+{"time": "2026-10-16T20:34:29", "url": "https://dataverse.harvard.edu/api/access/datafile/697685", "status": 200, "note": "fetch jhs_dataverse/JJIB0J__readme.txt"}
+{"time": "2026-10-16T20:34:30", "url": "https://dataverse.harvard.edu/api/access/datafile/697769", "status": 200, "note": "fetch jhs_dataverse/JJIB0J__usa-naics_output_07I.xls"}
+{"time": "2026-10-16T20:34:30", "url": "https://dataverse.harvard.edu/api/access/datafile/697770", "status": 200, "note": "fetch jhs_dataverse/JJIB0J__usa-naics_output_alt_07I.xls"}
+{"time": "2026-10-16T20:34:31", "url": "https://dataverse.harvard.edu/api/access/datafile/697768", "status": 200, "note": "fetch jhs_dataverse/JJIB0J__usa-sic_output_07I.xls"}
+{"time": "2026-10-16T20:34:32", "url": "https://dataverse.harvard.edu/api/access/datafile/697767", "status": 200, "note": "fetch jhs_dataverse/JJIB0J__usa-sic_output_alt_07I.xls"}
+{"time": "2026-10-16T20:34:33", "url": "https://dataverse.harvard.edu/api/access/datafile/697683", "status": 200, "note": "fetch jhs_dataverse/JJIB0J__USKLEM1960_2005.xls"}
+{"time": "2026-10-16T20:34:34", "url": "https://dataverse.harvard.edu/api/access/datafile/697690", "status": 200, "note": "fetch jhs_dataverse/JJIB0J__versions.txt"}
+{"time": "2026-10-16T20:34:34", "url": "https://dataverse.harvard.edu/api/access/datafile/1314021", "status": 200, "note": "fetch jhs_dataverse/7XQ3EM__35klem-instruction-sheet.pdf"}
+{"time": "2026-10-16T20:34:35", "url": "https://dataverse.harvard.edu/api/access/datafile/656313", "status": 200, "note": "fetch jhs_dataverse/7XQ3EM__35sector.klem.tab"}
+{"time": "2026-10-16T20:34:35", "url": "https://dataverse.harvard.edu/api/access/datafile/656315", "status": 200, "note": "fetch jhs_dataverse/7XQ3EM__ind.comm.detail.pdf"}
+{"time": "2026-10-16T20:34:36", "url": "https://dataverse.harvard.edu/api/access/datafile/656316", "status": 200, "note": "fetch jhs_dataverse/7XQ3EM__tier.structure.pdf"}
+{"time": "2026-10-16T20:34:37", "url": "https://dataverse.harvard.edu/api/access/datafile/112157", "status": 200, "note": "fetch jhs_dataverse/KHM30G__alldata-2.xls"}
+{"time": "2026-10-16T20:34:37", "url": "https://dataverse.harvard.edu/api/access/datafile/112154", "status": 200, "note": "fetch jhs_dataverse/KHM30G__alldata-9.xls"}
+{"time": "2026-10-16T20:34:38", "url": "https://dataverse.harvard.edu/api/access/datafile/112155", "status": 200, "note": "fetch jhs_dataverse/KHM30G__allgraph-6.xls"}
+{"time": "2026-10-16T20:34:38", "url": "https://dataverse.harvard.edu/api/access/datafile/112156", "status": 200, "note": "fetch jhs_dataverse/KHM30G__table-9.xls"}
+{"time": "2026-10-16T20:34:39", "url": "https://dataverse.harvard.edu/api/access/datafile/666690", "status": 200, "note": "fetch jhs_dataverse/FG8NVN__handbook.worldgrowthresurgence.pdf"}
+{"time": "2026-10-16T20:34:40", "url": "https://dataverse.harvard.edu/api/access/datafile/656390", "status": 200, "note": "fetch jhs_dataverse/FG8NVN__kuznet.ict.tab"}
+{"time": "2026-10-16T20:34:40", "url": "https://dataverse.harvard.edu/api/access/datafile/666688", "status": 200, "note": "fetch jhs_dataverse/ZF8W7N__health.klem.tab"}
+{"time": "2026-10-16T20:34:41", "url": "https://dataverse.harvard.edu/api/access/datafile/666689", "status": 200, "note": "fetch jhs_dataverse/ZF8W7N__tier.names.pdf"}

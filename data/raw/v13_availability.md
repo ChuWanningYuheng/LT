@@ -12,7 +12,7 @@
 | № | Источник | Статус | Где |
 |---|---|---|---|
 | 1 | BLS CES (national) | **скачано** | `data/raw/v13/bls_ces/` |
-| 2 | Jorgenson–Ho–Samuels, производственный счёт США | **частично** (релизы WorldKLEMS 2010, 2013, 2017; более новых версий в открытом доступе не нашли) | `data/raw/v13/jhs/` |
+| 2 | Jorgenson–Ho–Samuels, производственный счёт США | **скачано всё, что открыто** (16.10.2026): релизы WorldKLEMS 2010, 2013, 2017 и все 6 наборов Dale W. Jorgenson Dataverse (2007–2008, в том числе US KLEMS 1960–2005 с часами по полу, классу, образованию и возрасту); более новых выпусков в открытом доступе нет — архивная страница `jorgenson/data` показывала тот же Dataverse | `data/raw/v13/jhs/`, `data/raw/v13/jhs_dataverse/` |
 | 3 | BEA–BLS Integrated Industry-Level Production Account (KLEMS) | **скачано** (1997–2024 и исследовательский счёт 1947–2016) | `data/raw/v13/bea_bls_ilpa/` |
 | 4 | NIPA 6.9B / 6.9C / 6.9D (часы наёмных по отраслям) | **скачано** (16.10.2026): таблицы сняты BEA с публикации 25.07.2024, API их не отдаёт; взяты из архива BEA — выпуск 28.06.2024, 1948–2022, около 20 секторов (подробнее BEA их не публиковало); там же 6.7 (самозанятые) и 6.8 (занятые в производстве). Ряды FRED — для сверки | `data/raw/v13/nipa_hours_archive/`, `data/raw/v13/nipa_hours_fred/` |
 | 5 | BLS: TFP по крупным отраслям, часы и занятость по детальным отраслям | **скачано** (прежний адрес TFP — 404, новые адреса найдены) | `data/raw/v13/bls_productivity/` |
@@ -75,6 +75,18 @@
   * Снимок страницы данных в Wayback Machine существует (`web.archive.org/web/20221006232604/https://scholar.harvard.edu/jorgenson/data`, по API archive.org), но **web.archive.org закрыт политикой сети этой сессии** (403 «Blocked by egress policy»); не обходили.
   * Harvard Dataverse (поиск «production account Jorgenson») — только старые наборы (35 Sector KLEM, IT and Growth и др., 2007–2008).
 * **Известные швы:** разные классификации у релизов (ISIC Rev. 3 в 2010 и 2013 гг., BEA/NAICS 65 отраслей в 2017 г.); уровни между релизами не согласованы.
+
+* **Дополнение 16.10.2026 — Dale W. Jorgenson Dataverse** (`jhs_dataverse/`, 38 файлов, 46 МБ, CC0):
+  * Пользователь открыл снимок `web.archive.org/web/20221006232604/https://scholar.harvard.edu/jorgenson/data`: страница называется «Dataverse», то есть показывала Harvard Dataverse.
+  * В списке файлов сайта (CDX `scholar.harvard.edu/files/jorgenson/*`, присланный пользователем) только PDF, презентации и картинки, таблиц данных нет.
+  * Dataverse `jorgenson` (https://dataverse.harvard.edu/dataverse/jorgenson) содержит 6 наборов 2007–2008 гг.; все скачаны через API, файлы не из табличного импорта сверены по md5.
+  * **JJIB0J «EU KLEMS»** — данные США для EU KLEMS (Samuels, Patel, 2007):
+    * `USKLEM1960_2005.xls`, выпуск и капитал (NAICS и SIC);
+    * труд `labor.euklem.{emp,hrs,cmp}.60-05`: занятость, часы и оплата по годам 1960–2005 × 89 отраслей × пол × **класс (1 — наёмные, 2 — самозанятые и члены семьи)** × образование (6 групп) × возраст (8 групп);
+    * 1992 г. дан в двух определениях образования (код года 19922); единицы часов в readme не указаны.
+  * **7XQ3EM «35 Sector KLEM»**, 1960–2005: стоимость и цены K, L, E, M и выпуска по 35 секторам (≈ 2 знака SIC).
+  * Также: KHM30G (Kuznets), FG8NVN (IT и мировой рост), XGIISU (IT и рост), ZF8W7N (Health KLEM).
+  * **Вывод:** более новых выпусков JHS, чем в WorldKLEMS (2017), в открытом доступе нет.
 
 ### 3. BEA–BLS Integrated Industry-Level Production Account (`bea_bls_ilpa/`, 9 файлов, 7 МБ)
 
@@ -326,7 +338,7 @@
 
 ### Ручная загрузка в браузере (сайт закрыт для скрипта: 403 или проверка Cloudflare)
 
-3. **Jorgenson–Ho–Samuels, новые выпуски** (после 2017 г.; п. 2): https://scholar.harvard.edu/jorgenson/data (для скрипта — 403, Akamai).
+3. **сделано** (16.10.2026: страница — это Dataverse Jorgenson, скачан целиком; новее WorldKLEMS 2017 открытых выпусков нет). **Jorgenson–Ho–Samuels, новые выпуски** (после 2017 г.; п. 2): https://scholar.harvard.edu/jorgenson/data (для скрипта — 403, Akamai).
 4. **сделано** (16.10.2026). **Basu, Huato, Lara Jauregui, Wasner** (п. 10):
    * WP 318: https://scholarworks.umass.edu/econ_workingpaper/318
    * журнальная версия: «World Profit Rates, 1960–2019», Review of Political Economy 37(1), 92–107, https://doi.org/10.1080/09538259.2022.2140007

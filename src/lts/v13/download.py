@@ -42,6 +42,49 @@ for code, nm in (("10", "MiningAndLogging"), ("20", "Construction"), ("30", "Man
                    f"{code}c.{nm}.ProductionEmployeeHoursAndEarnings"]
 CE_SECTORS.append("90a.Government.Employment")
 
+# generated from the Harvard Dataverse API listing of dataverse 'jorgenson' (6 datasets), 2026-10-16
+JORGENSON_DATAVERSE = [
+    ('XGIISU', 'Information Technology and Growth (updated)', 655775, 'it.growth.tab', 18951, 'MD5', '3b7f118e4382d9590d3e7a73c9ce3733'),
+    ('XGIISU', 'Information Technology and Growth (updated)', 655998, 'table2.pdf', 7708, 'MD5', '4b876733d35fd51fb7b5b97acc84af64'),
+    ('XGIISU', 'Information Technology and Growth (updated)', 655999, 'table3.pdf', 7709, 'MD5', 'dad270d53dd926c08d1221d0b833806d'),
+    ('XGIISU', 'Information Technology and Growth (updated)', 656000, 'table5.pdf', 7827, 'MD5', 'd1d5c91a5f88ea05ad09110a5a416361'),
+    ('XGIISU', 'Information Technology and Growth (updated)', 655997, 'table6.pdf', 7802, 'MD5', '36bf46b75f2e4997d86cc74fa6cc44fa'),
+    ('XGIISU', 'Information Technology and Growth (updated)', 656014, 'tableAEA1.pdf', 10229, 'MD5', '55808b68f68018f0c7d95179a95bddb2'),
+    ('XGIISU', 'Information Technology and Growth (updated)', 656016, 'tableAEA2.pdf', 7570, 'MD5', '963370da39543dd0fc4865d5cf0fb6f7'),
+    ('XGIISU', 'Information Technology and Growth (updated)', 656012, 'tableAEA3.pdf', 10497, 'MD5', 'f5bff3f3e81e4493d6e6e9857c944f75'),
+    ('XGIISU', 'Information Technology and Growth (updated)', 656010, 'tableAEA4.pdf', 10251, 'MD5', '0cb3a82ea34d38bb9d303a4b86335370'),
+    ('XGIISU', 'Information Technology and Growth (updated)', 656015, 'tableAEA5.pdf', 10196, 'MD5', 'fc772dac530ac8b58f645f45a2f14781'),
+    ('XGIISU', 'Information Technology and Growth (updated)', 656017, 'tableAEA6.pdf', 7554, 'MD5', 'a67af22e4eeb3473cfba95d0ab15dfaf'),
+    ('XGIISU', 'Information Technology and Growth (updated)', 656013, 'tableAEA7.pdf', 7527, 'MD5', '2a59c3cad3d5dce63281926b8b1e92be'),
+    ('XGIISU', 'Information Technology and Growth (updated)', 656011, 'tableAEA8.pdf', 7617, 'MD5', '29105c4fa2978d1c42e4e9e7963e659e'),
+    ('XGIISU', 'Information Technology and Growth (updated)', 655943, 'techgrowth.pdf', 32768, 'MD5', 'da6c78983a656b9952974806e0037195'),
+    ('JJIB0J', 'EU KLEMS', 697684, 'eucapitaltsAug72007.xls', 4391424, 'MD5', 'cd82d822453f24bf17b8b982cfe1b54a'),
+    ('JJIB0J', 'EU KLEMS', 697682, 'EU_USlinkts.xls', 289792, 'MD5', 'e52e15f526c802d896a039e3645ba682'),
+    ('JJIB0J', 'EU KLEMS', 697687, 'labor.euklem.cmp.60-05.tab', 6701752, 'MD5', 'eb9466b50f2e9e948799115900a96fff'),
+    ('JJIB0J', 'EU KLEMS', 697688, 'labor.euklem.emp.60-05.tab', 5641983, 'MD5', 'a8554039fe5f1186c7add22320b48876'),
+    ('JJIB0J', 'EU KLEMS', 697686, 'labor.euklem.hrs.60-05.tab', 5618108, 'MD5', 'deb26da5b696c1ae7b041360c8037c1a'),
+    ('JJIB0J', 'EU KLEMS', 697685, 'readme.txt', 3270, 'MD5', 'a8699899723342d37b874e9bd616f45e'),
+    ('JJIB0J', 'EU KLEMS', 697769, 'usa-naics_output_07I.xls', 1714176, 'MD5', 'd6678cc015c379648985cb62e1081547'),
+    ('JJIB0J', 'EU KLEMS', 697770, 'usa-naics_output_alt_07I.xls', 899584, 'MD5', '85a4129e84f893ea2357cd8fc8828e42'),
+    ('JJIB0J', 'EU KLEMS', 697768, 'usa-sic_output_07I.xls', 3524608, 'MD5', '2d36fc058300fc6332294488b81e709d'),
+    ('JJIB0J', 'EU KLEMS', 697767, 'usa-sic_output_alt_07I.xls', 1406976, 'MD5', '422b40c88fba7f943a21b8a35d1da24e'),
+    ('JJIB0J', 'EU KLEMS', 697683, 'USKLEM1960_2005.xls', 11496448, 'MD5', '2794d884b4d0f337205747c1d9b5ec83'),
+    ('JJIB0J', 'EU KLEMS', 697690, 'versions.txt', 1305, 'MD5', 'bca57311059c88cb85adeb0649efbc64'),
+    ('7XQ3EM', '35 Sector KLEM', 1314021, '35klem-instruction-sheet.pdf', 15746, 'MD5', 'baa55c8d2417752e569bc230795789f2'),
+    ('7XQ3EM', '35 Sector KLEM', 656313, '35sector.klem.tab', 1307938, 'MD5', 'fdcbc5729ab146bfb748e1ea83a3e1de'),
+    ('7XQ3EM', '35 Sector KLEM', 656315, 'ind.comm.detail.pdf', 52987, 'MD5', '0022f980bbae06a9be110e3a38dd830d'),
+    ('7XQ3EM', '35 Sector KLEM', 656316, 'tier.structure.pdf', 53726, 'MD5', '4a927c3f8022cd4839861ffdb4bca24a'),
+    ('KHM30G', 'Kuznets Data Set', 112157, 'alldata-2.xls', 412672, 'MD5', '0171b1b73bff5fdbb14b8a6e3eb4cc0f'),
+    ('KHM30G', 'Kuznets Data Set', 112154, 'alldata-9.xls', 162304, 'MD5', '282e05215be9964868fc5cf524173bb4'),
+    ('KHM30G', 'Kuznets Data Set', 112155, 'allgraph-6.xls', 140800, 'MD5', 'd172227c22a7064b4557644c27df9b16'),
+    ('KHM30G', 'Kuznets Data Set', 112156, 'table-9.xls', 26112, 'MD5', '002e47e790a2f36cc71540f7c3a3e1fe'),
+    ('FG8NVN', 'Information Technology and the World Growth Resurgence', 666690, 'handbook.worldgrowthresurgence.pdf', 459076, 'MD5', 'b2bffb60987f14f0de4b8ef6c0a3e855'),
+    ('FG8NVN', 'Information Technology and the World Growth Resurgence', 656390, 'kuznet.ict.tab', 909939, 'MD5', '0adb4777ef9fdbd6f316c6b5d4ecb80e'),
+    ('ZF8W7N', 'Health KLEM', 666688, 'health.klem.tab', 770948, 'MD5', '934c8a8c0567e0e144c933c96873e642'),
+    ('ZF8W7N', 'Health KLEM', 666689, 'tier.names.pdf', 6189, 'MD5', 'ef0367ac3825f4d3ac711ce0e7b7a6da'),
+]
+
+
 SOURCES = {
     "bls_ces": [(f, BLS_CE + f, "BLS (public domain)",
                  "BLS CES national, metadata" if not f.startswith("ce.data") else f"BLS CES national, data file {f}")
@@ -206,6 +249,13 @@ SOURCES = {
         ("icio_2006-2010_SML.zip", "1fQp4TyanT5r7uFJPsCGQZujoobh2edVF", "OECD (CC BY 4.0)", "OECD ICIO SML 2006-2010"),
         ("icio_2011-2015_SML.zip", "1FNJQwWSoh9rol_GlPTzvEpt6u50FELLf", "OECD (CC BY 4.0)", "OECD ICIO SML 2011-2015"),
         ("icio_2016-2020_SML.zip", "17RYNv0rhbG0aI8S-6rBpEoKHIuwBWnIM", "OECD (CC BY 4.0)", "OECD ICIO SML 2016-2020"))],
+    # Dale W. Jorgenson Dataverse (Harvard Dataverse alias 'jorgenson'); the archived scholar.harvard.edu/jorgenson/data
+    # page ('Dataverse') displayed these datasets. Ingested tables are served tab-delimited (.tab, md5 of the deposited
+    # original does not apply); other files are checked against the Dataverse md5
+    "jhs_dataverse": [(f"{pid}__{fn}", f"https://dataverse.harvard.edu/api/access/datafile/{fid}", "Harvard Dataverse (CC0 1.0)",
+                       f"Jorgenson Dataverse doi:10.7910/DVN/{pid} '{title}', file {fn}",
+                       None if fn.endswith(".tab") else md5)
+                      for pid, title, fid, fn, size, _, md5 in JORGENSON_DATAVERSE],
     "wiod_energy": [(n, "https://dataverse.nl/api/access/datafile/" + i, "WIOD (CC BY 4.0)",
                      "WIOD 2013 release (dataverse.nl doi:10.34894/XDTAUZ) " + d) for n, i, d in (
         ("wiod2013_Environmental_Accounts.zip", "199110", "environmental accounts (energy use, emissions, other), 1995-2009"),
@@ -258,7 +308,7 @@ def zenodo_md5(url):
     return _ZENODO[rec].get(name)
 
 
-def fetch(source, name, url, licence, note, tries=4, headers=None):
+def fetch(source, name, url, licence, note, tries=4, headers=None, md5=None):
     d = RAW / source
     d.mkdir(parents=True, exist_ok=True)
     out = d / name
@@ -275,14 +325,14 @@ def fetch(source, name, url, licence, note, tries=4, headers=None):
             # a dropped connection can end the copy without an exception: check completeness
             if expected is not None and out.stat().st_size != int(expected):
                 raise IOError(f"truncated: {out.stat().st_size} of {expected} bytes")
-            md5 = zenodo_md5(url)
-            if md5 is not None:
+            want = md5 or zenodo_md5(url)
+            if want is not None:
                 got = hashlib.md5()
                 with open(out, "rb") as f:
                     for b in iter(lambda: f.read(1 << 20), b""):
                         got.update(b)
-                if got.hexdigest() != md5:
-                    raise IOError(f"md5 mismatch: {got.hexdigest()} != {md5}")
+                if got.hexdigest() != want:
+                    raise IOError(f"md5 mismatch: {got.hexdigest()} != {want}")
             break
         except urllib.error.HTTPError as e:
             st = e.code
@@ -339,7 +389,7 @@ def register_local(source, name, path, origin, licence, note):
 def annotate(source, text):
     """append a content description to the MANIFEST notes of this source's v13 rows (and set the licence column to
     the one in SOURCES, which was corrected for EXIOBASE after the first rows were written)"""
-    licence = {u: lic for _, u, lic, _ in SOURCES.get(source, [])}
+    licence = {e[1]: e[2] for e in SOURCES.get(source, [])}
     rows = list(csv.reader(open(MANIFEST, newline="")))
     for r in rows[1:]:
         if r[0] == "v13" and (r[1].startswith(f"v13/{source}/") or r[1].startswith(f"EXTERNAL:LT_external/v13/{source}/")):
@@ -439,6 +489,14 @@ DESCRIPTIONS = {
                            "sector level only), T60700A-D (self-employed persons), T60800A-D (persons engaged in "
                            "production, 6.8D about 100 lines); 6.9 data as published 2023-09-29; tables 6.7-6.9 were "
                            "discontinued 2024-07-25 and are not available from the BEA API"),
+    "jhs_dataverse": ("contents: Dale W. Jorgenson Dataverse (Harvard), all 6 datasets, 38 files, deposited 2007-2008: "
+                      "JJIB0J EU KLEMS US data (USKLEM1960_2005.xls; labour files labor.euklem.{emp,hrs,cmp}.60-05: "
+                      "employment, hours, compensation by year 1960-2005 x 89 industries x sex x class (1 employee, "
+                      "2 self-employed / family) x education (6) x age (8); 1992 given on two education definitions, "
+                      "year code 19922; hours units not stated in readme; output and capital xls, NAICS and SIC); "
+                      "7XQ3EM 35 Sector KLEM 1960-2005 (values and prices of K, L, E, M and output, 35 sectors ~2-digit "
+                      "SIC); KHM30G Kuznets data set; FG8NVN IT and world growth resurgence; XGIISU IT and growth "
+                      "(updated); ZF8W7N Health KLEM; .tab files are Dataverse tab-delimited exports"),
     "user_gdrive": ("contents: three article PDFs (Mohun 2005, 17 pages; Mohun 2014, 26 pages; Paitaridis & Tsoulfidis "
                     "2012) and OECD ICIO 2023 edition, SML version (no China / Mexico split), one csv per year 1995-2020 "
                     "in five zips: 76 economies + ROW (77 areas) x 45 industries (ISIC Rev. 4, codes as A01_02, "
@@ -487,10 +545,11 @@ def fred_hours():
 
 def run(sources):
     for s in sources:
-        for name, url, lic, note in SOURCES[s]:
+        for entry in SOURCES[s]:
+            name, url, lic, note = entry[:4]
             if (RAW / s / name).exists() or (EXTERNAL / s / name).exists():
                 continue
-            fetch(s, name, url, lic, note)
+            fetch(s, name, url, lic, note, md5=entry[4] if len(entry) > 4 else None)
 
 
 if __name__ == "__main__":

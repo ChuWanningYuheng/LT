@@ -85,6 +85,40 @@ JORGENSON_DATAVERSE = [
 ]
 
 
+# figshare article 7551032 v2 (doi:10.6084/m9.figshare.7551032.v2), file id, name, md5 - from the figshare API, 2026-10-16
+KULIONIS_FIGSHARE = [
+    (14033462, 'WIOD_2000_Energy.mat', '8493f030f6920c1aa622e7ab7224bb31'),
+    (14033465, 'WIOD_2001_Energy.mat', '2ef2c5b108f1158c1b0af7ba2406d5ab'),
+    (14033468, 'WIOD_2002_Energy.mat', '49996f0de533d60875e21691eb10fc99'),
+    (14033471, 'WIOD_2003_Energy.mat', 'be341a122ad1f516a2a41c5a3ad4ca13'),
+    (14033474, 'WIOD_2004_Energy.mat', 'daed8dd3fa71e23770ac99a1915b8d6a'),
+    (14033477, 'WIOD_2005_Energy.mat', '619b398a845335a27ebcc11d41fe8e2c'),
+    (14033480, 'WIOD_2006_Energy.mat', '9224870f4bbeb527ff1840a7084b605f'),
+    (14033483, 'WIOD_2007_Energy.mat', '7b0a488f6623102d2b70fb2a6891a348'),
+    (14033486, 'WIOD_2008_Energy.mat', '44b53deb5997efcadddf4431f3771757'),
+    (14033489, 'WIOD_2009_Energy.mat', '5008e6b27581b25395e7f1ceea1ab679'),
+    (14033492, 'WIOD_2010_Energy.mat', '5814bb59df2c809c8b49c635bc6e106b'),
+    (14033495, 'WIOD_2011_Energy.mat', 'f12b5c5983479ef85b181f5586560723'),
+    (14033498, 'WIOD_2012_Energy.mat', 'aa97f2ad837ce3776ed44aeb04e33dc2'),
+    (14033501, 'WIOD_2013_Energy.mat', '39fb167a1db1e89bc6153ac0c0fff680'),
+    (14033504, 'WIOD_2014_Energy.mat', '2da3686f91f44fd27822d607e2c9396d'),
+    (14036321, 'WIOD_2000_Energy.xlsx', '45de682c38b300b32b40155a15c4aa8d'),
+    (14036327, 'WIOD_2001_Energy.xlsx', 'b56781b5174f2e3010164276938a70e9'),
+    (14036324, 'WIOD_2002_Energy.xlsx', 'a341d7bb414609ff17d43a0c46a400a4'),
+    (14036330, 'WIOD_2003_Energy.xlsx', '3a4091ae42d1a97d9be6b0f831ef268a'),
+    (14036333, 'WIOD_2004_Energy.xlsx', '3dabd28e8d2cebe606f746614139414b'),
+    (14036336, 'WIOD_2005_Energy.xlsx', '9391d33c9ccf2baf61707997c1393e22'),
+    (14036339, 'WIOD_2006_Energy.xlsx', 'f141ea220c52512ff91272e69278fa7f'),
+    (14036342, 'WIOD_2007_Energy.xlsx', 'ed027a7e4d9b28125ac5a8301518095a'),
+    (14036345, 'WIOD_2008_Energy.xlsx', '21dd3702a277dfb54c937da2284b9920'),
+    (14036348, 'WIOD_2009_Energy.xlsx', 'ea993ae2ab57a636504a6a011c48c3d0'),
+    (14036351, 'WIOD_2010_Energy.xlsx', '93c5bdb8afa00527f3d51c41e6d4a201'),
+    (14036354, 'WIOD_2011_Energy.xlsx', '7a9905f5c0532af5c52c8885a065676f'),
+    (14036357, 'WIOD_2012_Energy.xlsx', 'e6e14d10057a95cba52091360304cf2a'),
+    (14036360, 'WIOD_2013_Energy.xlsx', '5512fc4949e39645609fcb70b14e6d55'),
+    (14036363, 'WIOD_2014_Energy.xlsx', '5c3eaf96e44db1726cdd0f00996b1dfb'),
+]
+
 SOURCES = {
     "bls_ces": [(f, BLS_CE + f, "BLS (public domain)",
                  "BLS CES national, metadata" if not f.startswith("ce.data") else f"BLS CES national, data file {f}")
@@ -260,6 +294,10 @@ SOURCES = {
                      "WIOD 2013 release (dataverse.nl doi:10.34894/XDTAUZ) " + d) for n, i, d in (
         ("wiod2013_Environmental_Accounts.zip", "199110", "environmental accounts (energy use, emissions, other), 1995-2009"),
         ("wiod2013_Environmental_Sources.pdf", "199109", "sources and methods of the environmental accounts"))],
+    # Kulionis, energy accounts for WIOD 2016; found via the OpenAIRE graph (the TIB / NFDI4Energy record has no file link)
+    "wiod2016_energy": [(n, f"https://ndownloader.figshare.com/files/{i}", "CC BY 4.0 (figshare)",
+                         f"Kulionis, Energy accounts for the World Input Output Database (WIOD) 2016 release, figshare "
+                         f"doi:10.6084/m9.figshare.7551032.v2, file {n}", md5) for i, n, md5 in KULIONIS_FIGSHARE],
     "wiod_energy_docs": [(n, u, "authors / JRC (documentation)", d) for n, u, d in (
         ("kulionis_2018_arxiv_1810.07112.pdf", "https://arxiv.org/pdf/1810.07112",
          "Kulionis, Constructing energy accounts for WIOD 2016 release (arXiv 1810.07112), methodology of the TIB dataset"),
@@ -507,9 +545,14 @@ DESCRIPTIONS = {
                     "industries (NACE Rev. 1.1 / ISIC Rev. 3) + households x 26 energy commodities, losses, total; CO2, "
                     "AIR, land, materials, water archives; matches WIOD 2013 (35 industries), not WIOD 2016 (56 "
                     "industries) used in the project"),
+    "wiod2016_energy": ("contents: Kulionis energy accounts matching WIOD 2016 release, one .mat and one .xlsx per year "
+                        "2000-2014; xlsx sheets GrossEnergy_Industry and EmRelevantEnergy_Industry: 27 rows (26 energy "
+                        "carriers HCOAL ... OTHSOURC and LOSS) x 2464 columns (44 regions incl. ROW x 56 WIOD 2016 "
+                        "industries, codes A01 ...), GrossEnergy_Households and EmRelevantEnergy_Households: 27 x 44; "
+                        "terajoules; md5 checked against figshare"),
     "wiod_energy_docs": ("contents: methodology documents only (Kulionis, arXiv 1810.07112; JRC116234 / EUR 29727 EN, WIOD "
-                         "environmental accounts 2000-2016); the WIOD 2016 energy account data files were not obtained "
-                         "(the WIOD 2013 release accounts are in wiod_energy)"),
+                         "environmental accounts 2000-2016); Kulionis data files: wiod2016_energy; WIOD 2013 release "
+                         "accounts: wiod_energy; JRC 2000-2016 data not obtained"),
 }
 
 

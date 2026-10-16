@@ -323,7 +323,8 @@ def register_local(source, name, path, origin, licence, note):
     d = RAW / source
     d.mkdir(parents=True, exist_ok=True)
     out = d / name
-    shutil.copyfile(path, out)
+    if Path(path).resolve() != out.resolve():
+        shutil.copyfile(path, out)
     sha, size = hashlib.sha256(), out.stat().st_size
     with open(out, "rb") as f:
         for b in iter(lambda: f.read(1 << 20), b""):

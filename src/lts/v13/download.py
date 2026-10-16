@@ -183,6 +183,13 @@ SOURCES = {
          f"https://sdmx.oecd.org/public/rest/data/OECD.STI.PIE,DSD_TIM_{e}@DF_TIM_{e},/EMPN+LABR...W..A?format=csv",
          "OECD (CC BY 4.0)", f"TiM {e} edition (trade in employment): employment EMPN and compensation of employees LABR "
          f"by ICIO {e} industry") for e in (2023, 2025)],
+    # NIPA tables 6.7-6.9 were discontinued on 2024-07-25 (BEA API: "Table was discontinued due to budget constraints");
+    # the last vintage that still contains them is archived at apps.bea.gov/histdata (NIPA, 2024 Q1 third estimate)
+    "nipa_hours_archive": [(
+        "nipa_section6_vintage_2024-06-28.xlsx",
+        "https://apps.bea.gov/HistData/Files/Releases/GDP_and_PI/2024/Q1/Third_June-28-2024/Section6all_xls.xlsx",
+        "BEA (public domain)", "BEA data archive, NIPA section 6 as published 2024-06-28 (last vintage before tables "
+        "6.7-6.9 were discontinued on 2024-07-25)")],
     "wiod_energy": [(n, "https://dataverse.nl/api/access/datafile/" + i, "WIOD (CC BY 4.0)",
                      "WIOD 2013 release (dataverse.nl doi:10.34894/XDTAUZ) " + d) for n, i, d in (
         ("wiod2013_Environmental_Accounts.zip", "199110", "environmental accounts (energy use, emissions, other), 1995-2009"),
@@ -391,6 +398,12 @@ DESCRIPTIONS = {
                  "no hours. TiM 2023 / 2025: employment EMPN (persons, thousands) and compensation of employees LABR "
                  "(USD million and share of value added) for 93 / 97 areas x 70 / 80 ICIO activities and aggregates, "
                  "1995-2020 / 1995-2022, no hours"),
+    "nipa_hours_archive": ("contents: NIPA section 6 workbook as published 2024-06-28 (BEA data archive), sheets incl. "
+                           "T60900B-A 1948-1987, T60900C-A 1987-2000, T60900D-A 2000-2022 (hours worked by full-time and "
+                           "part-time employees, millions of hours, about 20 sector lines: BEA published these tables at "
+                           "sector level only), T60700A-D (self-employed persons), T60800A-D (persons engaged in "
+                           "production, 6.8D about 100 lines); 6.9 data as published 2023-09-29; tables 6.7-6.9 were "
+                           "discontinued 2024-07-25 and are not available from the BEA API"),
     "wiod_energy": ("contents: WIOD 2013 release (May 2012) environmental accounts, one xls per country (40 countries "
                     "+ RoW), sheets 1995-2009: EU gross energy use and EM emission relevant energy use (TJ) by 35 WIOD "
                     "industries (NACE Rev. 1.1 / ISIC Rev. 3) + households x 26 energy commodities, losses, total; CO2, "

@@ -21,11 +21,11 @@
 | 8 | Kliman (2012), таблицы данных | **частично**: таблица к статье 2009 г. «Persistent Fall» (данные той же линии работ); таблиц самой книги в открытом доступе нет | `data/raw/v13/literature/` |
 | 9 | Basu & Manolakos (2013), рабочая версия и данные | **частично** (16.10.2026): журнальная версия статьи прислана пользователем; отдельных данных у статьи нет — она построена на рядах Duménil & Lévy (`uslt4x.txt`) и BEA | `data/raw/v13/literature_user/` |
 | 10 | Basu, Huato, Lara Jauregui, Wasner (2025): WP 318 и World Profitability Dashboard | **скачано** (16.10.2026): журнальная версия (прислана пользователем); рабочая версия 29.12.2021 и данные — через кнопки самого дашборда https://dbasu.shinyapps.io/World-Profitability/ (адрес указан в журнальной версии) | `data/raw/v13/literature_user/`, `data/raw/v13/world_profitability_dashboard/` |
-| 11 | Mohun (2014, 2005), Paitaridis & Tsoulfidis (2012) | **частично**: сами статьи не скачаны (Mohun 2014 — только по подписке; открытые копии Mohun 2005 на SSRN и Paitaridis & Tsoulfidis 2012 на сайте SAGE — 403, проверка Cloudflare); скачаны две рабочие статьи Tsoulfidis, Paitaridis и соавторов 2017–2018 гг. (продолжение той же работы) | `data/raw/v13/literature/` |
+| 11 | Mohun (2014, 2005), Paitaridis & Tsoulfidis (2012) | **скачано** (16.10.2026): все три статьи — из папки пользователя на Google Drive; плюс две открытые рабочие статьи Tsoulfidis, Paitaridis и соавторов 2017–2018 гг. | `data/raw/v13/user_gdrive/`, `data/raw/v13/literature/` |
 | 12 | Shaikh & Tonak (1994), Moseley (1991); Shaikh (2016) «Capitalism» | **частично**: таблицы данных «Capitalism» скачаны (папка автора); у Shaikh & Tonak и Moseley открытых таблиц нет | `data/raw/v13/shaikh_capitalism/` |
 | 13 | EXIOBASE 3.11.2 (последняя версия), ixi, 1995–2024, с часами занятых | **скачано** (30 лет; каждый файл сверен по md5 с записью Zenodo) | `../LT_external/v13/exiobase/` (zip > 100 МБ); лицензия, журнал изменений, хеши — `data/raw/v13/exiobase/` |
 | 14 | Эндогенизация капитала в EXIOBASE (Södersten, Wood и др.) | **частично**: матрицы для EXIOBASE 3.8.2 (1995–2020) скачаны — **версия не совпадает с 3.11.2**; новая версия на основе EXIOBASE 3.10.2 (1995–2022) — доступ ограничен (Zenodo: 403, нужен вход и запрос доступа) | `data/raw/v13/capital_matrices/` |
-| 15 | OECD ICIO 2023 + занятость TiVA | **частично**: таблицы ICIO издания 2023 г. не скачаны (сайт OECD — 403, проверка Cloudflare); в проекте уже есть ICIO издания 2025 г., 1995–2022 (итерация 6); занятость и оплата труда TiM 2023 и 2025, а также TiMBC 2023 скачаны через SDMX | `data/raw/v13/oecd_tim/`; ICIO — `data/raw/v6/gdrive/` |
+| 15 | OECD ICIO 2023 + занятость TiVA | **скачано** (16.10.2026): ICIO издания 2023 г., SML, 1995–2020 — из папки пользователя на Google Drive (издание определено по кодам отраслей и годам); занятость и оплата труда TiM 2023 и 2025, TiMBC 2023 — через SDMX; в проекте также ICIO издания 2025 г. (итерация 6) | `data/raw/v13/user_gdrive/`, `data/raw/v13/oecd_tim/`; ICIO 2025 — `data/raw/v6/gdrive/` |
 | 16 | Энергетические счета WIOD | **частично**: скачаны официальные экологические (в том числе энергетические) счета WIOD 2013 г. (1995–2009, 35 отраслей); счета к WIOD 2016 (Kulionis, 2000–2014; JRC, 2000–2016) не найдены в открытом доступе — скачана только методология | `data/raw/v13/wiod_energy/`, `data/raw/v13/wiod_energy_docs/` |
 | 17 | PWT 11: документация по `cn` | **скачано**; ответ: жилые здания в `cn` **входят** | `data/raw/v13/pwt_docs/` |
 | 18 | Duménil & Lévy, данные по США с 1869 г. | **скачано** | `data/raw/v13/dumenil_levy/` |
@@ -245,6 +245,12 @@
 * **TiMBC 2023** (`timbc_2023_empn.csv`): занятые (тыс. чел.), 67 стран и групп × 18 агрегатов отраслей ICIO 2023 × 12 характеристик (группы ISCO, ISCED, возраста, пола и итог), 2008–2020. TiMBC 2025 уже есть в проекте (`data/raw/oecd/timbc_2025_empn.csv`).
 * **Швы:** отраслевые разбивки TiM 2023 и 2025 различаются (45 и 50 отраслей ICIO); TiM 2023 согласован с ICIO 2023, TiM 2025 — с ICIO 2025, который уже есть в проекте.
 
+* **Дополнение 16.10.2026 — ICIO 2023 получен от пользователя** (Google Drive, `user_gdrive/icio_<годы>_SML.zip`):
+  * 5 архивов, по CSV на год, 1995–2020;
+  * 76 стран и ROW (77 областей) × 45 отраслей (коды вида A01_02, B05_06, C10T12) + конечный спрос HFCE, NPISH, GGFC, GFCF, INVNT, DPABR; строки TLS, VA, OUT; млн долл.;
+  * версия SML (без разбивки Китая и Мексики); издание 2023 г. определено по кодам отраслей (как в TiM 2023) и последнему году (2020);
+  * архивы целы (проверка zip); md5 издателя для сверки нет — файлы получены не с сайта OECD.
+
 ### 16. Энергетические счета WIOD (`wiod_energy/`, `wiod_energy_docs/`)
 
 * **Скачано — WIOD 2013 Release, экологические счета** (dataverse.nl, doi:10.34894/XDTAUZ, CC BY 4.0; выпуск май 2012 г.):
@@ -308,15 +314,15 @@
    * https://doi.org/10.1177/0486613412447059
    * открытая копия: https://scholarworks.umass.edu/econ_workingpaper/99 (DOI 10.7275/1373847)
    * данных отдельно нет — при необходимости запросить у авторов.
-6. **Mohun (2005)** «On measuring the wealth of nations: the US economy, 1964–2001», CJE 29(5): https://doi.org/10.1093/cje/bei043. Открытая копия на SSRN: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=904484.
-7. **Paitaridis & Tsoulfidis (2012)** «The Growth of Unproductive Activities, the Rate of Profit, and the Phase-Change of the U.S. Economy», RRPE 44(2): бесплатный PDF у издателя — https://journals.sagepub.com/doi/pdf/10.1177/0486613411423899.
-8. **OECD ICIO, издание 2023 г.** (п. 15): https://www.oecd.org/en/data/datasets/inter-country-input-output-tables.html (для скрипта — 403, Cloudflare).
+6. **сделано** (Google Drive). **Mohun (2005)** «On measuring the wealth of nations: the US economy, 1964–2001», CJE 29(5): https://doi.org/10.1093/cje/bei043. Открытая копия на SSRN: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=904484.
+7. **сделано** (Google Drive). **Paitaridis & Tsoulfidis (2012)** «The Growth of Unproductive Activities, the Rate of Profit, and the Phase-Change of the U.S. Economy», RRPE 44(2): бесплатный PDF у издателя — https://journals.sagepub.com/doi/pdf/10.1177/0486613411423899.
+8. **сделано** (Google Drive, SML 1995–2020). **OECD ICIO, издание 2023 г.** (п. 15): https://www.oecd.org/en/data/datasets/inter-country-input-output-tables.html (для скрипта — 403, Cloudflare).
    * Нужно, только если требуется именно издание 2023 г.: в проекте есть издание 2025 г. за 1995–2022.
    * Там же — EXT-файлы издания 2025 г. за 2011–2022 гг. (с разбивкой Китая и Мексики), если нужны: в проекте EXT только за 1995–2010.
 
 ### Только по подписке или в книгах
 
-9. **Mohun (2014)** «Unproductive Labor in the U.S. Economy 1964–2010», RRPE 46(3), 355–379: https://doi.org/10.1177/0486613413506080 — открытой копии нет (Unpaywall: closed).
+9. **сделано** (Google Drive). **Mohun (2014)** «Unproductive Labor in the U.S. Economy 1964–2010», RRPE 46(3), 355–379: https://doi.org/10.1177/0486613413506080 — открытой копии нет (Unpaywall: closed).
 10. **Kliman (2012)** «The Failure of Capitalist Production» (Pluto Press): таблиц книги в сети нет; скачана таблица к статье 2009 г. (п. 8). Нужна книга или запрос автору.
 11. **Shaikh & Tonak (1994)** «Measuring the Wealth of Nations» (Cambridge University Press) и **Moseley (1991)** «The Falling Rate of Profit in the Postwar United States Economy»: таблицы — в приложениях книг, открытых файлов нет.
 

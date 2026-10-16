@@ -190,6 +190,22 @@ SOURCES = {
         "https://apps.bea.gov/HistData/Files/Releases/GDP_and_PI/2024/Q1/Third_June-28-2024/Section6all_xls.xlsx",
         "BEA (public domain)", "BEA data archive, NIPA section 6 as published 2024-06-28 (last vintage before tables "
         "6.7-6.9 were discontinued on 2024-07-25)")],
+    # files the user uploaded to a shared Google Drive folder (1rHZwXJnBYZHA79CpmDE0XvU5XwesT22X), 2026-10-16
+    "user_gdrive": [(n, f"https://drive.usercontent.google.com/download?id={i}&export=download&confirm=t", lic,
+                     "supplied by the user via Google Drive folder 1rHZwXJnBYZHA79CpmDE0XvU5XwesT22X; " + d)
+                    for n, i, lic, d in (
+        ("mohun_2005_cje_bei043.pdf", "1lLgIJe4nOCvzHGUVD2vsoS9qRNMkzrwM", "publisher copyright (research copy)",
+         "Mohun (2005) On measuring the wealth of nations: the US economy, 1964-2001, CJE 29(5), doi:10.1093/cje/bei043"),
+        ("mohun_2014_rrpe_0486613413506080.pdf", "1SOM_IPNee1d9XjgI6hcEui4bZlI7eX6d", "publisher copyright (research copy)",
+         "Mohun (2014) Unproductive Labor in the U.S. Economy 1964-2010, RRPE 46(3), doi:10.1177/0486613413506080"),
+        ("paitaridis_tsoulfidis_2012_rrpe_0486613411423899.pdf", "1h9P0TIlhKmB6qEranC9K4fXM6JRgOU6U",
+         "publisher copyright (research copy)", "Paitaridis & Tsoulfidis (2012) The Growth of Unproductive Activities, the "
+         "Rate of Profit, and the Phase-Change of the U.S. Economy, RRPE 44(2), doi:10.1177/0486613411423899"),
+        ("icio_1995-2000_SML.zip", "1pTMQR9sn1tml8D4kRD5Rwlqs9Unq6MFL", "OECD (CC BY 4.0)", "OECD ICIO SML 1995-2000"),
+        ("icio_2001-2005_SML.zip", "1OZQpGjz_xxtIbkNtuWPTUdzxkOGJnIg9", "OECD (CC BY 4.0)", "OECD ICIO SML 2001-2005"),
+        ("icio_2006-2010_SML.zip", "1fQp4TyanT5r7uFJPsCGQZujoobh2edVF", "OECD (CC BY 4.0)", "OECD ICIO SML 2006-2010"),
+        ("icio_2011-2015_SML.zip", "1FNJQwWSoh9rol_GlPTzvEpt6u50FELLf", "OECD (CC BY 4.0)", "OECD ICIO SML 2011-2015"),
+        ("icio_2016-2020_SML.zip", "17RYNv0rhbG0aI8S-6rBpEoKHIuwBWnIM", "OECD (CC BY 4.0)", "OECD ICIO SML 2016-2020"))],
     "wiod_energy": [(n, "https://dataverse.nl/api/access/datafile/" + i, "WIOD (CC BY 4.0)",
                      "WIOD 2013 release (dataverse.nl doi:10.34894/XDTAUZ) " + d) for n, i, d in (
         ("wiod2013_Environmental_Accounts.zip", "199110", "environmental accounts (energy use, emissions, other), 1995-2009"),
@@ -422,6 +438,11 @@ DESCRIPTIONS = {
                            "sector level only), T60700A-D (self-employed persons), T60800A-D (persons engaged in "
                            "production, 6.8D about 100 lines); 6.9 data as published 2023-09-29; tables 6.7-6.9 were "
                            "discontinued 2024-07-25 and are not available from the BEA API"),
+    "user_gdrive": ("contents: three article PDFs (Mohun 2005, 17 pages; Mohun 2014, 26 pages; Paitaridis & Tsoulfidis "
+                    "2012) and OECD ICIO 2023 edition, SML version (no China / Mexico split), one csv per year 1995-2020 "
+                    "in five zips: 76 economies + ROW (77 areas) x 45 industries (ISIC Rev. 4, codes as A01_02, "
+                    "B05_06, C10T12), final demand columns HFCE, NPISH, GGFC, GFCF, INVNT, DPABR; rows TLS, VA, OUT; "
+                    "USD million; edition identified from industry codes and years (matches TiM 2023)"),
     "wiod_energy": ("contents: WIOD 2013 release (May 2012) environmental accounts, one xls per country (40 countries "
                     "+ RoW), sheets 1995-2009: EU gross energy use and EM emission relevant energy use (TJ) by 35 WIOD "
                     "industries (NACE Rev. 1.1 / ISIC Rev. 3) + households x 26 energy commodities, losses, total; CO2, "

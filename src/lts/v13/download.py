@@ -232,7 +232,8 @@ SOURCES = {
         ("dle2016e.htm", "Dumenil & Levy (2016) note: historical trends of technology and distribution in the US economy since 1869"),
         ("dle2016e.pdf", "Dumenil & Levy (2016) PDF of the note"),
         ("uslt.txt", "Dumenil & Levy long-term US data table (private nonresidential economy, since 1869)"),
-        ("dle1994e.pdf", "Dumenil & Levy (1994) sources and construction of the series 1869-1992"))],
+        ("dle1994e.pdf", "Dumenil & Levy (1994) sources and construction of the series 1869-1992"),
+        ("uslt4x.txt", "Dumenil & Levy USLT long-term US data table, version 4x (named in the iteration 13a task)"))],
     "exiobase": [(n, f"https://zenodo.org/records/23039074/files/{n}?download=1",
                   "EXIOBASE 3 (customized CC BY-NC-SA, non-commercial; see LICENSE.txt)",
                   "EXIOBASE 3.11.2 (Zenodo record 23039074, 2026-09-30) " + d) for n, d in (
@@ -248,6 +249,9 @@ SOURCES = {
          "Feenstra, Inklaar, Timmer (2015) The Next Generation of the Penn World Table"),
         ("pwt91_capitalservices_ipmrevision.pdf", "https://www.rug.nl/ggdc/docs/pwt91_capitalservices_ipmrevision.pdf",
          "Capital services in PWT 9.1 (capital methodology note)"))],
+    "pwt_data": [(n, f"https://dataverse.nl/api/access/datafile/{i}", "GGDC (CC BY 4.0)", d) for n, i, d in (
+        ("pwt110.xlsx", 554105, "Penn World Table 11.0 main data file (cn, cgdpo, delta, ...)"),
+        ("pwt110_na_data.xlsx", 554022, "Penn World Table 11.0 national accounts data (current national prices)"))],
     "capital_matrices": [(f"Kbar_exio_v3_8_2_{y}_cfc_{k}.mat",
                           f"https://zenodo.org/records/7073276/files/Kbar_exio_v3_8_2_{y}_cfc_{k}.mat?download=1",
                           "CC BY 4.0", f"Sodersten et al. capital use matrices for EXIOBASE 3.8.2, {y}, {k}")
@@ -499,7 +503,13 @@ DESCRIPTIONS = {
     "dumenil_levy": ("contents: Dumenil & Levy (2016) long-term data for the US private nonresidential economy, annual "
                      "1869-2015 (uslt.txt): net domestic product (current and 2009 $ bn), compensation of employees + "
                      "self-employed ($ bn), FTE employees + self-employed (millions), net stock of fixed capital (current "
-                     "and 2009 $ bn), total hours worked (billions), GDP ($ bn); note (htm, pdf) and 1994 sources paper"),
+                     "and 2009 $ bn), total hours worked (billions), GDP ($ bn); note (htm, pdf) and 1994 sources paper; "
+                     "uslt4x.txt (version December 2015): US private economy 1869-2014, KN net fixed capital current $ "
+                     "and chained 2009 $, L hours worked (million), W hourly wage, GDP, NDP current and chained 2009 $, "
+                     "I_R, profit rate r = (NDP - W L) / KN, capacity utilisation u, GDP price P"),
+    "pwt_data": ("contents: Penn World Table 11.0 main file (pwt110.xlsx: cn capital stock at current PPPs, cgdpo, delta, "
+                 "labsh, avh, emp, ... by country and year) and national accounts file (pwt110_na_data.xlsx, current "
+                 "national prices)"),
     "exiobase": ("contents: EXIOBASE 3.11.2 industry-by-industry MRIO, one zip per year 1995-2024; 49 regions (44 countries "
                  "+ 5 rest-of-world) x 163 industries; Z, Y, x (M.EUR, current prices); satellite folders incl. "
                  "employment/F.txt: persons (1000 p) and hours (M.hr) by skill (low, medium, high) x sex, and "

@@ -1019,3 +1019,6 @@
 {"time": "2026-10-16T20:41:32", "url": "https://ndownloader.figshare.com/files/14036357", "status": 200, "note": "fetch wiod2016_energy/WIOD_2012_Energy.xlsx"}
 {"time": "2026-10-16T20:41:33", "url": "https://ndownloader.figshare.com/files/14036360", "status": 200, "note": "fetch wiod2016_energy/WIOD_2013_Energy.xlsx"}
 {"time": "2026-10-16T20:41:34", "url": "https://ndownloader.figshare.com/files/14036363", "status": 200, "note": "fetch wiod2016_energy/WIOD_2014_Energy.xlsx"}
+{"time": "2026-10-16T20:55:13", "url": "https://www.cepremap.fr/membres/dlevy/uslt4x.txt", "status": 200, "note": "fetch dumenil_levy/uslt4x.txt"}
+{"time": "2026-10-16T20:55:16", "url": "https://dataverse.nl/api/access/datafile/554105", "status": 200, "note": "fetch pwt_data/pwt110.xlsx"}
+{"time": "2026-10-16T20:55:18", "url": "https://dataverse.nl/api/access/datafile/554022", "status": 200, "note": "fetch pwt_data/pwt110_na_data.xlsx"}

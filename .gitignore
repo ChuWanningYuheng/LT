@@ -21,3 +21,4 @@ results/v12b/s0_*/v10/s4_flags_all.csv.gz
 results/v12b/s0_*/v10/s4_o15_shares.csv
 results/v12b/s0_*/v10/s4_o3_shares.csv
 results/v12b/s0_*/v10/s4_o1_country_years.csv
+results/v13a/*.npz

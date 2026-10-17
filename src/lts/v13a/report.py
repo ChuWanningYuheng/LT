@@ -412,18 +412,31 @@ def build():
           "подтверждение закона.")
         if s3d is not None:
             d3 = s3d.set_index("item")
+            VAR = {"main": "основной", "lowmed": "L — низкая и средняя квалификация", "PQ_out": "образование и "
+                   "здравоохранение вне производительных"}
+            COL = {"r_h": "ln r_h", "k_h": "ln k_h", "r_h_nore": "ln r_h без капитала недвижимости",
+                   "r_h_gfcf": "ln r_h, капитал ∝ структуре ВНОК", "r_d": "ln r_$ (деньги)"}
             rows = []
-            for it in d3.index:
-                if it.startswith("lambda=") and ("ln r_h" in it or "ln k_h" in it or "ln r_d" in it):
-                    r = d3.loc[it]
-                    rows.append([it, ci_pct(r.est, r.ci90_lo, r.ci90_hi), lab(r.label_full)])
-            L += [""] + md_table(rows, ["Вариант (внутри фаз)", "Наклон", "Метка (описательно)"])
+            for lamk, lamn in (("net", "чистая λ"), ("gross", "валовая λ")):
+                for var, vn in VAR.items():
+                    for col, cn in COL.items():
+                        it = f"lambda={lamk}, variant={var}: within phases ln {col}"
+                        if it in d3.index and (var == "main" or col in ("r_h", "k_h")):
+                            r = d3.loc[it]
+                            rows.append([f"{lamn}; {vn}", cn, ci_pct(r.est, r.ci90_lo, r.ci90_hi), lab(r.label_full)])
+            L += [""] + md_table(rows, ["Вариант", "Ряд (внутри фаз)", "Наклон", "Метка (описательно)"])
             A("")
-            for it in ("single trend ln r_h 1995-2019 without 2008-2009 (gaps closed)",
-                       "WIOD check 2000-2014: EXIOBASE ln r_h trend", "WIOD check 2000-2014: WIOD (12b) ln r_h trend"):
-                if it in d3.index:
-                    r = d3.loc[it]
-                    A(f"* {it}: {ci_pct(r.est, r.ci90_lo, r.ci90_hi)} {lab(r.label_full)}.")
+            r = d3.loc["lambda=net, variant=main: within phases ln r_d"]
+            A(f"* **Часы против денег.** Денежная норма на тех же физических величинах внутри фаз "
+              f"{ci_pct(r.est, r.ci90_lo, r.ci90_hi)} {lab(r.label_full)}; падение есть только в часах (122). Это та "
+              "картина, которую даёт сокращение крестьянских и самозанятых часов: в часах L они уходят из S, в деньгах "
+              "их почти нет.")
+            r = d3.loc["single trend ln r_h 1995-2019 without 2008-2009 (gaps closed)"]
+            A(f"* Один тренд 1995–2019 гг. без 2008–2009 гг.: {ci_pct(r.est, r.ci90_lo, r.ci90_hi)} {lab(r.label_full)}.")
+            a = d3.loc["WIOD check 2000-2014: EXIOBASE ln r_h trend"]
+            b = d3.loc["WIOD check 2000-2014: WIOD (12b) ln r_h trend"]
+            A(f"* Сверка с WIOD (12б, исход 100), 2000–2014 гг.: EXIOBASE {ci_pct(a.est, a.ci90_lo, a.ci90_hi)} "
+              f"{lab(a.label_full)}, WIOD {ci_pct(b.est, b.ci90_lo, b.ci90_hi)} {lab(b.label_full)} — знак точечной оценки тот же.")
     else:
         A("Расчёт не завершён.")
     A("")
@@ -498,6 +511,10 @@ def build():
       "труда и куда относится оплата непроизводительного.")
     A("5. **Моральный износ** рывками есть, но в годах спадов промышленного цикла, а не в структурных кризисных окнах. "
       "Это совместимо с гл. 15 в прочтении «кризисы промышленного цикла» и плохо — с прочтением через структурные фазы.")
+    if O3 is not None:
+        A("6. **Мир.** Мировая норма в часах падает внутри фаз 1995–2007 и 2010–2019 гг. во всех вариантах, а в "
+          "деньгах на тех же величинах — нет. В этой конструкции падение в часах нельзя отделить от сокращения "
+          "крестьянской и самозанятой занятости (журнал п. 5), поэтому как подтверждение закона оно не читается.")
     A("")
     # ---------------------------------------------------------------- 9
     A("## 9. Что это не доказывает")

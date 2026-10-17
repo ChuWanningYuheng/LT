@@ -23,6 +23,12 @@ from .core import Economy
 ROOT = Path(__file__).resolve().parents[2]
 RAW = ROOT / "data" / "raw" / "bea"
 
+# Iteration 13a, stage 4 (pre_registration_v13a.md, 'Этап 4'): if True, the self-employed / employees ratio of the
+# finance and insurance industries (ISIC divisions 64-66) is taken for section K as a whole, not for the division
+# (OECD Table 7 USA has far more self-employed than employees in K65 insurance; review of 12b, R8). Default False
+# keeps iterations 1-12b reproducible.
+K_SECTION_SELF_RATIO = False
+
 # merged groups (A-BEA-MERGE): housing (imputed rents, no employees) with other real estate,
 # federal general government defense + nondefense (one FTE series)
 BEA_MERGES = [["HS", "ORE"], ["GFGD", "GFGN"]]
@@ -182,6 +188,8 @@ def build(year: int) -> tuple[Economy, dict]:
     self_ratio = []
     for n in names:
         divs = set().union(*[set(BEA_TO_NACE[m]) for m in n.split("+")])
+        if K_SECTION_SELF_RATIO and divs and divs <= {64, 65, 66}:
+            divs = {64, 65, 66}
         r = _nace_lookup(ratio_row, divs)
         self_ratio.append(0.0 if n.startswith("G") else (r if np.isfinite(r) else 0.0))
     self_ratio = np.array(self_ratio)

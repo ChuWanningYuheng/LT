@@ -8,7 +8,9 @@ import numpy as np
 import pandas as pd
 
 from ..v6.series import ROOT
+from . import est as est_
 from . import matrix as mx
+from .stage1 import CRISES as CR1, NBER_TROUGH, PHASES as PH1
 
 R = ROOT / "results" / "v13a"
 
@@ -99,12 +101,10 @@ def build():
     sh = rd("s1_shapley.csv")
     desc = rd("s1_descriptive.csv").set_index("item")
     mon = rd("s1_money_outcomes.csv").set_index("no")
-    lines = rd("s1_matrix_lines.csv")
     s2c, s2p, s2b, s2m, s2o = rd("s2_compare.csv"), rd("s2_compare_pt.csv"), rd("s2_bridge.csv"), rd("s2_mohun_text.csv"), \
         rd("s2_outcomes.csv")
     O3, s3d, s3m = rd("s3_outcomes.csv"), rd("s3_descriptive.csv"), rd("s3_matrix.csv")
     s4d, s4f = rd("s4_dumenil_levy.csv"), rd("s4_insurance_fix.csv")
-    P0 = rd("p0_power.csv")
 
     def o(no):
         return O1[O1.no == no].iloc[0]
@@ -221,9 +221,39 @@ def build():
     A("* Часы 1947–2023: исследовательский счёт BEA–BLS (часы всех занятых: медиана отношения к H_EMP JHS 0,981), "
       "2017–2023 гг. — по индексу счёта 1997–2024; шов 1997–2016 — 0,01 п. п. в год.")
     A("* Рядовые работники (CES): доли в часах и в фонде оплаты по 47 отраслям; сцепка рядов по первым трём общим "
-      "годам; s_W не обрезается на 1 (журнал п. 2).")
-    A("* Поколения капитала FA Detailed 1901–2023: историческая стоимость против табл. 4.3 — отклонение не больше "
-      "3,9% (1948 г.), с 1973 г. — меньше 1%.")
+      "годам; s_W не обрезается на 1 (журнал п. 2; где s_W > 1 — журнал п. 7).")
+    chk0 = rd("s0_checks.csv")
+    agg = chk0[chk0.check == "a: aggregate weighted by compensation"].copy()
+    agg["year"] = agg.year.astype(int)
+    agg = agg.set_index("year").sort_index()
+    rat = agg.value / agg.ref
+    def ols(y):
+        t = np.asarray(y.index, float)
+        return float(np.polyfit(t, np.log(y.to_numpy(float)), 1)[0])
+    ph_c = agg.loc[2010:2019]
+    A(f"* **Сверка s_W с CES 82/57** (предрегистрация, 0.2; сделана после рецензии — журнал п. 7, `s0_checks.csv`), "
+      f"{int(agg.index.min())}–{int(agg.index.max())} гг., взвешенно по оплате: наша s_W {num(agg.value.mean(), 3)} "
+      f"против отношения CES {num(agg.ref.mean(), 3)} (отношение {num(rat.min(), 3)}–{num(rat.max(), 3)}). Уровень "
+      "ниже, потому что зарплата NIPA шире фонда оплаты CES (премии, опционы и т. п.). Наклон за 2010–2019 гг.: "
+      f"наша {pct(ols(ph_c.value))}, CES {pct(ols(ph_c.ref))} в год — наша мера V падает быстрее.")
+    seam = chk0[chk0.check.str.startswith("c:")].copy()
+    seam["year"] = seam.year.astype(int)
+    sm_ = seam[seam.check.str.contains(", main")].set_index("year").value
+    ss_ = seam[seam.check.str.contains("splice")].set_index("year").value
+    b0 = chk0[(chk0.check.str.startswith("b:")) & (chk0.code == "private total")].value
+    A(f"* **Шов 1998 г. в s_W** (рецензия Р2): доля рядовых в оплате производительных отраслей 1997 → 1998 гг. "
+      f"{num(sm_.loc[1997], 4)} → {num(sm_.loc[1998], 4)} (Δ ln {num(100 * np.log(sm_.loc[1998] / sm_.loc[1997]), 2)} "
+      "п.); до 1998 г. зарплата — SIC (6.3B/C), распределённая по кодам, с 1998 г. — NAICS (6.3D). Итог частных "
+      f"отраслей совпадает (отношение 1998–2000 гг. {num(b0.min(), 3)}–{num(b0.max(), 3)}); расходится распределение по "
+      "кодам. Вариант «сшивка 1998» (журнал п. 7): зарплата 1948–1997 гг. × отношение NAICS / SIC кода за 1998–2000 гг.; "
+      f"скачок 1997 → 1998 гг. — {num(100 * np.log(ss_.loc[1998] / ss_.loc[1997]), 2)} п.")
+    vc = rd("s0_vintage_check.csv").set_index("year")
+    late = vc.loc[1973:].hist_dev.abs()
+    A(f"* Поколения капитала FA Detailed 1901–2023: историческая стоимость против табл. 4.3 — отклонение не больше "
+      f"{num(100 * vc.hist_dev.abs().max(), 1)}% ({int(vc.hist_dev.abs().idxmax())} г.); с 1973 г. — не больше "
+      f"{num(100 * late.max(), 2)}% ({int(late.idxmax())} г.; в журнале п. 2 было «меньше 1%» — неточно).")
+    A("* Доля самозанятых по кодам: NIPA 6.7 / 6.8. Ошибка сопоставления подписей 6.7D (с 1998 г. доля обнулялась "
+      "у 12 кодов) исправлена после рецензии (Р1, журнал п. 7).")
     A("* λ до 1947 г. — по индексу «часы на доллар ЧВП» Duménil–Lévy (`uslt4x`); варианты (а) λ_1947 и (б) текущая "
       "оценка поколений до 1947 г.")
     A("")
@@ -271,31 +301,75 @@ def build():
                          "Устойчив"])
     A("")
     ex = rd("s1_extra_after_results.csv").set_index("item")
-    def exr(no, v):
-        r = ex.loc[f"{no}: lambda before 1947 = {v}"]
-        return f"{ci_pct(r.est, r.ci90_lo, r.ci90_hi)} {lab(r.label_full)} (A {pct(r.slope_A)})"
-    A("* **Чувствительность к λ до 1947 г.** (журнал п. 6; оценки, наклон фазы A — в скобках):")
-    for no in (110, 111, 115):
-        A(f"  * {no}: основной (индекс `uslt4x`) {exr(no, 'index (main)')}; λ_1947 без поправки {exr(no, 'const')}; "
-          f"поколения до 1947 г. по текущей стоимости {exr(no, 'current')}.")
-    A("* Варианты меняют почти только наклон фазы A: в 1948–1973 гг. доля поколений до 1947 г. ещё велика. Основной "
-      "вариант даёт старым поколениям больший вес в часах (до 1947 г. часов на доллар было больше), их выбытие в фазе A "
-      "ослабляет рост C и падение r. По правилу задания 111 и 115 зависят от варианта — для итога этапа "
-      "«неинформативно».")
+    LV = (("index (main)", "основной (индекс `uslt4x`)"), ("const", "λ_1947 без поправки"),
+          ("current", "поколения до 1947 г. по текущей стоимости"))
+    A("**Чувствительность к λ до 1947 г.** (журнал п. 6 и п. 7; правило задания применяет этот слой к 110, 111, 115; "
+      "для 117, 125–127 — описательно, после рецензии Р3):")
+    A("")
+    rows = []
+    for no in (110, 111, 115, 117, 125, 126, 127):
+        row = [no]
+        for v, _ in LV:
+            r = ex.loc[f"{no}: lambda before 1947 = {v}"]
+            sl = "" if no in (126, 127) else f"; A {pct(r.slope_A)}, B {pct(r.slope_B)}"
+            row.append(f"{ci_pct(r.est, r.ci90_lo, r.ci90_hi)} {lab(r.label_full)}{sl}")
+        rows.append(row)
+    for rd_ in ("110 x 111", "125 x 111"):
+        rows.append([f"чтение {rd_.replace(' x ', ' × ')}"] + [lab(ex.loc[f"reading {rd_}: lambda before 1947 = {v} "
+                                                                       "(main labels of the variant)", "label_full"])
+                                                           for v, _ in LV])
+    L += md_table(rows, ["№"] + [n for _, n in LV])
+    A("")
+    A("* Чтения по вариантам — по основным меткам каждого варианта (слои устойчивости для вариантов не считались). "
+      "Чтение основного варианта в §3.2 — по меткам для правила.")
+    alt111 = [ex.loc[f"111: lambda before 1947 = {v}", "label_full"] for v in ("const", "current")]
+    both_fall = all(x == "подтверждено" for x in alt111)
+    A("* Основной вариант даёт поколениям 1901–1946 гг. больший вес в часах (до 1947 г. часов на доллар было больше). "
+      "Варианты меняют наклоны и фазы A, и фазы B (таблица). "
+      + (f"При обоих альтернативных вариантах историческая норма внутри фаз падает (111 «подтверждено»), а текущая "
+         f"(123) — {lab(o123.label_full)}: знак исторической меры зависит от допущения о λ до 1947 г. " if both_fall
+         else f"Метки 111 в альтернативных вариантах: {', '.join(lab(x) for x in alt111)}. ")
+      + "По правилу задания 111 и 115 при зависимости от варианта получают для итога «неинформативно».")
     A("")
     A("### 3.4 Наклоны по фазам и тождество")
     A("")
     rows = []
     for nm in ("ln r*_h", "ln e*_h", "ln(1 + k*_h)", "ln k*_h", "ln(C^(В) / L)", "ln(1 + e*_h)", "ln k*_h at (P)"):
         r = ident.loc[nm]
-        rows.append([nm, ci_pct(r.est, r.ci90_lo, r.ci90_hi), pct(r.slope_A), pct(r.slope_B), pct(r.slope_C)])
+        rows.append([nm.replace(" at (P)", " при (П)"), ci_pct(r.est, r.ci90_lo, r.ci90_hi), pct(r.slope_A),
+                     pct(r.slope_B), pct(r.slope_C)])
     L += md_table(rows, ["Ряд", "Общий наклон внутри фаз", "A 1948–1973", "B 1983–2007", "C 2010–2019"])
     A("")
     A("* Разложение точное: ln r*_h = ln e*_h − ln(1 + k*_h); ln k*_h = ln(C^(В)/L) + ln(1 + e*_h).")
     A(f"* В фазе C строение падает ({pct(ident.loc['ln k*_h', 'slope_C'])} в год), норма растёт.")
     A(f"* 116: β_A′ = {pct(desc.loc['116 slopes: beta_A' + chr(39) + ' and beta_B', 'slope_A'])}, "
       f"β_B = {pct(desc.loc['116 slopes: beta_A' + chr(39) + ' and beta_B', 'slope_B'])} в год. Ожидавшегося по "
-      "литературе о сжатии прибыли падения e*_h в 1964–1973 гг. в этой мере нет.")
+      "литературе о сжатии прибыли падения e*_h в 1964–1973 гг. в этой мере нет. Почему (рецензия Р5; журнал п. 7, "
+      "описательно):")
+    def xv(item):
+        return ex.loc[item]
+    mg_e = xv("e: V variant = managers in V and L (who=all)")
+    A(f"  * **управляющие (допущение С7).** Если управляющие входят в V и L, наклон ln e внутри фаз "
+      f"{ci_pct(mg_e.est, mg_e.ci90_lo, mg_e.ci90_hi)} (A {pct(mg_e.slope_A)}, B {pct(mg_e.slope_B)}, "
+      f"C {pct(mg_e.slope_C)}) против {pct(ident.loc['ln e*_h', 'est'])} (A {pct(ident.loc['ln e*_h', 'slope_A'])}, "
+      f"B {pct(ident.loc['ln e*_h', 'slope_B'])}) в основной мере; 128: β_A′ {pct(o128.slope_A)}, β_B {pct(o128.slope_B)}. "
+      "Рост e*_h в фазе B в основном — рост доли оплаты управляющих;")
+    om = xv("A' 1964-1973: OLS slope of ln omega*")
+    shp = xv("A' 1964-1973: OLS slope of ln PNS share of productive compensation")
+    oa = desc.loc["116 [omega_alt]"]
+    A(f"  * **построение V через личный доход (С3).** В 1964–1973 гг. доля рядовых в оплате производительных отраслей "
+      f"меняется на {pct(shp.est)} в год, а ω* — на {pct(om.est)}: V падает относительно потребления за счёт отношения "
+      f"оплаты производительных отраслей к личному доходу. Вариант ω* без трансфертов: β_A′ {pct(oa.slope_A)}. "
+      "Такое V не совпадает с долей заработной платы в стоимости, о которой литература сжатия прибыли;")
+    cap = xv("116: V variant = sW capped at 1")
+    sp_ = xv("116: V variant = splice 1998")
+    A(f"  * **s_W > 1.** С обрезкой s_W на 1: β_A′ {pct(cap.slope_A)}, 116 = {ci_pct(cap.est, cap.ci90_lo, cap.ci90_hi)} "
+      f"{lab(cap.label_full)}; 110 и 111 — {pct(xv('110: V variant = sW capped at 1').est)} и "
+      f"{pct(xv('111: V variant = sW capped at 1').est)};")
+    A(f"  * **шов 1998 г.** Со сшивкой зарплаты (§2): наклон ln e*_h в фазе B {pct(xv('e: V variant = splice 1998').slope_B)} "
+      f"(основной {pct(ident.loc['ln e*_h', 'slope_B'])}); 116 = {ci_pct(sp_.est, sp_.ci90_lo, sp_.ci90_hi)} "
+      f"{lab(sp_.label_full)}; 111 = {ci_pct(xv('111: V variant = splice 1998').est, xv('111: V variant = splice 1998').ci90_lo, xv('111: V variant = splice 1998').ci90_hi)} "
+      f"{lab(xv('111: V variant = splice 1998').label_full)}.")
     A("")
     A("### 3.5 Разложение отличий от 12б (Шепли)")
     A("")
@@ -312,8 +386,9 @@ def build():
     A("")
     chk = rd("s1_check_12b.csv")
     A(f"* Проверки на концах: все переключатели в положении 12б воспроизводят r_h 12б (max |Δ| < 10⁻¹⁶: "
-      f"{num(chk.absdiff_12b_end.max() * 1e17, 1)}·10⁻¹⁷); в положении 13а — r*_h (max |Δ| = "
-      f"{num(chk.absdiff_13a_end.max(), 1)}).")
+      f"{num(chk.absdiff_12b_end.max() * 1e17, 1)}·10⁻¹⁷) — это независимая проверка. В положении 13а ряд "
+      f"конфигурации 111111 совпадает с r*_h (max |Δ| = {num(chk.absdiff_13a_end.max(), 1)}), но оба считаются одной "
+      "функцией (`year_values`), так что это проверка сборки, а не независимая (рецензия Р14).")
     A("* Больше всего наклон внутри фаз снижают переход к часам и знаменатель (В); переход к рядовым повышает его. "
       "Историческая оценка внутри фаз почти не меняет наклон (ДИ включает 0), а в линейном тренде за 75 лет "
       "повышает его.")
@@ -339,6 +414,28 @@ def build():
     A(f"* 113: без активов с гедоническими ценами R = {num(r_h.est, 2)} ({num(r_h.ci90_lo, 2)}; {num(r_h.ci90_hi, 2)}); "
       f"в годы дна спадов NBER темп морального износа выше на {pct(rg.est)} (γ, {num(100 * rg.ci90_lo, 2)}; "
       f"{num(100 * rg.ci90_hi, 2)}).")
+    MD = rd("s1_moral_depreciation.csv").set_index("year")
+    def grp_mean(col, wins):
+        msk = np.any([(MD.index >= a) & (MD.index <= b) for a, b in wins], axis=0)
+        return float(MD.loc[msk, col].mean())
+    nb_y = [y for y in NBER_TROUGH if y in MD.index]
+    rows = []
+    for nm, wins in (("внутри фаз A, B, C", list(PH1.values())), ("структурные кризисные окна", CR1),
+                     ("годы дна спадов NBER", [(y, y) for y in nb_y])):
+        rows.append([nm, pct(grp_mean("m", wins)), pct(grp_mean("m_productivity", wins)),
+                     pct(grp_mean("m_relative_price", wins))])
+    for y in nb_y:
+        rows.append([f"{y} (дно спада)", pct(MD.m[y]), pct(MD.m_productivity[y]), pct(MD.m_relative_price[y])])
+    A("")
+    A("**Разложение темпа морального износа m** (предрегистрация, 1.6; средние за годы, процент капитала в год; "
+      "компоненты — середина отрезка, остаток — взаимодействие):")
+    A("")
+    L += md_table(rows, ["Годы", "m", "компонента производительности", "компонента цены активов"])
+    A("")
+    kp = sum(MD.m_productivity[y] > MD.m_relative_price[y] for y in nb_y)
+    A(f"* В {kp} из {len(nb_y)} годов дна спадов компонента производительности больше компоненты цены активов: часы "
+      "падают быстрее выпуска, и измеренная λ падает. Значит, мера ловит и циклические колебания измеренной "
+      "производительности, а не только обесценивание по гл. 15 (рецензия Р9).")
     A("")
     # ---------------------------------------------------------------- 4
     A("## 4. Этап 2: сверка с работами, где марксова норма падает")
@@ -361,30 +458,52 @@ def build():
     kl = rd("s1_extra_after_results.csv").set_index("item").loc["Kliman (2009): PIH / HCFA, 1947-2007"]
     A(f"* Kliman (2009) на послевоенном окне 1947–2007 гг. (журнал п. 6, описательно): ряд автора "
       f"{ci_pct(kl.est, kl.ci90_lo, kl.ci90_hi)} {lab(kl.label_full)}, наш аналог {ci_pct(kl.ours, kl.ours_lo, kl.ours_hi)}; "
-      f"разность {ci_pct(kl['diff'], kl.diff_lo, kl.diff_hi)} — в пределах ± 0,2 п. п. Предрегистрированное окно "
-      "(с 1929 г.) начинается в Великую депрессию, поэтому там тренд автора положителен.")
-    A("* Basu et al.: сравнение с мировой нормой 12б (PWT), а не с аналогом по EPWT — источники разные.")
-    A("* Paitaridis & Tsoulfidis: по периодам табл. 1 TOST не выполнен ни для одной величины (`s2_compare_pt.csv`); "
-      "наш аналог MVA — приближение (без детальной классификации ST).")
+      f"разность {ci_pct(kl['diff'], kl.diff_lo, kl.diff_hi)} — {'в пределах' if kl.reproduced else 'вне'} ± 0,2 п. п. "
+      "Окно выбрано после результата. На предрегистрированном окне (с 1929 г., начало — Великая депрессия) тренд "
+      "автора не падает; 119 считается по нему.")
+    bx = rd("s2_descriptive.csv").set_index("item")
+    fl = dict(zip(str(s2o.works.iloc[0]).split(";"), str(s2o.reproduced.iloc[0]).split(";")))
+    nb_ = {w: f for w, f in fl.items() if not w.startswith("Basu")}
+    k_nb, n_nb = sum(f == "True" for f in nb_.values()), len(nb_)
+    bxr = bx.loc["Basu et al.: XR LimitCountries vs 12b PWT xr balanced"]
+    A(f"* Basu et al.: сравнение с мировой нормой 12б (PWT), а не с аналогом по EPWT — источники разные. По ППС TOST не "
+      f"выполнен; по рыночным курсам (XR) — выполнен: разность {ci_pct(bxr['diff'], bxr.diff_lo, bxr.diff_hi)}, "
+      f"корреляция уровней {num(bxr.corr_levels, 2)} (рецензия Р12). Расхождение — в агрегировании по ППС. Без Basu "
+      f"доля 119 была бы {k_nb} из {n_nb}.")
+    pe = s2p[(s2p.work == "Paitaridis & Tsoulfidis (2012)") & (s2p.y0 == 1964) & (s2p.y1 == 2007)].set_index("variable")
+    A(f"* Paitaridis & Tsoulfidis: по периодам табл. 1 TOST не выполнен ни для одной величины (`s2_compare_pt.csv`); "
+      "наш аналог MVA — приближение (без детальной классификации ST). Способ «годовых темпов» у авторов неизвестен. "
+      f"Наш темп R по концам 1964–2007 гг. — {pct(pe.loc['R', 'endpoint_growth_ours'])} против {pct(pe.loc['R', 'author'])} у "
+      f"авторов; для C/v точечная разность {num(100 * pe.loc['C/v', 'diff'], 2)} п. п., TOST не выполнен из-за ширины ДИ.")
     A("")
-    A("**Мост** (шаги в фиксированном порядке; тренд ln, правило одного ряда, на общем окне):")
+    A("**Мост** (шаги в фиксированном порядке, каждый — одна перемена; тренд ln, правило одного ряда; все шаги, "
+      "включая i, — на одном окне; подшаги ii-а…ii-г — после рецензии Р6, журнал п. 7):")
     A("")
     rows = []
+    signs = {}
     for w, g in s2b.groupby("work", sort=False):
-        start = s2c[s2c.work == w]
-        first = (f"{ci_pct(start.trend_ours.iloc[0], start.trend_ours_lo.iloc[0], start.trend_ours_hi.iloc[0])} "
-                 f"({int(start.y0.iloc[0])}–{int(start.y1.iloc[0])})") if len(start) else \
-            ci_pct(pm.trend_ours, pm.trend_ours_lo, pm.trend_ours_hi)
-        rows.append([w, "i: определение автора на наших данных", first, ""])
+        g = g.reset_index(drop=True)
+        rows.append([w, f"{int(g.y0.iloc[0])}–{int(g.y1.iloc[0])}", "", ""])
         for _, r in g.iterrows():
             rows.append(["", r.step, ci_pct(r.est, r.ci90_lo, r.ci90_hi), lab(r.label)])
+        e0 = np.sign(g.est.iloc[0])
+        flip = g[np.sign(g.est) != e0]
+        signs[w] = (flip.step.iloc[0].split(":")[0] if len(flip) else None, g)
     L += md_table(rows, ["Работа", "Шаг", "Тренд", "Метка"])
     A("")
-    A("* Знак меняется на шаге ii: при переходе от норм авторов (прибыль корпораций или частной экономики за вычетом "
-      "всей оплаты труда) к марксовой норме производительных отраслей (вычитается только оплата их работников, "
-      "оплата непроизводительных — часть S; знаменатель — капитал производительных отраслей).")
-    A("* Шаги iii–v (V рядовых, историческая оценка, часы) держат тренд положительным; шаг vi — знаменатель (В) — "
-      "возвращает его к нулю.")
+    for w, (st, g) in signs.items():
+        A(f"* {w}: шаг i {ci_pct(g.est.iloc[0], g.ci90_lo.iloc[0], g.ci90_hi.iloc[0])} {lab(g.label.iloc[0])}; "
+          + (f"знак точечной оценки впервые меняется на шаге {st}." if st else "знак точечной оценки на шагах не меняется."))
+    A("* Подшаги ii-а…ii-г разделяют то, что шаг ii меняет сразу: охват добавленной стоимости (частный сектор без "
+      "государства и недвижимости против NDP с ними), оплату непроизводительных отраслей (издержки или S), меру V "
+      "(выплаченная оплата или корзина ω·Σc) и охват капитала ((В) или (П)). Порядок фиксированный: вклад шага зависит "
+      "от порядка. Шаг v («деньги → часы») тоже не только смена единиц: из S выпадает добавленная стоимость "
+      "непроизводительных отраслей и государства.")
+    rm = bx.loc["bridge step ii vs r_m of iteration 9b (main), 1948-2023"]
+    A(f"* **Шаг ii против r_m итерации 9б** (предрегистрация «к r_m 9б»; 1948–2023 гг.): наш "
+      f"{ci_pct(rm.trend_ours, rm.trend_ours_lo, rm.trend_ours_hi)}, 9б {ci_pct(rm.trend_author, rm.trend_author_lo, rm.trend_author_hi)}, "
+      f"разность {ci_pct(rm['diff'], rm.diff_lo, rm.diff_hi)}; {'в пределах' if rm.reproduced else 'вне'} ± 0,2 п. п.; "
+      f"корреляция уровней {num(rm.corr_levels, 2)}.")
     A("")
     A("**Mohun (2014)** — только величины, названные в тексте (без TOST):")
     A("")
@@ -397,9 +516,16 @@ def build():
                    for _, r in s2m.iterrows()],
                   ["Величина", "Год", "Mohun (текст)", "Наш аналог"])
     A("")
-    A("* Доли занятости и оплаты производительного труда близки; доля оплаты надзора у нас вдвое ниже — наша "
-      "граница «рядовые / надзор» (CES s_W по 47 отраслям, зарплата без отчислений) и знаменатель отличаются от "
-      "построения Mohun.")
+    mt = s2m.set_index(["variable", "year"])
+    un = "unproductive working-class wages / money value added"
+    sv = "supervisory wages / money value added"
+    yrs = sorted(int(y) for v, y in mt.index if v == un)
+    A(f"* Доля оплаты непроизводительного рабочего класса у Mohun {num(mt.loc[(un, yrs[0]), 'mohun_text'], 3)} "
+      f"({yrs[0]}) и {num(mt.loc[(un, yrs[-1]), 'mohun_text'], 3)} ({yrs[-1]}), у нас — {num(mt.loc[(un, yrs[0]), 'ours'], 3)} "
+      f"и {num(mt.loc[(un, yrs[-1]), 'ours'], 3)}: у нас она растёт. Это та оплата, которая на шаге ii моста уходит в S. "
+      f"Доля оплаты надзора у нас ниже ({num(mt.loc[(sv, yrs[0]), 'ours'], 3)} против {num(mt.loc[(sv, yrs[0]), 'mohun_text'], 3)} "
+      f"в {yrs[0]} г.). Граница «рядовые / надзор» (CES s_W по 47 отраслям) независимо не проверена; s_W > 1 и шов "
+      "1998 г. (§2, §3.4) — её известные слабости.")
     A("")
     # ---------------------------------------------------------------- 5
     A("## 5. Этап 3: мировая система в часах (EXIOBASE 3.11.2, 1995–2024)")
@@ -415,7 +541,10 @@ def build():
             VAR = {"main": "основной", "lowmed": "L — низкая и средняя квалификация", "PQ_out": "образование и "
                    "здравоохранение вне производительных"}
             COL = {"r_h": "ln r_h", "k_h": "ln k_h", "r_h_nore": "ln r_h без капитала недвижимости",
-                   "r_h_gfcf": "ln r_h, капитал ∝ структуре ВНОК", "r_d": "ln r_$ (деньги)"}
+                   "k_h_nore": "ln k_h без капитала недвижимости", "r_h_gfcf": "ln r_h, капитал ∝ структуре ВНОК",
+                   "k_h_gfcf": "ln k_h, капитал ∝ структуре ВНОК", "r_h_natp": "ln r_h, масштаб PWT в национальных ценах",
+                   "k_h_natp": "ln k_h, масштаб PWT в национальных ценах", "r_d": "ln r_$ (деньги)",
+                   "r_d_natp": "ln r_$, масштаб PWT в национальных ценах"}
             rows = []
             for lamk, lamn in (("net", "чистая λ"), ("gross", "валовая λ")):
                 for var, vn in VAR.items():
@@ -426,11 +555,45 @@ def build():
                             rows.append([f"{lamn}; {vn}", cn, ci_pct(r.est, r.ci90_lo, r.ci90_hi), lab(r.label_full)])
             L += [""] + md_table(rows, ["Вариант", "Ряд (внутри фаз)", "Наклон", "Метка (описательно)"])
             A("")
+            A("* Варианты со столбцами «без недвижимости», «ВНОК» и «национальные цены» — описательно; варианты "
+              "«национальные цены» добавлены после рецензии (Р8, журнал п. 7). Капитал региона = (cn / cgdpo) × ДС "
+              "EXIOBASE; cn и cgdpo в PWT — в текущих ППС, а ДС EXIOBASE — в рыночных ценах. Вариант (cn·pl_n) / "
+              "(cgdpo·pl_gdpo) переводит отношение K/Y в национальные цены.")
+            A("")
+            A("**Наклоны по фазам** (свои наклоны фаз, основной вариант; после рецензии Р8):")
+            A("")
+            rows = []
+            for nm in ("ln e_h", "ln k_h", "ln r_h", "ln r_$", "ln(r_h / r_$)", "ln k_h, national prices",
+                       "ln r_h, national prices", "agricultural share of L"):
+                it = f"phase slopes: {nm}"
+                if it in d3.index:
+                    r = d3.loc[it]
+                    nm_ru = (nm.replace("national prices", "национальные цены")
+                             .replace("agricultural share of L", "доля часов сельского хозяйства в L (п. в год)"))
+                    if nm.startswith("agricultural"):
+                        rows.append([nm_ru, num(100 * r.slope_A, 3), num(100 * r.slope_B, 3)])
+                    else:
+                        rows.append([nm_ru, pct(r.slope_A), pct(r.slope_B)])
+            L += md_table(rows, ["Ряд", "1995–2007", "2010–2019"])
+            A("")
+            ag = [d3.loc[f"mean agricultural share of L {a}-{b}", "est"] for a, b in ((1995, 2007), (2010, 2019))
+                  if f"mean agricultural share of L {a}-{b}" in d3.index]
+            if len(ag) == 2:
+                A(f"* Доля часов сельского хозяйства (EXIOBASE, отрасли 0–18) в L: в среднем {num(ag[0], 3)} в 1995–2007 гг. "
+                  f"и {num(ag[1], 3)} в 2010–2019 гг.")
             r = d3.loc["lambda=net, variant=main: within phases ln r_d"]
             A(f"* **Часы против денег.** Денежная норма на тех же физических величинах внутри фаз "
-              f"{ci_pct(r.est, r.ci90_lo, r.ci90_hi)} {lab(r.label_full)}; падение есть только в часах (122). Это та "
-              "картина, которую даёт сокращение крестьянских и самозанятых часов: в часах L они уходят из S, в деньгах "
-              "их почти нет.")
+              f"{ci_pct(r.est, r.ci90_lo, r.ci90_hi)} {lab(r.label_full)}; падение есть только в часах (122). Толкование — "
+              "§8.")
+            jump = [f"{c} {num(100 * d3.loc[f'd ln {c} 2009->2010', 'est'], 1)}" for c in ("e_h", "r_h", "V_h", "S_d")
+                    if f"d ln {c} 2009->2010" in d3.index]
+            if jump:
+                top = [c for c in ("e_h", "r_h", "V_h", "S_d") if f"d ln {c} 2009->2010" in d3.index
+                       and int(d3.loc[f"d ln {c} 2009->2010", "rank_abs"]) == 1]
+                A(f"* **Разрыв 2009→2010** (Δ ln × 100): {'; '.join(jump)}. Крупнейшее годовое изменение ряда — у "
+                  f"{', '.join(top) if top else 'ни одного из них'}. В Changelog EXIOBASE 3.10.1/3.11.2 сказано об отдельной обработке лет до 2010 г. и об "
+                  "использовании FIGARO; связь со скачком не проверена. Разрыв приходится на границу фаз, и уровни фаз "
+                  "его поглощают; один тренд 1995–2019 гг. и сверка с WIOD 2000–2014 гг. его пересекают.")
             r = d3.loc["single trend ln r_h 1995-2019 without 2008-2009 (gaps closed)"]
             A(f"* Один тренд 1995–2019 гг. без 2008–2009 гг.: {ci_pct(r.est, r.ci90_lo, r.ci90_hi)} {lab(r.label_full)}.")
             a = d3.loc["WIOD check 2000-2014: EXIOBASE ln r_h trend"]
@@ -458,35 +621,66 @@ def build():
         L += md_table([[int(r.outcome), r["name"], f"{num(r.est_before, 4)}", lab(r.label_before), f"{num(r.est_after, 4)}",
                         lab(r.label_after), "да" if r.label_changes else "нет"] for _, r in s4f.iterrows()],
                       ["№", "Исход", "Было", "Метка", "Стало", "Метка", "Метка меняется"])
+        ub = rd("s4_b0_usa_bea.csv")
+        if ub is not None:
+            def g_(sub, h, ver):
+                r = ub[(ub.subset == sub) & (ub.h == h) & (ub.version == ver)].iloc[0]
+                return r
+            parts = []
+            for sub, h in (("all", 5), ("all", 1), ("core", 1)):
+                a, b = g_(sub, h, "before"), g_(sub, h, "after")
+                parts.append(f"{sub}, h = {h}: R² труда {num(a.labour, 3)} → {num(b.labour, 3)}, информативно "
+                             f"{'да' if a.informative_vs_phys else 'нет'} → {'да' if b.informative_vs_phys else 'нет'}")
+            A("")
+            A(f"* Метки исходов не меняются, но сама экономика USA_BEA меняется сильно (`s4_b0_usa_bea.csv`; рецензия "
+              f"Р10): {'; '.join(parts)}.")
+            A("* «Закрыто» относится только к первичным исходам 7 и 18. Вторичные результаты итераций 1–3, 8, 10 на "
+              "экономиках `lts.bea` не пересчитывались.")
     else:
         A("* Пересчёт исходов 7 и 18 не завершён.")
     A("")
     # ---------------------------------------------------------------- 7
     A("## 7. Матрица «теория × исход»: попарные выводы")
     A("")
-    A("Зачёт — по правилу предрегистрации (журнал п. 3). [$] — по денежному аналогу. Метки — основного расчёта; "
-      "неустойчивые помечены.")
+    A("Зачёт — по правилу предрегистрации (журнал п. 3). Теория с пометкой [$] засчитана по денежному аналогу той же "
+      "меры (`s1_money_outcomes.csv`), остальные — по мере в часах. Метки — основного расчёта; неустойчивые помечены.")
+    A("")
+    M1 = rd("s1_matrix.csv")
+    def tag(g, cond):
+        sub = g[cond]
+        return ", ".join(t + (" [$]" if b == "деньги [$]" else "") for t, b in zip(sub.theory, sub.basis)) or "—"
+    rows = []
+    allm = M1.copy()
+    if s3m is not None:
+        allm = pd.concat([allm, s3m], ignore_index=True)
+    for no, g in allm.groupby("no"):
+        no = int(no)
+        if no in set(O1.no):
+            rr = o(no)
+            lb = lab(rr.label_full) + ("" if bool(rr.get("robust", True)) else " (неустойчиво)")
+        else:
+            rr = O3[O3.no == no].iloc[0]
+            lb = lab(rr.label_full) + ("" if bool(rr.get("robust", True)) else " (неустойчиво)")
+        za = tag(g, g.verdict == "за")
+        if no in (120, 121) and za != "—":
+            za += " (оговорка п. 5: не толкуется как подтверждение)"
+        rows.append([no, NAMES.get(no, ""), lb, za, tag(g, g.verdict == "против"),
+                     tag(g, (g.verdict != "за") & (g.verdict != "против") & (g.prediction != "молчит")),
+                     tag(g, g.prediction == "молчит")])
+    L += md_table(rows, ["№", "Исход", "Метка (часы)", "За", "Против", "Предсказывали, но нейтрально", "Молчат"])
+    A("")
+    A("**Денежные аналоги** (по ним засчитаны теории с [$]; `s1_money_outcomes.csv`):")
     A("")
     rows = []
-    allines = lines.copy()
-    if s3m is not None:
-        for no, g in s3m.groupby("no"):
-            allines = pd.concat([allines, pd.DataFrame([dict(no=no, label=O3[O3.no == no].label_full.iloc[0],
-                                 za=", ".join(g[g.verdict == "за"].theory), protiv=", ".join(g[g.verdict == "против"].theory),
-                                 neutral_with_prediction=", ".join(g[(g.verdict != "за") & (g.verdict != "против") &
-                                                                     (g.prediction != "молчит")].theory),
-                                 silent=", ".join(g[g.prediction == "молчит"].theory))])], ignore_index=True)
-    for _, r in allines.sort_values("no").iterrows():
-        rob = ""
-        if r.no in set(O1.no):
-            rr = o(int(r.no))
-            rob = "" if bool(rr.get("robust", True)) else " (неустойчиво)"
-        rows.append([int(r.no), NAMES.get(int(r.no), ""), lab(r.label) + rob, r.za if isinstance(r.za, str) else "—",
-                     r.protiv if isinstance(r.protiv, str) else "—",
-                     r.neutral_with_prediction if isinstance(r.neutral_with_prediction, str) else "—"])
-    L += md_table(rows, ["№", "Исход", "Метка", "За", "Против", "Предсказывали, но нейтрально"])
+    for no, r in mon.iterrows():
+        rows.append([int(no), NAMES.get(int(no), ""), ci_pct(r.est, r.ci90_lo, r.ci90_hi), lab(r.label_full)])
+    L += md_table(rows, ["№", "Исход", "Денежный аналог", "Метка"])
     A("")
-    A("* Теории с «≈ 0» (Неокл.-К; М для 130; Шейх для 130) получить «за» не могли: ожидаемая полуширина ДИ больше Δ.")
+    A("* Теории с «≈ 0» (Неокл.-К; М для 130; Шейх для 130) получить «за» не могли: полуширина ДИ больше Δ — для "
+      "исходов из `p0_power.csv` по ожидаемой точности, для 130 — по наблюдаемой ширине ДИ.")
+    A("* 130 — не чистый тест «цена против стоимости»: S_$ = NDP_$ − V_$ включает добавленную стоимость "
+      "непроизводительных отраслей и государства, а в часах их труд стоимости не создаёт. 130 смешивает отклонение цен "
+      "от стоимостей с изменением доли непроизводительного сектора (рецензия Р14).")
     A("")
     # ---------------------------------------------------------------- 8
     A("## 8. Интерпретация")
@@ -519,8 +713,8 @@ def build():
     # ---------------------------------------------------------------- 9
     A("## 9. Что это не доказывает")
     A("")
-    A("* Отсутствие тренда внутри фаз — не «закон опровергнут»: при данной точности падение меньше ~0,4% в год не "
-      "различимо.")
+    A(f"* Отсутствие тренда внутри фаз — не «закон опровергнут»: полуширина 90% ДИ 111 — {pct(o111.half_width)}, "
+      f"MDE = 2,8·SE = {pct(o111.mde)} в год; падение меньше этого не различимо.")
     A("* Часы — только производственные и рядовые работники BLS; это не марксова граница производительного труда.")
     A("* Мера 113 не видит ценового обесценивания гл. 15 (банкротства, списания).")
     A("* Мировой уровень: часы разных стран сложены как однородные; самозанятые и крестьяне — в часах.")
@@ -529,16 +723,116 @@ def build():
     # ---------------------------------------------------------------- 10
     A("## 10. Невыполненное и недоступное")
     A("")
-    A("* Не сделано по рецензии (журнал п. 3): 114ʹ — проверка теоремы Окисио по равновесной норме и "
+    A("* Не сделано по рецензии до расчётов (журнал п. 3): 114ʹ — проверка теоремы Окисио по равновесной норме и "
       "жизнеспособности изменений техники; часы мира, взвешенные производительностью; запасы в C; отраслевые "
       "дефляторы выпуска до 1997 г.")
-    A("* Вариант часов JHS (1948–2010; 0.1) не построен: перевод 40 кодов ISIC Rev. 3 в 47 кодов не сделан.")
+    A("* Вариант часов JHS (1948–2010; предрегистрация 0.1) не построен: перевод 40 кодов ISIC Rev. 3 в 47 кодов не "
+      "сделан (журнал п. 7).")
+    A("* Аддитивный мост r НФК → r*_h по шагам (П21) не сделан: данных по корпорациям в разрезе 47 кодов нет; вместо "
+      "него — мост от определений авторов (§4) (журнал п. 7).")
+    A("* Разрыв EXIOBASE 2009→2010 не исследован: нужна документация обработки лет до 2010 г. (FIGARO) по отраслям.")
     A("* Недоступно (список для пользователя): таблицы книг Shaikh & Tonak (1994), Moseley (1991), Kliman (2012); "
       "матрицы капитала Södersten et al. для EXIOBASE 3.10.2 (Zenodo, доступ по запросу); полный EXIOBASE 3.8.2.")
     A("")
     A("## 11. Рецензия после расчётов и ответы")
     A("")
-    A("См. `results/v13a/review_independent.md`; ответы — ниже (добавляются после рецензии).")
+    A("Рецензия — [`results/v13a/review_independent.md`](../results/v13a/review_independent.md): 14 замечаний, "
+      "критичных (меняющих итог этапа 1) нет. Исправления и дополнения — журнал п. 7 (после результата), отдельными "
+      "коммитами: код — до перезапуска. Все числа этого отчёта — уже после исправлений.")
+    A("")
+    sp1 = rd("s1_spec_variants.csv")
+    nose = sp1[sp1.spec == "no_se"].set_index("year")
+    nse = est_.within_trend(np.log(nose.r), PH1, 0.002, "<")
+    spl = ex.loc["116: V variant = splice 1998"]
+    s2b_k = s2b[s2b.work.str.startswith("Kliman")]
+    k_i = s2b_k[s2b_k.step.str.startswith("i:")].iloc[0]
+    rows = [
+        ["Р1", "принято", f"Сопоставление подписей NIPA 6.7D исправлено (6.7D даёт самозанятых по укрупнённым секторам), "
+         f"при ненайденной строке — ошибка. Этап 1 пересчитан: 111 = {ci_pct(o111.est, o111.ci90_lo, o111.ci90_hi)}; "
+         f"вариант «без самозанятых» — {ci_pct(nse['est'], nse['ci90_lo'], nse['ci90_hi'])} {lab(nse['label_full'])}"],
+        ["Р2", "принято", f"Сверка s_W с CES 82/57 сделана (`s0_checks.csv`, §2). Шов 1998 г. подтверждён: итог частных "
+         "отраслей SIC и NAICS совпадает, расходится распределение по кодам. Вариант «сшивка 1998»: 116 = "
+         f"{ci_pct(spl.est, spl.ci90_lo, spl.ci90_hi)} {lab(spl.label_full)} (основной {lab(o116.label_full)}). Основная "
+         "оценка оставлена предрегистрированной; зависимость 116 от шва вынесена в §0, §7, §8"],
+        ["Р3", "принято", "λ-варианты 117, 125–127 и чтения по вариантам — §3.3; §0, §8, REPORT_FINAL и SUMMARY переписаны "
+         "условно («при основном индексе `uslt4x`»); чтение 114 × 115 — и по меткам для правила (§3.2)"],
+        ["Р4", "принято", f"Оценки в фазах NBER записаны (`s1_outcomes.csv`); r*_h в них "
+         f"{ci_pct(o111.nber_est, o111.nber_ci90_lo, o111.nber_ci90_hi)} {lab(o111.nber_label)}, k*_h "
+         f"{ci_pct(o110.nber_est, o110.nber_ci90_lo, o110.nber_ci90_hi)} {lab(o110.nber_label)}. Формулировки §0 и §8 "
+         "исправлены"],
+        ["Р5", "принято", "Варианты «управляющие в V», «s_W ≤ 1», «сшивка 1998» и ω* в A′ — §3.4; описание s_W > 1 в "
+         "журнале п. 2 исправлено в п. 7"],
+        ["Р6", "принято", f"Шаг i — на окне моста (Kliman: {ci_pct(k_i.est, k_i.ci90_lo, k_i.ci90_hi)} {lab(k_i.label)} на "
+         f"{int(k_i.y0)}–{int(k_i.y1)} гг.); шаг ii разбит на ii-а…ii-г; сверка с r_m 9б; вывод §8 смягчён"],
+        ["Р7", "принято", "§7: пометки [$], столбец «молчат», денежные оценки, неустойчивость 120–122, оговорка п. 5 к «за» "
+         "по 120/121; строки в формате предрегистрации — §12.4"],
+        ["Р8", "принято", "Вариант масштаба PWT в национальных ценах, наклоны по фазам, все варианты k_h, доля часов "
+         "сельского хозяйства, разрыв 2009→2010 — §5; толкование про крестьян перенесено в §8 и сужено"],
+        ["Р9", "принято", f"Окно 2020–2021 в сетке без лет фазы C; доля основной метки 113 в сетке — "
+         f"{num(o113.grid_share_main, 3)}; слой подвыборок применён ({o113.nine if isinstance(o113.nine, str) else '—'}); "
+         "разложение m и оговорка о циклической производительности — §3.6, §8"],
+        ["Р10", "принято", "Изменение USA_BEA — §6; «закрыто» сужено до исходов 7 и 18 (§6, REPORT_FINAL, SUMMARY)"],
+        ["Р11", "принято", "Отступления записаны в журнал п. 7; недостающие таблицы — §12; аддитивный мост и JHS — в "
+         "невыполненное (§10)"],
+        ["Р12", "принято", "Темп P&T по концам, сверка Basu по XR, доля без Basu, доля непроизводительной оплаты у Mohun — §4"],
+        ["Р13", "принято", "Kliman 1947–2007 помечен «после результата» в отчёте и сводных документах; статусы вопросов "
+         "12б о часах и о Basu обновлены"],
+        ["Р14", "принято", "Исправлены: «< 1% с 1973 г.» (§2), проверка Шепли на конце 13а (§3.5), формулировка U (§8), "
+         "оговорка к 130 (§7), лицензия EXIOBASE (журнал п. 7), оформление, числа в прозе — из CSV"],
+    ]
+    L += md_table(rows, ["№", "Решение", "Что сделано"])
+    A("")
+    # ---------------------------------------------------------------- 12 appendix
+    A("## 12. Приложение: предрегистрированные таблицы (рецензия Р11, п. 7)")
+    A("")
+    A("### 12.1 Наклоны по фазам и однородность (HAC, лаг 4)")
+    A("")
+    rows = []
+    for no in (110, 111, 114, 115, 117, 123, 124, 125, 129, 130):
+        r = o(no)
+        rows.append([no] + [f"{pct(r[f'slope_{g}'])} ± {num(100 * 1.645 * r[f'se_{g}'], 2)}" for g in "ABC"]
+                    + [num(r.p_equal_slopes, 3)])
+    L += md_table(rows, ["№", "A 1948–1973", "B 1983–2007", "C 2010–2019", "p (Вальд, β_A = β_B = β_C)"])
+    A("")
+    A("Полуширина — 1,645·SE_HAC. Однородность «≈ 0» засчитывается только при p ≥ 0,10.")
+    A("")
+    A("### 12.2 Шепли: средний уровень ln r и парные дивиденды Харсаньи")
+    A("")
+    shv = sh[sh.statistic == "level"].set_index("switch")
+    rows = [[swt, num(shv.loc[swt, "shapley"], 4), num(shv.loc[swt, "fixed_order_step"], 4)]
+            for swt in ("cap", "lab", "who", "dep", "val", "den", "total (13a - 12b)")]
+    L += md_table(rows, ["Переключатель", "Вклад Шепли в средний уровень ln r", "Шаг в фиксированном порядке"])
+    A("")
+    pr = rd("s1_shapley_pairs.csv")
+    pw = pr[pr.statistic == "within"].set_index("pair").harsanyi_dividend
+    pl = pr[pr.statistic == "linear"].set_index("pair").harsanyi_dividend
+    pv = pr[pr.statistic == "level"].set_index("pair").harsanyi_dividend
+    rows = [[k, pct(pw[k]), pct(pl[k]), num(pv[k], 4)] for k in pw.abs().sort_values(ascending=False).index]
+    L += md_table(rows, ["Пара", "Дивиденд: наклон внутри фаз", "Дивиденд: линейный тренд", "Дивиденд: уровень ln r"])
+    A("")
+    A("### 12.3 Ряды по годам (основная форма) и профиль фаз")
+    A("")
+    ms_ = pd.read_csv(R / "s1_main_series.csv", index_col=0)
+    def mark(y):
+        for k_, (a, b) in PH1.items():
+            if a <= y <= b:
+                return k_
+        for a, b in CR1:
+            if a <= y <= b:
+                return f"окно {a}–{b}"
+        return "—"
+    rows = [[int(y), mark(int(y)), num(ms_.r[y], 4), num(ms_.k[y], 3), num(ms_.e[y], 3),
+             pct(MD.m[y]) if y in MD.index else "—", "дно спада NBER" if int(y) in NBER_TROUGH else ""]
+            for y in ms_.index]
+    L += md_table(rows, ["Год", "Фаза / окно", "r*_h", "k*_h", "e*_h", "m", ""])
+    A("")
+    A("### 12.4 Попарные выводы строками (формат предрегистрации)")
+    A("")
+    for no, g in allm.groupby("no"):
+        za, pr_ = tag(g, g.verdict == "за"), tag(g, g.verdict == "против")
+        ne = tag(g, (g.verdict != "за") & (g.verdict != "против") & (g.prediction != "молчит"))
+        si = tag(g, g.prediction == "молчит")
+        A(f"* **{int(no)}:** за {za}; против {pr_}; предсказывали, но нейтрально: {ne}; молчат: {si}.")
     A("")
     (ROOT / "report" / "REPORT_v13a.md").write_text("\n".join(L) + "\n")
     print("written", len(L), "lines")

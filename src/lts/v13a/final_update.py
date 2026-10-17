@@ -1,9 +1,12 @@
 """Iteration 13a: insert the iteration-13a sections into report/REPORT_FINAL.md and report/SUMMARY.md (numbers from
-results/v13a CSV files). Idempotent: does nothing if the 13a markers are already present.
+results/v13a CSV files). Re-runnable: if the 13a markers are present, the sections are rebuilt on the versions of both
+files before 13a (commit BASE), so that a rerun after the post-calculation review replaces the earlier 13a text.
 
 Usage: PYTHONPATH=src python -P -m lts.v13a.final_update
 """
 from __future__ import annotations
+
+import subprocess
 
 import pandas as pd
 
@@ -12,6 +15,12 @@ from .report import ci_pct, lab, num, pct
 
 R = ROOT / "results" / "v13a"
 MARK = "<!-- 13a -->"
+BASE = "fd4d48c"                         # last commit before the 13a sections were inserted
+
+
+def _base(path):
+    return subprocess.run(["git", "-C", str(ROOT), "show", f"{BASE}:{path}"], check=True, capture_output=True,
+                          text=True).stdout
 
 
 def numbers():
@@ -124,8 +133,7 @@ def run():
     sp = ROOT / "report" / "SUMMARY.md"
     F, S = fp.read_text(), sp.read_text()
     if MARK in F or MARK in S:
-        print("13a sections already present - nothing done")
-        return
+        F, S = _base("report/REPORT_FINAL.md"), _base("report/SUMMARY.md")
     summary_par, s10, s11, summ = texts()
     # REPORT_FINAL: §1 paragraph after the 9b paragraph
     i = F.index("**Итерация 9б (к выводу 8 и закону тенденции).**")

@@ -1,0 +1,8 @@
+item,value
+labels for the rule (robust or 'неинформативно'),110:подтверждено;111:неинформативно;113:неинформативно
+stage 1 verdict (task rule 1.5),неразличимо
+"method boundary (114 not falling, 115 falling; main labels)",False
+reading 110 x 111 (descriptive),норма не установлена
+reading 125 x 111 (descriptive),неразличимо
+"reading 114 x 115 (descriptive, main labels)",при постоянной корзине норма не падает ни при какой оценке
+labels 114; 115 (main),опровергнуто (обр.); опровергнуто (обр.)

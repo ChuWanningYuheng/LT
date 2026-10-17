@@ -1,0 +1,28 @@
+                                                                                    outcome      est  ci90_lo  ci90_hi               label_full robust
+0                                                          110: trend ln k*_h within phases  0.01061  0.00649  0.01544             подтверждено   True
+1                                                          111: trend ln r*_h within phases -0.00039 -0.00427  0.00330           неинформативно  False
+2                                            114: Okishio counterfactual, current valuation  0.00597  0.00412  0.00888      опровергнуто (обр.)   True
+3                                         115: Okishio counterfactual, historical valuation  0.00460  0.00191  0.00688      опровергнуто (обр.)  False
+4                                                117: trend ln r(B) - ln r(P) within phases -0.00247 -0.00316 -0.00176             подтверждено   True
+5                                                  123: trend ln r_h,curr (B) within phases  0.00050 -0.00164  0.00375           неинформативно  False
+6                                                  124: trend ln k_h,curr (B) within phases  0.00989  0.00762  0.01272             подтверждено   True
+7                                              125: trend ln(C_h,hist(P) / L) within phases  0.00080 -0.00394  0.00620           неинформативно  False
+8                                                 129: trend ln r_TSSI (MELT) within phases  0.00037 -0.00379  0.00425           неинформативно  False
+9                                                  130: trend ln(r*_h / r*_$) within phases  0.00242  0.00016  0.00559      опровергнуто (обр.)  False
+10                                    116: trend ln e*_h in phase B minus in A' = 1964-1973  0.00573  0.00303  0.00957             подтверждено   True
+11                                                      126: ln r*_h, slope B minus slope A  0.01215  0.00605  0.01656             подтверждено   True
+12                                          127: ln(C_h,hist(P) / L), slope B minus slope A -0.01646 -0.02215 -0.00891             подтверждено   True
+13                           128: ln e with managers in V and L (all employees), B minus A' -0.00242 -0.01029  0.00693           неинформативно  False
+14                    112: recovery between phases, mean d ln r*_h (1973->1983, 2007->2010) -0.08415      NaN      NaN  описательно (2 события)    NaN
+15                  113: R = mean moral depreciation rate in crisis windows / within phases  0.30811 -0.05767  0.95325      опровергнуто (обр.)  False
+16                                       131: secular trend ln r*_h 1948-2023 (descriptive)  0.00018 -0.00085  0.00122      опровергнуто (экв.)    NaN
+17  118: share of the trend gap ln r_NFC - ln r*_h due to ln(1 - U/S$) (Moseley), 1948-2023  0.68319  0.44743  0.99615                      NaN    NaN
+18                                                 118: same, within phases (common slopes)      NaN      NaN      NaN                      NaN    NaN
+                                                          item                                                       value
+0             labels for the rule (robust or 'неинформативно')      110:подтверждено;111:неинформативно;113:неинформативно
+1                              stage 1 verdict (task rule 1.5)                                                 неразличимо
+2  method boundary (114 not falling, 115 falling; main labels)                                                       False
+3                              reading 110 x 111 (descriptive)                                        норма не установлена
+4                              reading 125 x 111 (descriptive)                                                 неразличимо
+5                 reading 114 x 115 (descriptive, main labels)  при постоянной корзине норма не падает ни при какой оценке
+6                                       labels 114; 115 (main)                    опровергнуто (обр.); опровергнуто (обр.)

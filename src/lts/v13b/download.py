@@ -266,9 +266,67 @@ def census_asec(years=range(1998, 2026)):
                   f"CPS ASEC {y} public-use file from the Census Bureau ({n})")
 
 
+# files the user downloaded from NBER in a browser and uploaded to the shared Google Drive folder
+# 1rHZwXJnBYZHA79CpmDE0XvU5XwesT22X (2026-10-17); name on Drive -> Drive file id; saved under the NBER name
+NBER_GDRIVE = {
+    "cpsmar62.zip": "1o_R8ijXSOU3JwRSDn_fI1UNgFKPIDvaC", "cpsmar64.zip": "1ktVhO0Bb22ViwgoBQ5teYjTuaPeNVNn-",
+    "cpsmar66.zip": "1SleIwfG865a6CyzDymg9PiRCv3diiQ7p", "cpsmar67.zip": "14z_O1rb35054cC_dcIxbe-Tynl_U3P7e",
+    "cpsmar68.zip": "1iu-5wjBssu3tGCspnaptPrxGLYeZrF3E", "cpsmar69.zip": "1f9nxwe4O4siaRWWc-V2G29dagTmyoqJK",
+    "cpsmar71.zip": "1t9VHZuTXl2BH4W-RcEe4mGoqx1sKHdn2", "cpsmar72.zip": "1ERbxmQ9T61wmLICgmgQwP9BX7LZ2N6zC",
+    "cpsmar73.zip": "1z43d4opU_mHEYfs2ADJ1LoPC9c9l4ATb", "cpsmar74.zip": "1NUxFjQZHaF_Sv_ElH-U5S1NvrWAMaATg",
+    "cpsmar75.zip": "1HonOLQ-FviYowiSzsm7HFDv6BgcTgIiL", "cpsmar76.zip": "1wNJLv0qH5fDgqHX6bOXfl2lPQbL22tfo",
+    "cpsmar77.zip": "18sbllskhdh3FVECYVEp4jlQA1g8NZkeW", "cpsmar78.zip": "1LygHVEVr5qeQYl3MVExdd1CdCwom-u2E",
+    "cpsmar79.zip": "1WxHUs3zndsDTPynwjU9iBXHxp49mU9EV", "cpsmar80.zip": "1hFdRrRLGtS4eJ217G1ERo-oyNEfJN6NF",
+    "cpsmar81.zip": "1b6XV8ceMAaF5JqcsKAlxlVDRIxF_x2jc", "cpsmar82.zip": "1GUl15882T3KKFozkaVSVUjpgyTtNfK9Q",
+    "cpsmar83.zip": "1IB9_HXw52e5RqZFuo70Z3dAFCIjt-_ne", "cpsmar84.zip": "1t-RamQuxVOMf1NKg3H8Say8mQSnBShvU",
+    "cpsmar85.zip": "1SG93mt2BNPaKXx5qhk08nYUZ4AEwL5wS", "cpsmar86.zip": "17438rwJ4Ftpy3KbiHrmYfai1toW9FPFS",
+    "cpsmar87.zip": "1G15eOxVHTyOLlHI_yzWgQ5Xy7IdvU4WV", "cpsmar88.zip": "1q-9W42AjzifZPSYogXirddt2c9ug1syz",
+    "cpsmar89.zip": "1tGOfDHbU0hPv1YnFgm4A9AZiyBri7vVk", "cpsmar90.zip": "1lFWmQFULauuzWE__lFujiKc45cXmLQx8",
+    "cpsmar91.zip": "1fPQbeVbxLwsvkBIXKhtFjVoERIB6fvDz", "cpsmar92.zip": "18eNwpw7YiV1eNvlfWqByXit7O0mMKLTi",
+    "cpsmar93.zip": "1Rha_f2Vd0SoxKhWIBm__a8ciHAofVgMd", "cpsmar94.zip": "1eq1qRL-L2SN0BHAKoc5UALMlHBooadQK",
+    "cpsmar95.zip": "1DZyiDYQuCSXFl0iLZyf2AbyH8thE23k7", "cpsmar96.zip": "1m5I2Rdd3vWQ8I1-iviyQa7jjpY9qgkoq",
+    "cpsmar97.zip": "1t7rXYjj4GAKZFAhf4MzTJ_EWofe5KfqX",
+    "CPS_1962_Codebook_Part_1.pdf": "1EO9thZeV2Nek-7Q7Sjck0ZYaIuVs4ni1",
+    "CPS_1962_Codebook_Part_2.pdf": "1RiAdSHa0OGlAyXlTTwlazNaftXcuEJoa",
+    "cpsmar62.pdf": "1FEgC_mhMF4sJNHMoCsmUwGpzk3P_WVNG", "cpsmar63-67.pdf": "1HNfNBzqTy1wtEJS1uJtLhrn6SCzi0P35",
+    "cpsmar68-71.pdf": "1ofQuAYwWdpCCUJO0G2s6tYDBdcl4Sb7_", "cpsmar72.pdf": "11HYuDhpN4fMEwgErcbgsGeOzNNLmSvK-",
+    "cpsmar73-75.pdf": "1QE8GtuOWH1zx6R_9e3qrhTTyKCVHx2Nn", "cpsmar76.pdf": "1e5Nm8zGUHJ2or9bK80uwkOwqzjJPXc-D",
+    "cpsmar77.pdf": "1vEnDiQIDFYTKyQkXUYOEAweyutc8kOH1", "cpsmar78.pdf": "1gfUvrEcXFRIqD4XAqp7nJXyQcPEPNkB2",
+    "cpsmar79.pdf": "11tCEkU2rMyPSZr4DcFMAx4mjI-axUC8x", "cpsmar80.pdf": "15a6WghpJ8ft2sM4-FgRGCMXUv15eUPeM",
+    "cpsmar81.pdf": "1oOuw5iOmaJZlr76hHHudiQ1wRE4ki7LJ", "cpsmar82.pdf": "1ys_eqGSGJTAQLI6-ddSl1hSSApinTjra",
+    "cpsmar83.pdf": "10Q2z6eV5v5PMc_Y9HhI0qffh7w2CMKQm", "cpsmar85.pdf": "1II8K0moT_tnZHQaGlkMtmXWnSPd86cXi",
+    "cpsmar86.pdf": "1OcXFJ37UORM_1wqQlfKSNFOoKLSi63hk", "cpsmar87.pdf": "16PXq8Gr_0TR6SCThXcMAnLN36jjmHdmB",
+    "cpsmar88-91.pdf": "1P3_T9cCjahzBlZnEeZWHEdfp5LNWZRwH", "cpsmar88.note": "1Gy5lEWzt25M07Lbu3UMZpyh3RcsccnST",
+    "cpsmar89.ddf": "1aty4AKvfMCWprn3_CqsPmwYTJi34NPg-", "cpsmar90.ddf": "1PjuOEVjzkqiBsdmWiU9TtJRXeRcG8szT",
+    "cpsmar91.ddf": "1NAol08jqOMOnote7khqbTd-2AyG1ijdi", "cpsmar92.ddf": "1mc1rI4-pH8_3gxp1jIwYDyMkWgnFEIlE",
+    "cpsmar93.pdf": "1RYpRt4tVOYpO1HNsBWiWjdmxixPoiKZs", "cpsmar94.ddf": "1zfCfZQ1DIC7BMhsOOz4-mssWpDGHdnpT",
+    "cpsmar95.ddf": "13PuFQPvka2n-V78FgL3kqfMGIUZ7VmvT",
+}
+
+
+def nber_gdrive():
+    for nm, fid in NBER_GDRIVE.items():
+        fetch("nber_cps", nm, f"https://drive.usercontent.google.com/download?id={fid}&export=download&confirm=t",
+              "NBER (research use)", f"NBER March CPS file {nm} (https://data.nber.org/cps/), downloaded by the user in a "
+              "browser and supplied via the shared Google Drive folder 1rHZwXJnBYZHA79CpmDE0XvU5XwesT22X (NBER refuses "
+              "scripted downloads)")
+
+
+def census_techdocs():
+    """Census CPS technical documentation: March record layouts 1990-1999 (replace NBER .ddf files that NBER failed to
+    serve for 1996-1997) and the industry / occupation code appendices."""
+    base = "https://www2.census.gov/programs-surveys/cps/techdocs/"
+    for nm in [f"cpsmar{y}.pdf" for y in range(90, 100)] + ["appa.pdf", "appa1972.pdf", "appb.pdf", "appb1974.pdf",
+                                                            "appb1976.pdf", "appc.pdf", "appc1978.pdf", "appc1982.pdf",
+                                                            "appd.pdf", "appd1984.pdf", "appd1986.pdf", "appd1988.pdf"]:
+        fetch("census_cps_techdocs", nm, base + nm, "U.S. Census Bureau (public domain)",
+              f"Census CPS technical documentation {nm}")
+
+
 SOURCES = dict(eia=eia, energy_institute=energy_institute, ceo_pay=ceo_pay, wid=wid, pss=pss, oecd_tax=oecd_tax,
                dfa=dfa, psz=psz, nyfed=nyfed, frank=frank, fhfa=fhfa, bls_states=bls_states, bea_sainc=bea_sainc,
-               cps_probe=cps_probe, census_asec=census_asec)
+               cps_probe=cps_probe, census_asec=census_asec, nber_gdrive=nber_gdrive,
+               census_techdocs=census_techdocs)
 
 
 if __name__ == "__main__":

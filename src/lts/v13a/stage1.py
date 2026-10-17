@@ -199,7 +199,7 @@ def hist_hours(lab, who, dep, pre="index", ces_variant="main", se_in_L=True, ipp
     pc, prod_rows = producer_index()
     lam_by = {y: lam(y, lab, who, dep, ces_variant, se_in_L) for y in LAMBDA_YEARS}
     li = lam_index()
-    W = np.zeros_like(I1)
+    W = np.zeros(I1.shape, float)
     for j, y in enumerate(years):
         if y >= 1947:
             W[:, j] = lam_by[y][pc]
@@ -386,7 +386,7 @@ def tssi_series():
     for y in LAMBDA_YEARS:
         L, _ = labour(y, "hours", "pns")
         melt[y] = ndp(y) / float(L.sum())
-    W = np.zeros_like(v["I1"])
+    W = np.zeros(v["I1"].shape, float)
     for j, y in enumerate(years):
         W[:, j] = 1.0 / (melt[y] if y >= 1947 else melt[1947] / float(li.get(y, 1.0)))
     Z = s0.vintage_stock(v["I1"], v["delta"], W)
@@ -656,7 +656,7 @@ def _hist_hours_rows():
     pc, _ = producer_index()
     li = lam_index()
     lam_by = {y: lam(y, "hours", "pns", "net") for y in LAMBDA_YEARS}
-    W = np.zeros_like(v["I1"])
+    W = np.zeros(v["I1"].shape, float)
     for j, y in enumerate(v["years"].tolist()):
         W[:, j] = lam_by[y][pc] if y >= 1947 else lam_by[1947][pc] * float(li.get(y, 1.0))
     return s0.vintage_stock(v["I1"], v["delta"], W)

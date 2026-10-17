@@ -1,0 +1,2 @@
+outcome,est,ci90_lo,ci90_hi,k,n,works,reproduced,rule,stage1_preliminary
+119: share of works whose trend our analogue reproduces within ±0.002 a year (TOST),0.6,0.272461989949914,0.8573066002116804,3,5,Kliman (2009): PIH / HCFA;Shaikh (2016): rcorpnipa;Duménil–Lévy (uslt4x): r;Basu et al. (2025): Global EPWT PPP LimitCountries;Paitaridis & Tsoulfidis (2012): R 1964–2007,True;True;True;False;False,"ниже 0,5 — выводы этапа 1 предварительные (правило задания)",False

@@ -1,0 +1,16 @@
+                                                 work    y0    y1  trend_ours  trend_author    diff  diff_lo  diff_hi  reproduced
+0                           Kliman (2009): PIH / HCFA  1929  2007      0.0046        0.0060 -0.0014  -0.0017  -0.0011        True
+1                            Shaikh (2016): rcorpnipa  1947  2011     -0.0094       -0.0088 -0.0006  -0.0013   0.0000        True
+2                            Duménil–Lévy (uslt4x): r  1948  2014     -0.0030       -0.0035  0.0006   0.0004   0.0007        True
+3  Basu et al. (2025): Global EPWT PPP LimitCountries  1960  2019     -0.0047       -0.0070  0.0023  -0.0012   0.0058       False
+                                                                                                                                                                                             0
+outcome                                                                                                    119: share of works whose trend our analogue reproduces within ±0.002 a year (TOST)
+est                                                                                                                                                                                        0.6
+ci90_lo                                                                                                                                                                               0.272462
+ci90_hi                                                                                                                                                                               0.857307
+k                                                                                                                                                                                            3
+n                                                                                                                                                                                            5
+works               Kliman (2009): PIH / HCFA;Shaikh (2016): rcorpnipa;Duménil–Lévy (uslt4x): r;Basu et al. (2025): Global EPWT PPP LimitCountries;Paitaridis & Tsoulfidis (2012): R 1964–2007
+reproduced                                                                                                                                                          True;True;True;False;False
+rule                                                                                                                               ниже 0,5 — выводы этапа 1 предварительные (правило задания)
+stage1_preliminary                                                                                                                                                                       False

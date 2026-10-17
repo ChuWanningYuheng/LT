@@ -52,7 +52,7 @@ KBAR_CODE = {"ROU": "ROM", "WA": "WWA", "WL": "WWL", "WE": "WWE", "WF": "WWF", "
 def _read(z, name, header_rows):
     """EXIOBASE text matrix: header_rows header lines (region, sector/category, ...), then rows with index columns."""
     with z.open(name) as f:
-        head = [f.readline().decode().rstrip("\n").split("\t") for _ in range(header_rows)]
+        head = [f.readline().decode().rstrip("\r\n").split("\t") for _ in range(header_rows)]
         df = pd.read_csv(f, sep="\t", header=None, engine="c")
     return head, df
 

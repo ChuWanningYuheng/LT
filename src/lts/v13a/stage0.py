@@ -267,19 +267,38 @@ def flat_63d():
     return t
 
 
-def wages_47():
+def _sic_alloc(G, y):
+    alloc = u.comp_allocator(y).clip(lower=0)
+    rec = pd.Series(0.0, index=CODES)
+    for g, cs in u.GROUPS.items():
+        w = alloc[cs]
+        rec[cs] = float(G.loc[y, g]) * (w / w.sum() if w.sum() > 0 else 1.0 / len(cs))
+    return rec
+
+
+SPLICE_YEARS = (1998, 1999, 2000)
+
+
+@lru_cache(None)
+def splice_ratios():
+    """By code, 1998-2000 (both 6.3C and 6.3D exist): NAICS wages (6.3D) / SIC wages (6.3C) allocated to codes.
+    Added after results (review R2)."""
+    gC, D = sic_groups("T60300C"), _naics_from(flat_63d())
+    R = pd.DataFrame({y: D.loc[y] / _sic_alloc(gC, y) for y in SPLICE_YEARS}).T
+    return R.replace([np.inf, -np.inf], np.nan)
+
+
+def wages_47(splice=False):
     """Wages and salaries by 47 codes, $ million, 1948-2023: 1948-1997 SIC groups (6.3B to 1987, 6.3C 1988-1997)
-    allocated within groups by the 12b compensation allocator; 1998-2023 NAICS lines (current flat file 6.3D)."""
+    allocated within groups by the 12b compensation allocator; 1998-2023 NAICS lines (current flat file 6.3D).
+    splice=True (variant after results, review R2): 1948-1997 values x the code's mean 1998-2000 ratio NAICS / SIC
+    (ratio 1 where it is undefined)."""
     gB, gC = sic_groups("T60300B"), sic_groups("T60300C")
     G = pd.concat([gB.loc[:1987], gC.loc[1988:1997]])
+    k = splice_ratios().mean().fillna(1.0) if splice else pd.Series(1.0, index=CODES)
     rows = {}
     for y in range(1948, 1998):
-        alloc = u.comp_allocator(y).clip(lower=0)
-        rec = pd.Series(0.0, index=CODES)
-        for g, cs in u.GROUPS.items():
-            w = alloc[cs]
-            rec[cs] = float(G.loc[y, g]) * (w / w.sum() if w.sum() > 0 else 1.0 / len(cs))
-        rows[y] = rec
+        rows[y] = _sic_alloc(G, y) * k
     D = _naics_from(flat_63d())
     for y in range(1998, 2024):
         rows[y] = D.loc[y] if y in D.index else pd.Series(np.nan, index=CODES)
@@ -343,28 +362,31 @@ def se_share():
                     _first(s8, "transportation and public utilities")[y])
                 rec[cs] = se / pe if pe > 0 else 0.0
             rows[y] = rec
-    s7, s8 = arch("T60700D"), arch("T60800D")
-    sec7 = {lb: row for (ln, lb), row in s7.iterrows()}
+    s7 = arch("T60700D")
     p8 = naics_47("T60800D")
+    # NIPA 6.7D publishes self-employed by combined sectors (lines 15-18): the share of a combined sector is applied
+    # to each of its codes. Fixed after results (review R1): the first version used finer labels that 6.7D lacks, and
+    # the missing ones were silently skipped (share 0 from 1998 for 22, 52, 531, 532RL, 54-56, 61, 62, 71, 721, 722).
     sector_codes = {
         "agriculture, forestry, fishing, and hunting": ["111CA", "113FF"], "mining": ["211", "212", "213"],
         "utilities": ["22"], "construction": ["23"], "manufacturing": u.MFG, "wholesale trade": ["42"],
         "retail trade": ["44RT"], "transportation and warehousing": ["48", "493"], "information": ["51"],
-        "finance and insurance": ["52"], "real estate and rental and leasing": ["531", "532RL"],
-        "professional, scientific, and technical services": ["54"],
-        "management of companies and enterprises": ["55"],
-        "administrative and waste management services": ["56"], "educational services": ["61"],
-        "health care and social assistance": ["62"], "arts, entertainment, and recreation": ["71"],
-        "accommodation and food services": ["721", "722"], "other services, except government": ["81"]}
+        "finance and insurance, real estate, rental, and leasing": ["52", "531", "532RL"],
+        "professional and business services": ["54", "55", "56"],
+        "educational services, health care, and social assistance": ["61", "62"],
+        "arts, entertainment, recreation, accommodation, and food services": ["71", "721", "722"],
+        "other services, except government": ["81"]}
+    covered = sorted(c for cs in sector_codes.values() for c in cs)
+    private = sorted(c for c in CODES if not c.startswith("G"))
+    if covered != private:
+        raise ValueError(f"6.7D sectors do not cover the private codes: {sorted(set(private) ^ set(covered))}")
+    sec7 = {lab: _first(s7, lab) for lab in sector_codes}        # KeyError on a missing label
     for y in range(1998, 2024):
         yy = min(y, max(s7.columns))
         rec = pd.Series(0.0, index=CODES)
         for lab, cs in sector_codes.items():
-            row = sec7.get(lab)
-            if row is None:
-                continue
             pe = float(p8.loc[yy, cs].sum())
-            rec[cs] = float(row[yy]) / pe if pe > 0 else 0.0
+            rec[cs] = float(sec7[lab][yy]) / pe if pe > 0 else 0.0
         rows[y] = rec
     S = pd.DataFrame(rows).T
     S.index.name = "year"
@@ -460,12 +482,12 @@ AGR = ["111CA", "113FF"]
 
 @lru_cache(None)
 def ces_annual():
-    """Annual averages (NSA, M13) of data types 01, 02, 06, 07, 08 by CES industry code."""
+    """Annual averages (NSA, M13) of data types 01, 02, 06, 07, 08 (and 57, 82 for the check of sW) by CES code."""
     ser = pd.read_csv(CES / "ce.series", sep="\t", dtype=str)
     ser.columns = [c.strip() for c in ser.columns]
     for c in ser.columns:
         ser[c] = ser[c].str.strip()
-    ser = ser[(ser.seasonal == "U") & ser.data_type_code.isin(["01", "02", "06", "07", "08"])]
+    ser = ser[(ser.seasonal == "U") & ser.data_type_code.isin(["01", "02", "06", "07", "08", "57", "82"])]
     want = set(ser.series_id)
     frames = []
     for f in sorted(CES.glob("ce.data.*")):
@@ -543,11 +565,11 @@ def _linked(series_list, link=True):
     return out
 
 
-def ces_shares(link=True, rho_mode="2006-2010", pre1964="1964", agr="one", years=range(1948, 2024)):
+def ces_shares(link=True, rho_mode="2006-2010", pre1964="1964", agr="one", years=range(1948, 2024), splice=False):
     """PNS shares by 47 code and year: sN (employment), rho (hours per worker PNS / AE), sH = sN * rho,
     sW (PNS payroll / NIPA wages and salaries). Variants: link, rho_mode ('2006-2010' or 'one'), pre1964 ('1964' or
-    'goods-trend'), agr ('one' or 'private')."""
-    W = wages_47()
+    'goods-trend'), agr ('one' or 'private'), splice (wages 1948-1997 spliced to 6.3D, after results)."""
+    W = wages_47(splice)
     cache = {}
 
     def ser(sc):
@@ -800,7 +822,63 @@ def lambda_index():
 
 
 # ================================================================ run
+# ================================================================ checks of sW (after results, review R2)
+def sw_checks():
+    """s0_checks.csv. (a) Pre-registered check (stage 0.2): sW from 2006 against the CES ratio of aggregate weekly
+    payrolls 82 / 57 of the same scope (most detailed full-coverage scope of the code). (b) 1998 seam of the wage
+    denominator: NAICS (6.3D) / SIC (6.3C allocated) wages, 1998-2000. (c) PNS share of productive compensation,
+    sum sW x comp / sum comp, 1994-2002, main and splice variants."""
+    A = ces_annual()
+    D = pd.read_csv(OUT / "s0_ces_shares.csv", dtype={"code": str})
+    rows = []
+    for code, pref in SCOPES.items():
+        sc = next((s for s in pref if s not in PARTIAL and len(s) == 1 and s[0] in COVER), None)
+        if sc is None:
+            continue
+        sw = D[(D.variant == "main") & (D.code == code)].set_index("year").sW
+        for y in range(2006, 2024):
+            if (sc[0], y) not in A.index:
+                continue
+            a = A.loc[(sc[0], y)]
+            if not (np.isfinite(a.get("82", np.nan)) and np.isfinite(a.get("57", np.nan))):
+                continue
+            rows.append(dict(check="a: sW vs CES 82/57", code=code, scope=sc[0], year=y, value=float(sw[y]),
+                             ref=float(a["82"] / a["57"])))
+    a = pd.DataFrame(rows)
+    for y, g in a.groupby("year"):
+        comp = u.compensation(y)[g.code].to_numpy(float)
+        rows.append(dict(check="a: aggregate weighted by compensation", code="aggregate", year=y,
+                         value=float((g.value * comp).sum() / comp.sum()), ref=float((g.ref * comp).sum() / comp.sum())))
+    R = splice_ratios()
+    for code in CODES:
+        for y in SPLICE_YEARS:
+            rows.append(dict(check="b: wages NAICS 6.3D / SIC 6.3C allocated", code=code, year=y, value=R.loc[y, code]))
+    gC, Dn = sic_groups("T60300C"), _naics_from(flat_63d())
+    for y in SPLICE_YEARS:
+        priv = [c for c in CODES if not c.startswith("G")]
+        rows.append(dict(check="b: wages NAICS 6.3D / SIC 6.3C allocated", code="private total", year=y,
+                         value=float(Dn.loc[y, priv].sum() / _sic_alloc(gC, y)[priv].sum())))
+    prod = [c for c in CODES if c not in u.UNPRODUCTIVE]
+    for vn in ("main", "splice 1998"):
+        P = D[D.variant == vn].pivot_table(index="year", columns="code", values="sW")
+        for y in range(1994, 2003):
+            comp = u.compensation(y)
+            cs = [c for c in prod if c in P.columns]
+            rows.append(dict(check=f"c: sum sW x comp / sum comp over productive codes, {vn}",
+                             code="aggregate", year=y,
+                             value=float((P.loc[y, cs] * comp[cs]).sum() / comp[cs].sum())))
+    C = pd.DataFrame(rows)
+    a = C[C.check.str.startswith("a")]
+    summ = a.groupby("code").agg(value=("value", "mean"), ref=("ref", "mean")).reset_index()
+    summ["check"] = "a: mean 2006-2023 by code"
+    summ["year"] = "2006-2023"
+    return pd.concat([C, summ], ignore_index=True)
+
+
 def run(part="all"):
+    if part == "checks":
+        sw_checks().to_csv(OUT / "s0_checks.csv", index=False)
+        print("checks done", flush=True)
     if part in ("hours", "all"):
         H, link, missing = hours_47(return_research=True)
         H.to_csv(OUT / "s0_hours_47.csv")
@@ -835,7 +913,8 @@ def run(part="all"):
         print("units:", decision, flush=True)
     if part in ("ces", "all"):
         variants = {"main": {}, "unlinked": dict(link=False), "rho=1": dict(rho_mode="one"),
-                    "pre-1964 goods trend": dict(pre1964="goods-trend"), "agriculture = private": dict(agr="private")}
+                    "pre-1964 goods trend": dict(pre1964="goods-trend"), "agriculture = private": dict(agr="private"),
+                    "splice 1998": dict(splice=True)}                    # after results (review R2)
         frames = []
         for nm, kw in variants.items():
             D = ces_shares(**kw)

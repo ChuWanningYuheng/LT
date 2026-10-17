@@ -311,9 +311,23 @@ def tests():
     for (lamk, var), g in W.groupby(["lam", "variant"]):
         g = g.set_index("year").sort_index()
         for col, d_ in (("r_h", "<"), ("k_h", ">"), ("r_h_nore", "<"), ("k_h_nore", ">"), ("r_h_gfcf", "<"),
-                        ("k_h_gfcf", ">"), ("r_d", "<")):
+                        ("k_h_gfcf", ">"), ("r_d", "<"), ("r_h_natp", "<"), ("k_h_natp", ">"), ("r_d_natp", "<")):
+            if col not in g.columns:
+                continue
             desc.append(dict(item=f"lambda={lamk}, variant={var}: within phases ln {col}",
                              **est.within_trend(np.log(g[col]), PHASES_W, D, d_, block=3)))
+    # after results (review R8): own phase slopes of the identity parts, agricultural share of hours, 2009 -> 2010
+    for nm, y in (("ln e_h", np.log(main.e_h)), ("ln k_h", np.log(main.k_h)), ("ln r_h", np.log(main.r_h)),
+                  ("ln r_$", np.log(main.r_d)), ("ln(r_h / r_$)", np.log(main.r_h / main.r_d)),
+                  ("ln k_h, national prices", np.log(main.k_h_natp)), ("ln r_h, national prices", np.log(main.r_h_natp)),
+                  ("agricultural share of L", main.share_agr_L)):
+        desc.append(dict(item=f"phase slopes: {nm}", **est.phase_slopes(y, PHASES_W)))
+    for a_, b_ in PHASES_W.values():
+        desc.append(dict(item=f"mean agricultural share of L {a_}-{b_}", est=float(main.share_agr_L.loc[a_:b_].mean())))
+    for col in ("e_h", "r_h", "k_h", "V_h", "S_h", "S_d", "L"):
+        dl = np.log(main[col]).diff()
+        desc.append(dict(item=f"d ln {col} 2009->2010", est=float(dl.loc[2010]),
+                         rank_abs=int((dl.abs() >= abs(dl.loc[2010])).sum())))
     yy = np.log(main.r_h)
     yy = yy[(yy.index <= 2019) & ~yy.index.isin([2008, 2009])]
     desc.append(dict(item="single trend ln r_h 1995-2019 without 2008-2009 (gaps closed)",

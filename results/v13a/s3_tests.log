@@ -1,0 +1,4 @@
+                                                      outcome      est  ci90_lo  ci90_hi    label_full  robust
+0  120: trend ln world r_h within phases 1995-2007, 2010-2019 -0.01045 -0.01255 -0.00753  подтверждено    True
+1                       121: trend ln world k_h within phases  0.00773  0.00028  0.01698  подтверждено   False
+2  122: trend ln(r_h / r_$) of the world system within phases -0.01764 -0.02633 -0.00927  подтверждено    True

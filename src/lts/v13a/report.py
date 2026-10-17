@@ -255,8 +255,13 @@ def build():
     # ---------------------------------------------------------------- 2
     A("## 2. Этап 0: данные")
     A("")
-    A("* Часы 1947–2023: исследовательский счёт BEA–BLS (часы всех занятых: медиана отношения к H_EMP JHS 0,981), "
-      "2017–2023 гг. — по индексу счёта 1997–2024; шов 1997–2016 — 0,01 п. п. в год.")
+    hu = rd("s0_hours_units_decision.csv").set_index("check").value
+    hl = rd("s0_hours_link.csv").set_index("item").value
+    seam_pp = 100 * abs(float(hl["private mean annual growth 1997-2016, research"])
+                        - float(hl["private mean annual growth 1997-2016, 1997-2024 account"]))
+    A(f"* Часы 1947–2023: исследовательский счёт BEA–BLS (часы всех занятых: медиана отношения к H_EMP JHS "
+      f"{num(hu['median hrs(all industries) / JHS H_EMP TOT 1948-2010'], 3)}), 2017–2023 гг. — по индексу счёта "
+      f"1997–2024; шов 1997–2016 — {num(seam_pp, 2)} п. п. в год.")
     A("* Рядовые работники (CES): доли в часах и в фонде оплаты по 47 отраслям; сцепка рядов по первым трём общим "
       "годам; s_W не обрезается на 1 (журнал п. 2; где s_W > 1 — журнал п. 7).")
     chk0 = rd("s0_checks.csv")
@@ -599,8 +604,6 @@ def build():
               "EXIOBASE; cn и cgdpo в PWT — в текущих ППС, а ДС EXIOBASE — в рыночных ценах. Вариант (cn·pl_n) / "
               "(cgdpo·pl_gdpo) переводит отношение K/Y в национальные цены.")
             A("")
-            A("**Наклоны по фазам** (свои наклоны фаз, основной вариант; после рецензии Р8):")
-            A("")
             rows = []
             for nm in ("ln e_h", "ln k_h", "ln r_h", "ln r_$", "ln(r_h / r_$)", "ln k_h, national prices",
                        "ln r_h, national prices", "agricultural share of L"):
@@ -613,8 +616,11 @@ def build():
                         rows.append([nm_ru, num(100 * r.slope_A, 3), num(100 * r.slope_B, 3)])
                     else:
                         rows.append([nm_ru, pct(r.slope_A), pct(r.slope_B)])
-            L += md_table(rows, ["Ряд", "1995–2007", "2010–2019"])
-            A("")
+            if rows:
+                A("**Наклоны по фазам** (свои наклоны фаз, основной вариант; после рецензии Р8):")
+                A("")
+                L += md_table(rows, ["Ряд", "1995–2007", "2010–2019"])
+                A("")
             ag = [d3.loc[f"mean agricultural share of L {a}-{b}", "est"] for a, b in ((1995, 2007), (2010, 2019))
                   if f"mean agricultural share of L {a}-{b}" in d3.index]
             if len(ag) == 2:
@@ -638,7 +644,8 @@ def build():
             a = d3.loc["WIOD check 2000-2014: EXIOBASE ln r_h trend"]
             b = d3.loc["WIOD check 2000-2014: WIOD (12b) ln r_h trend"]
             A(f"* Сверка с WIOD (12б, исход 100), 2000–2014 гг.: EXIOBASE {ci_pct(a.est, a.ci90_lo, a.ci90_hi)} "
-              f"{lab(a.label_full)}, WIOD {ci_pct(b.est, b.ci90_lo, b.ci90_hi)} {lab(b.label_full)} — знак точечной оценки тот же.")
+              f"{lab(a.label_full)}, WIOD {ci_pct(b.est, b.ci90_lo, b.ci90_hi)} {lab(b.label_full)} — знак точечной оценки "
+              f"{'тот же' if np.sign(a.est) == np.sign(b.est) else 'разный'}.")
     else:
         A("Расчёт не завершён.")
     A("")
@@ -652,7 +659,7 @@ def build():
           f"{ci_pct(r.est, r.ci90_lo, r.ci90_hi)}; без 1869–1889 гг. (до 1889 г. часть рядов — средние за десятилетия) "
           f"{ci_pct(d4.iloc[1].est, d4.iloc[1].ci90_lo, d4.iloc[1].ci90_hi)}.")
         for it in d4.index[2:5]:
-            A(f"  * {it.replace('recovery d ln r', 'восстановление Δ ln r')}: {num(d4.loc[it, 'est'], 3)}.")
+            A(f"  * {it.replace('recovery d ln r', 'восстановление Δ ln r').replace('->', '→')}: {num(d4.loc[it, 'est'], 3)}.")
     if s4f is not None:
         A("* **Ошибка BEA (страхование)** — `lts.bea` с отношением самозанятых к наёмным по секции K для отраслей "
           "64–66:")
@@ -724,7 +731,7 @@ def build():
     # ---------------------------------------------------------------- 8
     A("## 8. Интерпретация")
     A("")
-    A("Это толкование, а не данные. Каждый пункт — условный: в скобках сказано, от каких допущений он зависит.")
+    A("Это толкование, а не данные. Каждый пункт условный: сказано, от каких допущений и выборов он зависит.")
     A("")
     A("1. **Закон в форме задания не подтверждён и не опровергнут.** Правило задания даёт «неразличимо». Тенденция "
       "строения внутри фаз есть, но её перекрывает рост нормы эксплуатации — в терминах Маркса противодействующая "
@@ -757,19 +764,28 @@ def build():
       "выпуска), поэтому совместимость с гл. 15 в прочтении «кризисы промышленного цикла» — лишь частичная.")
     if O3 is not None and s3d is not None:
         d3 = s3d.set_index("item")
-        def ph(nm, g):
-            it = f"phase slopes: {nm}"
-            return pct(d3.loc[it, f"slope_{g}"]) if it in d3.index else "—"
+        r120 = O3[O3.no == 120].iloc[0]
         nat = d3.loc["lambda=net, variant=main: within phases ln r_h_natp"] if \
             "lambda=net, variant=main: within phases ln r_h_natp" in d3.index else None
-        A(f"6. **Мир.** Мировая норма в часах падает внутри фаз 1995–2007 и 2010–2019 гг., в деньгах на тех же величинах — "
-          f"нет. В фазе 1995–2007 гг. r_h падает вместе с e_h (ln e_h {ph('ln e_h', 'A')} в год) — так действует "
-          "сокращение крестьянских и самозанятых часов, которые входят в L, но не в V (журнал п. 5). В фазе 2010–2019 гг. "
-          f"e_h растёт ({ph('ln e_h', 'B')}), а r_h падает через k_h ({ph('ln k_h', 'B')}). k_h же зависит от масштаба "
-          "капитала по PWT в ППС"
-          + (f"; с масштабом в национальных ценах r_h внутри фаз {ci_pct(nat.est, nat.ci90_lo, nat.ci90_hi)} "
-             f"{lab(nat.label_full)}" if nat is not None else "")
-          + ". Поэтому как подтверждение закона мировое падение не читается.")
+        def slope(nm, g):
+            it = f"phase slopes: {nm}"
+            return float(d3.loc[it, f"slope_{g}"]) if it in d3.index else np.nan
+        eA, eB, kB, rB = slope("ln e_h", "A"), slope("ln e_h", "B"), slope("ln k_h", "B"), slope("ln r_h", "B")
+        parts = [f"6. **Мир.** Мировая норма в часах внутри фаз 1995–2007 и 2010–2019 гг. — {lab(r120.label_full)}, в "
+                 f"деньгах на тех же величинах — {lab(d3.loc['lambda=net, variant=main: within phases ln r_d', 'label_full'])}."]
+        if np.isfinite(eA):
+            parts.append(f"В фазе 1995–2007 гг. ln e_h меняется на {pct(eA)} в год"
+                         + (" — так действует сокращение крестьянских и самозанятых часов, которые входят в L, но не в V "
+                            "(журнал п. 5)." if eA < 0 else "."))
+        if np.isfinite(eB):
+            parts.append(f"В фазе 2010–2019 гг. ln e_h {pct(eB)}, ln k_h {pct(kB)}, ln r_h {pct(rB)} в год"
+                         + ("; падение r_h здесь идёт через рост k_h, а k_h зависит от масштаба капитала по PWT в ППС."
+                            if (rB < 0 and kB > 0 and eB > 0) else "."))
+        if nat is not None:
+            parts.append(f"С масштабом в национальных ценах r_h внутри фаз {ci_pct(nat.est, nat.ci90_lo, nat.ci90_hi)} "
+                         f"{lab(nat.label_full)}.")
+        parts.append("Как подтверждение закона мировое падение не читается.")
+        A(" ".join(parts))
     A("")
     # ---------------------------------------------------------------- 9
     A("## 9. Что это не доказывает")
@@ -830,7 +846,8 @@ def build():
         ["Р8", "принято", "Вариант масштаба PWT в национальных ценах, наклоны по фазам, все варианты k_h, доля часов "
          "сельского хозяйства, разрыв 2009→2010 — §5; толкование про крестьян перенесено в §8 и сужено"],
         ["Р9", "принято", f"Окно 2020–2021 в сетке без лет фазы C; доля основной метки 113 в сетке — "
-         f"{num(o113.grid_share_main, 3)}; слой подвыборок применён ({o113.nine if isinstance(o113.nine, str) else '—'}); "
+         f"{num(o113.grid_share_main, 3)}; слой подвыборок применён (метки: "
+         f"{', '.join(lab(x) for x in str(o113.nine).split(';'))}); "
          "разложение m и оговорка о циклической производительности — §3.6, §8"],
         ["Р10", "принято", "Изменение USA_BEA — §6; «закрыто» сужено до исходов 7 и 18 (§6, REPORT_FINAL, SUMMARY)"],
         ["Р11", "принято", "Отступления записаны в журнал п. 7; недостающие таблицы — §12; аддитивный мост и JHS — в "
@@ -851,8 +868,8 @@ def build():
     rows = []
     for no in (110, 111, 114, 115, 117, 123, 124, 125, 129, 130):
         r = o(no)
-        rows.append([no] + [f"{pct(r[f'slope_{g}'])} ± {num(100 * 1.645 * r[f'se_{g}'], 2)}" for g in "ABC"]
-                    + [num(r.p_equal_slopes, 3)])
+        rows.append([no] + [f"{pct(r[f'slope_{g}'])} ± {num(100 * 1.645 * r[f'se_{g}'], 2)} п. п." for g in "ABC"]
+                    + ["< 0,001" if r.p_equal_slopes < 0.001 else num(r.p_equal_slopes, 3)])
     L += md_table(rows, ["№", "A 1948–1973", "B 1983–2007", "C 2010–2019", "p (Вальд, β_A = β_B = β_C)"])
     A("")
     A("Полуширина — 1,645·SE_HAC. Однородность «≈ 0» засчитывается только при p ≥ 0,10.")
@@ -860,15 +877,17 @@ def build():
     A("### 12.2 Шепли: средний уровень ln r и парные дивиденды Харсаньи")
     A("")
     shv = sh[sh.statistic == "level"].set_index("switch")
-    rows = [[swt, num(shv.loc[swt, "shapley"], 4), num(shv.loc[swt, "fixed_order_step"], 4)]
-            for swt in ("cap", "lab", "who", "dep", "val", "den", "total (13a - 12b)")]
+    SWN = {"cap": "данные капитала", "lab": "лица → часы", "who": "все наёмные → рядовые", "dep": "валовая → чистая λ",
+           "val": "текущая → историческая оценка", "den": "(П) → (В)", "total (13a - 12b)": "итого 13а − 12б"}
+    rows = [[SWN[swt], num(shv.loc[swt, "shapley"], 4), num(shv.loc[swt, "fixed_order_step"], 4)] for swt in SWN]
     L += md_table(rows, ["Переключатель", "Вклад Шепли в средний уровень ln r", "Шаг в фиксированном порядке"])
     A("")
     pr = rd("s1_shapley_pairs.csv")
     pw = pr[pr.statistic == "within"].set_index("pair").harsanyi_dividend
     pl = pr[pr.statistic == "linear"].set_index("pair").harsanyi_dividend
     pv = pr[pr.statistic == "level"].set_index("pair").harsanyi_dividend
-    rows = [[k, pct(pw[k]), pct(pl[k]), num(pv[k], 4)] for k in pw.abs().sort_values(ascending=False).index]
+    rows = [[" × ".join(SWN[x] for x in k.split("×")), pct(pw[k]), pct(pl[k]), num(pv[k], 4)]
+            for k in pw.abs().sort_values(ascending=False).index]
     L += md_table(rows, ["Пара", "Дивиденд: наклон внутри фаз", "Дивиденд: линейный тренд", "Дивиденд: уровень ln r"])
     A("")
     A("### 12.3 Ряды по годам (основная форма) и профиль фаз")

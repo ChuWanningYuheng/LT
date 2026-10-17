@@ -80,11 +80,15 @@ def read_year(y):
                 em=em)
 
 
-def pwt_ratio():
-    """(cn / cgdpo) by EXIOBASE region and year 1995-2024."""
+def pwt_ratio(national=False):
+    """(cn / cgdpo) by EXIOBASE region and year 1995-2024. national=True (variant after results, review R8): both in
+    national prices at exchange rates, (cn pl_n) / (cgdpo pl_gdpo), since EXIOBASE value added is at market prices."""
     d = pd.read_excel(RAW / "v13" / "pwt_data" / "pwt110.xlsx", sheet_name="Data",
-                      usecols=["countrycode", "year", "cn", "cgdpo"])
-    d = d[(d.year >= 1995)]
+                      usecols=["countrycode", "year", "cn", "cgdpo", "pl_n", "pl_gdpo"])
+    d = d[(d.year >= 1995)].copy()
+    if national:
+        d["cn"] = d.cn * d.pl_n
+        d["cgdpo"] = d.cgdpo * d.pl_gdpo
     row = pd.read_csv(OUT / "s3_row_regions.csv")
     out = {}
     for r2, r3 in ISO2_3.items():
@@ -108,7 +112,11 @@ def kbar(y):
 
 
 # ================================================================ one year
-def year(y, ratio, conc, cls):
+AGR_IDX = np.arange(19)                    # EXIOBASE industries 0-18: crops, animals, forestry, fishing
+CACHE = RAW / "v13a_cache"                 # region-level pieces (not published: EXIOBASE licence)
+
+
+def year(y, ratio, conc, cls, ratio_n):
     d = read_year(y)
     Z, x, Y = d["Z"], d["x"], d["Y"]
     n = len(x)
@@ -191,10 +199,14 @@ def year(y, ratio, conc, cls):
         k_nore = to_producers(pv_nore)
         g = gf[r]
         Kreg = float(ratio.loc[y, r]) * float(va[ridx[r]].sum())
-        rows[r] = dict(K=Kreg, k=k / k.sum() if k.sum() > 0 else k, k_nore=k_nore / k_nore.sum() if k_nore.sum() > 0
+        rows[r] = dict(K=Kreg, K_n=float(ratio_n.loc[y, r]) * float(va[ridx[r]].sum()),
+                       k=k / k.sum() if k.sum() > 0 else k, k_nore=k_nore / k_nore.sum() if k_nore.sum() > 0
                        else k_nore, share_re=share_re, g=g / g.sum() if g.sum() > 0 else g)
     del Kb
-    out = []
+    out, cache = [], []
+    agr = np.zeros(n, bool)
+    for r in regions:
+        agr[ridx[r][AGR_IDX]] = True
     for kind in ("net", "gross"):
         for var, lk in (("main", "main"), ("PQ_out", "PQ_out"), ("lowmed", "lowmed")):
             lt = lam[(kind, lk)]
@@ -206,10 +218,17 @@ def year(y, ratio, conc, cls):
             for r in regions:
                 W = float((cp * prod)[ridx[r]].sum())
                 c = hh[r]
-                if c.sum() > 0:
-                    V_h += W * float(lt @ (c / c.sum()))
+                vh = W * float(lt @ (c / c.sum())) if c.sum() > 0 else 0.0
+                V_h += vh
                 V_d += W
+                cache.append(dict(year=y, lam=kind, variant=var, region=r, va=float(va[ridx[r]].sum()),
+                                  cfc=float(cfc[ridx[r]].sum()), K=rows[r]["K"], K_n=rows[r]["K_n"],
+                                  lk=float(lt @ rows[r]["k"]), lk_nore=float(lt @ rows[r]["k_nore"]),
+                                  share_re=rows[r]["share_re"], lg=float(lt @ rows[r]["g"]), W=W, V_h=vh,
+                                  L=float((Hh * prod)[ridx[r]].sum()), L_agr=float((Hh * prod * agr)[ridx[r]].sum())))
             C_h = sum(rows[r]["K"] * float(lt @ rows[r]["k"]) for r in regions)
+            C_h_n = sum(rows[r]["K_n"] * float(lt @ rows[r]["k"]) for r in regions)
+            C_d_n = sum(rows[r]["K_n"] for r in regions)
             C_h_nore = sum(rows[r]["K"] * (1 - rows[r]["share_re"]) * float(lt @ rows[r]["k_nore"]) for r in regions)
             C_h_gfcf = sum(rows[r]["K"] * float(lt @ rows[r]["g"]) for r in regions)
             C_d = sum(rows[r]["K"] for r in regions)
@@ -220,12 +239,17 @@ def year(y, ratio, conc, cls):
                             C_h_gfcf=C_h_gfcf, V_d=V_d, S_d=S_d, C_d=C_d, C_d_nore=C_d_nore,
                             r_h=S_h / (C_h + V_h), k_h=C_h / V_h, e_h=S_h / V_h, r_d=S_d / (C_d + V_d),
                             r_h_nore=S_h / (C_h_nore + V_h), r_d_nore=S_d / (C_d_nore + V_d),
-                            r_h_gfcf=S_h / (C_h_gfcf + V_h), k_h_nore=C_h_nore / V_h, k_h_gfcf=C_h_gfcf / V_h))
+                            r_h_gfcf=S_h / (C_h_gfcf + V_h), k_h_nore=C_h_nore / V_h, k_h_gfcf=C_h_gfcf / V_h,
+                            C_h_natp=C_h_n, C_d_natp=C_d_n, r_h_natp=S_h / (C_h_n + V_h), k_h_natp=C_h_n / V_h,
+                            r_d_natp=S_d / (C_d_n + V_d), L_agr=float((Hh * prod * agr).sum()),
+                            share_agr_L=float((Hh * prod * agr).sum()) / L))
+    CACHE.mkdir(parents=True, exist_ok=True)
+    pd.DataFrame(cache).to_csv(CACHE / f"s3_regions_{y}.csv", index=False)
     return out
 
 
 def years(ys=None):
-    ratio = pwt_ratio()
+    ratio, ratio_n = pwt_ratio(), pwt_ratio(national=True)
     conc = pd.read_csv(OUT / "s3_product_industry.csv")
     cls = pd.read_csv(OUT / "s3_classification.csv")
     path = OUT / "s3_world_years.csv"
@@ -234,7 +258,7 @@ def years(ys=None):
     for y in (ys or YEARS):
         if y in have:
             continue
-        rows = year(y, ratio, conc, cls)
+        rows = year(y, ratio, conc, cls, ratio_n)
         done = pd.concat([done, pd.DataFrame(rows)], ignore_index=True)
         done.sort_values(["lam", "variant", "year"]).to_csv(path, index=False)
         print("year", y, flush=True)

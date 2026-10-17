@@ -315,11 +315,13 @@ def nber_gdrive():
 
 def census_techdocs():
     """Census CPS technical documentation: March record layouts 1990-1999 (replace NBER .ddf files that NBER failed to
-    serve for 1996-1997) and the industry / occupation code appendices."""
+    serve for 1996-1997), the ASEC technical documentation 2000-2025 (appendices with the occupation and industry code
+    lists of the 2002, 2010 and 2018 Census classifications - needed for the supervisor map before the data) and the
+    industry / occupation code appendices."""
     base = "https://www2.census.gov/programs-surveys/cps/techdocs/"
-    for nm in [f"cpsmar{y}.pdf" for y in range(90, 100)] + ["appa.pdf", "appa1972.pdf", "appb.pdf", "appb1974.pdf",
-                                                            "appb1976.pdf", "appc.pdf", "appc1978.pdf", "appc1982.pdf",
-                                                            "appd.pdf", "appd1984.pdf", "appd1986.pdf", "appd1988.pdf"]:
+    apps = ["appa.pdf", "appa1972.pdf", "appb.pdf", "appb1974.pdf", "appb1976.pdf", "appc.pdf", "appc1978.pdf",
+            "appc1982.pdf", "appd.pdf", "appd1984.pdf", "appd1986.pdf", "appd1988.pdf"]
+    for nm in [f"cpsmar{y}.pdf" for y in range(90, 100)] + [f"cpsmar{y:02d}.pdf" for y in range(0, 26)] + apps:
         fetch("census_cps_techdocs", nm, base + nm, "U.S. Census Bureau (public domain)",
               f"Census CPS technical documentation {nm}")
 

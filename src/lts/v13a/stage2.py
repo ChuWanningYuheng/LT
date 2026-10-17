@@ -12,6 +12,8 @@ Usage: PYTHONPATH=src python -P -m lts.v13a.stage2  ->  results/v13a/s2_*.csv
 """
 from __future__ import annotations
 
+from functools import lru_cache
+
 import numpy as np
 import pandas as pd
 
@@ -218,18 +220,44 @@ def compare_number(name, ours, period, author_pct, var):
                 diff_hi=hi, reproduced=bool(lo >= -D and hi <= D))
 
 
-def bridge(window):
-    """Steps after (i): r_m-type money rate -> PNS V -> historical -> hours -> (B); trend and label on the window."""
+@lru_cache(None)
+def private_business():
+    """Net value added and compensation of private industries without 531 (real estate, incl. housing), and
+    compensation of productive industries ($ million). For the sub-steps of step ii (after results, review R6)."""
+    keep = np.array([not c.startswith("G") and c != "531" for c in s1.CODES])
+    rows = {}
+    for y in s1.YEARS:
+        s = s1.u.system(y)
+        comp = s1.u.compensation(y).to_numpy(float)
+        nva = np.asarray(s["va"], float) - s1.u.depreciation(y)
+        rows[y] = dict(NVA_PB=float(nva[keep].sum()), COMP_PB=float(comp[keep].sum()),
+                       COMP_PROD=float(comp[s1.PROD].sum()))
+    return pd.DataFrame(rows).T
+
+
+def bridge(window, step_i=None):
+    """Steps from the author's definition (i) to r*_h on the window: (i) our analogue of the author's series;
+    ii-a..ii-d (after results, review R6) split step ii into one change each; ii: r_m-type money rate -> PNS V ->
+    historical -> hours -> (B)."""
     M = s1.money_series()
     ms = pd.read_csv(OUT / "s1_main_series.csv", index_col=0)
-    steps = [("ii: r_m-тип (деньги, все наёмные в V, текущая, (П))", (M.NDP - M.V_all) / (M.C_curr_P + M.V_all)),
+    P = private_business()
+    steps = ([("i: аналог ряда автора (на окне моста)", step_i)] if step_i is not None else []) + [
+             ("ii-а: деньги, частный сектор без государства и 531, вся оплата в V, текущая, (В)",
+              (P.NVA_PB - P.COMP_PB) / (M.C_curr_B + P.COMP_PB)),
+             ("ii-б: + оплата непроизводительных отраслей → S (V = оплата производительных)",
+              (P.NVA_PB - P.COMP_PROD) / (M.C_curr_B + P.COMP_PROD)),
+             ("ii-в: + V = корзина ω·Σc вместо выплаченной оплаты",
+              (P.NVA_PB - M.V_all) / (M.C_curr_B + M.V_all)),
+             ("ii-г: + числитель NDP (с государством и 531)", (M.NDP - M.V_all) / (M.C_curr_B + M.V_all)),
+             ("ii: r_m-тип (деньги, все наёмные в V, текущая, (П))", (M.NDP - M.V_all) / (M.C_curr_P + M.V_all)),
              ("iii: V рядовых", (M.NDP - M.V) / (M.C_curr_P + M.V)),
              ("iv: историческая оценка", (M.NDP - M.V) / (M.C_hist_P + M.V)),
              ("v: часы", ms.r_P),
              ("vi: знаменатель (В) = r*_h", ms.r)]
     rows = []
     for nm, ser in steps:
-        s_ = ser.loc[window[0]:window[1]]
+        s_ = ser.dropna().loc[window[0]:window[1]]
         t = est.single_trend(np.log(s_), D, "<")
         rows.append(dict(step=nm, y0=window[0], y1=window[1], est=t["est"], ci90_lo=t["ci90_lo"], ci90_hi=t["ci90_hi"],
                          label=t["label_full"]))
@@ -280,12 +308,19 @@ def run():
                 reproduced=";".join(str(f) for f in flags),
                 rule="ниже 0,5 — выводы этапа 1 предварительные (правило задания)",
                 stage1_preliminary=bool(share < 0.5))
-    # bridges on the common windows (within 1948-2023)
-    for c in comp[:3]:
-        for r in bridge((max(c["y0"], 1948), min(c["y1"], 2023))):
+    # bridges on the common windows (within 1948-2023); step i on the same window (fixed after results, review R6)
+    for c, ser in zip(comp[:3], (ko, so, do)):
+        for r in bridge((max(c["y0"], 1948), min(c["y1"], 2023)), ser):
             br.append(dict(work=c["work"], **r))
-    for r in bridge((1964, 2007)):
+    for r in bridge((1964, 2007), P["R"]):
         br.append(dict(work="Paitaridis & Tsoulfidis (2012)", **r))
+    # step ii against r_m of iteration 9b (pre-registered check, after results)
+    M_ = s1.money_series()
+    ii = (M_.NDP - M_.V_all) / (M_.C_curr_P + M_.V_all)
+    rm = pd.read_csv(ROOT / "results" / "v9b" / "s1_long_series.csv")
+    rm = rm[rm.variant == "main"].set_index("year").r_m
+    desc.append(dict(item="bridge step ii vs r_m of iteration 9b (main), 1948-2023",
+                     **{k: v for k, v in compare_series("x", ii, rm, (1948, 2023)).items() if k != "work"}))
     # Mohun: text values
     Mo = mohun_ours()
     mrows = [dict(variable=v, year=y, mohun_text=x, ours=float(Mo.loc[y, v]) if y in Mo.index else np.nan)

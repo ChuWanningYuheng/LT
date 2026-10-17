@@ -70,8 +70,12 @@ def hours():
 
 @lru_cache(None)
 def ces(variant="main"):
+    """CES shares of a stage-0 variant; 'sW capped at 1' (after results, review R5) - main with sW = min(sW, 1)."""
+    cap = variant == "sW capped at 1"
     Dd = pd.read_csv(OUT / "s0_ces_shares.csv", dtype={"code": str})
-    Dd = Dd[Dd.variant == variant]
+    Dd = Dd[Dd.variant == ("main" if cap else variant)].copy()
+    if cap:
+        Dd["sW"] = Dd.sW.clip(upper=1.0)
     return {k: Dd.pivot_table(index="year", columns="code", values=k).reindex(columns=CODES) for k in ("sH", "sW")}
 
 
@@ -501,8 +505,12 @@ def runs_excluding(excl, a=1948, b=2023):
 
 
 def crises_between(phases):
+    """Crisis windows between phases and 2020-2021 after the last phase. Fixed after results (review R9): years of
+    phase C are no longer counted in the 2020-2021 window when C ends in 2020 or 2021."""
     ph = sorted(phases.values())
-    return [(a[1] + 1, b[0] - 1) for a, b in zip(ph[:-1], ph[1:]) if b[0] - 1 >= a[1] + 1] + [(2020, 2021)]
+    last = max(b for _, b in ph)
+    tail = [(max(2020, last + 1), 2021)] if last < 2021 else []
+    return [(a[1] + 1, b[0] - 1) for a, b in zip(ph[:-1], ph[1:]) if b[0] - 1 >= a[1] + 1] + tail
 
 
 # ================================================================ phases and robustness
@@ -542,15 +550,17 @@ def assess_within(name, y_of, delta, direction, lam_ms=None, spec_ms=None, grid=
     if grid:
         for k, ph in enumerate(boundary_variants()):
             g.append(est.within_trend(y_of(None, ph), ph, delta, direction, B=499, seed=1000 + k)["label_full"])
-    nb = None
+    nb, nbo = None, {}
     if nber:
         ph = nber_phases()
-        nb = est.within_trend(y_of(None, ph), ph, delta, direction)["label_full"]
+        nbo = est.within_trend(y_of(None, ph), ph, delta, direction)
+        nb = nbo["label_full"]
     sp = [est.within_trend(y_of(m, PHASES), PHASES, delta, direction)["label_full"] for m in (spec_ms or [])]
     rob, why = est.robust_flag(main, nine, lam_l, g, nb, sp)
     o.update(outcome=name, nine=";".join(sorted(set(nine))), lambda_labels=";".join(lam_l),
              grid_labels=";".join(sorted(set(g))), grid_share_main=float(np.mean([x == main for x in g])) if g else np.nan,
-             grid_n=len(g), nber_label=nb, spec_labels=";".join(sp),
+             grid_n=len(g), nber_label=nb, nber_est=nbo.get("est"), nber_ci90_lo=nbo.get("ci90_lo"),
+             nber_ci90_hi=nbo.get("ci90_hi"), spec_labels=";".join(sp),
              spec_share_main=float(np.mean([x == main for x in sp])) if sp else np.nan, robust=rob, robust_why=why)
     return o
 
@@ -775,8 +785,12 @@ def tests():
          for k, ph in enumerate(boundary_variants())]
     nbp = runs_excluding(set(NBER_TROUGH))
     nb = est.ratio_R(MD.m, nbp, [(y, y) for y in NBER_TROUGH])
-    rob, why = est.robust_flag(o["label_full"], grid=g, nber=nb["label_full"])
-    o.update(outcome="113: R = mean moral depreciation rate in crisis windows / within phases",
+    # statistical layer (added after results, review R9/R11): the HAC lag does not enter R, so the layer is the three
+    # samples full / without the first 5 / without the last 5 years of 1948-2023
+    sub3 = [est.ratio_R(_sub(MD.m, sb, (1948, 2023)), PHASES, CRISES)["label_full"]
+            for sb in ("full", "-first5", "-last5")]
+    rob, why = est.robust_flag(o["label_full"], nine=sub3, grid=g, nber=nb["label_full"])
+    o.update(outcome="113: R = mean moral depreciation rate in crisis windows / within phases", nine=";".join(sub3),
              grid_labels=";".join(sorted(set(g))), grid_share_main=float(np.mean([x == o["label_full"] for x in g])),
              grid_n=len(g), nber_label=nb["label_full"], nber_est=nb["est"], robust=rob, robust_why=why,
              lambda_labels="мера — текущая оценка: λ до 1947 г. не входят")
@@ -905,6 +919,8 @@ def tests():
                   dict(item="reading 110 x 111 (descriptive)", value=reading_110_111(lab_rule[110], lab_rule[111])),
                   dict(item="reading 125 x 111 (descriptive)", value=reading_110_111(l125, lab_rule[111])),
                   dict(item="reading 114 x 115 (descriptive, main labels)", value=reading_114_115(l114, l115)),
+                  dict(item="reading 114 x 115 (descriptive, rule labels; after results, review R3)",
+                       value=reading_114_115(rule_label(114), rule_label(115))),
                   dict(item="labels 114; 115 (main)", value=f"{l114}; {l115}")]).to_csv(OUT / "s1_rule.csv", index=False)
 
     # ---- identity decomposition (descriptive): ln r = ln e - ln(1+k); ln k = ln(C/L) + ln(1+e)

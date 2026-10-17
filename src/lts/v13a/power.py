@@ -53,14 +53,14 @@ def run():
     d = pd.read_csv(ROOT / "results" / "v12b" / "s1_us_series.csv")
     d = d[d.variant == "main"].set_index("year").sort_index()
     lr, lk, le = np.log(d.r_h), np.log(d.k_h), np.log(d.e_h)
-    r_all = d.S_h / (d.C_h_all + d.V_h)
     rows = [row("110 (k, внутри фаз)", "ln k_h 12б", lk, 0.002),
             row("111, 114, 115 (r, внутри фаз)", "ln r_h 12б", lr, 0.002),
-            row("117 (r(В)/r(П), внутри фаз)", "ln(r_все / r_h) 12б", np.log(r_all / d.r_h), 0.001),
+            # 117: no usable 12b analogue - C_h_all exists only in one 12b variant and equals C_h there
             row("125 (C/L, внутри фаз)", "ln(C_h / L) 12б", np.log(d.C_h / d.tot_h), 0.002),
             row("116 (e, B − A′)", "ln e_h 12б", le, 0.002, "diff", pa=(1964, 1973), pb=(1983, 2007)),
             row("126 (r, B − A)", "ln r_h 12б", lr, 0.002, "diff", pa=(1948, 1973), pb=(1983, 2007)),
-            row("127 (k, B − A)", "ln k_h 12б", lk, 0.002, "diff", pa=(1948, 1973), pb=(1983, 2007)),
+            row("127 (C/L, B − A)", "ln(C_h / L) 12б", np.log(d.C_h / d.tot_h), 0.002, "diff", pa=(1948, 1973),
+                pb=(1983, 2007)),
             row("131 (вековой тренд r, 1948–2023)", "ln r_h 12б", lr, 0.002, "single")]
     # world: 12b world hours (WIOD 2000-2014); residual sigma and AR(1) within 2000-2007 and 2010-2014, then the
     # analytic half-width for the EXIOBASE phases 1995-2007 and 2010-2019
@@ -75,6 +75,8 @@ def run():
                                                   "2010–2019", delta=0.002, half_width_hac=np.nan, half_width=h,
                          sigma_resid=sig, rho1_resid=rho, equivalence_attainable=bool(h < 0.002),
                          min_abs_slope_for_confirmed=h))
+    rows.append(dict(outcome="117 (r(В)/r(П))", analogue_12b="аналога в 12б нет: C_h_all есть только в варианте "
+                                                         "«структура по столбцу инвестиций» и там равен C_h", delta=0.001))
     rows.append(dict(outcome="113 (R)", analogue_12b="аналога в 12б нет (моральный износ не считался)", delta=0.25))
     P = pd.DataFrame(rows)
     P.to_csv(OUT / "p0_power.csv", index=False)

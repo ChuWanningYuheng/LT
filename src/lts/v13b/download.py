@@ -240,9 +240,35 @@ def cps_probe():
         probe(u)
 
 
+def census_asec(years=range(1998, 2026)):
+    """CPS ASEC (March supplement) public-use files from the Census Bureau, 1998- (earlier years only via NBER or
+    IPUMS). Per year: the ASCII public-use zip (about 30 MB; the CSV zip, where published, is about 150 MB), plus record
+    layouts and documentation."""
+    import re
+    base = "https://www2.census.gov/programs-surveys/cps/datasets/{}/march/"
+    lic = "U.S. Census Bureau (public domain)"
+    for y in years:
+        url = base.format(y)
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": UA})
+            with urllib.request.urlopen(req, timeout=120) as r:
+                html = r.read().decode("utf-8", "ignore")
+        except Exception as e:                                   # noqa: BLE001
+            log_attempt(url, f"{type(e).__name__}: {e}", "listing")
+            print("FAILED listing", y, flush=True)
+            continue
+        names = sorted(set(re.findall(r'href="([^"?/][^"]*\.(?:zip|pdf|txt))"', html)))
+        data = [n for n in names if n.endswith(".zip") and "REPWGT" not in n.upper() and "sas" not in n.lower()
+                and not n.endswith("csv.zip")] or [n for n in names if n.endswith("csv.zip")]
+        docs = [n for n in names if n.endswith((".pdf", ".txt"))]
+        for n in data + docs:
+            fetch("census_asec", f"{y}_{n}", url + n, lic,
+                  f"CPS ASEC {y} public-use file from the Census Bureau ({n})")
+
+
 SOURCES = dict(eia=eia, energy_institute=energy_institute, ceo_pay=ceo_pay, wid=wid, pss=pss, oecd_tax=oecd_tax,
                dfa=dfa, psz=psz, nyfed=nyfed, frank=frank, fhfa=fhfa, bls_states=bls_states, bea_sainc=bea_sainc,
-               cps_probe=cps_probe)
+               cps_probe=cps_probe, census_asec=census_asec)
 
 
 if __name__ == "__main__":

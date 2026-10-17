@@ -324,10 +324,20 @@ def census_techdocs():
               f"Census CPS technical documentation {nm}")
 
 
+def marx_soch():
+    """Marx & Engels, Collected Works in Russian, 2nd ed. (Sochineniya), vols 23-25 = Capital I-III (scanned PDFs with the
+    printed page numbers) - the edition cited for exact quotes and pages in the 13b pre-registration."""
+    for nm, note in (("t23.pdf", "vol. 23: Capital, vol. I"), ("t24.pdf", "vol. 24: Capital, vol. II"),
+                     ("t25-1.pdf", "vol. 25, part 1: Capital, vol. III, chapters 1-28"),
+                     ("t25-2.pdf", "vol. 25, part 2: Capital, vol. III, chapters 29-52")):
+        fetch("marx_soch", nm, "https://www.marxists.org/russkij/marx/cw/" + nm, "public domain text (marxists.org)",
+              f"K. Marx, F. Engels, Sochineniya, 2nd ed., {note}")
+
+
 SOURCES = dict(eia=eia, energy_institute=energy_institute, ceo_pay=ceo_pay, wid=wid, pss=pss, oecd_tax=oecd_tax,
                dfa=dfa, psz=psz, nyfed=nyfed, frank=frank, fhfa=fhfa, bls_states=bls_states, bea_sainc=bea_sainc,
                cps_probe=cps_probe, census_asec=census_asec, nber_gdrive=nber_gdrive,
-               census_techdocs=census_techdocs)
+               census_techdocs=census_techdocs, marx_soch=marx_soch)
 
 
 if __name__ == "__main__":

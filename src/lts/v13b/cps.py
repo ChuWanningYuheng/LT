@@ -312,7 +312,10 @@ def parse(year, src=None):
                               hrs_week=n["hrs"].where((n["hrs"] >= 1) & (n["esr"] == 1)),
                               grp=n["ind"].map(IND68)))
         if e == "68":
-            d["sup"] = n["occ"].isin([8, 17])
+            # recode P179-180 of 1968-1971 is not the 1963-1967 list: by the cross-table with the 3-digit codes and
+            # the class of worker, 07 = salaried managers (1960 codes 250-290; 1971: 1970 codes 201-245), 16 = foremen
+            # n.e.c. (430; 1971: 441) - stage-0 check (i), journal item 5
+            d["sup"] = n["occ"].isin([7, 16])
             d["nonprod"] = n["occmaj"].isin([1, 2, 3, 4]) | d.sup
             d["occ"] = n["occ"]
         else:
@@ -325,7 +328,8 @@ def parse(year, src=None):
         d["ind3"] = n["ind3"]
         d["ind_major"] = n["ind"]
     elif e == "76":
-        r = raw_frame(year, L76, lambda ln: len(ln) >= 200 and ln[6:8].isdigit() and 41 <= int(ln[6:8]) <= 79, src)
+        # person records: position 7-8 = 01-39 (with record type '3' at 331 from 1977; the 1976 file has no type)
+        r = raw_frame(year, L76, lambda ln: len(ln) >= 200 and ln[6:8].isdigit() and 1 <= int(ln[6:8]) <= 39, src)
         n = {k: _num(r[k]) for k in r}
         o = OCC[occ_class(year)]
         d = pd.DataFrame(dict(wgt=n["wgt"], age=n["age"], female=n["sex"] == 2, S=s_grade(n["grade"], n["gradec"]),
@@ -378,6 +382,7 @@ def topcode(d, year):
     (journal: rule for thresholds not printed in the descriptions); x 1.5. From 1996 the public files carry cell
     means / rank-swapped values - kept as is."""
     d["topcoded"] = False
+    d["wage"] = d.wage.astype(float)
     if year <= 1995 and len(d):
         mx = d.wage.max()
         if (d.wage == mx).mean() >= 0.0005:
